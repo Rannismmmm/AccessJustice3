@@ -22,7 +22,7 @@
           <v-card-title primary-title>
             <div>
               <h3 class="headline mb-0">{{card.title}}</h3>
-              <div style="height: 200px">{{card.description}}
+              <div>{{card.description}}
               </div>
             </div>
           </v-card-title>
@@ -50,16 +50,16 @@
     },
 
     methods:{
-      addCpurse(){
-        axios
-        .get('http://118.138.74.5:8090/RevisionHero/webresources/entity.course')
-        .then(response => (
-          this.cards = response
-        ))
-        .catch(() => {
-          this.cards = []
-        })
-      }
+      // addCpurse(){
+      //   axios
+      //   .get('http://118.138.74.5:8090/RevisionHero/webresources/entity.course')
+      //   .then(response => (
+      //     this.cards = response
+      //   ))
+      //   .catch(() => {
+      //     this.cards = []
+      //   })
+      // }
     },
 
     mounted () {
