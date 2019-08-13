@@ -38,7 +38,10 @@
 </template>
 
 <script>
+  import axios from 'axios';
   export default {
+
+
     name: 'mycourses',
 
     data () {
@@ -75,7 +78,20 @@
           }
         ]
       }
-    }
+    },
+
+    methods: {
+
+    },
+
+    // async mounted(){
+    //   try {
+    //     let resp = await axios.get('http://118.138.121.50:8090/RevisionHero2/webresources/entity.course')
+    //     this.cards = resp.data
+    //   } catch (e) {
+    //     this.cards = []
+    //   }
+    // }
   }
 </script>
 

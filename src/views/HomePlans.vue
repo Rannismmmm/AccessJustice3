@@ -38,40 +38,31 @@
 </template>
 
 <script>
-  import axios from 'axios';
 
   export default {
     name: 'HomePlans',
 
     data () {
       return {
-        cards: []
       }
     },
 
     methods:{
-      // addCpurse(){
-      //   axios
-      //   .get('http://118.138.74.5:8090/RevisionHero/webresources/entity.course')
-      //   .then(response => (
-      //     this.cards = response
-      //   ))
-      //   .catch(() => {
-      //     this.cards = []
-      //   })
-      // }
+      async getCards(){
+        await this.$store.dispatch('fetchCards');
+      }
     },
 
-    mounted () {
-      axios
-        .get('http://118.138.74.5:8090/RevisionHero/webresources/entity.course')
-        .then(response => (
-          this.cards = response.data
-        ))
-        .catch(() => {
-          this.cards = []
-        })
+    computed:{
+      cards(){
+        return this.$store.state.cards;
+      }
+    },
+
+    mounted(){
+      this.getCards();
     }
+
   }
 </script>
 
