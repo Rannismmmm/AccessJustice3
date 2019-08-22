@@ -33,16 +33,10 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/Register.vue")
     },
     {
-      path: "/mycourses",
-      name: "mycourses",
+      path: "/driving",
+      name: "Driving",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/mycourses.vue")
-    },
-    {
-      path: "/settings",
-      name: "Settings",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Settings.vue")
+        import(/* webpackChunkName: "about" */ "./views/Driving.vue")
     },
     {
       path: "/management",

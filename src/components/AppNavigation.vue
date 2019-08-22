@@ -1,6 +1,6 @@
 <template>
   <span>
-      <v-navigation-drawer app v-model="drawer" class="blue darken-1" dark
+      <v-navigation-drawer width="200px" app v-model="drawer" class="blue-grey darken-3" dark
                            disable-resize-watcher>
             <v-list>
                 <template v-for="(item, index) in items">
@@ -13,7 +13,7 @@
                 </template>
             </v-list>
       </v-navigation-drawer>
-  <v-toolbar app color="blue darken-1" dark>
+  <v-toolbar app color="blue-grey darken-3" dark>
             <v-toolbar-side-icon class="hidden-md-and-up"
                                  @click="reverseMenu"></v-toolbar-side-icon>
             <v-btn flat class="hidden-sm-and-down"
@@ -25,7 +25,7 @@
             <v-spacer class="hidden-sm-and-down"></v-spacer>
             <v-btn flat class="hidden-sm-and-down" to="/signin">SIGN IN</v-btn>
             <v-btn color="blue lighten-3"
-                   class="hidden-sm-and-down" to="/register">JOIN</v-btn>
+                   <!--class="hidden-sm-and-down" to="/register">JOIN</v-btn>-->
         </v-toolbar>
     </span>
 </template>
@@ -35,20 +35,16 @@
     name: 'AppNavigation',
     data () {
       return {
-        appTitle: 'Revision Hero',
+        appTitle: 'Access to justice',
         drawer: false,
         items: [
           {
-            title: 'My Courses',
-            path: '/mycourses'
-          },
-          {
-            title: 'Course Management',
+            title: 'Experiences',
             path: '/management'
           },
           {
-            title: 'Settings',
-            path: '/settings'
+            title: 'Quizs',
+            path: '/About'
           }
         ]
       }
