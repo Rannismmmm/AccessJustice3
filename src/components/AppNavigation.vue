@@ -23,8 +23,8 @@
                           <v-toolbar-title>{{appTitle}}</v-toolbar-title>
             </router-link>
             <v-spacer class="hidden-sm-and-down"></v-spacer>
-            <v-btn flat class="hidden-sm-and-down" to="/signin">SIGN IN</v-btn>
-            <v-btn color="blue lighten-3"
+            <v-btn flat class="hidden-sm-and-down" to="/signin">HELP</v-btn>
+            <!--<v-btn color="blue lighten-3">-->
                    <!--class="hidden-sm-and-down" to="/register">JOIN</v-btn>-->
         </v-toolbar>
     </span>
@@ -44,7 +44,7 @@
           },
           {
             title: 'Quizs',
-            path: '/About'
+            path: '/quizs'
           }
         ]
       }
