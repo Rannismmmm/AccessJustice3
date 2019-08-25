@@ -23,7 +23,7 @@
                           <v-toolbar-title>{{appTitle}}</v-toolbar-title>
             </router-link>
             <v-spacer class="hidden-sm-and-down"></v-spacer>
-            <v-btn flat class="hidden-sm-and-down" to="/signin">HELP</v-btn>
+            <v-btn flat class="hidden-sm-and-down">HELP</v-btn>
             <!--<v-btn color="blue lighten-3">-->
                    <!--class="hidden-sm-and-down" to="/register">JOIN</v-btn>-->
         </v-toolbar>
@@ -38,14 +38,35 @@
         appTitle: 'Access to justice',
         drawer: false,
         items: [
-          {
-            title: 'Experiences',
-            path: '/management'
-          },
+          // {
+          //   title: 'ChartKick',
+          //   path: '/management'
+          // },
           {
             title: 'Quizs',
             path: '/quizs'
-          }
+          },
+          // {
+          //   title: 'MapBox',
+          //   path: '/maps'
+          // }
+          // ,
+          // {
+          //   title: 'Main',
+          //   path: '/maintemp'
+          // },
+          // {
+          //   title: 'amCharts',
+          //   path: '/amcharts'
+          // },
+          // {
+          //   title: 'MainSlides',
+          //   path: '/mainslides'
+          // },
+          // {
+          //   title: 'Slide',
+          //   path: '/slide'
+          // }
         ]
       }
     },

@@ -1,6 +1,6 @@
 <template>
   <v-parallax height="2000"
-              src="https://besthqwallpapers.com/img/original/71481/4k-dark-material-design-gray-and-black-android-lollipop.jpg">
+              :src="require('../assets/darkBackground.jpg')">
     <v-container>
       <v-row>
         <h1>Drink-driving penalties</h1>

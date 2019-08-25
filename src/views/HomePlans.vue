@@ -48,19 +48,12 @@
     },
 
     methods:{
-      async getCards(){
-        await this.$store.dispatch('fetchCards');
-      }
     },
 
     computed:{
-      cards(){
-        return this.$store.state.cards;
-      }
     },
 
     mounted(){
-      this.getCards();
     }
 
   }

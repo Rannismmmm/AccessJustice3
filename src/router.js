@@ -43,6 +43,30 @@ export default new Router({
       name: "management",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/management.vue")
+    },
+    {
+      path: "/maps",
+      name: "maps",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/MapBox.vue")
+    },
+    {
+      path: "/amcharts",
+      name: "amcharts",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/AmCharts.vue")
+    },
+    {
+      path: "/mainslides",
+      name: "mainslides",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./components/MainSlides.vue")
+    },
+    {
+      path: "/slide",
+      name: "slide",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./components/Slide.vue")
     }
   ]
 });
