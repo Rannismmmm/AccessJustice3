@@ -1,16 +1,16 @@
 <template>
-  <v-img :src="backSrc" height="650" width="1500">
+  <v-img :src="backSrc" style="height: auto;width: auto">
     <v-container fluid>
       <v-layout column wrap>
-        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px">
+        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px" row wrap>
           <h1 class="display-3 font-weight-black">
             {{title}}</h1>
         </v-flex>
-        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px">
+        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px" row wrap>
           <h1 class="display-2 font-weight-bold">
             {{content}}</h1>
         </v-flex>
-        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px">
+        <v-flex xs4 sm4 md4 lg4 xl4 style="margin: 60px" row wrap>
           <h1 class="display-1 font-weight-bold">
             {{foot}}<router-link :to="rout">{{routWord}}</router-link></h1>
         </v-flex>
