@@ -32,7 +32,7 @@
     data () {
       return {
         accessToken: 'pk.eyJ1IjoidHlhbjAwMTYiLCJhIjoiY2psNGN0Z2gzMDZ4ZDNybmx6a3h0bWMzbSJ9.SbjTVR9BAQUGP0my5YqG2A',
-        mapStyle: 'mapbox://styles/mapbox/dark-v10',
+        mapStyle: 'mapbox://styles/mapbox/light-v10',
         center: [144.96332, -37.814],
       }
     },

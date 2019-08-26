@@ -68,16 +68,6 @@
       }
     },
 
-    mounted () {
-      axios
-        .get('http://118.138.121.50:8090/RevisionHero2/webresources/entity.course')
-        .then(response => (
-          this.rows = response.data
-        ))
-        .catch(() => {
-          this.rows = []
-        })
-    }
   }
 </script>
 
