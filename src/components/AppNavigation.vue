@@ -59,14 +59,14 @@
           //   title: 'amCharts',
           //   path: '/amcharts'
           // },
-          {
-            title: 'MainSlides',
-            path: '/mainslides'
-          },
-          {
-            title: 'Slide',
-            path: '/slide'
-          }
+          // {
+          //   title: 'MainSlides',
+          //   path: '/mainslides'
+          // },
+          // {
+          //   title: 'Slide',
+          //   path: '/slide'
+          // }
         ]
       }
     },

@@ -5,10 +5,10 @@
         <v-sheet color="blue-grey darken-2" height="120" dark tile>
           <v-container fluid>
             <v-layout row wrap justify-space-between>
-              <v-flex xs6 sm4 md3 lg1 xl1>
+              <v-flex xs3 sm2 md1 lg1 xl1>
                 <v-img :src="require('../assets/logo.jpg')" contain></v-img>
               </v-flex>
-              <v-flex xs6 sm4 md3 lg3 xl1>
+              <v-flex xs7 sm6 md5 lg4 xl2>
                 <div align="end"><h2 class="display-1 font-weight-bold">Justice League</h2></div>
                 <div align="end"><h2 class="headline font-weight-bold">Iteration 1 some other comments</h2></div>
               </v-flex>
