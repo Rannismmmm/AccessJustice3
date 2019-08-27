@@ -3,11 +3,15 @@
     <v-container fluid fill-height>
       <v-layout justify-space-around column>
         <v-flex xs4 sm4 md4 lg4 xl4 row wrap>
-          <h1 class="display-3 font-weight-black">
+          <h1 class="display-3 font-weight-black hidden-sm-and-down">
+            {{title}}</h1>
+          <h1 class="display-1 font-weight-black hidden-md-and-up">
             {{title}}</h1>
         </v-flex>
         <v-flex xs4 sm4 md4 lg4 xl4 row wrap>
-          <h1 class="display-2 font-weight-bold">
+          <h1 class="display-2 font-weight-bold hidden-sm-and-down">
+            {{content}}</h1>
+          <h1 class="headline font-weight-black hidden-md-and-up">
             {{content}}</h1>
         </v-flex>
         <!--<v-flex xs4 sm4 md4 lg4 xl4 row wrap>-->
@@ -17,7 +21,7 @@
         <!--</h1>-->
         <!--</v-flex>-->
         <v-flex xs4 sm4 md4 lg4 xl4 row wrap>
-          <h1 class="display-1 font-weight-bold">
+          <h2 class="display-1 font-weight-bold hidden-sm-and-down">
             {{foot}}
             <v-tooltip v-if="chartData != null" top>
               <template v-slot:activator="{ on }">
@@ -40,7 +44,31 @@
                 </span>
             </v-tooltip>
             <router-link v-else :to="rout">{{routWord}}</router-link>
-          </h1>
+          </h2>
+          <h2 class="hidden-md-and-up">
+            {{foot}}
+            <v-tooltip v-if="chartData != null" top>
+              <template v-slot:activator="{ on }">
+                <v-btn color="primary" light v-on="on" @click="dialog = true">
+                  {{routWord}}
+                </v-btn>
+              </template>
+              <span
+                style="color: transparent;margin: 0px;padding: 0px;width: auto">
+              <v-card
+                height="auto"
+                width="300px"
+                color="white"
+              >
+                <div style="height: auto;width: auto;color: white">
+                  <pie-chart
+                    :data="chartData"></pie-chart>
+                  </div>
+              </v-card>
+                </span>
+            </v-tooltip>
+            <router-link v-else :to="rout">{{routWord}}</router-link>
+          </h2>
         </v-flex>
       </v-layout>
       <div class="text-center">
@@ -126,7 +154,7 @@
         default: null
       }
 
-    },
+    }
 
 
   }

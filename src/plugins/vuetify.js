@@ -6,5 +6,8 @@ import colors from 'vuetify/lib/util/colors'
 
 Vue.use(Vuetify, {
   iconfont: 'mdi',
+  options: {
+    customProperties: true
+  }
 })
 

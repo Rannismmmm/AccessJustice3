@@ -1,7 +1,7 @@
 <template>
-  <v-container fliud fill-height>
+  <v-container fliud>
     <v-layout column>
-      <v-flex>
+      <v-flex row>
         <template>
           <v-tabs
             fixed-tabs
@@ -15,14 +15,14 @@
           </v-tabs>
         </template>
       </v-flex>
-      <v-flex>
+      <v-flex row fill-height>
         <v-carousel
           cycle
           hide-delimiter-background
           hide-delimiters
           show-arrows-on-hover
           fluid
-          height="auto"
+          height="max-content"
           width="auto"
           v-model="tab"
         >
@@ -142,5 +142,7 @@
 </script>
 
 <style scoped>
-
+  .container {
+    background-color: #424242;
+  }
 </style>

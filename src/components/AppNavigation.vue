@@ -18,7 +18,7 @@
                class="hidden-sm-and-down gradient"
                dark height="90">
       <v-btn class="ma-2" icon to="/">
-        <v-icon light>home</v-icon>
+        <v-icon x-large light>home</v-icon>
       </v-btn>
       <v-spacer class="hidden-sm-and-down"></v-spacer>
       <v-img :src="require('../assets/logo.jpg')" max-height="70"
@@ -40,7 +40,7 @@
       <v-toolbar-title>{{appTitle}}</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn class="ma-2" icon to="/">
-        <v-icon x-large light>home</v-icon>
+        <v-icon light>home</v-icon>
       </v-btn>
     </v-toolbar>
   </span>

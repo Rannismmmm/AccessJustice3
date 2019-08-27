@@ -1,6 +1,6 @@
 <template>
-  <v-container style="margin: 0px;padding: 0px" fluid>
-    <v-layout column>
+  <v-container style="margin: 0px;padding: 0px; border: 0px" fluid fill-height>
+    <v-layout row fill-height>
       <!--<v-flex xs3 sm3 md2 lg1 x1 style="padding: 0px" outlined tile>-->
         <!--<v-sheet color="blue-grey darken-2" height="120" dark outlined tile>-->
           <!--<v-container fluid>-->
@@ -16,7 +16,7 @@
           <!--</v-container>-->
         <!--</v-sheet>-->
       <!--</v-flex>-->
-      <v-flex xs12 sm12 md12 lg12 x12 style="padding: 0px" outlined tile>
+      <v-flex xs12 sm12 md12 lg12 x12 style="padding: 0px" fill-height>
         <main-slides
           class="align-end"
           fill-height
@@ -45,5 +45,7 @@
 </script>
 
 <style scoped>
-
+  .container {
+    background-color: #424242;
+  }
 </style>

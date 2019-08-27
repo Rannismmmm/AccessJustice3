@@ -13,6 +13,7 @@ new Vue({
   store,
   created () {
     this.$vuetify.theme.dark
+
   },
   render: h => h(App)
 }).$mount('#app')
