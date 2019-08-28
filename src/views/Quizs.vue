@@ -1,12 +1,12 @@
 <template>
-  <v-container justify="center">
+  <v-container justify-center align-center>
     <v-dialog v-model="questionVisible" scrollable max-width="1000">
-      <template v-slot:activator="{ on }">
+      <template v-slot:activator="{ on }" >
         <v-btn color="primary" dark v-on="on">Take a look</v-btn>
       </template>
       <v-card>
         <v-card-title><span
-          class="headline">A quiuck quiz</span></v-card-title>
+          class="headline">A quick quiz</span></v-card-title>
         <v-divider></v-divider>
         <v-card-text style="height: 600px;">
           <v-flex v-for="(question, index) in questions" :key="index">
@@ -15,8 +15,9 @@
                 <v-card row>
                   <div><h3>{{question}}</h3></div>
                 </v-card>
-                <v-radio-group>
+                <v-radio-group row v-model="answers[index]">
                   <v-radio label="Yes" value="1"></v-radio>
+                  <v-spacer></v-spacer>
                   <v-radio label="No" value="0"></v-radio>
                 </v-radio-group>
               </v-container>
@@ -27,9 +28,10 @@
         <v-card-actions>
           <v-flex class="text-xs-right">
             <v-btn color="blue darken-1" class="white--text"
-                   @click="questionVisible = false">Close
+                   @click="closeQuiz">Close
             </v-btn>
             <v-btn color="blue darken-1" class="white--text"
+                   :disabled="buttonUnable"
                    @click="questionVisible = false">Save
             </v-btn>
           </v-flex>
@@ -49,7 +51,7 @@
     data () {
       return {
         questionVisible: false,
-
+        buttonUnable: true,
         questions: [
           'Question1',
           'Question2',
@@ -57,10 +59,28 @@
           'Question4',
           'Question5'
         ],
-
+        answers: [],
         scores:[],
 
         totalScore: 0
+      }
+    },
+
+    methods: {
+      // fillAnswer(i){
+      //   this.answers.i =
+      // }
+      closeQuiz(){
+        this.questionVisible = false
+        this.answers = []
+        this.buttonUnable = true
+      }
+    },
+
+    watch: {
+      answers(val) {
+        if (this.answers.length == this.questions.length)
+          this.buttonUnable = false
       }
     }
   }

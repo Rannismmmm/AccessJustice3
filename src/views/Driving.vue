@@ -1,7 +1,7 @@
 <template>
-  <v-parallax height="2000"
+  <v-parallax height="900"
               :src="require('../assets/darkBackground.jpg')">
-    <v-container>
+    <v-container fluid>
       <v-row>
         <h1>Drink-driving penalties</h1>
         <br/>

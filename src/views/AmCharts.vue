@@ -1,54 +1,40 @@
 <template>
-  <!--<v-card-->
-  <!--max-width="344"-->
-  <!--class="mx-auto"-->
-  <!--&gt;-->
-  <!--<v-row-->
-  <!--class="py-4 pl-4"-->
-  <!--&gt;-->
-  <!--<v-container class="pa-0">-->
-  <!--<v-row>-->
-  <!--<v-col>-->
-  <!--<v-btn icon>-->
-  <!--<v-icon>mdi-heart</v-icon>-->
-  <!--</v-btn>-->
-  <!--</v-col>-->
-  <!--<v-col>-->
-  <!--<v-btn icon>-->
-  <!--<v-icon>mdi-bookmark</v-icon>-->
-  <!--</v-btn>-->
-  <!--</v-col>-->
-  <!--<v-col>-->
-  <!--<v-btn icon>-->
-  <!--<v-icon>mdi-share-variant</v-icon>-->
-  <!--</v-btn>-->
-  <!--</v-col>-->
-  <!--</v-row>-->
-  <!--</v-container>-->
-  <!--</v-row>-->
-  <!--</v-card>-->
-  <div class="text-center">
-    <v-menu offset-y>
-      <template v-slot:activator="{ on }">
-        <v-btn
-          color="primary"
-          dark
-          v-on="on"
-        >
-          Dropdown
-        </v-btn>
-      </template>
-      <v-list>
-        <v-list-tile
-          v-for="(item, index) in items"
-          :key="index"
-          @click=""
-        >
-          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-        </v-list-tile>
-      </v-list>
-    </v-menu>
-  </div>
+  <v-card class="overflow-hidden">
+    <v-app-bar
+      absolute
+      color="primary"
+      dark
+      inverted-scroll
+      scroll-target="#scrolling-techniques-8"
+    >
+      <v-app-bar-nav-icon></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Title</v-toolbar-title>
+
+      <div class="flex-grow-1"></div>
+
+      <v-btn icon>
+        <v-icon>search</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>favorite</v-icon>
+      </v-btn>
+
+      <v-btn icon>
+        <v-icon>more_vert</v-icon>
+      </v-btn>
+    </v-app-bar>
+    <v-sheet
+      id="scrolling-techniques-8"
+      class="overflow-y-auto"
+      max-height="600"
+    >
+      <v-container style="height: 1500px;">
+
+      </v-container>
+    </v-sheet>
+  </v-card>
 </template>
 
 <script>
@@ -62,10 +48,22 @@
       return {
         item: 1,
         items: [
-          {title: 'Click Me'},
-          {title: 'Click Me'},
-          {title: 'Click Me'},
-          {title: 'Click Me 2'}
+          {
+            title: 'Quizs',
+            path: '/quizs'
+          },
+          {
+            title: 'amCharts',
+            path: '/amcharts'
+          },
+          {
+            title: 'MainSlides',
+            path: '/mainslides'
+          },
+          {
+            title: 'Slide',
+            path: '/slide'
+          }
         ]
       }
     }
@@ -74,5 +72,7 @@
 </script>
 
 <style scoped>
-
+  .v-toolbar__content {
+    background-color: red;
+  }
 </style>

@@ -12,13 +12,13 @@ export default new Router({
       component: Home
     },
     {
-      path: "/quizs",
-      name: "quizs",
+      path: "/assessments",
+      name: "assessments",
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Quizs.vue")
+        import(/* webpackChunkName: "about" */ "./views/Assessments.vue")
     },
     {
       path: "/signin",
@@ -67,6 +67,12 @@ export default new Router({
       name: "slide",
       component: () =>
         import(/* webpackChunkName: "about" */ "./components/Slide.vue")
+    },
+    {
+      path: "/about",
+      name: "about",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/About.vue")
     }
   ]
 });

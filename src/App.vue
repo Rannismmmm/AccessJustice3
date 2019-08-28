@@ -2,9 +2,7 @@
   <v-app>
     <app-navigation></app-navigation>
 
-    <v-content transitio="slide-x-transition">
-      <router-view></router-view>
-    </v-content>
+
   </v-app>
 </template>
 

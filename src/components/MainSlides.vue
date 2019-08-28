@@ -1,30 +1,27 @@
 <template>
   <v-container fliud>
-    <v-layout column>
-      <v-flex row>
-        <template>
-          <v-tabs
-            fixed-tabs
-            dark
-            v-model="tab"
-          >
-            <v-tab v-for="(slide,index) in slides"
-                   :key="index">
-              {{slide.name}}
-            </v-tab>
-          </v-tabs>
-        </template>
-      </v-flex>
+    <v-layout row fill-height>
+      <!--<v-flex row>-->
+        <!--<template>-->
+          <!--<v-tabs-->
+            <!--fixed-tabs-->
+            <!--dark-->
+            <!--v-model="tab"-->
+          <!--&gt;-->
+            <!--<v-tab v-for="(slide,index) in slides"-->
+                   <!--:key="index">-->
+              <!--{{slide.name}}-->
+            <!--</v-tab>-->
+          <!--</v-tabs>-->
+        <!--</template>-->
+      <!--</v-flex>-->
       <v-flex row fill-height>
         <v-carousel
           cycle
           hide-delimiter-background
-          hide-delimiters
           show-arrows-on-hover
-          fluid
           height="max-content"
-          width="auto"
-          v-model="tab"
+          width="max-content"
         >
           <v-carousel-item
             style="height: max-content"
@@ -48,6 +45,8 @@
                        :rout-word="slide.routWord"
                        :name="slide.name"
                        :chart-data="slide.chartData"
+                       :table-data="slide.tableData"
+                       :headers="slide.headers"
                 ></Slide>
               </v-row>
             </v-sheet>
@@ -68,7 +67,7 @@
       slides: [
         {
           background: require('../assets/candel.jpeg'),
-          title: 'Woman abuse',
+          title: null,
           content: 'You deserve a better life',
           foot: null,
           rout: null,
@@ -78,7 +77,7 @@
         {
           background: require('../assets/fist.jpeg'),
           title: '1 in 3 woman being abused',
-          content: '1 in 8 woman being emotionally abused',
+          content: 'and 1 in 8 are emotional',
           foot: null,
           rout: null,
           routWord: null,
@@ -86,37 +85,38 @@
         },
         {
           background: require('../assets/hair.jpeg'),
-          title: 'Portion',
-          content: '18 ~ 34 are the most affected age group',
-          foot: null,
+          title: 'Age 18 ~ 34 suffered the most',
+          content: null,
+          foot: 'Wanna see some statics?',
           rout: 'management',
-          routWord: 'Learn more',
+          routWord: 'See our data',
           name: 'Age',
           chartData:
-            {'18 ~ 24': 11.7,
-              '25 ~ 34': 7,
-              '35 ~ 44': 4.1,
-              '45 ~ 54': 4,
-              '55 ~ 64': 2.6,
-              '65 ~ ': 1.2
-            }
+            {'Age 18 ~ 24': 11.7,
+              'Age 25 ~ 34': 7,
+              'Age 35 ~ 44': 4.1,
+              'Age 45 ~ 54': 4,
+              'Age 55 ~ 64': 2.6,
+              'Age 65 ~ ': 1.2
+            },
+          headers: ['Age', 'Sexual Violence', 'Physical Violence', 'Total Violence'],
+          tableData: [
+            ['18 to 24 years', '5.9', '7.4', '11.7'],
+            ['25 to 34 years', '3.5', '4.8', '7'],
+            ['35 to 44 years', '1.2', '3.6', '4.1'],
+            ['45 to 54 years', '0.8', '3.5', '4'],
+            ['55 to 64 years', '0.6', '2.2', '6.6'],
+            ['65 years and over', '0.3', '1', '1.2'],
+          ]
         },
         {
-          background: require('../assets/victoria.jpeg'),
+          background: require('../assets/map.png'),
           title: 'Victoria ranks 1st in Australia',
           content: 'And Melbourne rank 1st in Vic',
-          foot: 'Don\'t believe me? see some charts ',
-          rout: 'management',
+          foot: 'Try a quick assessment ',
+          rout: 'assessments',
           routWord: 'here',
           name: 'Victoria'
-        },
-        {
-          title: 'Wanna find more',
-          content: null,
-          foot: 'You can identify the problem by a quick quiz, see ',
-          rout: 'quizs',
-          routWord: 'our quiz',
-          name: 'More'
         }
 
       ],
