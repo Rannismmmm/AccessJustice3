@@ -55,10 +55,10 @@
              max-width="200"></v-img>
       <v-spacer></v-spacer>
 
-      <v-btn icon class="hidden-sm-and-down">
+      <v-btn icon class="hidden-sm-and-down" @click="redirct('/help')">
         <v-icon large >help</v-icon>
       </v-btn>
-      <v-btn icon class="hidden-md-and-up">
+      <v-btn icon class="hidden-md-and-up" @click="redirct('/help')">
         <v-icon >help</v-icon>
       </v-btn>
 
@@ -141,7 +141,7 @@
           },
           {
             title: 'Statics',
-            path: '/amcharts'
+            path: '/statics'
           },
           {
             title: 'About us',

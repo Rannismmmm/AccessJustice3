@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
-      <v-flex row align-center justify-center>
-        <h2>Frequency of abuse</h2>
-      </v-flex>
-      <v-flex row align-center justify-center>
-        <div class="hello" ref="chartdiv"></div>
-      </v-flex>
-    </v-container>
+    <v-flex row align-center justify-center>
+      <h2>Frequency of abuse</h2>
+    </v-flex>
+    <v-flex row align-center justify-center>
+      <div class="hello" ref="chartdiv"></div>
+    </v-flex>
+  </v-container>
 </template>
 
 <script>
@@ -87,6 +87,12 @@
         series.name = name
         series.columns.template.tooltipText = '{name}: [bold]{valueY}[/]'
         series.columns.template.width = am4core.percent(95)
+
+        var bullet1 = series.bullets.push(new am4charts.LabelBullet())
+        bullet1.interactionsEnabled = false
+        bullet1.label.text = '{valueY.formatNumber(\'#.0\')}'
+        bullet1.label.fill = am4core.color('#ffffff')
+        bullet1.locationY = 0.5
       }
     }
 

@@ -1,25 +1,28 @@
 <template>
-  <v-container fluid>
-    <v-parallax height="1000"
+  <container fluid>
+    <am-charts class="hidden-sm-and-down"></am-charts>
+    <v-parallax class="hidden-md-and-up" height="600"
                 :src="require('../assets/darkBackground.jpg')">
       <v-container fluid>
         <v-flex row align-center justify-center>
-          <h1>More charts are comming</h1>
+          <h1>More phone charts are comming</h1>
         </v-flex>
         <v-flex row fill-height align-center>
           <pie-chart :data="data"></pie-chart>
         </v-flex>
       </v-container>
     </v-parallax>
-  </v-container>
+  </container>
+
 </template>
 
 <script>
-  import axios from 'axios'
+  import AmCharts from './AmCharts'
 
   export default {
-    name: 'management',
-    data () {
+    name: 'Statics',
+    components: {AmCharts},
+    data(){
       return {
         data: {
           'Age 18 ~ 24': 11.7,
@@ -31,7 +34,6 @@
         }
       }
     }
-
   }
 </script>
 
