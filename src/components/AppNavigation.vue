@@ -141,7 +141,7 @@
           },
           {
             title: 'Statics',
-            path: '/management'
+            path: '/amcharts'
           },
           {
             title: 'About us',

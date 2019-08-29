@@ -42,7 +42,7 @@ export default new Router({
       path: "/management",
       name: "management",
       component: () =>
-        import(/* webpackChunkName: "about" */ "./views/management.vue")
+        import(/* webpackChunkName: "about" */ "./components/SimplePieChart.vue")
     },
     {
       path: "/maps",

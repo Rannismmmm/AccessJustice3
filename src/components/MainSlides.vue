@@ -77,10 +77,10 @@
         {
           background: require('../assets/fist.jpeg'),
           title: '1 in 3 woman being abused',
-          content: 'and 1 in 8 are emotional',
-          foot: null,
-          rout: null,
-          routWord: null,
+          content: '1 in 8 are emotionally abused',
+          foot: 'See our ',
+          rout: 'amcharts',
+          routWord: 'charts',
           name: 'Portion'
         },
         {
