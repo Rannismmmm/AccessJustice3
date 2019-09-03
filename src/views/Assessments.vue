@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid style="padding: 0px">
     <v-parallax class="hidden-sm-and-down" height="900"
                 :src="require('../assets/darkBackground.jpg')">
       <v-container fluid>

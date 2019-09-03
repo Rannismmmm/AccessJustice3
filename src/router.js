@@ -57,12 +57,6 @@ export default new Router({
         import(/* webpackChunkName: "about" */ "./views/Statics.vue")
     },
     {
-      path: "/help",
-      name: "help",
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/Help.vue")
-    },
-    {
       path: "/amcharts",
       name: "amcharts",
       component: () =>

@@ -1,7 +1,7 @@
 <template>
   <v-container style="margin: 0px;padding: 0px; border: 0px" fluid fill-height>
     <v-img :src="backSrc" class="hidden-sm-and-down"
-           style="width: auto;height: auto;"
+           style="width: auto;height: 5000px;"
            gradient="to top right, rgba(10,80,50,.33), rgba(10,32,72,.7)">
       <v-container fluid fill-height style="padding-right: 0px">
         <v-layout justify-space-around column>
