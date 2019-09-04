@@ -13,7 +13,7 @@ new Vue({
   router,
   store,
   created () {
-    this.$vuetify.theme.dark
+    this.$vuetify.theme.light
 
   },
   render: h => h(App)

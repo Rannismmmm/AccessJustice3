@@ -80,5 +80,19 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
     }
+    ,
+    {
+      path: "/abuse",
+      name: "abuse",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Abuse.vue")
+    }
+    ,
+    {
+      path: "/support",
+      name: "support",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/Support.vue")
+    }
   ]
 });

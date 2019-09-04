@@ -1,26 +1,26 @@
 <template>
-  <v-card class="overflow-hidden pa-ma-0" style="height: 100vh">
+  <v-card class="overflow-hidden pa-ma-0" style="height: 100vh; width: 100vw">
     <v-app-bar
       absolute="false"
       prominent
       color="#FFFFFF"
       light
       hide-on-scroll
-      scroll-threshold="400"
+      scroll-threshold="50"
       scroll-target="#scrolling-techniques-3"
     >
       <v-container fluid fill-height align-end>
         <v-row justify="center">
           <v-col cols="12" sm="8" md="6" justify-center>
             <v-row justify="center">
-              <v-toolbar-title>Justicly</v-toolbar-title>
+              <v-toolbar-title>JUSTICLY</v-toolbar-title>
             </v-row>
             <v-divider></v-divider>
           </v-col>
         </v-row>
       </v-container>
       <template v-slot:extension>
-        <v-container fluid fill-height justify-center>
+        <v-container fluid fill-height>
           <v-tabs
             background-color="transparent"
             centered
@@ -39,8 +39,9 @@
       id="scrolling-techniques-3"
       class="overflow-y-auto"
       max-height="100vh"
+      light
     >
-      <v-container style="height: max-content; padding: 0px" fluid>
+      <v-container style="height: max-content; padding: 0px" fluid light>
         <router-view></router-view>
       </v-container>
     </v-sheet>
@@ -65,7 +66,7 @@
           },
           {
             title: 'Abuse',
-            path: '/'
+            path: '/abuse'
           },
           {
             title: 'Self-Assessment',
@@ -73,7 +74,7 @@
           },
           {
             title: 'Support',
-            path: '/statics'
+            path: '/support'
           },
           {
             title: 'Activities',
