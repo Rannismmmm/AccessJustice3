@@ -25,6 +25,18 @@
             background-color="transparent"
             centered
             mobile-break-point
+            class="hidden-sm-and-down"
+          >
+            <v-tab v-for="(item,index) in items"
+                   :key="index"
+                   @click="redirct(item.path)">
+              {{item.title}}
+            </v-tab>
+          </v-tabs>
+          <v-tabs
+            background-color="transparent"
+            mobile-break-point
+            class="hidden-md-and-up"
           >
             <v-tab v-for="(item,index) in items"
                    :key="index"
@@ -75,10 +87,6 @@
           {
             title: 'Support',
             path: '/support'
-          },
-          {
-            title: 'Activities',
-            path: '/About'
           }
         ]
       }
