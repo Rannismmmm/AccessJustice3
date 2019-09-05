@@ -27,6 +27,7 @@
         justify="center"
         wrap
         style="padding-top: 200px;"
+        class="pl-3"
       >
         <h4 class="headline mb-4">UNDERSTAND EMOTIONAL ABUSE</h4>
       </v-row>

@@ -60,10 +60,10 @@
             <v-row justify="center">
               <h4 class="subtitle-1 mb-4">The aim of Justicly is to improve
                 the
-                life of emotional</h4>
+                life of</h4>
             </v-row>
             <v-row justify="center">
-              <h4 class="subtitle-1 mb-4">abused women in Melbourne
+              <h4 class="subtitle-1 mb-4">emotional abused women in Melbourne
                 because</h4>
             </v-row>
             <v-row justify="center">
