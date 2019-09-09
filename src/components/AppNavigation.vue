@@ -36,11 +36,12 @@
           <v-tabs
             background-color="transparent"
             mobile-break-point
+            centered
             class="hidden-md-and-up"
           >
             <v-tab v-for="(item,index) in items"
                    :key="index"
-                   @click="redirct(item.path)">
+                   :to="item.path">
               {{item.title}}
             </v-tab>
           </v-tabs>
@@ -62,6 +63,7 @@
 
 <script>
   import DropdownMenu from './DropdownMenu'
+  import * as easings from 'vuetify/es5/services/goto/easing-patterns'
 
   export default {
     name: 'AppNavigation',
@@ -85,16 +87,27 @@
             path: '/assessments'
           },
           {
-            title: 'Support',
+            title: 'Find Help',
             path: '/support'
           }
-        ]
+        ],
+        easing: 'easeInOutCubic',
+        easings: Object.keys(easings),
+        offSet: 0
       }
     },
     methods: {
       reverseMenu () {
         this.drawer = !this.drawer
       },
+
+      // scrollToTop (){
+      //   this.$vuetify.goTo('#scrolling-techniques-3', {
+      //     duration: 0,
+      //     offset: 1000,
+      //     easing: this.easing
+      //   })
+      // },
 
       redirct (path) {
         this.$router.push(path)

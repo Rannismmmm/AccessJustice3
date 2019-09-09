@@ -9,19 +9,18 @@
           wrap
           style="padding-top: 250px; padding-bottom: 20px"
         >
-          <h4 class="display-1 mb-4" style="color: #1976D2">OUR SUPPORT
-            SERVICES</h4>
+          <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
-        <!--<v-row-->
-        <!--align="start"-->
-        <!--justify="center"-->
-        <!--wrap-->
-        <!--style="padding-left: 5vw; padding-right: 5vw"-->
-        <!--&gt;-->
-        <!--<h1 class="body-2 mb-4">These services are available for all trauma-->
-        <!--victims in our community. Whatever your needs are, we are here to-->
-        <!--help you anonymously. Need to find local shelter <v-btn text small color="primary">Find Shelter</v-btn></h1>-->
-        <!--</v-row>-->
+        <v-row
+          align="start"
+          justify="center"
+          wrap
+          style="padding-left: 5vw; padding-right: 5vw"
+        >
+          <h1 class="body-2 mb-4">{{paragraph}}
+            <v-btn v-if="paragraphBtn" text small color="primary">{{paragraphBtn}}</v-btn>
+          </h1>
+        </v-row>
         <!--<v-row-->
         <!--align="end"-->
         <!--justify="space-between"-->
@@ -53,19 +52,19 @@
         wrap
         style="padding-top: 200px; padding-bottom: 10px"
       >
-        <h4 class="headline mb-4" style="color: #1976D2">OUR SUPPORT SERVICES</h4>
+        <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
       </v-row>
       <!--<v-row-->
-        <!--align="start"-->
-        <!--justify="center"-->
-        <!--wrap-->
-        <!--style="padding-left: 5vw; padding-right: 5vw"-->
+      <!--align="start"-->
+      <!--justify="center"-->
+      <!--wrap-->
+      <!--style="padding-left: 5vw; padding-right: 5vw"-->
       <!--&gt;-->
-        <!--<h1 class="body-2 mb-4">These services are available for all trauma-->
-          <!--victims in our community. Whatever your needs are, we are here to-->
-          <!--help you anonymously. Need to find local shelter-->
-          <!--<v-btn text small color="primary">Find Shelter</v-btn>-->
-        <!--</h1>-->
+      <!--<h1 class="body-2 mb-4">These services are available for all trauma-->
+      <!--victims in our community. Whatever your needs are, we are here to-->
+      <!--help you anonymously. Need to find local shelter-->
+      <!--<v-btn text small color="primary">Find Shelter</v-btn>-->
+      <!--</h1>-->
       <!--</v-row>-->
     </v-container>
     <v-row wrap>
@@ -110,34 +109,27 @@
 
 <script>
   export default {
-    name: 'Support',
+    name: 'SupportTemplate',
 
-    data () {
-      return {
-        cards: [
-          {
-            title: 'Legal Support',
-            comment: 'Find the legal support here',
-            color: 'grey'
-          },
-          {
-            title: 'Shelter Homes',
-            comment: 'Find the nearby shelters here',
-            color: 'indigo darken-4'
-          },
-          {
-            title: 'Support & Counceling',
-            comment: 'Support and counceling services',
-            color: 'teal darken-3'
-          }
-          ,
-          {
-            title: 'Self-Care',
-            comment: 'Self care services',
-            color: 'deep-purple darken-3'
-          }
-        ]
-      }
+    props: {
+      mainTitle: {
+        type: String,
+        default: 'Title'
+      },
+
+      paragraph: {
+        type: String,
+        default: 'These services are available for all trauma\n' +
+          '            victims in our community. Whatever your needs are, we are here to\n' +
+          '            help you anonymously. Need to find local shelter'
+      },
+
+      paragraphBtn: {
+        type: String,
+        default: null
+      },
+
+
     }
   }
 </script>

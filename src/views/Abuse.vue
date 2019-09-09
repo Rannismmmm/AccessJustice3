@@ -1,16 +1,46 @@
 <template>
   <v-container>
-    <v-container fluid style="padding-left: 17vw;padding-right: 17vw"
+    <v-container fluid style="padding: 0px"
                  class="hidden-sm-and-down">
       <v-layout column>
         <v-row
           align="center"
           justify="center"
           wrap
-          style="padding-top: 250px; padding-bottom: 90px"
-          class="hidden-sm-and-down"
+          style="padding-top: 250px; padding-bottom: 20px"
+          class="hidden-sm-and-down text--primary"
         >
-          <h4 class="display-1 mb-4">UNDERSTAND EMOTIONAL ABUSE</h4>
+          <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND EMOTIONAL ABUSE</h4>
+        </v-row>
+        <v-row >
+          <template>
+            <v-card
+              flat
+              class="mx-auto"
+              max-width="90vw"
+            >
+              <v-slide-group
+                class="pa-4"
+                center-active
+                mobile-break-point
+                show-arrows
+              >
+                <v-slide-item
+                  v-for="n in 15"
+                  :key="n"
+                  v-slot:default="{ active, toggle }"
+                >
+                  <v-card
+                    class="ma-4"
+                    height="400"
+                    width="50vw"
+                    @click="toggle"
+                  >
+                  </v-card>
+                </v-slide-item>
+              </v-slide-group>
+            </v-card>
+          </template>
         </v-row>
         <v-flex v-for="(line,i) in lines" :key="i">
           <abuse-line

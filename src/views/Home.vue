@@ -119,7 +119,7 @@
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up pt-4">
-        <v-card flat style="width: 110vw; height: 350px">
+        <v-card flat style="width: 100vw; height: 350px">
           <v-img :src="require('../assets/candel.jpeg')"
                  style="height: 350px;"
                  class="white--text">
@@ -208,7 +208,7 @@
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up">
-        <v-card flat style="width: 110vw; height: 600px;"
+        <v-card flat style="width: 100vw; height: 600px;"
                 class="pa-12">
           <v-container fluid fill-height>
             <v-layout column>
