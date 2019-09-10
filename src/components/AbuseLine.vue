@@ -47,7 +47,7 @@
     </v-row>
     <v-row
       align="center"
-      justify="start"
+      justify="center"
       wrap
       class="hidden-md-and-up"
     >

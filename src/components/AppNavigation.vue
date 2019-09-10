@@ -55,7 +55,9 @@
       light
     >
       <v-container style="height: max-content; padding: 0px" fluid light>
-        <router-view></router-view>
+        <transition name="router-anim" enter-active-class="animated fadeIn">
+          <router-view></router-view>
+        </transition>
       </v-container>
     </v-sheet>
   </v-card>
@@ -84,7 +86,7 @@
           },
           {
             title: 'Self-Assessment',
-            path: '/supporttemplate'
+            path: '/assessments'
           },
           {
             title: 'Find Help',
@@ -116,8 +118,15 @@
   }
 </script>
 
-<style scoped>
+<style>
+  @import "https://cdn.jsdelivr.net/npm/animate.css@3.5.1";
+
   .v-toolbar__content, .v-toolbar__extension {
     height: 100px;
+  }
+
+  .page {
+    position: fixed;
+    width: inherit;
   }
 </style>

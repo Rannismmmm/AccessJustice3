@@ -1,78 +1,94 @@
 <template>
   <v-container fluid style="padding: 0px">
     <v-row wrap>
-      <v-parallax
+      <v-img
         :src="require('../assets/darkBackground.jpg')"
-        height="1000"
+        height="900"
+        align="center"
         justify="center"
-        style="width: 105vw"
+        style="width: 100vw"
         class="hidden-sm-and-down"
       >
-        <v-row
-          align="end"
-          justify="center"
-          wrap
-        >
-          <h1 class="display-4 font-weight-thin mb-4">JUSTICLY</h1>
-        </v-row>
-        <v-row
-          align="start"
-          justify="center"
-          wrap
-        >
-          <v-cols cols="8">
-            <v-row justify="center">
-              <h4 class="display-1 mb-4">The aim of Justicly is to improve
-                the
-                life of emotional</h4>
+        <v-container fluid fill-height>
+          <v-layout column>
+            <v-row
+              align="end"
+              justify="center"
+              wrap
+            >
+              <h1 class="display-4 font-weight-thin mb-4" style="color: white">
+                JUSTICLY</h1>
             </v-row>
-            <v-row justify="center">
-              <h4 class="display-1 mb-4">abused women in Melbourne
-                because</h4>
+            <v-row
+              align="start"
+              justify="center"
+              wrap
+            >
+              <v-cols cols="8">
+                <v-row justify="center">
+                  <h4 class="display-1 mb-4" style="color: white">The aim of
+                    Justicly is to improve
+                    the
+                    life of emotional</h4>
+                </v-row>
+                <v-row justify="center">
+                  <h4 class="display-1 mb-4" style="color: white">abused women
+                    in Melbourne
+                    because</h4>
+                </v-row>
+                <v-row justify="center">
+                  <h4 class="display-1 mb-4" style="color: white">YOU DESERVE A
+                    BETTER
+                    LIFE.</h4>
+                </v-row>
+              </v-cols>
             </v-row>
-            <v-row justify="center">
-              <h4 class="display-1 mb-4">YOU DESERVE A BETTER
-                LIFE.</h4>
-            </v-row>
-          </v-cols>
-        </v-row>
-      </v-parallax>
-      <v-parallax
+          </v-layout>
+        </v-container>
+      </v-img>
+      <v-img
         :src="require('../assets/darkBackground.jpg')"
         height="700"
         justify="center"
-        style="width: 105vw"
+        align="center"
+        style="width: 100vw"
         class="hidden-md-and-up pt-12"
       >
-        <v-row
-          align="end"
-          justify="center"
-          wrap
-        >
-          <h1 class="display-2 font-weight-thin mb-4 hidden-md-and-up">JUSTICLY</h1>
-        </v-row>
-        <v-row
-          align="start"
-          justify="center"
-          wrap
-        >
-          <v-cols cols="8">
-            <v-row justify="center">
-              <h4 class="subtitle-1 mb-4">The aim of Justicly is to improve
-                the
-                life of</h4>
+        <v-container fluid fill-height>
+          <v-layout column>
+            <v-row
+              align="end"
+              justify="center"
+              wrap
+            >
+              <h1 class="display-2 font-weight-thin mb-4 hidden-md-and-up" style="color: white">
+                JUSTICLY</h1>
             </v-row>
-            <v-row justify="center">
-              <h4 class="subtitle-1 mb-4">emotional abused women in Melbourne
-                because</h4>
+            <v-row
+              align="start"
+              justify="center"
+              wrap
+            >
+              <v-cols cols="8">
+                <v-row justify="center">
+                  <h4 class="subtitle-1 mb-4" style="color: white">The aim of Justicly is to improve
+                    the
+                    life of</h4>
+                </v-row>
+                <v-row justify="center">
+                  <h4 class="subtitle-1 mb-4" style="color: white">emotional abused women in
+                    Melbourne
+                    because</h4>
+                </v-row>
+                <v-row justify="center">
+                  <h4 class="subtitle-1 mb-4" style="color: white">YOU DESERVE A BETTER
+                    LIFE.</h4>
+                </v-row>
+              </v-cols>
             </v-row>
-            <v-row justify="center">
-              <h4 class="subtitle-1 mb-4">YOU DESERVE A BETTER
-                LIFE.</h4>
-            </v-row>
-          </v-cols>
-        </v-row>
-      </v-parallax>
+          </v-layout>
+        </v-container>
+      </v-img>
     </v-row>
     <v-row wrap>
       <v-col
@@ -118,7 +134,7 @@
           </v-img>
         </v-card>
       </v-col>
-      <v-row wrap class="hidden-md-and-up pt-4">
+      <v-row wrap class="hidden-md-and-up pt-4" justify="center">
         <v-card flat style="width: 100vw; height: 350px">
           <v-img :src="require('../assets/candel.jpeg')"
                  style="height: 350px;"
@@ -201,13 +217,15 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined large @click="redirct('/assessments')">READ MORE</v-btn>
+                <v-btn rounded outlined large @click="redirct('/assessments')">
+                  READ MORE
+                </v-btn>
               </v-row>
             </v-layout>
           </v-container>
         </v-card>
       </v-col>
-      <v-row wrap class="hidden-md-and-up">
+      <v-row wrap class="hidden-md-and-up" justify="center">
         <v-card flat style="width: 100vw; height: 600px;"
                 class="pa-12">
           <v-container fluid fill-height>
@@ -249,7 +267,9 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined @click="redirct('/assessments')">READ MORE</v-btn>
+                <v-btn rounded outlined @click="redirct('/assessments')">READ
+                  MORE
+                </v-btn>
               </v-row>
             </v-layout>
           </v-container>
@@ -289,8 +309,12 @@
               justify="center"
               wrap
             >
-              <v-btn class="hidden-sm-and-down" dark rounded outlined large @click="redirct('/assessments')">FIND OUT NOW</v-btn>
-              <v-btn class="hidden-lg-and-up" dark rounded outlined @click="redirct('/assessments')">FIND OUT NOW</v-btn>
+              <v-btn class="hidden-sm-and-down" dark rounded outlined large
+                     @click="redirct('/assessments')">FIND OUT NOW
+              </v-btn>
+              <v-btn class="hidden-lg-and-up" dark rounded outlined
+                     @click="redirct('/assessments')">FIND OUT NOW
+              </v-btn>
             </v-row>
           </v-layout>
         </v-container>

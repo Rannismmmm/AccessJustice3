@@ -53,16 +53,18 @@
                     </v-layout>
                   </v-container>
                 </template>
-              </v-card>
-              <v-row style="width: auto; padding: 0px; margin: 0px" justify="space-between">
-                <v-btn icon @click="goPrevious">
-                  <v-icon large>mdi-chevron-left</v-icon>
-                </v-btn>
+                <v-row style="width: auto; padding: 0px; margin: 0px"
+                       justify="space-between">
+                  <v-btn icon @click="goPrevious" :disabled="i === 0">
+                    <v-icon large>mdi-chevron-left</v-icon>
+                  </v-btn>
 
-                <v-btn icon @click="goNext">
-                  <v-icon large>mdi-chevron-right</v-icon>
-                </v-btn>
-              </v-row>
+                  <v-btn icon @click="goNext"
+                         :disabled="i === (questions.length - 1)">
+                    <v-icon large>mdi-chevron-right</v-icon>
+                  </v-btn>
+                </v-row>
+              </v-card>
             </v-stepper-content>
           </v-stepper-items>
         </v-stepper>

@@ -10,45 +10,9 @@
           style="padding-top: 250px; padding-bottom: 20px"
           class="hidden-sm-and-down text--primary"
         >
-          <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND EMOTIONAL ABUSE</h4>
+          <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND
+            EMOTIONAL ABUSE</h4>
         </v-row>
-        <v-row>
-          <template>
-            <v-card
-              flat
-              class="mx-auto"
-              max-width="90vw"
-            >
-              <v-slide-group
-                class="pa-4"
-                center-active
-                mobile-break-point
-                show-arrows
-              >
-                <v-slide-item
-                  v-for="n in 15"
-                  :key="n"
-                  v-slot:default="{ active, toggle }"
-                >
-                  <v-card
-                    class="ma-4"
-                    height="400"
-                    width="50vw"
-                    @click="toggle"
-                  >
-                  </v-card>
-                </v-slide-item>
-              </v-slide-group>
-            </v-card>
-          </template>
-        </v-row>
-        <v-flex v-for="(line,i) in lines" :key="i">
-          <abuse-line
-            :title="line.title"
-            :content="line.content"
-            :img="line.img"
-          ></abuse-line>
-        </v-flex>
       </v-layout>
     </v-container>
     <v-container fluid class="hidden-md-and-up">
@@ -61,14 +25,45 @@
       >
         <h4 class="headline mb-4">UNDERSTAND EMOTIONAL ABUSE</h4>
       </v-row>
-      <v-flex v-for="(line,i) in lines" :key="i">
+    </v-container>
+    <v-row>
+      <template>
+        <v-card
+          flat
+          class="mx-auto"
+          max-width="90vw"
+        >
+          <v-slide-group
+            class="pa-4"
+            center-active
+            show-arrows
+          >
+            <v-slide-item
+              v-for="n in 15"
+              :key="n"
+              v-slot:default="{ active, toggle }"
+            >
+              <v-card
+                class="ma-4"
+                height="400"
+                width="60vw"
+                @click="toggle"
+              >
+              </v-card>
+            </v-slide-item>
+          </v-slide-group>
+        </v-card>
+      </template>
+    </v-row>
+    <v-row justify="center">
+      <v-flex justify="center" v-for="(line,i) in lines" :key="i">
         <abuse-line
           :title="line.title"
           :content="line.content"
           :img="line.img"
         ></abuse-line>
       </v-flex>
-    </v-container>
+    </v-row>
   </v-container>
 </template>
 
