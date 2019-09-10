@@ -84,7 +84,7 @@
           },
           {
             title: 'Self-Assessment',
-            path: '/assessments'
+            path: '/supporttemplate'
           },
           {
             title: 'Find Help',

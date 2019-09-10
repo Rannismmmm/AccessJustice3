@@ -92,20 +92,42 @@ export default new Router({
       name: 'about',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
-    ,
+    },
     {
       path: '/abuse',
       name: 'abuse',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/Abuse.vue')
-    }
-    ,
+    },
     {
       path: '/support',
       name: 'support',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/Support.vue')
+    },
+    {
+      path: '/legalsupport',
+      name: 'legalsupport',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/LegalSupport.vue')
+    },
+    {
+      path: '/sheltermap',
+      name: 'sheltermap',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/ShelterMap.vue')
+    },
+    {
+      path: '/supportcounseling',
+      name: 'supportcounseling',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/SupportCounseling.vue')
+    },
+    {
+      path: '/selfcare',
+      name: 'selfcare',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/SelfCare.vue')
     }
   ]
 })

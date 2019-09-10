@@ -18,31 +18,11 @@
           style="padding-left: 5vw; padding-right: 5vw"
         >
           <h1 class="body-2 mb-4">{{paragraph}}
-            <v-btn v-if="paragraphBtn" text small color="primary">{{paragraphBtn}}</v-btn>
+            <v-btn v-if="paragraphBtn" text small color="primary">
+              {{paragraphBtn}}
+            </v-btn>
           </h1>
         </v-row>
-        <!--<v-row-->
-        <!--align="end"-->
-        <!--justify="space-between"-->
-        <!--wrap-->
-        <!--style="padding-top: 80px"-->
-        <!--&gt;-->
-        <!--<v-card flat style="width: 270px; height: 400px;">-->
-        <!--<v-img :src="require('../assets/candel.jpeg')"-->
-        <!--style="height: 400px;">-->
-        <!--</v-img>-->
-        <!--</v-card>-->
-        <!--<v-card flat style="width: 270px; height: 400px;">-->
-        <!--<v-img :src="require('../assets/candel.jpeg')"-->
-        <!--style="height: 400px;">-->
-        <!--</v-img>-->
-        <!--</v-card>-->
-        <!--<v-card flat style="width: 270px; height: 400px;">-->
-        <!--<v-img :src="require('../assets/candel.jpeg')"-->
-        <!--style="height: 400px;">-->
-        <!--</v-img>-->
-        <!--</v-card>-->
-        <!--</v-row>-->
       </v-layout>
     </v-container>
     <v-container fluid class="hidden-md-and-up">
@@ -54,27 +34,15 @@
       >
         <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
       </v-row>
-      <!--<v-row-->
-      <!--align="start"-->
-      <!--justify="center"-->
-      <!--wrap-->
-      <!--style="padding-left: 5vw; padding-right: 5vw"-->
-      <!--&gt;-->
-      <!--<h1 class="body-2 mb-4">These services are available for all trauma-->
-      <!--victims in our community. Whatever your needs are, we are here to-->
-      <!--help you anonymously. Need to find local shelter-->
-      <!--<v-btn text small color="primary">Find Shelter</v-btn>-->
-      <!--</h1>-->
-      <!--</v-row>-->
     </v-container>
-    <v-row wrap>
-      <v-flex xs12 sm12 md3 v-for="(card,i) in cards" :key="i">
+    <v-row v-if="activeCards" justify="space-around" wrap>
+      <v-flex xs12 sm12 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
         <v-card class="mx-auto mb-6" height="350px" width="280px">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->
               <!--height="500px">-->
-              <v-sheet :color="card.color" height="300px" width="auto">
+              <v-sheet :color="card.color" height="60%" width="auto">
                 <v-container fill-height fluid>
                   <v-layout column>
                     <v-row xs12 align="center" justify="center">
@@ -94,13 +62,36 @@
               <v-row align="end" class="ml-0 mr-0">
                 <v-card-actions style="width: 100%">
                   <v-btn block outlined color="primary"
-                         @click="showRecipes('paleo')">
+                         :to="card.path">
                     More
                   </v-btn>
                 </v-card-actions>
               </v-row>
             </v-layout>
           </v-container>
+        </v-card>
+      </v-flex>
+    </v-row>
+    <v-row
+      v-if="positiveCards"
+      align="end"
+      wrap
+      justify="space-around"
+    >
+      <v-flex xs12 sm12 md4 lg3 xl3 v-for="(item,i) in positiveCards" :key="i">
+        <v-card class="mx-auto mb-6" style="width: 270px; height: 350px;">
+          <v-sheet :color="item.color" height="100%" width="auto">
+            <v-container fill-height fluid align-start class="pa-12">
+              <v-row no-gutters>
+                <v-col cols="12">
+                  <h1 class="title font-weight-thick mb-2" style="color: #1976D2">{{item.title}}</h1>
+                </v-col>
+                <v-col cols="12">
+                  <h1 class="body-2">{{item.content}}</h1>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-sheet>
         </v-card>
       </v-flex>
     </v-row>
@@ -111,6 +102,31 @@
   export default {
     name: 'SupportTemplate',
 
+    data () {
+      return {
+        // items: [
+        //   {
+        //     title: 'VICTORIA LEGAL AID',
+        //     content: 'Find information and get access to free face-to-face legal advice.\n' +
+        //       'Call 1300 792 387 for help.',
+        //     color: 'grey lighten-2'
+        //   },
+        //   {
+        //     title: 'VICTORIA LEGAL AID',
+        //     content: 'Find information and get access to free face-to-face legal advice.\n' +
+        //       'Call 1300 792 387 for help.',
+        //     color: 'grey lighten-2'
+        //   },
+        //   {
+        //     title: 'VICTORIA LEGAL AID',
+        //     content: 'Find information and get access to free face-to-face legal advice.\n' +
+        //       'Call 1300 792 387 for help.',
+        //     color: 'grey lighten-2'
+        //   }
+        // ]
+      }
+    },
+
     props: {
       mainTitle: {
         type: String,
@@ -119,9 +135,7 @@
 
       paragraph: {
         type: String,
-        default: 'These services are available for all trauma\n' +
-          '            victims in our community. Whatever your needs are, we are here to\n' +
-          '            help you anonymously. Need to find local shelter'
+        default: null
       },
 
       paragraphBtn: {
@@ -129,7 +143,15 @@
         default: null
       },
 
+      activeCards: {
+        type: Array,
+        default: () => []
+      },
 
+      positiveCards: {
+        type: Array,
+        default: () => []
+      }
     }
   }
 </script>

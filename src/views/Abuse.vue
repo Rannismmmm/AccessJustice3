@@ -12,7 +12,7 @@
         >
           <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND EMOTIONAL ABUSE</h4>
         </v-row>
-        <v-row >
+        <v-row>
           <template>
             <v-card
               flat
