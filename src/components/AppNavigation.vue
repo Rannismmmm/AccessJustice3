@@ -55,9 +55,9 @@
       light
     >
       <v-container style="height: max-content; padding: 0px" fluid light>
-        <transition name="router-anim" enter-active-class="animated fadeIn">
+        <v-fade-transition mode="out-in">
           <router-view></router-view>
-        </transition>
+        </v-fade-transition>
       </v-container>
     </v-sheet>
   </v-card>

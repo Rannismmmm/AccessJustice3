@@ -1,7 +1,7 @@
 <template>
   <v-container fluid style="padding: 0px">
     <v-row wrap>
-      <v-img
+      <v-parallax
         :src="require('../assets/darkBackground.jpg')"
         height="900"
         align="center"
@@ -45,8 +45,8 @@
             </v-row>
           </v-layout>
         </v-container>
-      </v-img>
-      <v-img
+      </v-parallax>
+      <v-parallax
         :src="require('../assets/darkBackground.jpg')"
         height="700"
         justify="center"
@@ -88,7 +88,7 @@
             </v-row>
           </v-layout>
         </v-container>
-      </v-img>
+      </v-parallax>
     </v-row>
     <v-row wrap>
       <v-col
