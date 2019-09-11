@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid>
     <v-container fluid style="padding: 0px"
                  class="hidden-sm-and-down">
       <v-layout column>
@@ -27,33 +27,7 @@
       </v-row>
     </v-container>
     <v-row>
-      <template>
-        <v-card
-          flat
-          class="mx-auto"
-          max-width="90vw"
-        >
-          <v-slide-group
-            class="pa-4"
-            center-active
-            show-arrows
-          >
-            <v-slide-item
-              v-for="n in 15"
-              :key="n"
-              v-slot:default="{ active, toggle }"
-            >
-              <v-card
-                class="ma-4"
-                height="400"
-                width="60vw"
-                @click="toggle"
-              >
-              </v-card>
-            </v-slide-item>
-          </v-slide-group>
-        </v-card>
-      </template>
+      <abuse-slides></abuse-slides>
     </v-row>
     <v-row justify="center">
       <v-flex justify="center" v-for="(line,i) in lines" :key="i">
@@ -69,10 +43,11 @@
 
 <script>
   import AbuseLine from '../components/AbuseLine'
+  import AbuseSlides from '../components/AbuseSlides'
 
   export default {
     name: 'Abuse',
-    components: {AbuseLine},
+    components: {AbuseSlides, AbuseLine},
 
     data () {
       return {

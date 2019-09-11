@@ -36,7 +36,7 @@
       </v-row>
     </v-container>
     <v-row v-if="activeCards" justify="space-around" wrap>
-      <v-flex xs12 sm12 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
+      <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
         <v-card class="mx-auto mb-6" height="350px" width="280px">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>

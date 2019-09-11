@@ -5,7 +5,7 @@
       justify="space-between"
       wrap
       class="hidden-sm-and-down"
-      style="padding-left: 2vw; padding-right: 2vw"
+      style="padding-left: 12vw; padding-right: 12vw"
     >
       <v-col
         cols="12"
