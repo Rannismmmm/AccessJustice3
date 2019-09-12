@@ -128,6 +128,12 @@ export default new Router({
       name: 'selfcare',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/SelfCare.vue')
+    },
+    {
+      path: '/asresults',
+      name: 'asresults',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/AsResults.vue')
     }
   ]
 })

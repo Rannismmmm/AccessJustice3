@@ -71,7 +71,10 @@
         <v-card-actions>
           <v-row justify="space-between" class="pl-8 pr-8">
             <v-btn text @click="closeQuiz">Cancel</v-btn>
-            <v-btn :disabled="subDisable" color="primary" @click="pushAnswers">
+            <!--<v-btn :disabled="subDisable" color="primary" @click="pushAnswers">-->
+              <!--Submit-->
+            <!--</v-btn>-->
+            <v-btn color="primary" to="/asresults">
               Submit
             </v-btn>
           </v-row>

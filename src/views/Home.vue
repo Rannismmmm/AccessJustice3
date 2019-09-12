@@ -6,7 +6,7 @@
         height="900"
         align="center"
         justify="center"
-        style="width: 100vw"
+        style="width: 101vw"
         class="hidden-sm-and-down"
       >
         <v-container fluid fill-height>

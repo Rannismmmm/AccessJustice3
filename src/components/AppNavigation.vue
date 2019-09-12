@@ -25,6 +25,7 @@
             background-color="transparent"
             centered
             mobile-break-point
+            optional
             class="hidden-sm-and-down"
           >
             <v-tab v-for="(item,index) in items"

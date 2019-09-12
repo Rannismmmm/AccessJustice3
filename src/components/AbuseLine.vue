@@ -20,7 +20,7 @@
                 justify="start"
                 wrap
               >
-                <h1 class="title font-weight-thick mb-4">{{title}}</h1>
+                <h1 class="title font-weight-thick mb-4" style="color: #1976D2">{{title}}</h1>
               </v-row>
               <v-row
                 align="start"
@@ -59,7 +59,7 @@
               justify="start"
               wrap
             >
-              <h1 class="title font-weight-thick mb-4">{{title}}</h1>
+              <h1 class="title font-weight-thick mb-4" style="color: #1976D2">{{title}}</h1>
             </v-row>
             <v-row
               align="start"
