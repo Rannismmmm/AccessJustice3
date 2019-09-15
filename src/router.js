@@ -128,6 +128,24 @@ export default new Router({
       name: 'asresults',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/AsResults.vue')
+    },
+    {
+      path: '/events',
+      name: 'events',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/Events.vue')
+    },
+    {
+      path: '/articles',
+      name: 'articles',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/Articles.vue')
+    },
+    {
+      path: '/apps',
+      name: 'apps',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/Apps.vue')
     }
   ]
 })

@@ -1,90 +1,140 @@
 <template>
   <v-container fluid>
-    <v-row style="padding-top: 250px;">
-      <v-col cols="12">
-        <v-row justify="center" align="center">
-          <v-card
-            class="mx-auto"
-            width="800"
-            flat
-          >
-            <v-list class="pa-0" color="primary" dark>
-              <v-list-group dark>
-                <template v-slot:activator>
-                  <v-list-item>
-                    <v-list-item-title>Legal Support
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <v-list-item class="pa-0">
-                  <v-list-tile>
-                    <v-card flat light>
-                      <support-template
-                        :main-title="title"
-                        :paragraph="paragraph"
-                        :positive-cards="cards"
-                      ></support-template>
-                    </v-card>
-                  </v-list-tile>
-                </v-list-item>
-              </v-list-group>
-              <v-list-group>
-                <template v-slot:activator>
-                  <v-list-item>
-                    <v-list-item-title>Shelter
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <v-list-item class="pa-0">
-                  <v-list-tile>
-                    <v-card flat light>
-                      <support-template
-                        :main-title="title"
-                        :paragraph="paragraph"
-                        :positive-cards="cards"
-                      ></support-template>
-                    </v-card>
-                  </v-list-tile>
-                </v-list-item>
-              </v-list-group>
-              <v-list-group>
-                <template v-slot:activator>
-                  <v-list-item>
-                    <v-list-item-title>Support & Counseling
-                    </v-list-item-title>
-                  </v-list-item>
-                </template>
-                <v-list-item class="pa-0">
-                  <v-list-tile>
-                    <v-card flat light>
-                      <support-template
-                        :main-title="title"
-                        :paragraph="paragraph"
-                        :positive-cards="cards"
-                      ></support-template>
-                    </v-card>
-                  </v-list-tile>
-                </v-list-item>
-              </v-list-group>
-            </v-list>
-          </v-card>
-        </v-row>
-      </v-col>
-    </v-row>
+    <v-layout column>
+      <v-row
+        align="end"
+        justify="center"
+        wrap
+        style="padding-top: 250px; padding-bottom: 20px">
+        <h4 class="display-1 mb-4" style="color: #1976D2">These are our
+          recommendations for you.</h4>
+      </v-row>
+      <v-row
+        align="start"
+        justify="center"
+        wrap
+        style="padding-left: 8vw; padding-right: 8vw"
+      >
+        <v-expansion-panels
+          mandatory
+          accordion
+          focusable
+          dark>
+          <v-expansion-panel>
+            <v-expansion-panel-header style="background-color: #1976D2;">Legal
+              Support
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-container fluid>
+                <v-layout column>
+                  <v-row
+                    align="end"
+                    wrap
+                    justify="space-around"
+                  >
+                    <v-flex xs12 sm6 md4 lg4 xl3
+                            v-for="(item,i) in legalCards" :key="i">
+                      <v-card class="mx-auto mb-6" width="270px"
+                              height="300px">
+                        <v-sheet :color="item.color" height="100%"
+                                 width="auto">
+                          <v-container fill-height fluid align-start
+                                       class="pa-9">
+                            <v-row no-gutters justify="center">
+                              <v-col cols="12">
+                                <v-container fluid>
+                                  <v-layout column>
+                                    <v-row justify="center">
+                                      <h1
+                                        class="title font-weight-thick mb-2"
+                                        style="color: #1976D2">
+                                        {{item.title}}</h1>
+                                    </v-row>
+                                  </v-layout>
+                                </v-container>
+                              </v-col>
+                              <v-col cols="12">
+                                <h1 class="body-2" style="color: black">
+                                  {{item.content}}</h1>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-sheet>
+                      </v-card>
+                    </v-flex>
+                  </v-row>
+                </v-layout>
+              </v-container>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+          <v-expansion-panel>
+            <v-expansion-panel-header style="background-color: #1976D2">Support
+              & Counseling
+            </v-expansion-panel-header>
+            <v-expansion-panel-content>
+              <v-container fluid>
+                <v-layout column>
+                  <v-row
+                    align="end"
+                    wrap
+                    justify="space-around"
+                  >
+                    <v-flex xs12 sm6 md4 lg4 xl3
+                            v-for="(item,i) in counselCards" :key="i">
+                      <v-card class="mx-auto mb-6" width="270px"
+                              height="460px">
+                        <v-sheet :color="item.color" height="100%"
+                                 width="auto">
+                          <v-container fill-height fluid align-start
+                                       class="pa-9">
+                            <v-row no-gutters justify="center">
+                              <v-col cols="12">
+                                <v-container fluid>
+                                  <v-layout column>
+                                    <v-row justify="center">
+                                      <h1
+                                        class="title font-weight-thick mb-2"
+                                        style="color: #1976D2">
+                                        {{item.title}}</h1>
+                                    </v-row>
+                                  </v-layout>
+                                </v-container>
+                              </v-col>
+                              <v-col cols="12">
+                                <h1 class="body-2" style="color: black">
+                                  {{item.content}}</h1>
+                              </v-col>
+                              <v-col cols="12">
+                                <h1 class="body-2 font-weight-bold" style="color: black">Click <a
+                                  class="font-italic" :href="item.path">{{item.linkWord}}</a>
+                                  to get help</h1>
+                              </v-col>
+                            </v-row>
+                          </v-container>
+                        </v-sheet>
+                      </v-card>
+                    </v-flex>
+                  </v-row>
+                </v-layout>
+              </v-container>
+            </v-expansion-panel-content>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-row>
+    </v-layout>
   </v-container>
 </template>
 
 <script>
   import SupportTemplate from '../components/SupportTemplate'
+  import LegalSupport from './LegalSupport'
 
   export default {
     name: 'AsResults',
-    components: {SupportTemplate},
+    components: {},
     data () {
       return {
-        title: 'Support & Counseling',
-        paragraph: 'These are the Support & Counseling services available in  Melbourne. ',
-        cards: [
+        legalCards: [
           {
             title: 'VICTORIA LEGAL AID',
             content: 'Find information and get access to free face-to-face legal advice.\n' +
@@ -105,6 +155,40 @@
               'Call toll-free 1800 737 732.',
             color: 'grey lighten-2'
           }
+        ],
+        counselCards: [
+          {
+            title: 'PSYCH CENTRAL',
+            content: 'Psych Central is the Internet’s largest and oldest independent mental health online resource. ' +
+              'Since 1995, our award-winning website has been run by mental health professionals offering reliable, ' +
+              'trusted information and over 250 support groups to individuals struggling with a problem in their lives. ' +
+              'They are today’s modern voice for mental health information, emotional support, and advocacy.',
+            color: 'grey lighten-2',
+            linkWord: 'Here',
+            path: 'https://psychcentral.com/'
+          },
+          {
+            title: 'KIDS HELPLINE',
+            content: 'Kids Helpline is Australia’s only free, private and confidential 24/7 phone and online counselling ' +
+              'service for young people aged 5 to 25. Since 1991, Australia’s kids and young people have been turning to ' +
+              'our professional, specialised counsellors. It’s about practical help and emotional support at the critical ' +
+              'moment they need someone to listen.',
+            color: 'grey lighten-2',
+            linkWord: 'Here',
+            path: 'https://www.kidshelp.com.au/young-adults'
+          }
+          ,
+          {
+            title: 'PSYCH CENTRAL',
+            content: 'eheadspace provides free online and telephone support and counselling to young people ' +
+              '12 - 25 and their families and friends. If you’re based in Australia and going through a tough time, ' +
+              'eheadspace can help. You can talk 1-on-1 with an eheadspace clinician via an online chat, ' +
+              'email or over the phone. You can also join group chats which cover a variety of helpful topics and are a ' +
+              'great way to learn from other people’s experiences.',
+            color: 'grey lighten-2',
+            linkWord: 'Here',
+            path: 'https://headspace.org.au/'
+          }
         ]
       }
     }
@@ -112,5 +196,7 @@
 </script>
 
 <style scoped>
-
+  .theme--dark.v-expansion-panels .v-expansion-panel {
+    background-color: white;
+  }
 </style>

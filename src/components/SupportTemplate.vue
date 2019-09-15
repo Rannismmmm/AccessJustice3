@@ -4,6 +4,7 @@
                  class="hidden-sm-and-down">
       <v-layout column>
         <v-row
+          v-if="mainTitle"
           align="center"
           justify="center"
           wrap
@@ -12,6 +13,7 @@
           <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
         <v-row
+          v-if="paragraph"
           align="start"
           justify="center"
           wrap
@@ -115,22 +117,45 @@
     <v-container fluid>
       <v-col cols="12">
       <v-row
-      v-if="positiveCards"
-      align="end"
-      wrap
-      justify="space-around"
+        v-if="positiveCards"
+        align="end"
+        wrap
+        justify="space-around"
       >
-      <v-flex xs12 sm12 md4 lg3 xl3 v-for="(item,i) in positiveCards" :key="i">
-        <v-card class="mx-auto mb-6" style="width: 270px; height: 350px;">
+      <v-flex xs12 sm6 md4 lg4 xl3 v-for="(item,i) in positiveCards" :key="i">
+        <v-card class="mx-auto mb-6" :height="cardHeight" :width="cardWidth">
           <v-sheet :color="item.color" height="100%" width="auto">
-            <v-container fill-height fluid align-start class="pa-12">
-              <v-row no-gutters>
+            <v-container fill-height fluid align-start class="pa-9">
+              <v-row no-gutters justify="center">
+                <v-col v-if="item.icon" cols="12">
+                  <v-container style="padding: 0; margin: 0" fluid>
+                    <v-layout column>
+                      <v-row justify="center">
+                        <v-img max-width="80" contain :src="item.icon"></v-img>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-col>
                 <v-col cols="12">
+                  <v-container fluid>
+                    <v-layout column>
+                      <v-row justify="center">
                   <h1 class="title font-weight-thick mb-2"
                       style="color: #1976D2">{{item.title}}</h1>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
                 </v-col>
                 <v-col cols="12">
                   <h1 class="body-2">{{item.content}}</h1>
+                </v-col>
+                <v-col v-if="item.path" cols="12">
+                  <h1 class="body-2 font-weight-bold">Click <a
+                    class="font-italic" :href="item.path">{{item.linkWord}}</a> to get help</h1>
+                </v-col>
+                <v-col class="pa-1" v-if="item.redirect" cols="12">
+                  <h1 class="body-2 font-weight-bold">I want to <a
+                    class="font-italic" :href="item.redirect">Read More</a> from {{item.org}}</h1>
                 </v-col>
               </v-row>
             </v-container>
@@ -196,6 +221,16 @@
       positiveCards: {
         type: Array,
         default: () => []
+      },
+
+      cardWidth: {
+        type: String,
+        default: '270px'
+      },
+
+      cardHeight: {
+        type: String,
+        default: '350px'
       }
     }
   }

@@ -19,19 +19,19 @@
             title: 'Events',
             comment: 'Find the nearby events here',
             color: 'green darken-1',
-            path: '/legalsupport'
+            path: '/events'
           },
           {
             title: 'Articles',
             comment: 'Some articles you might be interested',
             color: 'light-blue darken-1',
-            path: '/legalsupport'
+            path: '/articles'
           },
           {
             title: 'Apps',
             comment: 'Some apps you might be interested',
             color: 'deep-orange darken-4',
-            path: '/legalsupport'
+            path: '/apps'
           },
         ]
       }

@@ -85,7 +85,7 @@
             path: '/'
           },
           {
-            title: 'Abuse',
+            title: 'About Abuse',
             path: '/abuse'
           },
           {
