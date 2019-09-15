@@ -16,5 +16,5 @@ new Vue({
     this.$vuetify.theme.light
 
   },
-  render: h => h(App)
+  render: h => h(App),
 }).$mount('#app')

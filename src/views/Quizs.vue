@@ -6,7 +6,7 @@
       </template>
       <v-card>
         <v-card-title><span
-          class="headline">A quick quiz{{subAns}}</span>
+          class="headline">A quick quiz{{questionVisible}}</span>
         </v-card-title>
         <v-divider></v-divider>
         <v-stepper non-linear v-model="current">
@@ -72,7 +72,7 @@
           <v-row justify="space-between" class="pl-8 pr-8">
             <v-btn text @click="closeQuiz">Cancel</v-btn>
             <!--<v-btn :disabled="subDisable" color="primary" @click="pushAnswers">-->
-              <!--Submit-->
+            <!--Submit-->
             <!--</v-btn>-->
             <v-btn color="primary" to="/asresults">
               Submit
@@ -95,7 +95,6 @@
     components: {QuizsWindow, Question},
     data () {
       return {
-        questionVisible: false,
         buttonUnable: true,
         questions: [
           {title: 'Title1', ques: 'Question1'},
@@ -111,7 +110,15 @@
         scores: [],
         totalScore: 0,
         subAns: '',
-        resp: ''
+        resp: '',
+        questionVisible: true
+      }
+    },
+
+    props: {
+      visible: {
+        type: Boolean,
+        default: false
       }
     },
 

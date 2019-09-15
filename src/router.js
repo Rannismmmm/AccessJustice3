@@ -25,7 +25,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/assessments',
+      path: '/assessments/:questionVisible',
       name: 'assessments',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -44,12 +44,6 @@ export default new Router({
       name: 'register',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/Register.vue')
-    },
-    {
-      path: '/driving',
-      name: 'Driving',
-      component: () =>
-        import(/* webpackChunkName: "about" */ './views/Driving.vue')
     },
     {
       path: '/management',

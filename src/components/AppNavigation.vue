@@ -13,7 +13,7 @@
         <v-row justify="center">
           <v-col cols="12" sm="8" md="6" justify-center>
             <v-row justify="center">
-              <v-toolbar-title>JUSTICLY</v-toolbar-title>
+              <v-img max-height="60" contain :src="require('../assets/Logo.jpeg')"></v-img>
             </v-row>
             <v-divider></v-divider>
           </v-col>
@@ -36,11 +36,12 @@
           </v-tabs>
           <v-tabs
             background-color="transparent"
-            mobile-break-point
-            centered
+            grow
+            optional
+            hide-slider
             class="hidden-md-and-up"
           >
-            <v-tab v-for="(item,index) in items"
+            <v-tab style="margin: 0" v-for="(item,index) in items"
                    :key="index"
                    :to="item.path">
               {{item.title}}
@@ -55,11 +56,13 @@
       max-height="100vh"
       light
     >
-      <v-container style="height: max-content; padding: 0px" fluid light>
-        <v-fade-transition mode="out-in">
-          <router-view></router-view>
-        </v-fade-transition>
-      </v-container>
+      <v-content>
+        <v-container style="height: max-content; padding: 0px" fluid light>
+          <v-fade-transition mode="out-in">
+            <router-view></router-view>
+          </v-fade-transition>
+        </v-container>
+      </v-content>
     </v-sheet>
   </v-card>
 </template>
@@ -87,7 +90,7 @@
           },
           {
             title: 'Self-Assessment',
-            path: '/assessments'
+            path: '/assessments/false'
           },
           {
             title: 'Find Help',

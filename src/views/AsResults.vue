@@ -6,18 +6,17 @@
           <v-card
             class="mx-auto"
             width="800"
+            flat
           >
-            <v-list mandatory color="primary" dark>
-              <v-list-group
-                value="true"
-              >
+            <v-list class="pa-0" color="primary" dark>
+              <v-list-group dark>
                 <template v-slot:activator>
                   <v-list-item>
-                    <v-list-item-title color="primary">Legal Support
+                    <v-list-item-title>Legal Support
                     </v-list-item-title>
                   </v-list-item>
                 </template>
-                <v-list-item>
+                <v-list-item class="pa-0">
                   <v-list-tile>
                     <v-card flat light>
                       <support-template
@@ -29,16 +28,14 @@
                   </v-list-tile>
                 </v-list-item>
               </v-list-group>
-              <v-list-group
-                value="true"
-              >
+              <v-list-group>
                 <template v-slot:activator>
                   <v-list-item>
-                    <v-list-item-title color="primary">Shelter
+                    <v-list-item-title>Shelter
                     </v-list-item-title>
                   </v-list-item>
                 </template>
-                <v-list-item>
+                <v-list-item class="pa-0">
                   <v-list-tile>
                     <v-card flat light>
                       <support-template
@@ -50,16 +47,14 @@
                   </v-list-tile>
                 </v-list-item>
               </v-list-group>
-              <v-list-group
-                value="true"
-              >
+              <v-list-group>
                 <template v-slot:activator>
                   <v-list-item>
-                    <v-list-item-title color="primary">Support & Counseling
+                    <v-list-item-title>Support & Counseling
                     </v-list-item-title>
                   </v-list-item>
                 </template>
-                <v-list-item>
+                <v-list-item class="pa-0">
                   <v-list-tile>
                     <v-card flat light>
                       <support-template

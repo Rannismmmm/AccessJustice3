@@ -2,14 +2,13 @@
   <v-container fluid style="padding: 0px">
     <v-row wrap>
       <v-parallax
-        :src="require('../assets/darkBackground.jpg')"
-        height="900"
+        :src="require('../assets/home/home1st.jpg')"
         align="center"
         justify="center"
-        style="width: 101vw"
+        style="width: 101vw; height: 80vh;"
         class="hidden-sm-and-down"
       >
-        <v-container fluid fill-height>
+        <v-container fluid fill-height style="padding-top: 20vh">
           <v-layout column>
             <v-row
               align="end"
@@ -17,7 +16,7 @@
               wrap
             >
               <h1 class="display-4 font-weight-thin mb-4" style="color: white">
-                JUSTICLY</h1>
+                JUSETICLY</h1>
             </v-row>
             <v-row
               align="start"
@@ -27,7 +26,7 @@
               <v-cols cols="8">
                 <v-row justify="center">
                   <h4 class="display-1 mb-4" style="color: white">The aim of
-                    Justicly is to improve
+                    Justicely is to improve
                     the
                     life of emotional</h4>
                 </v-row>
@@ -47,7 +46,7 @@
         </v-container>
       </v-parallax>
       <v-parallax
-        :src="require('../assets/darkBackground.jpg')"
+        :src="require('../assets/home/home1st.jpg')"
         height="700"
         justify="center"
         align="center"
@@ -62,7 +61,7 @@
               wrap
             >
               <h1 class="display-2 font-weight-thin mb-4 hidden-md-and-up" style="color: white">
-                JUSTICLY</h1>
+                JUSTICELY</h1>
             </v-row>
             <v-row
               align="start"
@@ -71,7 +70,7 @@
             >
               <v-cols cols="8">
                 <v-row justify="center">
-                  <h4 class="subtitle-1 mb-4" style="color: white">The aim of Justicly is to improve
+                  <h4 class="subtitle-1 mb-4" style="color: white">The aim of Justicely is to improve
                     the
                     life of</h4>
                 </v-row>
@@ -99,75 +98,75 @@
       >
         <v-card flat style="width: 50vw; height: 600px;"
                 class="pa-lg-12 pa-md-2">
-          <v-img :src="require('../assets/candel.jpeg')"
+          <v-img :src="require('../assets/home/homefeather.jpg')"
                  style="height: 500px;"
                  class="white--text">
-            <v-container fluid fill-height>
-              <v-layout column>
-                <v-row
-                  align="end"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="headline font-weight-thick mb-4">1 in 8 woman in
-                    Australia face Emotional Abuse</h1>
-                </v-row>
-                <v-row
-                  align="center"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="headline font-weight-thick mb-4">Woman between
-                    18-24 suffer the most from it</h1>
-                </v-row>
-                <v-row
-                  align="start"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="headline font-weight-thick mb-4">Melbourne ranks
-                    1st
-                    in Emotional Abuse in Australia</h1>
-                </v-row>
-              </v-layout>
-            </v-container>
+            <!--<v-container fluid fill-height>-->
+              <!--<v-layout column>-->
+                <!--<v-row-->
+                  <!--align="end"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="headline font-weight-thick mb-4">1 in 8 woman in-->
+                    <!--Australia face Emotional Abuse</h1>-->
+                <!--</v-row>-->
+                <!--<v-row-->
+                  <!--align="center"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="headline font-weight-thick mb-4">Woman between-->
+                    <!--18-24 suffer the most from it</h1>-->
+                <!--</v-row>-->
+                <!--<v-row-->
+                  <!--align="start"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="headline font-weight-thick mb-4">Melbourne ranks-->
+                    <!--1st-->
+                    <!--in Emotional Abuse in Australia</h1>-->
+                <!--</v-row>-->
+              <!--</v-layout>-->
+            <!--</v-container>-->
           </v-img>
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up pt-4" justify="center">
         <v-card flat style="width: 100vw; height: 350px">
-          <v-img :src="require('../assets/candel.jpeg')"
-                 style="height: 350px;"
+          <v-img :src="require('../assets/home/homefeather.jpg')"
+                 style="height: 400px;"
                  class="white--text">
-            <v-container fluid fill-height class="pa-12">
-              <v-layout column>
-                <v-row
-                  align="end"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="subtitle-1 font-weight-thick mb-4">1 in 8 woman in
-                    Australia face Emotional Abuse</h1>
-                </v-row>
-                <v-row
-                  align="center"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="subtitle-1 font-weight-thick mb-4">Woman between
-                    18-24 suffer the most from it</h1>
-                </v-row>
-                <v-row
-                  align="start"
-                  justify="center"
-                  wrap
-                >
-                  <h1 class="subtitle-1 font-weight-thick mb-4">Melbourne ranks
-                    1st
-                    in Emotional Abuse in Australia</h1>
-                </v-row>
-              </v-layout>
-            </v-container>
+            <!--<v-container fluid fill-height class="pa-12">-->
+              <!--<v-layout column>-->
+                <!--<v-row-->
+                  <!--align="end"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">1 in 8 woman in-->
+                    <!--Australia face Emotional Abuse</h1>-->
+                <!--</v-row>-->
+                <!--<v-row-->
+                  <!--align="center"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">Woman between-->
+                    <!--18-24 suffer the most from it</h1>-->
+                <!--</v-row>-->
+                <!--<v-row-->
+                  <!--align="start"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                <!--&gt;-->
+                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">Melbourne ranks-->
+                    <!--1st-->
+                    <!--in Emotional Abuse in Australia</h1>-->
+                <!--</v-row>-->
+              <!--</v-layout>-->
+            <!--</v-container>-->
           </v-img>
         </v-card>
       </v-row>
@@ -217,7 +216,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined large @click="redirct('/assessments')">
+                <v-btn rounded outlined large @click="redirct('/assessments/true')">
                   READ MORE
                 </v-btn>
               </v-row>
@@ -267,7 +266,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined @click="redirct('/assessments')">READ
+                <v-btn rounded outlined @click="redirct('/assessments/true')">READ
                   MORE
                 </v-btn>
               </v-row>
@@ -278,9 +277,9 @@
     </v-row>
     <v-row wrap class="pa-lg-12 pa-md-2">
       <v-img
-        :src="require('../assets/darkBackground.jpg')"
+        :src="require('../assets/home/homebottom.jpg')"
         height="400"
-        style="width: 100vw"
+        style="width: 101vw"
         justify="center"
         class="white--text"
       >
@@ -310,10 +309,10 @@
               wrap
             >
               <v-btn class="hidden-sm-and-down" dark rounded outlined large
-                     @click="redirct('/assessments')">FIND OUT NOW
+                     @click="redirct('/assessments/true')">FIND OUT NOW
               </v-btn>
-              <v-btn class="hidden-lg-and-up" dark rounded outlined
-                     @click="redirct('/assessments')">FIND OUT NOW
+              <v-btn class="hidden-md-and-up" dark rounded outlined
+                     @click="redirct('/assessments/true')">FIND OUT NOW
               </v-btn>
             </v-row>
           </v-layout>

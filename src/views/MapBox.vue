@@ -3,14 +3,23 @@
     :mapboxGl="mapbox-gl"
     :accessToken="accessToken"
     :mapStyle.sync="mapStyle"
-    :center="center"
-    :zoom="5.5"
-    style="height: 500px; width: 700px"
+    @load="onMapLoad"
+    style="height: 650px; width: 1100px"
   >
+    <!--:center="center"-->
+    <!--:zoom="6"-->
     <MglAttributionControl/>
     <MglNavigationControl position="top-right"/>
     <MglGeolocateControl position="top-right"/>
-    <MglScaleControl/>
+    <MglScaleControl position="bottom-right"/>
+    <MglMarker v-for="(shelter,i) in shelterMarkers" :key="i" :coordinates="shelter.coords">
+      <MglPopup>
+        <v-card flat>
+          <div>{{shelter.name}}</div>
+          <div>{{shelter.address}}</div>
+        </v-card>
+      </MglPopup>
+    </MglMarker>
   </MglMap>
 </template>
 
@@ -19,14 +28,23 @@
   import {
     MglMap,
     MglNavigationControl,
-    MglGeolocateControl
+    MglGeolocateControl,
+    MglMarker,
+    MglAttributionControl,
+    MglScaleControl,
+    MglPopup
+
   } from 'vue-mapbox'
 
   export default {
     components: {
       MglMap,
       MglNavigationControl,
-      MglGeolocateControl
+      MglGeolocateControl,
+      MglMarker,
+      MglAttributionControl,
+      MglScaleControl,
+      MglPopup
     },
     name: 'MapBox',
 
@@ -38,14 +56,18 @@
         accessToken: 'pk.eyJ1IjoidHlhbjAwMTYiLCJhIjoiY2psNGN0Z2gzMDZ4ZDNybmx6a3h0bWMzbSJ9.SbjTVR9BAQUGP0my5YqG2A',
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
         center: [144.025451, -36.958992],
-        shelterMarkers: {}
+        markers: [
+          // {coords: [144.025451, -36.958992]},
+          // {coords: [143.025432, -37.958572]}
+        ],
+        shelterMarkers: []
       }
     },
 
     created () {
       // We need to set mapbox-gl library here in order to use it in template
-      this.mapbox = Mapbox
-      this.shelterMarkers = {
+      this.mapbox = null
+      let resp = {
         'html_attributions': [],
         'next_page_token': 'CoQC9AAAADwZctdKy_uQL6-Ns3-f6tJ4YHaPhrSRR--KGhm0Jy5jb7mpoGSAkVTp0bVWB9jcYw8CweAxrG6h2PPO8cu-qErje5bKBfe9Lv15jyJo_q0YpnjhzAfXgtVyrNCUG7ezcVKp1gdK48EiwybhSk2VhBm1RbL-KMXDjzPJdjpHKKPHisD1MWTRs13nqrx-tEuo7mOr7fZhO3_ZUZ-p-SXWR15ac9peTPaiNTP1C1zgKa4kW2FwFzbvvRnZMiPkdwrXjpyITYxZ0Ccs-l5gJmdU1EGKkK6PMBZ2WiUiYsjTdQMrGTZFAC1hDcxb7R6gwxg2VxmwDxM0auKUrsm_-MBLf6ESELcwsSgRqESZAcLmlEZv2BIaFEBt71HC_cVw8r-1IEz33QS9_r9f',
         'results': [
@@ -815,27 +837,39 @@
           }
         ],
         'status': 'OK'
+      }.results
+
+      resp.forEach( (item) => {
+        this.shelterMarkers.push(
+          {
+            coords: item.geometry.location,
+            address: item.formatted_address,
+            name: item.name
+          }
+        )
+      } )
+    },
+
+    methods: {
+      async onMapLoad (event) {
+        // Here we cathing 'load' map event
+        this.map = event.map
+        const asyncActions = event.component.actions
+
+        const newParams = await asyncActions.flyTo({
+          center: [145.0482345, -37.8789473],
+          zoom: 12,
+          speed: 1
+        })
+        /* => {
+                center: [30, 30],
+                zoom: 9,
+                bearing: 9,
+                pitch: 7
+              }
+        */
       }
     }
-    // methods: {
-    // async onMapLoad(event) {
-    //   // Here we cathing 'load' map event
-    //   const asyncActions = event.component.actions
-    //
-    //   const newParams = await asyncActions.flyTo({
-    //     center: [144.96332, -37.814],
-    //     zoom: 12,
-    //     speed: 1
-    //   })
-    //   /* => {
-    //           center: [30, 30],
-    //           zoom: 9,
-    //           bearing: 9,
-    //           pitch: 7
-    //         }
-    //   */
-    // }
-    // }
   }
 </script>
 

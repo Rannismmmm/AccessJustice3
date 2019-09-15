@@ -2,17 +2,12 @@
   <v-container fluid fill-height style="padding: 0px">
     <v-row
       align="center"
-      justify="space-between"
       wrap
+      justify="space-between"
       class="hidden-sm-and-down"
       style="padding-left: 12vw; padding-right: 12vw"
     >
-      <v-col
-        cols="12"
-        sm="5"
-        style="padding-left: 0px"
-      >
-        <v-card flat style="width: 55vw; height: 400px;">
+        <v-card flat style="height: 400px; width: 33vw">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -20,30 +15,36 @@
                 justify="start"
                 wrap
               >
-                <h1 class="title font-weight-thick mb-4" style="color: #1976D2">{{title}}</h1>
+                <h1 class="title font-weight-thick mb-4"
+                    style="color: #1976D2">{{title}}</h1>
+              </v-row>
+              <v-row
+                align="center"
+                justify="start"
+                wrap
+              >
+                <h1 class="body-1 mb-4">{{content}}</h1>
               </v-row>
               <v-row
                 align="start"
                 justify="start"
                 wrap
               >
-                <h1 class="body-2 mb-4">{{content}}</h1>
+                <ul>
+                  <li class="body-1 mb-4" v-for="(point, i) in points"
+                      :key="i">
+                    {{point}}
+                  </li>
+                </ul>
               </v-row>
             </v-layout>
           </v-container>
         </v-card>
-      </v-col>
-      <v-col
-        cols="12"
-        sm="5"
-        style="padding: 0px"
-      >
-        <v-card flat style="width: 50vw; height: 400px;">
-          <v-img :src="img"
+        <v-card flat style="width: 33vw; height: auto;" justify="start">
+          <v-img contain :src="img"
                  style="height: 400px;">
           </v-img>
         </v-card>
-      </v-col>
     </v-row>
     <v-row
       align="center"
@@ -59,20 +60,32 @@
               justify="start"
               wrap
             >
-              <h1 class="title font-weight-thick mb-4" style="color: #1976D2">{{title}}</h1>
+              <h1 class="title font-weight-thick mb-4" style="color: #1976D2">
+                {{title}}</h1>
+            </v-row>
+            <v-row
+              align="center"
+              justify="start"
+              wrap
+            >
+              <h1 class="body-2 mb-4">{{content}}</h1>
             </v-row>
             <v-row
               align="start"
               justify="start"
               wrap
             >
-              <h1 class="body-2 mb-4">{{content}}</h1>
+              <ul>
+                <li class="body-2 mb-4" v-for="(point, i) in points" :key="i">
+                  {{point}}
+                </li>
+              </ul>
             </v-row>
           </v-layout>
         </v-container>
       </v-card>
-      <v-card flat style="width: 90vw; height: 250px;">
-        <v-img :src="img"
+      <v-card flat style="width: 90vw; height: auto">
+        <v-img contain :src="img"
                style="height: 400px;">
         </v-img>
       </v-card>
@@ -83,6 +96,15 @@
 <script>
   export default {
     name: 'AbuseLine',
+
+    data () {
+      return {
+        // points: [
+        //   '1', '1', '1', '1', '1'
+        // ]
+      }
+    },
+
     props: {
       title: {
         type: String,
@@ -95,6 +117,10 @@
       img: {
         type: String,
         default: require('../assets/candel.jpeg')
+      },
+      points: {
+        type: Array,
+        default: () => []
       }
     }
   }
