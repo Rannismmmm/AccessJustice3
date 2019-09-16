@@ -17,7 +17,7 @@
       return {
         mainTitle: 'Articles',
         paragraph: 'These are the articles available for you.',
-        cardHeight: '390px',
+        cardHeight: '395px',
         cards: [
           {
             title: '11 Ways to Chill Out in 5 Minutes or Less',

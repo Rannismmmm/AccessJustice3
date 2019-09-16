@@ -2,6 +2,7 @@
   <support-template
     :mainTitle="title"
     :active-cards="cards"
+    :card-width="cardWidth"
   ></support-template>
 </template>
 
@@ -13,7 +14,7 @@
     data () {
       return {
         title: 'OUR SUPPORT SERVICES',
-
+        cardWidth: '250px',
         cards: [
           {
             title: 'Legal Support',

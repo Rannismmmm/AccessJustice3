@@ -15,7 +15,7 @@
               justify="center"
               wrap
             >
-              <h1 class="display-4 font-weight-thin mb-4" style="color: white">
+              <h1 class="display-3 font-weight-condensed mb-4" style="color: white">
                 JUSETICLY</h1>
             </v-row>
             <v-row
@@ -25,18 +25,18 @@
             >
               <v-cols cols="8">
                 <v-row justify="center">
-                  <h4 class="display-1 mb-4" style="color: white">The aim of
+                  <h4 class="headline mb-4" style="color: white">The aim of
                     Justicely is to improve
                     the
                     life of emotional</h4>
                 </v-row>
                 <v-row justify="center">
-                  <h4 class="display-1 mb-4" style="color: white">abused women
+                  <h4 class="headline mb-4" style="color: white">abused women
                     in Melbourne
                     because</h4>
                 </v-row>
                 <v-row justify="center">
-                  <h4 class="display-1 mb-4" style="color: white">YOU DESERVE A
+                  <h4 class="headline mb-4" style="color: white">YOU DESERVE A
                     BETTER
                     LIFE.</h4>
                 </v-row>
@@ -225,7 +225,7 @@
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up" justify="center">
-        <v-card flat style="width: 100vw; height: 600px;"
+        <v-card flat style="width: 101vw; height: 600px;"
                 class="pa-12">
           <v-container fluid fill-height>
             <v-layout column>

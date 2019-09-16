@@ -41,7 +41,7 @@
            class="hidden-sm-and-down"
            style="margin-left: 8vw; margin-right: 8vw">
       <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
-        <v-card class="mx-auto mb-6" height="350px" width="280px">
+        <v-card class="mx-auto mb-6" height="350px" :width="cardWidth">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->
@@ -79,7 +79,7 @@
     <v-row v-if="activeCards" justify="space-around" wrap
            class="hidden-md-and-up">
       <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
-        <v-card class="mx-auto mb-6" height="350px" width="280px">
+        <v-card class="mx-auto" height="350px" width="280px">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->

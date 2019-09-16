@@ -124,10 +124,10 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/SelfCare.vue')
     },
     {
-      path: '/asresults',
-      name: 'asresults',
+      path: '/asresultshigh',
+      name: 'asresultshigh',
       component: () =>
-        import(/* webpackChunkName: "about" */ './views/AsResults.vue')
+        import(/* webpackChunkName: "about" */ './views/AsResultsHigh.vue')
     },
     {
       path: '/events',
@@ -146,6 +146,12 @@ export default new Router({
       name: 'apps',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/Apps.vue')
+    },
+    {
+      path: '/asresultslow',
+      name: 'asresultslow',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/AsResultsLow.vue')
     }
   ]
 })

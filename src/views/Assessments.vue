@@ -4,7 +4,7 @@
       <v-row justify="center" align="center">
         <v-img
           :src="require('../assets/assessments/ass.jpeg')"
-          max-width="1200"
+          max-width="85vw"
           contain
           class="white--text"
           style="padding-top: 10vh;">
@@ -126,7 +126,7 @@
                               <!--<v-btn :disabled="subDisable" color="primary" @click="pushAnswers">-->
                               <!--Submit-->
                               <!--</v-btn>-->
-                              <v-btn color="primary" to="/asresults">
+                              <v-btn color="primary" to="/asresultshigh">
                                 Submit
                               </v-btn>
                             </v-row>
