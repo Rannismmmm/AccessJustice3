@@ -70,8 +70,9 @@
       return {
         accessToken: 'pk.eyJ1IjoidHlhbjAwMTYiLCJhIjoiY2psNGN0Z2gzMDZ4ZDNybmx6a3h0bWMzbSJ9.SbjTVR9BAQUGP0my5YqG2A',
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
-        googlePlacesAPI: 'AIzaSyDKcBTrnPjz9R4pEy65tz-O3aSCUglUIhk',
+        googlePlacesAPI: 'AIzaSyCHXxvk8k_7YZ-RK9GRXvrOpuhsw8DPc1M',
         // back up: AIzaSyCHXxvk8k_7YZ-RK9GRXvrOpuhsw8DPc1M
+        // back up: AIzaSyDKcBTrnPjz9R4pEy65tz-O3aSCUglUIhk
         center: [145.0482345, -37.8789473],
         markers: [
           // {coords: [144.025451, -36.958992]},
@@ -90,7 +91,7 @@
         let tempUrl = this.makeUrlonLocation(this.center)
         axios.get(tempUrl)
           .then(resp => {
-            resp.result.forEach((item) => {
+            resp.results.forEach((item) => {
               this.shelterMarkers.push(
                 {
                   coords: item.geometry.location,
@@ -103,7 +104,7 @@
           .catch(error => {
             this.result = error
           })
-        this.result = tempUrl
+        // this.result = tempUrl
         // const asyncActions = event.component.actions
         //
         // const newParams = await asyncActions.flyTo({
@@ -121,7 +122,7 @@
       },
 
       makeUrlonLocation ([lat, long]) {
-        let url = 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=women&location='
+        let url = 'https://cors-anywhere.herokuapp.com/' + 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=women&location='
           + long.toString() + ',' + lat.toString() + 'radius=20000fields=photos,formatted_address,name&key='
           + this.googlePlacesAPI
 
