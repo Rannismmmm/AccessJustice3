@@ -219,7 +219,7 @@
       },
 
       pushAnswers () {
-        let sub = 'http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAbuseLevel/'
+        let sub = 'https://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAbuseLevel/'
         this.answers.forEach((item) => {
           // sub += item
           sub += item

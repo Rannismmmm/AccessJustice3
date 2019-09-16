@@ -16,7 +16,7 @@
               wrap
             >
               <h1 class="display-3 font-weight-condensed mb-4" style="color: white">
-                JUSETICLY</h1>
+                JUSTICELY</h1>
             </v-row>
             <v-row
               align="start"
