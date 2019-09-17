@@ -6,7 +6,7 @@
         justify="center"
         wrap
       >
-        <v-btn @click="getSuburbInfo(3000)">change location</v-btn>
+        <!--<v-btn @click="">change location</v-btn>-->
       </v-row>
       <v-row
         no-gutters
@@ -21,7 +21,19 @@
             tile
           >
             <v-list style="max-height: 650px" class="overflow-y-auto">
-              <v-list-item-group v-model="item" color="red">
+              <v-list-item v-if="onLoading">
+                <v-container fluid>
+                  <v-layout column>
+                    <v-row justify="center">
+                      <v-progress-circular
+                        indeterminate
+                        color="primary"
+                      ></v-progress-circular>
+                    </v-row>
+                  </v-layout>
+                </v-container>
+              </v-list-item>
+              <v-list-item-group v-else v-model="item" color="red">
                 <v-list-item
                   v-for="(item, i) in shelterMarkers"
                   :key="i"
@@ -54,13 +66,28 @@
             style="height: 650px; width: 100%"
           >
             <!--@load="onMapLoad"-->
-            <div style="width: 200px; padding-left: 10px" position="top-left">
+            <div style="width: 285px; padding-left: 10px" position="top-left">
               <v-autocomplete
-                label="Postcode"
+                :disabled="isUpdating"
+                :items="postcodes"
+                filled
+                full-width
                 background-color="white"
-                height="6vh"
-                :items="components"
-              ></v-autocomplete>
+                color="primary"
+                label="Postcode"
+                item-text="postcode"
+                item-value="postcode"
+              >
+                <template v-slot:item="data">
+                  <v-list-item-content
+                    @click="searchResults(data.item.center)">
+                    <v-list-item-title
+                      v-text="data.item.postcode"></v-list-item-title>
+                    <v-list-item-subtitle
+                      v-text="`${data.item.suburbName}, ${data.item.stateCode}`"></v-list-item-subtitle>
+                  </v-list-item-content>
+                </template>
+              </v-autocomplete>
             </div>
             <MglAttributionControl/>
             <MglNavigationControl position="top-right"/>
@@ -80,6 +107,31 @@
           </MglMap>
         </v-col>
       </v-row>
+      <v-dialog
+        :value="noResult"
+        max-width="320"
+      >
+        <v-card>
+          <v-card-title class="headline">No shelters found here
+          </v-card-title>
+
+          <v-card-text>
+            Sorry, we can't any shelters here
+          </v-card-text>
+
+          <v-card-actions>
+            <div class="flex-grow-1"></div>
+
+            <v-btn
+              color="primary"
+              text
+              @click="noResult = false"
+            >
+              Close
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
       <h4>{{result}}</h4>
     </v-layout>
   </v-container>
@@ -130,7 +182,9 @@
         mapbox: null,
         zoom: 12,
         lastMarker: -1,
-        postcodes: []
+        postcodes: [],
+        noResult: false,
+        onLoading: false
       }
     },
 
@@ -151,23 +205,29 @@
       },
 
       searchResults (querryCenter) {
+        this.onLoading = true
         this.shelterMarkers = []
         let tempUrl = this.makeUrlonLocation(this.formatCoords(querryCenter))
         axios.get(tempUrl)
           .then(resp => {
-            resp.data.results.forEach((item) => {
-              if (item.position) {
-                this.shelterMarkers.push(
-                  {
-                    coords: this.formatCoords(item.position),
-                    address: item.vicinity,
-                    name: item.title,
-                    color: '#80CBC4',
-                    showPop: false
-                  }
-                )
-              }
-            })
+            if (resp.data.results.length === 0) {
+              this.noResult = true
+            } else {
+              resp.data.results.forEach((item) => {
+                if (item.position) {
+                  this.shelterMarkers.push(
+                    {
+                      coords: this.formatCoords(item.position),
+                      address: item.vicinity,
+                      name: item.title,
+                      color: '#80CBC4',
+                      showPop: false
+                    }
+                  )
+                }
+              })
+            }
+            this.onLoading = false
             this.jump(this.formatCoords(querryCenter))
           })
           .catch(error => {
@@ -197,36 +257,31 @@
           + this.herePlacesAPI
 
         return url
-      },
-
-      getSuburbInfo (postcode) {
-        let postUrl = 'https://cors-anywhere.herokuapp.com/' + 'http://v0.postcodeapi.com.au/suburbs/' + postcode.toString() + '.json'
-        axios.get(postUrl)
-          .then(resp => {
-            // resp.data.results.forEach((item) => {
-            //   if (item.position) {
-            //     this.shelterMarkers.push(
-            //       {
-            //         coords: this.formatCoords(item.position),
-            //         address: item.vicinity,
-            //         name: item.title,
-            //         color: '#80CBC4',
-            //         showPop: false
-            //       }
-            //     )
-            //   }
-            // })
-            this.result = resp
-          })
-          .catch(error => {
-            this.result = error
-          })
       }
+
     },
 
 
-    created () {
+    mounted () {
+      this.onLoading = true
       this.mapbox = this.$refs.map
+      axios.get('https://raw.githubusercontent.com/Elkfox/Australian-Postcode-Data/master/au_postcodes.json')
+        .then(resp => {
+          resp.data.forEach(item => {
+            this.postcodes.push({
+              postcode: item.postcode,
+              suburbName: item.place_name,
+              stateCode: item.state_code,
+              center: [item.latitude, item.longitude]
+            })
+          })
+          // this.result = this.postcodes
+          this.onLoading = false
+        })
+        .catch(error => {
+            this.result = error
+          }
+        )
     }
 
     // const asyncActions = event.component.actions
