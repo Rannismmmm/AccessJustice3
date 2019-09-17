@@ -42,7 +42,7 @@
                         </template>
                         <v-card>
                           <v-card-title><span
-                            class="headline">{{title}}</span>
+                            class="headline">Assessment</span>
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card v-if="onLoading" height="200px">
@@ -235,7 +235,6 @@
               this.redirct('/asresultslow')
             }
             this.btnLoading = false
-            this.title = response.data
           })
           .catch(error => {
             this.title = error
