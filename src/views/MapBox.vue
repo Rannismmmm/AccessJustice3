@@ -63,24 +63,26 @@
             @load="onMapLoad"
             :center="center"
             :zoom="zoom"
+            clearable
             style="height: 650px; width: 100%"
           >
             <!--@load="onMapLoad"-->
             <div style="width: 285px; padding-left: 10px" position="top-left">
               <v-autocomplete
-                :disabled="isUpdating"
                 :items="postcodes"
                 filled
                 full-width
                 background-color="white"
                 color="primary"
-                label="Postcode"
+                label="Type and select your postcode"
+                hint="Type and select your postcode"
                 item-text="postcode"
                 item-value="postcode"
               >
                 <template v-slot:item="data">
                   <v-list-item-content
                     @click="searchResults(data.item.center)">
+                    <!--@keyup.enter.native=""-->
                     <v-list-item-title
                       v-text="data.item.postcode"></v-list-item-title>
                     <v-list-item-subtitle
@@ -132,7 +134,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <h4>{{result}}</h4>
+      <h4>{{res}}</h4>
     </v-layout>
   </v-container>
 </template>

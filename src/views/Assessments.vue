@@ -35,7 +35,8 @@
                       <v-dialog v-model="questionVisible" scrollable
                                 max-width="1200">
                         <template v-slot:activator="{ on }">
-                          <v-btn color="white" dark rounded outlined @click="openQuizs">Take a
+                          <v-btn color="white" dark rounded outlined
+                                 @click="openQuizs">Take a
                             look
                           </v-btn>
                         </template>
@@ -123,12 +124,12 @@
                           <v-card-actions>
                             <v-row justify="space-between" class="pl-8 pr-8">
                               <v-btn text @click="closeQuiz">Cancel</v-btn>
-                              <!--<v-btn :disabled="subDisable" color="primary" @click="pushAnswers">-->
-                              <!--Submit-->
-                              <!--</v-btn>-->
-                              <v-btn color="primary" to="/asresultshigh">
+                              <v-btn :loading="btnLoading" :disabled="subDisable" color="primary"
+                                     @click="pushAnswers">
                                 Submit
                               </v-btn>
+                              <!--<v-btn color="primary" to="/asresultshigh">-->
+                              <!--Submit-->
                             </v-row>
                           </v-card-actions>
                         </v-card>
@@ -172,7 +173,8 @@
         resp: '',
         questionVisible: false,
         onLoading: false,
-        title: 'a quick quiz'
+        title: 'Assessment',
+        btnLoading: false
       }
     },
 
@@ -219,16 +221,36 @@
       },
 
       pushAnswers () {
-        let sub = 'https://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAbuseLevel/'
+        this.btnLoading = true
+        let subUrl = 'https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAbuseLevel/'
         this.answers.forEach((item) => {
           // sub += item
-          sub += item
+          subUrl += item
         })
+        axios.get(subUrl)
+          .then(response => {
+            if (response.data === 1 ||  response.data === 2) {
+              this.redirct('/asresultshigh')
+            }else if (response.data == 'low' || response.data === 3) {
+              this.redirct('/asresultslow')
+            }
+            this.btnLoading = false
+            this.title = response.data
+          })
+          .catch(error => {
+            this.title = error
+          })
+        this.fillEmptyAnswers()
       },
+
+      redirct (path) {
+        this.$router.push(path)
+      },
+
 
       requestQuestion () {
         this.onLoading = true
-        axios.get('http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAll')
+        axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAll')
           .then(response => {
             response.data.forEach((item) => {
               this.questions.push(item.question)
@@ -254,7 +276,6 @@
 
     watch: {
       answers (val) {
-        this.nextQues()
         if (this.firstEmpty === -1)
           this.subDisable = false
       }
