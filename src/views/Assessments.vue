@@ -4,7 +4,7 @@
       <v-row justify="center" align="center">
         <v-img
           :src="require('../assets/assessments/ass.jpeg')"
-          max-width="85vw"
+          max-width="1200"
           contain
           class="white--text"
           style="padding-top: 10vh;">
@@ -42,7 +42,7 @@
                         </template>
                         <v-card>
                           <v-card-title><span
-                            class="headline">Assessment</span>
+                            class="headline">{{subDisable}}</span>
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card v-if="onLoading" height="200px">
@@ -190,10 +190,11 @@
       //   this.answers.i =
       // }
       closeQuiz () {
+        this.subDisable = true
+        this.current = 1
         this.questionVisible = false
         this.questions = []
         this.fillEmptyAnswers()
-        this.subDisable = true
       },
       nextQues () {
         this.firstEmpty = this.answers.indexOf(-1)
@@ -248,6 +249,8 @@
 
 
       requestQuestion () {
+        this.subDisable = true
+        this.current = 1
         this.onLoading = true
         axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAll')
           .then(response => {
