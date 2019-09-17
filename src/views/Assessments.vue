@@ -4,10 +4,10 @@
       <v-row justify="center" align="center">
         <v-img
           :src="require('../assets/assessments/ass.jpeg')"
-          max-width="1200"
+          max-width="1000"
           contain
           class="white--text"
-          style="padding-top: 10vh;">
+          style="padding-top: 200px;">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -23,10 +23,18 @@
                 align="end"
                 justify="center"
                 wrap
-                class="pb-8 pl-12 pr-12 hidden-lg-and-up"
+                class="hidden-md-and-up"
               >
                 <h1 class="subtitle-1 font-weight-thick mb-4">ARE YOU IN AN
-                  EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
+                  EMOTIONALLY </h1>
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                wrap
+                class="hidden-md-and-up"
+              >
+                <h1 class="subtitle-1 font-weight-thick mb-4">ABUSIVE RELATIONSHIP?</h1>
               </v-row>
               <v-row align="start" justify="center">
                 <v-container fluid>
@@ -42,7 +50,7 @@
                         </template>
                         <v-card>
                           <v-card-title><span
-                            class="headline">{{subDisable}}</span>
+                            class="headline">Assessment</span>
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card v-if="onLoading" height="200px">
@@ -87,7 +95,8 @@
                                       <v-layout column>
                                         <v-row wrap>
                                           <v-card width="100vw">
-                                            <h3>{{item}}</h3>
+                                            <h3 class="hidden-sm-and-down">{{item}}</h3>
+                                            <h3 class="body-1 hidden-md-and-up">{{item}}</h3>
                                           </v-card>
                                         </v-row>
                                         <v-row wrap>

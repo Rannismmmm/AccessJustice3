@@ -50,7 +50,7 @@
         height="700"
         justify="center"
         align="center"
-        style="width: 100vw"
+        style="width: 103vw"
         class="hidden-md-and-up pt-12"
       >
         <v-container fluid fill-height>
@@ -176,7 +176,7 @@
         style="padding: 0px"
         class="hidden-sm-and-down"
       >
-        <v-card flat style="width: 50vw; height: 600px;">
+        <v-card flat style="width: 48vw; height: 600px;">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -225,7 +225,7 @@
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up" justify="center">
-        <v-card flat style="width: 101vw; height: 600px;"
+        <v-card flat style="width: 100vw; height: 600px;"
                 class="pa-12">
           <v-container fluid fill-height>
             <v-layout column>
@@ -279,7 +279,7 @@
       <v-img
         :src="require('../assets/home/homebottom.jpg')"
         height="400"
-        style="width: 101vw"
+        style="width: 100vw"
         justify="center"
         class="white--text"
       >
