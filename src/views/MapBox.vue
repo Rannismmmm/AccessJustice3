@@ -1,13 +1,13 @@
 <template>
   <v-container fluid>
     <v-layout column>
-      <!--<v-row-->
-      <!--align="center"-->
-      <!--justify="center"-->
-      <!--wrap-->
-      <!--&gt;-->
-      <!--<v-btn @click="btn">change location</v-btn>-->
-      <!--</v-row>-->
+      <v-row
+        align="center"
+        justify="center"
+        wrap
+      >
+        <v-btn @click="getSuburbInfo(3000)">change location</v-btn>
+      </v-row>
       <v-row
         no-gutters
         justify="center"
@@ -129,7 +129,8 @@
         result: '',
         mapbox: null,
         zoom: 12,
-        lastMarker: -1
+        lastMarker: -1,
+        postcodes: []
       }
     },
 
@@ -196,8 +197,33 @@
           + this.herePlacesAPI
 
         return url
+      },
+
+      getSuburbInfo (postcode) {
+        let postUrl = 'https://cors-anywhere.herokuapp.com/' + 'http://v0.postcodeapi.com.au/suburbs/' + postcode.toString() + '.json'
+        axios.get(postUrl)
+          .then(resp => {
+            // resp.data.results.forEach((item) => {
+            //   if (item.position) {
+            //     this.shelterMarkers.push(
+            //       {
+            //         coords: this.formatCoords(item.position),
+            //         address: item.vicinity,
+            //         name: item.title,
+            //         color: '#80CBC4',
+            //         showPop: false
+            //       }
+            //     )
+            //   }
+            // })
+            this.result = resp
+          })
+          .catch(error => {
+            this.result = error
+          })
       }
     },
+
 
     created () {
       this.mapbox = this.$refs.map
