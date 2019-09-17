@@ -1,38 +1,86 @@
 <template>
   <v-container fluid>
     <v-layout column>
+      <!--<v-row-->
+      <!--align="center"-->
+      <!--justify="center"-->
+      <!--wrap-->
+      <!--&gt;-->
+      <!--<v-btn @click="btn">change location</v-btn>-->
+      <!--</v-row>-->
       <v-row
-        align="center"
+        no-gutters
         justify="center"
-        wrap
-        style="padding-top: 250px; padding-bottom: 20px"
+        style="padding-left: 8vw; padding-right: 8vw"
       >
-        <MglMap
-          :mapboxGl="mapbox-gl"
-          :accessToken="accessToken"
-          :mapStyle.sync="mapStyle"
-          :center="center"
-          :zoom="11"
-          @load="onMapLoad"
-          style="height: 650px; width: 900px"
-        >
-          <!--@load="onMapLoad"-->
-          <MglAttributionControl/>
-          <MglNavigationControl position="top-right"/>
-          <MglGeolocateControl position="top-right"/>
-          <MglScaleControl position="bottom-right"/>
-          <MglMarker v-for="(shelter,i) in shelterMarkers" :key="i"
-                     :coordinates="shelter.coords">
-            <MglPopup>
-              <v-card flat>
-                <div>{{shelter.name}}</div>
-                <div>{{shelter.address}}</div>
-              </v-card>
-            </MglPopup>
-          </MglMarker>
-        </MglMap>
+        <v-col cols="12"
+               sm="3" class="pr-4">
+          <v-card
+            class="mx-auto"
+            width="100%"
+            tile
+          >
+            <v-list style="max-height: 650px" class="overflow-y-auto">
+              <v-list-item-group v-model="item" color="red">
+                <v-list-item
+                  v-for="(item, i) in shelterMarkers"
+                  :key="i"
+                  @click="selectShelter(i)"
+                >
+                  <v-list-item-content>
+                    <v-list-item-title v-text="item.name"></v-list-item-title>
+                    <v-list-item-subtitle
+                      v-text="item.address"></v-list-item-subtitle>
+                  </v-list-item-content>
+                </v-list-item>
+                <v-divider
+                  v-if="index + 1 < shelterMarkers.length"
+                  :key="index"
+                ></v-divider>
+              </v-list-item-group>
+            </v-list>
+          </v-card>
+        </v-col>
+        <v-col cols="12"
+               sm="9">
+          <MglMap
+            ref="map"
+            :mapboxGl="mapbox"
+            :accessToken="accessToken"
+            :mapStyle.sync="mapStyle"
+            @load="onMapLoad"
+            :center="center"
+            :zoom="zoom"
+            style="height: 650px; width: 100%"
+          >
+            <!--@load="onMapLoad"-->
+            <div style="width: 200px; padding-left: 10px" position="top-left">
+              <v-autocomplete
+                label="Postcode"
+                background-color="white"
+                height="6vh"
+                :items="components"
+              ></v-autocomplete>
+            </div>
+            <MglAttributionControl/>
+            <MglNavigationControl position="top-right"/>
+            <MglGeolocateControl position="top-right"/>
+            <MglScaleControl position="bottom-right"/>
+            <MglMarker v-for="(shelter,i) in shelterMarkers"
+                       :key="shelter.color"
+                       :coordinates="shelter.coords"
+                       :color="shelter.color">
+              <MglPopup :showed="shelter.color == 'red'">
+                <v-card flat>
+                  <div>{{shelter.name}}</div>
+                  <div>{{shelter.address}}</div>
+                </v-card>
+              </MglPopup>
+            </MglMarker>
+          </MglMap>
+        </v-col>
       </v-row>
-      <h1>{{result}}</h1>
+      <h4>{{result}}</h4>
     </v-layout>
   </v-container>
 </template>
@@ -70,72 +118,97 @@
       return {
         accessToken: 'pk.eyJ1IjoidHlhbjAwMTYiLCJhIjoiY2psNGN0Z2gzMDZ4ZDNybmx6a3h0bWMzbSJ9.SbjTVR9BAQUGP0my5YqG2A',
         mapStyle: 'mapbox://styles/mapbox/streets-v11',
-        googlePlacesAPI: 'AIzaSyCHXxvk8k_7YZ-RK9GRXvrOpuhsw8DPc1M',
-        // back up: AIzaSyCHXxvk8k_7YZ-RK9GRXvrOpuhsw8DPc1M
-        // back up: AIzaSyDKcBTrnPjz9R4pEy65tz-O3aSCUglUIhk
-        center: [145.0482345, -37.8789473],
+        googlePlacesAPI: 'AIzaSyDKcBTrnPjz9R4pEy65tz-O3aSCUglUIhk',
+        herePlacesAPI: '1RhbvOS8Uw3z4a2SpUUa&app_code=d_a5qrFarJmTcK7d3YzW0g',
+        center: [144.961068, -37.810682],
         markers: [
           // {coords: [144.025451, -36.958992]},
           // {coords: [143.025432, -37.958572]}
         ],
         shelterMarkers: [],
-        result: ''
+        result: '',
+        mapbox: null,
+        zoom: 12,
+        lastMarker: -1
       }
     },
 
 
     methods: {
-      async onMapLoad (event) {
-        // Here we cathing 'load' map event
-        this.map = event.map
-        let tempUrl = this.makeUrlonLocation(this.center)
+      onMapLoad () {
+        this.searchResults([-37.810682, 144.961068])
+      },
+
+      formatCoords ([a, b]) {
+        if (a < b)
+          return [b, a]
+        return [a, b]
+      },
+
+      btn () {
+        this.searchResults([145.0482345, -37.8789473])
+      },
+
+      searchResults (querryCenter) {
+        this.shelterMarkers = []
+        let tempUrl = this.makeUrlonLocation(this.formatCoords(querryCenter))
         axios.get(tempUrl)
           .then(resp => {
-            resp.results.forEach((item) => {
-              this.shelterMarkers.push(
-                {
-                  coords: item.geometry.location,
-                  address: item.formatted_address,
-                  name: item.name
-                }
-              )
+            resp.data.results.forEach((item) => {
+              if (item.position) {
+                this.shelterMarkers.push(
+                  {
+                    coords: this.formatCoords(item.position),
+                    address: item.vicinity,
+                    name: item.title,
+                    color: '#80CBC4',
+                    showPop: false
+                  }
+                )
+              }
             })
+            this.jump(this.formatCoords(querryCenter))
           })
           .catch(error => {
             this.result = error
           })
-        // this.result = tempUrl
-        // const asyncActions = event.component.actions
-        //
-        // const newParams = await asyncActions.flyTo({
-        //   center: [145.0482345, -37.8789473],
-        //   zoom: 12,
-        //   speed: 1
-        // })
-        /* => {
-                center: [30, 30],
-                zoom: 9,
-                bearing: 9,
-                pitch: 7
-              }
-        */
+      },
+
+      jump (center, zoom) {
+        this.center = center
+        if (zoom)
+          this.zoom = zoom
+      },
+
+      selectShelter (index) {
+        this.shelterMarkers[index].color = 'red'
+        if (!(this.lastMarker === -1)) {
+          this.shelterMarkers[this.lastMarker].color = '#80CBC4'
+        }
+        this.lastMarker = index
       },
 
       makeUrlonLocation ([lat, long]) {
-        let url = 'https://cors-anywhere.herokuapp.com/' + 'https://maps.googleapis.com/maps/api/place/textsearch/json?query=women&location='
-          + long.toString() + ',' + lat.toString() + 'radius=20000fields=photos,formatted_address,name&key='
-          + this.googlePlacesAPI
+        // https://places.cit.api.here.com/places/v1/autosuggest?q=woman%27s+shelter&in=-37.810682%2C144.961068%3Br%3D5000&tf=plain&Accept-Language=en-GB%2Cen%3Bq%3D0.9%2Cen-US%3Bq%3D0.8%2Czh-CN%3Bq%3D0.7%2Czh%3Bq%3D0.6&app_id=1RhbvOS8Uw3z4a2SpUUa&app_code=d_a5qrFarJmTcK7d3YzW0g        // 'https://cors-anywhere.herokuapp.com/'
+        let url = 'https://places.cit.api.here.com/places/v1/autosuggest?q=woman%27s+shelter&in='
+          + long.toString() + '%2C' + lat.toString() + '%3Br%3D4000&tf=plain&Accept-Language=en-GB%' +
+          '2Cen%3Bq%3D0.9%2Cen-US%3Bq%3D0.8%2Czh-CN%3Bq%3D0.7%2Czh%3Bq%3D0.6&app_id='
+          + this.herePlacesAPI
 
         return url
       }
     },
 
-    mounted () {
-      // We need to set mapbox-gl library here in order to use it in template
-      this.mapbox = null
-      // results
-
+    created () {
+      this.mapbox = this.$refs.map
     }
+
+    // const asyncActions = event.component.actions
+    //     const newParams = await asyncActions.flyTo({
+    //       center: this.formatCoords(querryCenter),
+    //       zoom: 13,
+    //       speed: 1
+    //     })
   }
 </script>
 
