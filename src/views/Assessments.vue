@@ -1,10 +1,10 @@
 <template>
   <v-container fluid style="padding: 0px">
     <v-layout column>
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="center" class='hidden-sm-and-down'>
         <v-img
           :src="require('../assets/assessments/ass.jpeg')"
-          max-width="1000"
+          max-width="80vw"
           contain
           class="white--text"
           style="padding-top: 200px;">
@@ -18,23 +18,6 @@
               >
                 <h1 class="headline font-weight-thick mb-4">ARE YOU IN AN
                   EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
-              </v-row>
-              <v-row
-                align="end"
-                justify="center"
-                wrap
-                class="hidden-md-and-up"
-              >
-                <h1 class="subtitle-1 font-weight-thick mb-4">ARE YOU IN AN
-                  EMOTIONALLY </h1>
-              </v-row>
-              <v-row
-                align="center"
-                justify="center"
-                wrap
-                class="hidden-md-and-up"
-              >
-                <h1 class="subtitle-1 font-weight-thick mb-4">ABUSIVE RELATIONSHIP?</h1>
               </v-row>
               <v-row align="start" justify="center">
                 <v-container fluid>
@@ -95,8 +78,11 @@
                                       <v-layout column>
                                         <v-row wrap>
                                           <v-card width="100vw">
-                                            <h3 class="hidden-sm-and-down">{{item}}</h3>
-                                            <h3 class="body-1 hidden-md-and-up">{{item}}</h3>
+                                            <h3 class="hidden-sm-and-down">
+                                              {{item}}</h3>
+                                            <h3
+                                              class="body-1 hidden-md-and-up">
+                                              {{item}}</h3>
                                           </v-card>
                                         </v-row>
                                         <v-row wrap>
@@ -133,7 +119,153 @@
                           <v-card-actions>
                             <v-row justify="space-between" class="pl-8 pr-8">
                               <v-btn text @click="closeQuiz">Cancel</v-btn>
-                              <v-btn :loading="btnLoading" :disabled="subDisable" color="primary"
+                              <v-btn :loading="btnLoading"
+                                     :disabled="subDisable" color="primary"
+                                     @click="pushAnswers">
+                                Submit
+                              </v-btn>
+                              <!--<v-btn color="primary" to="/asresultshigh">-->
+                              <!--Submit-->
+                            </v-row>
+                          </v-card-actions>
+                        </v-card>
+                      </v-dialog>
+                    </v-row>
+                  </v-layout>
+                </v-container>
+              </v-row>
+            </v-layout>
+          </v-container>
+        </v-img>
+      </v-row>
+      <v-row justify="center" align="center" class='hidden-md-and-up'>
+        <v-img
+          :src="require('../assets/assessments/assPhone.jpg')"
+          max-height="100vh"
+          class="white--text"
+          style="padding-top: 200px;">
+          <v-container fluid fill-height>
+            <v-layout column>
+              <v-row
+                align="end"
+                justify="center"
+                wrap
+                class="hidden-md-and-up"
+              >
+                <h1 class="subtitle-1 font-weight-thick mb-4">ARE YOU IN AN
+                  EMOTIONALLY </h1>
+              </v-row>
+              <v-row
+                align="center"
+                justify="center"
+                wrap
+                class="hidden-md-and-up"
+              >
+                <h1 class="subtitle-1 font-weight-thick mb-4">ABUSIVE
+                  RELATIONSHIP?</h1>
+              </v-row>
+              <v-row align="start" justify="center">
+                <v-container fluid>
+                  <v-layout column>
+                    <v-row justify="center">
+                      <v-dialog v-model="questionVisible" scrollable
+                                max-width="1200">
+                        <template v-slot:activator="{ on }">
+                          <v-btn color="white" dark rounded outlined
+                                 @click="openQuizs">Take a
+                            look
+                          </v-btn>
+                        </template>
+                        <v-card>
+                          <v-card-title><span
+                            class="headline">Assessment</span>
+                          </v-card-title>
+                          <v-divider></v-divider>
+                          <v-card v-if="onLoading" height="200px">
+                            <v-container fluid fill-height>
+                              <v-layout column>
+                                <v-row justify="center" align="center">
+                                  <v-progress-circular
+                                    indeterminate
+                                    color="primary"
+                                  ></v-progress-circular>
+                                </v-row>
+                              </v-layout>
+                            </v-container>
+                          </v-card>
+                          <v-stepper v-else non-linear v-model="current">
+                            <v-stepper-header>
+                              <template v-for="(item, i) in questions">
+                                <v-stepper-step :key="i"
+                                                :complete="isComplete(i)"
+                                                :step="i + 1">
+                                  {{i + 1}}
+                                </v-stepper-step>
+
+                                <v-divider
+                                  v-if="i !== (questions.length - 1)"
+                                  :key="i"
+                                ></v-divider>
+                              </template>
+
+                            </v-stepper-header>
+
+                            <v-stepper-items>
+                              <v-stepper-content v-for="(item, i) in questions"
+                                                 :key="i" :step="i + 1">
+                                <v-card
+                                  class="mb-12"
+                                  color="grey lighten-1"
+                                  height="200px"
+                                >
+                                  <template>
+                                    <v-container fluid fill-height>
+                                      <v-layout column>
+                                        <v-row wrap>
+                                          <v-card width="100vw">
+                                            <h3 class="hidden-sm-and-down">
+                                              {{item}}</h3>
+                                            <h3
+                                              class="body-1 hidden-md-and-up">
+                                              {{item}}</h3>
+                                          </v-card>
+                                        </v-row>
+                                        <v-row wrap>
+                                          <v-radio-group row
+                                                         v-model="answers[i]"
+                                                         @change="nextQues">
+                                            <v-radio label="Yes"
+                                                     value="1"></v-radio>
+                                            <v-spacer></v-spacer>
+                                            <v-radio label="No"
+                                                     value="0"></v-radio>
+                                          </v-radio-group>
+                                        </v-row>
+                                      </v-layout>
+                                    </v-container>
+                                  </template>
+                                  <v-row
+                                    style="width: auto; padding: 0px; margin: 0px"
+                                    justify="space-between">
+                                    <v-btn icon @click="goPrevious"
+                                           :disabled="i === 0">
+                                      <v-icon large>mdi-chevron-left</v-icon>
+                                    </v-btn>
+
+                                    <v-btn icon @click="goNext"
+                                           :disabled="i === (questions.length - 1)">
+                                      <v-icon large>mdi-chevron-right</v-icon>
+                                    </v-btn>
+                                  </v-row>
+                                </v-card>
+                              </v-stepper-content>
+                            </v-stepper-items>
+                          </v-stepper>
+                          <v-card-actions>
+                            <v-row justify="space-between" class="pl-8 pr-8">
+                              <v-btn text @click="closeQuiz">Cancel</v-btn>
+                              <v-btn :loading="btnLoading"
+                                     :disabled="subDisable" color="primary"
                                      @click="pushAnswers">
                                 Submit
                               </v-btn>
@@ -239,9 +371,9 @@
         })
         axios.get(subUrl)
           .then(response => {
-            if (response.data === 1 ||  response.data === 2) {
+            if (response.data === 1 || response.data === 2) {
               this.redirct('/asresultshigh')
-            }else if (response.data == 'low' || response.data === 3) {
+            } else if (response.data == 'low' || response.data === 3) {
               this.redirct('/asresultslow')
             }
             this.btnLoading = false
