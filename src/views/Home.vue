@@ -216,7 +216,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined large @click="redirct('/assessments/true')">
+                <v-btn rounded outlined large @click="redirct('/abuse')">
                   READ MORE
                 </v-btn>
               </v-row>
@@ -266,7 +266,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined @click="redirct('/assessments/true')">READ
+                <v-btn rounded outlined @click="redirct('/abuse')">READ
                   MORE
                 </v-btn>
               </v-row>
