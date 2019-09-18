@@ -3,11 +3,11 @@
     <v-row
       align="center"
       wrap
-      justify="space-between"
+      justify="space-around"
       class="hidden-sm-and-down"
       style="padding-left: 12vw; padding-right: 12vw"
     >
-        <v-card flat style="height: 400px; width: 33vw">
+        <v-card flat style="height: 400px; width: 26vw">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row

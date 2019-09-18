@@ -1,13 +1,11 @@
 <template>
   <v-container fluid style="padding: 0px">
     <v-layout column>
-      <v-row justify="center" align="center">
+      <v-row justify="center" align="center" style="padding-top: 13vh;">
         <v-img
           :src="require('../assets/assessments/ass.jpeg')"
-          max-width="1000"
-          contain
-          class="white--text"
-          style="padding-top: 200px;">
+          max-width="65vw"
+          class="white--text">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -16,8 +14,19 @@
                 wrap
                 class="pb-8 hidden-sm-and-down"
               >
-                <h1 class="headline font-weight-thick mb-4">ARE YOU IN AN
-                  EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
+                <v-container fluid>
+                  <v-layout column>
+                    <v-row justify="center">
+                      <h1 class="display-1 font-weight-thick mb-4">ARE YOU IN
+                        AN
+                        EMOTIONALLY ABUSIVE </h1>
+                    </v-row>
+                    <v-row justify="center">
+                      <h1 class="display-1 font-weight-thick mb-4">
+                        RELATIONSHIP?</h1>
+                    </v-row>
+                  </v-layout>
+                </v-container>
               </v-row>
               <v-row
                 align="end"
@@ -35,9 +44,8 @@
                       <v-dialog v-model="questionVisible" scrollable
                                 max-width="1200">
                         <template v-slot:activator="{ on }">
-                          <v-btn color="white" dark rounded outlined
-                                 @click="openQuizs">Take a
-                            look
+                          <v-btn color="white" dark rounded outlined x-large
+                                 @click="openQuizs">FIND OUT NOW
                           </v-btn>
                         </template>
                         <v-card>
@@ -87,8 +95,11 @@
                                       <v-layout column>
                                         <v-row wrap>
                                           <v-card width="100vw">
-                                            <h3 class="hidden-sm-and-down">{{item}}</h3>
-                                            <h3 class="body-1 hidden-md-and-up">{{item}}</h3>
+                                            <h3 class="hidden-sm-and-down">
+                                              {{item}}</h3>
+                                            <h3
+                                              class="body-1 hidden-md-and-up">
+                                              {{item}}</h3>
                                           </v-card>
                                         </v-row>
                                         <v-row wrap>
@@ -125,7 +136,8 @@
                           <v-card-actions>
                             <v-row justify="space-between" class="pl-8 pr-8">
                               <v-btn text @click="closeQuiz">Cancel</v-btn>
-                              <v-btn :loading="btnLoading" :disabled="subDisable" color="primary"
+                              <v-btn :loading="btnLoading"
+                                     :disabled="subDisable" color="primary"
                                      @click="pushAnswers">
                                 Submit
                               </v-btn>
@@ -231,9 +243,11 @@
         })
         axios.get(subUrl)
           .then(response => {
-            if (response.data === 1 ||  response.data === 2) {
-              this.redirct('/asresultshigh')
-            }else if (response.data == 'low' || response.data === 3) {
+            if (response.data === 1) {
+              this.redirct('/asresultshigh/high')
+            } else if (response.data === 2) {
+              this.redirct('/asresultshigh/medium')
+            } else if (response.data == 'low' || response.data === 3) {
               this.redirct('/asresultslow')
             }
             this.btnLoading = false

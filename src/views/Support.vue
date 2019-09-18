@@ -23,7 +23,7 @@
             path: '/legalsupport'
           },
           {
-            title: 'Shelter Homes',
+            title: 'Care Shelters',
             comment: 'Find the nearby shelters here',
             color: 'indigo darken-4',
             path: '/sheltermap'

@@ -2,7 +2,7 @@
   <v-container fluid style="padding: 0px">
     <v-row wrap>
       <v-parallax
-        :src="require('../assets/home/home1st.jpg')"
+        :src="require('../assets/home/homeBack.jpeg')"
         align="center"
         justify="center"
         style="width: 101vw; height: 80vh;"
@@ -15,7 +15,8 @@
               justify="center"
               wrap
             >
-              <h1 class="display-3 font-weight-condensed mb-4" style="color: white">
+              <h1 class="display-3 font-weight-condensed mb-4"
+                  style="color: white">
                 JUSTICELY</h1>
             </v-row>
             <v-row
@@ -46,7 +47,7 @@
         </v-container>
       </v-parallax>
       <v-parallax
-        :src="require('../assets/home/home1st.jpg')"
+        :src="require('../assets/home/homeBack.jpeg')"
         height="700"
         justify="center"
         align="center"
@@ -60,7 +61,8 @@
               justify="center"
               wrap
             >
-              <h1 class="display-2 font-weight-thin mb-4 hidden-md-and-up" style="color: white">
+              <h1 class="display-2 font-weight-thin mb-4 hidden-md-and-up"
+                  style="color: white">
                 JUSTICELY</h1>
             </v-row>
             <v-row
@@ -70,17 +72,20 @@
             >
               <v-cols cols="8">
                 <v-row justify="center">
-                  <h4 class="subtitle-1 mb-4" style="color: white">The aim of Justicely is to improve
+                  <h4 class="subtitle-1 mb-4" style="color: white">The aim of
+                    Justicely is to improve
                     the
                     life of</h4>
                 </v-row>
                 <v-row justify="center">
-                  <h4 class="subtitle-1 mb-4" style="color: white">emotional abused women in
+                  <h4 class="subtitle-1 mb-4" style="color: white">emotional
+                    abused women in
                     Melbourne
                     because</h4>
                 </v-row>
                 <v-row justify="center">
-                  <h4 class="subtitle-1 mb-4" style="color: white">YOU DESERVE A BETTER
+                  <h4 class="subtitle-1 mb-4" style="color: white">YOU DESERVE
+                    A BETTER
                     LIFE.</h4>
                 </v-row>
               </v-cols>
@@ -98,74 +103,74 @@
       >
         <v-card flat style="width: 50vw; height: 600px;"
                 class="pa-lg-12 pa-md-2">
-          <v-img :src="require('../assets/home/homefeather.jpg')"
+          <v-img :src="require('../assets/home/homeRose.jpeg')"
                  style="height: 500px;"
                  class="white--text">
             <!--<v-container fluid fill-height>-->
-              <!--<v-layout column>-->
-                <!--<v-row-->
-                  <!--align="end"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="headline font-weight-thick mb-4">1 in 8 woman in-->
-                    <!--Australia face Emotional Abuse</h1>-->
-                <!--</v-row>-->
-                <!--<v-row-->
-                  <!--align="center"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="headline font-weight-thick mb-4">Woman between-->
-                    <!--18-24 suffer the most from it</h1>-->
-                <!--</v-row>-->
-                <!--<v-row-->
-                  <!--align="start"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="headline font-weight-thick mb-4">Melbourne ranks-->
-                    <!--1st-->
-                    <!--in Emotional Abuse in Australia</h1>-->
-                <!--</v-row>-->
-              <!--</v-layout>-->
+            <!--<v-layout column>-->
+            <!--<v-row-->
+            <!--align="end"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="headline font-weight-thick mb-4">1 in 8 woman in-->
+            <!--Australia face Emotional Abuse</h1>-->
+            <!--</v-row>-->
+            <!--<v-row-->
+            <!--align="center"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="headline font-weight-thick mb-4">Woman between-->
+            <!--18-24 suffer the most from it</h1>-->
+            <!--</v-row>-->
+            <!--<v-row-->
+            <!--align="start"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="headline font-weight-thick mb-4">Melbourne ranks-->
+            <!--1st-->
+            <!--in Emotional Abuse in Australia</h1>-->
+            <!--</v-row>-->
+            <!--</v-layout>-->
             <!--</v-container>-->
           </v-img>
         </v-card>
       </v-col>
       <v-row wrap class="hidden-md-and-up pt-4" justify="center">
         <v-card flat style="width: 100vw; height: 350px">
-          <v-img :src="require('../assets/home/homefeather.jpg')"
+          <v-img :src="require('../assets/home/homeRose.jpeg')"
                  style="height: 400px;"
                  class="white--text">
             <!--<v-container fluid fill-height class="pa-12">-->
-              <!--<v-layout column>-->
-                <!--<v-row-->
-                  <!--align="end"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">1 in 8 woman in-->
-                    <!--Australia face Emotional Abuse</h1>-->
-                <!--</v-row>-->
-                <!--<v-row-->
-                  <!--align="center"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">Woman between-->
-                    <!--18-24 suffer the most from it</h1>-->
-                <!--</v-row>-->
-                <!--<v-row-->
-                  <!--align="start"-->
-                  <!--justify="center"-->
-                  <!--wrap-->
-                <!--&gt;-->
-                  <!--<h1 class="subtitle-1 font-weight-thick mb-4">Melbourne ranks-->
-                    <!--1st-->
-                    <!--in Emotional Abuse in Australia</h1>-->
-                <!--</v-row>-->
-              <!--</v-layout>-->
+            <!--<v-layout column>-->
+            <!--<v-row-->
+            <!--align="end"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="subtitle-1 font-weight-thick mb-4">1 in 8 woman in-->
+            <!--Australia face Emotional Abuse</h1>-->
+            <!--</v-row>-->
+            <!--<v-row-->
+            <!--align="center"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="subtitle-1 font-weight-thick mb-4">Woman between-->
+            <!--18-24 suffer the most from it</h1>-->
+            <!--</v-row>-->
+            <!--<v-row-->
+            <!--align="start"-->
+            <!--justify="center"-->
+            <!--wrap-->
+            <!--&gt;-->
+            <!--<h1 class="subtitle-1 font-weight-thick mb-4">Melbourne ranks-->
+            <!--1st-->
+            <!--in Emotional Abuse in Australia</h1>-->
+            <!--</v-row>-->
+            <!--</v-layout>-->
             <!--</v-container>-->
           </v-img>
         </v-card>
@@ -176,7 +181,7 @@
         style="padding: 0px"
         class="hidden-sm-and-down"
       >
-        <v-card flat style="width: 48vw; height: 600px;">
+        <v-card flat style="height: 600px; padding-left: 6vw; padding-right: 6vw">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -194,21 +199,21 @@
               >
                 <v-cols cols="8">
                   <v-row justify="center">
-                    <h1 class="title mb-4">You can experience
-                      abuse and violence without being physically hurt.
-                      Emotional
-                      abuse does not leave physical scars but it can have a big
+                    <h1 class="title mb-4">You can experience abuse and
+                      violence without being physically hurt. Emotional abuse
+                      does not leave physical scars but it can have a big
                       impact on a person’s mental health and wellbeing. Someone
                       experiencing emotional abuse can feel anxious, depressed
-                      and
-                      even suicidal.</h1>
-                  </v-row>
-                  <v-row justify="center">
-                    <h1 class="title mb-4">
+                      and even suicidal.
                       control in the relationship. Physically abusive
-                      relationships
-                      often include aspects of emotional abuse</h1>
+                      relationships often include aspects of emotional
+                      abuse.</h1>
                   </v-row>
+                  <!--<v-row justify="center">-->
+                    <!--<h1 class="title mb-4">-->
+                      <!--Physically abusive relationships often include aspects of-->
+                      <!--emotional abuse.</h1>-->
+                  <!--</v-row>-->
                 </v-cols>
               </v-row>
               <v-row
@@ -275,7 +280,7 @@
         </v-card>
       </v-row>
     </v-row>
-    <v-row wrap class="pa-lg-12 pa-md-2">
+    <v-row wrap class="pl-12 pr-12 pl-2 pr-2">
       <v-img
         :src="require('../assets/home/homebottom.jpg')"
         height="400"

@@ -7,7 +7,7 @@
           align="center"
           justify="center"
           wrap
-          style="padding-top: 250px; padding-bottom: 20px"
+          style="padding-top: 200px; padding-bottom: 20px"
           class="hidden-sm-and-down text--primary"
         >
           <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND
@@ -71,7 +71,7 @@
               'Unemployment',
               'Mentally-ill partner',
             ],
-            img: require('../assets/abuse/abusepie.jpeg')
+            img: require('../assets/abuse/abuseSecond.png')
           },
           {
             title: 'IMPACT',
@@ -85,7 +85,7 @@
               'Loneliness',
               'Substance Abuse'
             ],
-            img: require('../assets/abuse/abusebar.jpeg')
+            img: require('../assets/abuse/abuseThird.jpg')
           }
           // {
           //   title: 'STATISTICS',

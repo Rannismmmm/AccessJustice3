@@ -67,7 +67,7 @@
             style="height: 650px; width: 100%"
           >
             <!--@load="onMapLoad"-->
-            <div style="width: 285px; padding-left: 10px" position="top-left">
+            <div style="width: 285px; padding-left: 10px; padding-top: 10px" position="top-left">
               <v-autocomplete
                 :items="postcodes"
                 filled

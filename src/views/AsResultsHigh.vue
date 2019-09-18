@@ -19,7 +19,9 @@
             :value="lg1"
           >
             <template v-slot:activator>
-              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4" style="color: white">Legal Support</h1></v-list-item-title>
+              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
+                                     style="color: white">Legal Support</h1>
+              </v-list-item-title>
             </template>
             <v-container fluid style="padding: 0; background-color: white">
               <v-layout column style="padding-top: 4vh">
@@ -59,9 +61,10 @@
                     </v-card>
                   </v-flex>
                 </v-row>
-                <v-row wrap>
-                  <h1 class="subtitle-1 font-weight-bold mb-4" style="color: #1976D2">Need a place to stay?</h1>
-                  <v-btn>Click here</v-btn>
+                <v-row v-if="isHigh" wrap>
+                  <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+                      style="color: #1976D2">Need a place to stay?</h1>
+                  <v-btn color="primary" rounded outlined small to="/sheltermap">Click here</v-btn>
                 </v-row>
               </v-layout>
             </v-container>
@@ -70,7 +73,9 @@
             :value="lg2"
           >
             <template v-slot:activator>
-              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4" style="color: white">Support & Counseling</h1></v-list-item-title>
+              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
+                                     style="color: white">Support &
+                Counseling</h1></v-list-item-title>
             </template>
             <v-container fluid style="padding: 0; background-color: white">
               <v-layout column style="padding-top: 4vh">
@@ -120,6 +125,11 @@
             </v-container>
           </v-list-group>
         </v-list>
+      </v-row>
+      <v-row wrap style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh">
+        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+            style="color: #1976D2">Want to see more options?</h1>
+        <v-btn color="primary" rounded outlined small to="/support">Click here</v-btn>
       </v-row>
     </v-layout>
   </v-container>
@@ -190,13 +200,18 @@
             path: 'https://headspace.org.au/'
           }
         ],
-
+        isHigh: false,
         lg1: true,
         lg2: false
       }
     },
 
-    watch: {
+    watch: {},
+
+    mounted () {
+      if (this.$route.params.level == 'high') {
+          this.isHigh = true
+      }
     }
   }
 </script>

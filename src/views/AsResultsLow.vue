@@ -15,45 +15,45 @@
         style="padding-left: 8vw; padding-right: 8vw;"
       >
         <v-list expand color="#1976D2" style="width: 80vw; padding: 0">
+          <!--<v-list-group-->
+            <!--:value="lg1"-->
+          <!--&gt;-->
+            <!--<template v-slot:activator>-->
+              <!--<v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"-->
+                                     <!--style="color: white">Events</h1>-->
+              <!--</v-list-item-title>-->
+            <!--</template>-->
+            <!--<v-container fluid-->
+                         <!--style="background-color: white; padding-top: 2vh; padding-bottom: 2vh">-->
+              <!--<v-layout column>-->
+                <!--<v-row-->
+                  <!--align="start"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                  <!--style="padding-left: 5vw; padding-right: 5vw"-->
+                <!--&gt;-->
+                  <!--<h1 class="body-2 mb-4" style="color: black">These are the-->
+                    <!--events available in-->
+                    <!--Melbourne.-->
+                  <!--</h1>-->
+                <!--</v-row>-->
+                <!--<v-row-->
+                  <!--align="start"-->
+                  <!--justify="center"-->
+                  <!--wrap-->
+                  <!--style="padding-left: 5vw; padding-right: 5vw"-->
+                <!--&gt;-->
+                  <!--<a-->
+                    <!--href="https://www.eventbrite.com.au/d/australia&#45;&#45;melbourne/free&#45;&#45;events/women-abuse/?page=1"-->
+                    <!--class="body-2 mb-4">-->
+                    <!--https://www.eventbrite.com.au/d/australia&#45;&#45;melbourne/free&#45;&#45;events/women-abuse/?page=1-->
+                  <!--</a>-->
+                <!--</v-row>-->
+              <!--</v-layout>-->
+            <!--</v-container>-->
+          <!--</v-list-group>-->
           <v-list-group
             :value="lg1"
-          >
-            <template v-slot:activator>
-              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
-                                     style="color: white">Events</h1>
-              </v-list-item-title>
-            </template>
-            <v-container fluid
-                         style="background-color: white; padding-top: 2vh; padding-bottom: 2vh">
-              <v-layout column>
-                <v-row
-                  align="start"
-                  justify="center"
-                  wrap
-                  style="padding-left: 5vw; padding-right: 5vw"
-                >
-                  <h1 class="body-2 mb-4" style="color: black">These are the
-                    events available in
-                    Melbourne.
-                  </h1>
-                </v-row>
-                <v-row
-                  align="start"
-                  justify="center"
-                  wrap
-                  style="padding-left: 5vw; padding-right: 5vw"
-                >
-                  <a
-                    href="https://www.eventbrite.com.au/d/australia--melbourne/free--events/women-abuse/?page=1"
-                    class="body-2 mb-4">
-                    https://www.eventbrite.com.au/d/australia--melbourne/free--events/women-abuse/?page=1
-                  </a>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-list-group>
-          <v-list-group
-            :value="lg2"
           >
             <template v-slot:activator>
               <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
@@ -172,6 +172,11 @@
             </v-container>
           </v-list-group>
         </v-list>
+      </v-row>
+      <v-row wrap style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh">
+        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+            style="color: #1976D2">Want to see more options?</h1>
+        <v-btn color="primary" rounded outlined small to="/support">Click here</v-btn>
       </v-row>
     </v-layout>
   </v-container>

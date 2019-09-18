@@ -22,8 +22,8 @@
         cards: [
           {
             title: 'VICTORIA LEGAL AID',
-            content: 'Find information and get access to free face-to-face legal advice.\n' +
-              'Call 1300 792 387 for help.',
+            content: "Find information and get access to free face-to-face legal advice.\n" +
+              "Call for help.",
             color: 'grey lighten-2'
           },
           {

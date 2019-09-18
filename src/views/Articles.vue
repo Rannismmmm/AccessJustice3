@@ -4,6 +4,7 @@
     :paragraph="paragraph"
     :positive-cards="cards"
     :card-height="cardHeight"
+    :icon-height="iconHeight"
   ></support-template>
 </template>
 
@@ -18,16 +19,16 @@
         mainTitle: 'Articles',
         paragraph: 'These are the articles available for you.',
         cardHeight: '395px',
+        iconHeight: '80px',
         cards: [
           {
             title: '11 Ways to Chill Out in 5 Minutes or Less',
             content: "You're on a beautiful, tropical beach, with yellow dunes and crystal-clear blue waters. " +
               "You can feel the sand in your toes and the wind in your hair … not doing it for you? Not surprising. " +
-              "Different things relax different people, and even the calmest among us experience moments of stress " +
-              "from time to time...",
+              "Different things relax different people, and even the calmest among us experience...",
             color: 'grey lighten-2',
             redirect: 'https://www.goodnet.org/articles/11-ways-to-chill-out-in-5-minutes-or-less',
-            org: 'Goodnet.org.'
+            org: 'Goodnet.org.',
           },
           {
             title: 'How to be awesome at self-care',

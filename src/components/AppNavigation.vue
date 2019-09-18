@@ -5,15 +5,19 @@
       prominent
       color="#FFFFFF"
       light
+      dense
       hide-on-scroll
       scroll-threshold="50"
       scroll-target="#scrolling-techniques-3"
     >
-      <v-container fluid fill-height align-end>
+      <v-container fluid fill-height align-end style="padding: 0">
         <v-row justify="center">
           <v-col cols="12" sm="8" md="6" justify-center>
             <v-row justify="center">
-              <v-img max-height="60" contain :src="require('../assets/Logo.jpeg')"></v-img>
+              <v-card  flat style="width: 215px" to="/">
+                <v-img max-height="60" contain
+                       :src="require('../assets/Logo.jpeg')"></v-img>
+              </v-card>
             </v-row>
             <v-divider></v-divider>
           </v-col>

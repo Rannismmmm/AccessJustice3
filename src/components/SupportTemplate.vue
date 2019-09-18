@@ -8,7 +8,7 @@
           align="center"
           justify="center"
           wrap
-          style="padding-top: 250px; padding-bottom: 20px"
+          style="padding-top: 200px; padding-bottom: 20px"
         >
           <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
@@ -37,7 +37,7 @@
         <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
       </v-row>
     </v-container>
-    <v-row v-if="activeCards" justify="space-around" wrap
+    <v-row v-if="activeCards" justify="center" wrap
            class="hidden-sm-and-down"
            style="margin-left: 8vw; margin-right: 8vw">
       <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
@@ -46,31 +46,22 @@
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->
               <!--height="500px">-->
-              <v-sheet :color="card.color" height="60%" width="auto">
+              <v-sheet :color="card.color" height="100%" width="auto">
                 <v-container fill-height fluid>
                   <v-layout column>
                     <v-row xs12 align="center" justify="center">
                         <span
                           class="headline white--text">{{card.title}}</span>
                     </v-row>
+                    <v-row align="center" justify="center" class="ml-0 mr-0">
+                        <v-btn width="120px" rounded outlined color="white"
+                         :to="card.path">
+                        More
+                        </v-btn>
+                    </v-row>
                   </v-layout>
                 </v-container>
               </v-sheet>
-              <!--</v-img>-->
-              <v-card-text>
-                <div>
-                  <h2 class="subtitle-1">{{card.comment}}
-                  </h2>
-                </div>
-              </v-card-text>
-              <v-row align="end" class="ml-0 mr-0">
-                <v-card-actions style="width: 100%">
-                  <v-btn block outlined color="primary"
-                         :to="card.path">
-                    More
-                  </v-btn>
-                </v-card-actions>
-              </v-row>
             </v-layout>
           </v-container>
         </v-card>
@@ -78,37 +69,29 @@
     </v-row>
     <v-row v-if="activeCards" justify="space-around" wrap
            class="hidden-md-and-up">
-      <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
+      <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i"
+              class="pt-3">
         <v-card class="mx-auto" height="350px" width="280px">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->
               <!--height="500px">-->
-              <v-sheet :color="card.color" height="60%" width="auto">
+              <v-sheet :color="card.color" height="100%" width="auto">
                 <v-container fill-height fluid>
                   <v-layout column>
-                    <v-row xs12 align="center" justify="center">
+                    <v-row xs12 align="end" justify="center">
                         <span
                           class="headline white--text">{{card.title}}</span>
+                    </v-row>
+                    <v-row align="center" justify="center" class="ml-0 mr-0">
+                        <v-btn width="120px" rounded outlined color="white"
+                         :to="card.path">
+                        More
+                        </v-btn>
                     </v-row>
                   </v-layout>
                 </v-container>
               </v-sheet>
-              <!--</v-img>-->
-              <v-card-text>
-                <div>
-                  <h2 class="subtitle-1">{{card.comment}}
-                  </h2>
-                </div>
-              </v-card-text>
-              <v-row align="end" class="ml-0 mr-0">
-                <v-card-actions style="width: 100%">
-                  <v-btn block outlined color="primary"
-                         :to="card.path">
-                    More
-                  </v-btn>
-                </v-card-actions>
-              </v-row>
             </v-layout>
           </v-container>
         </v-card>
@@ -131,7 +114,7 @@
                   <v-container style="padding: 0; margin: 0" fluid>
                     <v-layout column>
                       <v-row justify="center">
-                        <v-img max-width="80" contain :src="item.icon"></v-img>
+                        <v-img :max-width="iconHeight" contain :src="item.icon"></v-img>
                       </v-row>
                     </v-layout>
                   </v-container>
@@ -231,6 +214,11 @@
       cardHeight: {
         type: String,
         default: '350px'
+      },
+
+      iconHeight: {
+        type: String,
+        default: '80px'
       }
     }
   }

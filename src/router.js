@@ -124,7 +124,7 @@ export default new Router({
         import(/* webpackChunkName: "about" */ './views/SelfCare.vue')
     },
     {
-      path: '/asresultshigh',
+      path: '/asresultshigh/:level',
       name: 'asresultshigh',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/AsResultsHigh.vue')
