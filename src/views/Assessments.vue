@@ -42,7 +42,7 @@
                   <v-layout column>
                     <v-row justify="center">
                       <v-dialog v-model="questionVisible" scrollable
-                                max-width="1200">
+                                max-width="1000">
                         <template v-slot:activator="{ on }">
                           <v-btn color="white" dark rounded outlined x-large
                                  @click="openQuizs">FIND OUT NOW
@@ -50,7 +50,7 @@
                         </template>
                         <v-card>
                           <v-card-title><span
-                            class="headline">Assessment</span>
+                            class="headline">Self Assessment</span>
                           </v-card-title>
                           <v-divider></v-divider>
                           <v-card v-if="onLoading" height="200px">
@@ -134,9 +134,9 @@
                             </v-stepper-items>
                           </v-stepper>
                           <v-card-actions>
-                            <v-row justify="space-between" class="pl-8 pr-8">
-                              <v-btn text @click="closeQuiz">Cancel</v-btn>
-                              <v-btn :loading="btnLoading"
+                            <v-row justify="center">
+                              <v-btn width="100px" @click="closeQuiz">Cancel</v-btn>
+                              <v-btn width="100px" :loading="btnLoading"
                                      :disabled="subDisable" color="primary"
                                      @click="pushAnswers">
                                 Submit
@@ -220,6 +220,7 @@
         this.questions.forEach(() => {
           this.answers.push(-1)
         })
+        this.subDisable = true
       },
 
       isComplete (i) {
@@ -293,7 +294,7 @@
 
     watch: {
       answers (val) {
-        if (this.firstEmpty === -1)
+        if (!this.answers.includes(-1))
           this.subDisable = false
       }
     }

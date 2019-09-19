@@ -4,7 +4,7 @@
     :paragraph="paragraph"
     :positive-cards="cards"
     :card-height="cardHeight"
-    :icon-height="iconHeight"
+    :icon-width="iconWidth"
   ></support-template>
 </template>
 
@@ -18,8 +18,8 @@
       return {
         mainTitle: 'Articles',
         paragraph: 'These are the articles available for you.',
-        cardHeight: '395px',
-        iconHeight: '80px',
+        cardHeight: '545px',
+        iconWidth: '240px',
         cards: [
           {
             title: '11 Ways to Chill Out in 5 Minutes or Less',
@@ -29,6 +29,7 @@
             color: 'grey lighten-2',
             redirect: 'https://www.goodnet.org/articles/11-ways-to-chill-out-in-5-minutes-or-less',
             org: 'Goodnet.org.',
+            icon: require('../assets/Articles/trees.jpg')
           },
           {
             title: 'How to be awesome at self-care',
@@ -36,16 +37,18 @@
               "It’s not always easy to get into the habit of self-care, so here are a few ideas to get you started.",
             color: 'grey lighten-2',
             redirect: 'https://au.reachout.com/articles/how-to-be-awesome-at-self-care',
-            org: 'ReachOut.com.'
+            org: 'ReachOut.com.',
+            icon: require('../assets/Articles/shelf.jpg')
           },
           {
-            title: 'Living with Anxiety',
+            title: "Living with Anxiety",
             content: "Anxiety can be challenging to live with but there are many effective ways to cope with it. Find the " +
               "combination that works for you. Of all existing psychological and mental maladies, anxiety disorders are " +
               "the most common...",
             color: 'grey lighten-2',
             redirect: 'https://www.psycom.net/living-with-anxiety/',
-            org: 'Psycom.net.'
+            org: 'Psycom.net.',
+            icon: require('../assets/Articles/shore.jpg')
           },
           {
             title: 'Self-help for depression',
@@ -54,7 +57,8 @@
               "of depression, and what to do if you’re still finding it difficult.",
             color: 'grey lighten-2',
             redirect: 'https://au.reachout.com/articles/self-help-for-depression',
-            org: 'ReachOut.com.'
+            org: 'ReachOut.com.',
+            icon: require('../assets/Articles/self_help.jpg')
           },
           {
             title: 'Therapy for Anxiety Disorders',
@@ -63,7 +67,8 @@
               "anxiety problems, therapy is often the most...",
             color: 'grey lighten-2',
             redirect: 'https://www.helpguide.org/articles/anxiety/therapy-for-anxiety-disorders.htm',
-            org: 'HelpGuide.org.'
+            org: 'HelpGuide.org.',
+            icon: require('../assets/Articles/hands.jpg')
           },
           {
             title: 'Depression Treatment',
@@ -72,7 +77,8 @@
               "to, don’t hesitate to seek help...many different treatment options available.",
             color: 'grey lighten-2',
             redirect: 'https://www.helpguide.org/articles/depression/depression-treatment.htm',
-            org: 'HelpGuide.org.'
+            org: 'HelpGuide.org.',
+            icon: require('../assets/Articles/baloons.jpg')
           },
         ]
       }

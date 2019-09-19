@@ -22,23 +22,28 @@
         cards: [
           {
             title: 'VICTORIA LEGAL AID',
-            content: "Find information and get access to free face-to-face legal advice.\n" +
-              "Call for help.",
-            color: 'grey lighten-2'
+            content: "Victoria Legal Aid provides services to help people who is suffering " +
+              "from social and economical disadvantage people. The service mainly targets people " +
+              "in the state of Victoria, Australia and it offers different kinds of information and " +
+              "advices and law. Call ",
+            color: 'grey lighten-2',
+            tele: '1300 792 387'
           },
           {
             title: 'RELATIONSHIPS AUSTRALIA',
-            content: 'Support groups and counselling on relationships, and for abusive and abused partners.' +
-              'To be connected to the nearest Relationships Australia, call 1300 364 277 (for the cost of a local call).',
-            color: 'grey lighten-2'
+            content: 'Relationships Australia provides relationship support services for individuals, ' +
+              'families and communities in Australia which include family violence prevention, family ' +
+              'dispute resolution, counselling services and ... If you need more help, please Call',
+            color: 'grey lighten-2',
+            tele: '1300 364 277'
           }
           ,
           {
             title: '1800RESPECT',
-            content: '24 hour national sexual assault, family and domestic violence counselling line for' +
-              'any Australian who has experienced, or is at risk of, family and domestic violence and/or sexual assault.' +
-              'Call toll-free 1800 737 732.',
-            color: 'grey lighten-2'
+            content: '1800RESPECT provides support services about sexual assault, domestic or family violence ' +
+              'which include information, referral, and counselling. If you need more help, please Call ',
+            color: 'grey lighten-2',
+            tele: '1800737732'
           }
         ]
       }

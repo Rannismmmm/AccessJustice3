@@ -20,7 +20,22 @@
             width="100%"
             tile
           >
-            <v-list style="max-height: 650px" class="overflow-y-auto">
+            <v-card-title class="pa-0">
+              <v-card color="blue-grey lighten-5" width="100%">
+                <v-container fluid class="mt-0 mb-0 pt-0 pb-0">
+                  <v-layout column>
+                    <v-row class="pt-0 mt-0 pl-4">
+                      <h4 class="subtitle-1">Shelters nearby:</h4>
+                    </v-row>
+                    <v-row class="pt-0 mt-0 pl-4">
+                      <h4 class="subtitle-2 font-weight-bold"
+                          style="color: #1976D2">{{location}}</h4>
+                    </v-row>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-card-title>
+            <v-list style="max-height: 597px" class="overflow-y-auto">
               <v-list-item v-if="onLoading">
                 <v-container fluid>
                   <v-layout column>
@@ -67,7 +82,8 @@
             style="height: 650px; width: 100%"
           >
             <!--@load="onMapLoad"-->
-            <div style="width: 285px; padding-left: 10px; padding-top: 10px" position="top-left">
+            <div style="width: 285px; padding-left: 10px; padding-top: 10px"
+                 position="top-left">
               <v-autocomplete
                 :items="postcodes"
                 filled
@@ -81,7 +97,7 @@
               >
                 <template v-slot:item="data">
                   <v-list-item-content
-                    @click="searchResults(data.item.center)">
+                    @click="searchResults(data.item.center, data.item.suburbName, data.item.stateCode)">
                     <!--@keyup.enter.native=""-->
                     <v-list-item-title
                       v-text="data.item.postcode"></v-list-item-title>
@@ -186,7 +202,8 @@
         lastMarker: -1,
         postcodes: [],
         noResult: false,
-        onLoading: false
+        onLoading: false,
+        location: 'Melbourne, VIC'
       }
     },
 
@@ -206,7 +223,9 @@
         this.searchResults([145.0482345, -37.8789473])
       },
 
-      searchResults (querryCenter) {
+      searchResults (querryCenter, suburbName, stateCode) {
+        if (suburbName && stateCode)
+          this.location = suburbName.toString() + ', ' + stateCode.toString()
         this.onLoading = true
         this.shelterMarkers = []
         let tempUrl = this.makeUrlonLocation(this.formatCoords(querryCenter))

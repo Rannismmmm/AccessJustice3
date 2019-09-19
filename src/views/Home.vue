@@ -181,7 +181,8 @@
         style="padding: 0px"
         class="hidden-sm-and-down"
       >
-        <v-card flat style="height: 600px; padding-left: 6vw; padding-right: 6vw">
+        <v-card flat
+                style="height: 600px; padding-left: 6vw; padding-right: 6vw">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
@@ -199,20 +200,18 @@
               >
                 <v-cols cols="8">
                   <v-row justify="center">
-                    <h1 class="title mb-4">You can experience abuse and
-                      violence without being physically hurt. Emotional abuse
-                      does not leave physical scars but it can have a big
-                      impact on a person’s mental health and wellbeing. Someone
-                      experiencing emotional abuse can feel anxious, depressed
-                      and even suicidal.
-                      control in the relationship. Physically abusive
-                      relationships often include aspects of emotional
-                      abuse.</h1>
+                    <h1 class="title mb-4">Emotional abuse can happen without
+                      physical violence. Although it does not hurt you
+                      physically, it can do harm to your mental health and have
+                      a more serious impact. Depression, fear, and anxiety
+                      often come with emotional abuse. There are some common
+                      behaviors you can check as the sign of an emotionally
+                      abusive relationship.</h1>
                   </v-row>
                   <!--<v-row justify="center">-->
-                    <!--<h1 class="title mb-4">-->
-                      <!--Physically abusive relationships often include aspects of-->
-                      <!--emotional abuse.</h1>-->
+                  <!--<h1 class="title mb-4">-->
+                  <!--Physically abusive relationships often include aspects of-->
+                  <!--emotional abuse.</h1>-->
                   <!--</v-row>-->
                 </v-cols>
               </v-row>
@@ -249,20 +248,13 @@
               >
                 <v-cols cols="8">
                   <v-row justify="center">
-                    <h1 class="body-2 mb-4">You can experience
-                      abuse and violence without being physically hurt.
-                      Emotional
-                      abuse does not leave physical scars but it can have a big
-                      impact on a person’s mental health and wellbeing. Someone
-                      experiencing emotional abuse can feel anxious, depressed
-                      and
-                      even suicidal.</h1>
-                  </v-row>
-                  <v-row justify="center">
-                    <h1 class="body-2 mb-4">
-                      control in the relationship. Physically abusive
-                      relationships
-                      often include aspects of emotional abuse</h1>
+                    <h1 class="body-2 mb-4">Emotional abuse can happen without
+                      physical violence. Although it does not hurt you
+                      physically, it can do harm to your mental health and have
+                      a more serious impact. Depression, fear, and anxiety
+                      often come with emotional abuse. There are some common
+                      behaviors you can check as the sign of an emotionally
+                      abusive relationship.</h1>
                   </v-row>
                 </v-cols>
               </v-row>

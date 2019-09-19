@@ -33,7 +33,7 @@
                   <v-flex xs12 sm6 md4 lg4 xl3
                           v-for="(item,i) in legalCards" :key="i">
                     <v-card class="mx-auto mb-6" width="270px"
-                            height="300px">
+                            height="350px">
                       <v-sheet :color="item.color" height="100%"
                                width="auto">
                         <v-container fill-height fluid align-start
@@ -53,7 +53,7 @@
                             </v-col>
                             <v-col cols="12">
                               <h1 class="body-2" style="color: black">
-                                {{item.content}}</h1>
+                                {{item.content}} <a class="body-2 font-italic">{{item.tele}}</a></h1>
                             </v-col>
                           </v-row>
                         </v-container>
@@ -147,23 +147,28 @@
         legalCards: [
           {
             title: 'VICTORIA LEGAL AID',
-            content: 'Find information and get access to free face-to-face legal advice.\n' +
-              'Call 1300 792 387 for help.',
-            color: 'grey lighten-2'
+            content: "Victoria Legal Aid provides services to help people who is suffering " +
+              "from social and economical disadvantage people. The service mainly targets people " +
+              "in the state of Victoria, Australia and it offers different kinds of information and " +
+              "advices and law. Call ",
+            color: 'grey lighten-2',
+            tele: '1300 792 387'
           },
           {
             title: 'RELATIONSHIPS AUSTRALIA',
-            content: 'Support groups and counselling on relationships, and for abusive and abused partners.' +
-              'To be connected to the nearest Relationships Australia, call 1300 364 277 (for the cost of a local call).',
-            color: 'grey lighten-2'
+            content: 'Relationships Australia provides relationship support services for individuals, ' +
+              'families and communities in Australia which include family violence prevention, family ' +
+              'dispute resolution, counselling services and ... If you need more help, please Call',
+            color: 'grey lighten-2',
+            tele: '1300 364 277'
           }
           ,
           {
             title: '1800RESPECT',
-            content: '24 hour national sexual assault, family and domestic violence counselling line for' +
-              'any Australian who has experienced, or is at risk of, family and domestic violence and/or sexual assault.' +
-              'Call toll-free 1800 737 732.',
-            color: 'grey lighten-2'
+            content: '1800RESPECT provides support services about sexual assault, domestic or family violence ' +
+              'which include information, referral, and counselling. If you need more help, please Call ',
+            color: 'grey lighten-2',
+            tele: '1800737732'
           }
         ],
         counselCards: [
@@ -189,8 +194,8 @@
           }
           ,
           {
-            title: 'PSYCH CENTRAL',
-            content: 'eheadspace provides free online and telephone support and counselling to young people ' +
+            title: 'HEADSPACE',
+            content: 'Headspace provides free online and telephone support and counselling to young people ' +
               '12 - 25 and their families and friends. If you’re based in Australia and going through a tough time, ' +
               'eheadspace can help. You can talk 1-on-1 with an eheadspace clinician via an online chat, ' +
               'email or over the phone. You can also join group chats which cover a variety of helpful topics and are a ' +

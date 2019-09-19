@@ -42,8 +42,8 @@
           }
           ,
           {
-            title: 'PSYCH CENTRAL',
-            content: 'eheadspace provides free online and telephone support and counselling to young people ' +
+            title: 'HEADSPACE',
+            content: 'Headspace provides free online and telephone support and counselling to young people ' +
               '12 - 25 and their families and friends. If you’re based in Australia and going through a tough time, ' +
               'eheadspace can help. You can talk 1-on-1 with an eheadspace clinician via an online chat, ' +
               'email or over the phone. You can also join group chats which cover a variety of helpful topics and are a ' +

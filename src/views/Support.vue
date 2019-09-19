@@ -29,7 +29,7 @@
             path: '/sheltermap'
           },
           {
-            title: 'Support & Counceling',
+            title: 'Support & Counselling',
             comment: 'Support and counceling services',
             color: 'teal darken-3',
             path: '/supportcounseling'

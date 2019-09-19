@@ -29,7 +29,7 @@
     <!--<v-row>-->
     <!--<abuse-slides></abuse-slides>-->
     <!--</v-row>-->
-    <v-row justify="center">
+    <v-row justify="center" class="pb-12">
       <v-flex justify="center" v-for="(line,i) in lines" :key="i">
         <abuse-line
           :title="line.title"
@@ -67,7 +67,7 @@
             content: 'Emotional abuse is mainly due to:',
             points: [
               'Gender Inequality',
-              'Substance abuse or alcohol',
+              'Substance or alcohol abuse',
               'Unemployment',
               'Mentally-ill partner',
             ],

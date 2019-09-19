@@ -7,7 +7,7 @@
       class="hidden-sm-and-down"
       style="padding-left: 12vw; padding-right: 12vw"
     >
-        <v-card flat style="height: 400px; width: 26vw">
+        <v-card flat style="height: 410px; width: 26vw">
           <v-container fluid fill-height>
             <v-layout column>
               <v-row
