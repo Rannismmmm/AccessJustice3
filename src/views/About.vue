@@ -4,7 +4,7 @@
                 :src="require('../assets/darkBackground.jpg')">
       <v-container fluid>
         <v-flex row align-center justify-center>
-          <h1>This is our about page</h1>
+          <map-box></map-box>
         </v-flex>
       </v-container>
     </v-parallax>
@@ -18,3 +18,9 @@
     </v-parallax>
   </v-container>
 </template>
+<script>
+  import MapBox from './MapBox'
+  export default {
+    components: {MapBox}
+  }
+</script>

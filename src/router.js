@@ -85,6 +85,18 @@ export default new Router({
       name: "about",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue")
+    },
+    {
+      path: "/hh",
+      name: "hh",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/HomeHero.vue")
+    },
+    {
+      path: "/googlemap",
+      name: "googlemap",
+      component: () =>
+        import(/* webpackChunkName: "about" */ "./views/GoogleMap.vue")
     }
   ]
 });

@@ -1,21 +1,21 @@
 <template>
   <span>
     <!--<v-navigation-drawer width="200px" app v-model="drawer"-->
-                         <!--class="blue-grey darken-3 hidden-md-and-up"-->
-                         <!--disable-resize-watcher dark>-->
+    <!--class="blue-grey darken-3 hidden-md-and-up"-->
+    <!--disable-resize-watcher dark>-->
     <!--<v-list>-->
     <!--<template>-->
-      <!--<v-list-item-group>-->
-        <!--<v-list-item-->
-              <!--v-for="(item, i) in items"-->
-              <!--:key="i"-->
-            <!--&gt;-->
-              <!--<v-list-item-content>-->
-                <!--<v-list-item-title @click="redirct(item.path)" v-text="item.title"></v-list-item-title>-->
-              <!--</v-list-item-content>-->
-            <!--</v-list-item>-->
-      <!--<v-divider :key="`divider-${index}`"></v-divider>-->
-        <!--</v-list-item-group>-->
+    <!--<v-list-item-group>-->
+    <!--<v-list-item-->
+    <!--v-for="(item, i) in items"-->
+    <!--:key="i"-->
+    <!--&gt;-->
+    <!--<v-list-item-content>-->
+    <!--<v-list-item-title @click="redirct(item.path)" v-text="item.title"></v-list-item-title>-->
+    <!--</v-list-item-content>-->
+    <!--</v-list-item>-->
+    <!--<v-divider :key="`divider-${index}`"></v-divider>-->
+    <!--</v-list-item-group>-->
     <!--</template>-->
     <!--</v-list>-->
     <!--</v-navigation-drawer>-->
@@ -42,24 +42,26 @@
       scroll-target="#scrolling-techniques-8"
     >
       <v-btn icon @click="redirct('/')" class="hidden-sm-and-down">
-        <v-icon large >home</v-icon>
+        <v-icon large>home</v-icon>
       </v-btn>
       <v-btn icon @click="redirct('/')" class="hidden-md-and-up">
-        <v-icon >home</v-icon>
+        <v-icon>home</v-icon>
       </v-btn>
 
       <v-spacer></v-spacer>
-      <v-img :src="require('../assets/logo.png')"  class="hidden-sm-and-down" max-height="90"
+      <v-img :src="require('../assets/logo.png')" class="hidden-sm-and-down"
+             max-height="90"
              max-width="300"></v-img>
-      <v-img :src="require('../assets/logo.png')"  class="hidden-md-and-up" max-height="90"
+      <v-img :src="require('../assets/logo.png')" class="hidden-md-and-up"
+             max-height="90"
              max-width="200"></v-img>
       <v-spacer></v-spacer>
 
-      <v-btn icon class="hidden-sm-and-down" @click="redirct('/help')">
-        <v-icon large >help</v-icon>
+      <v-btn icon class="hidden-sm-and-down" @click="sendEmail">
+        <v-icon large>help</v-icon>
       </v-btn>
       <v-btn icon class="hidden-md-and-up" @click="redirct('/help')">
-        <v-icon >help</v-icon>
+        <v-icon>help</v-icon>
       </v-btn>
 
 
@@ -83,25 +85,26 @@
         max-height="auto"
         color="#424242"
       >
-      <v-container style="height: auto;" fluid><v-content transitio="slide-y-transition">
+      <v-container style="height: auto;" fluid><v-content
+        transitio="slide-y-transition">
       <router-view></router-view>
         </v-content></v-container>
     </v-sheet>
   </v-card>
     <!--below is for mobile-->
     <!--<v-toolbar app color="blue-grey darken-3"-->
-               <!--class="hidden-md-and-up"-->
-               <!--dark>-->
-      <!--<v-toolbar-side-icon-->
-        <!--@click="reverseMenu"></v-toolbar-side-icon>-->
-      <!--<v-btn flat-->
-             <!--@click="reverseMenu">Menu</v-btn>-->
-      <!--<v-spacer></v-spacer>-->
-      <!--<v-toolbar-title>{{appTitle}}</v-toolbar-title>-->
-      <!--<v-spacer></v-spacer>-->
-      <!--<v-btn class="ma-2" icon to="/">-->
-        <!--<v-icon light>home</v-icon>-->
-      <!--</v-btn>-->
+    <!--class="hidden-md-and-up"-->
+    <!--dark>-->
+    <!--<v-toolbar-side-icon-->
+    <!--@click="reverseMenu"></v-toolbar-side-icon>-->
+    <!--<v-btn flat-->
+    <!--@click="reverseMenu">Menu</v-btn>-->
+    <!--<v-spacer></v-spacer>-->
+    <!--<v-toolbar-title>{{appTitle}}</v-toolbar-title>-->
+    <!--<v-spacer></v-spacer>-->
+    <!--<v-btn class="ma-2" icon to="/">-->
+    <!--<v-icon light>home</v-icon>-->
+    <!--</v-btn>-->
     <!--</v-toolbar>-->
   </span>
 </template>
@@ -118,23 +121,10 @@
         drawer: false,
         location: 'home',
         items: [
-          // {
-          //   title: 'ChartKick',
-          //   path: '/management'
-          // },
           {
             title: 'Home',
             path: '/'
           },
-          // {
-          //   title: 'MapBox',
-          //   path: '/maps'
-          // }
-          // ,
-          // {
-          //   title: 'Main',
-          //   path: '/maintemp'
-          // },
           {
             title: 'Quizs',
             path: '/assessments'
@@ -146,7 +136,7 @@
           {
             title: 'About us',
             path: '/About'
-          }
+          },
         ]
       }
     },
@@ -157,6 +147,19 @@
 
       redirct (path) {
         this.$router.push(path)
+      },
+
+      sendEmail () {
+        const sgMail = require('@sendgrid/mail')
+        sgMail.setApiKey('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')
+        const msg = {
+          to: '642643368@qq.com',
+          from: 'Justicly@5120.com',
+          subject: 'Sending with Twilio SendGrid is Fun',
+          text: 'and easy to do anywhere, even with Node.js',
+          html: '<strong>and easy to do anywhere, even with Node.js</strong>'
+        }
+        sgMail.send(msg)
       }
     }
   }
