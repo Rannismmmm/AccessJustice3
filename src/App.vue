@@ -10,8 +10,9 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6" md="4">
-                <v-text-field label="Password*" type="password"
-                              required v-model="pin"></v-text-field>
+                <v-text-field label="Password" type="password"
+                              required :error="wrongPin" :error-messages="errorMassage" clearable
+                              v-model="pin"></v-text-field>
               </v-col>
             </v-row>
           </v-container>
@@ -39,16 +40,28 @@
         //
         show: true,
         verified: false,
-        pin: ''
+        pin: '',
+        wrongPin: false,
+        errorMassage: ''
       }
     },
 
     methods: {
-      verify (input){
-        if (input == 'letmein!'){
+      verify (input) {
+        if (input == 'letmein!') {
           this.verified = true
           this.show = false
+        } else {
+          this.wrongPin = true
+          this.errorMassage = 'wrong password!'
         }
+      }
+    },
+
+    watch: {
+      pin(val) {
+        this.wrongPin = false
+        this.errorMassage = ''
       }
     }
   }
