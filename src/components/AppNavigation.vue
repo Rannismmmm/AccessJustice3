@@ -6,44 +6,92 @@
       color="#FFFFFF"
       light
       dense
+      class="hidden-sm-and-down"
       hide-on-scroll
       scroll-threshold="50"
       scroll-target="#scrolling-techniques-3"
     >
       <v-container fluid fill-height align-end style="padding: 0">
-        <v-row justify="center">
-          <v-col cols="12" sm="8" md="6" justify-center>
-            <v-row justify="center">
-              <v-card  flat style="width: 215px" to="/">
-                <v-img max-height="60" contain
-                       :src="require('../assets/Logo.jpeg')"></v-img>
-              </v-card>
-            </v-row>
-            <v-divider></v-divider>
-          </v-col>
-        </v-row>
+        <v-col cols="12" sm="8" md="6" justify-start>
+          <v-row justify="start">
+            <v-card flat style="width: 215px" to="/">
+              <v-img max-height="60" contain
+                     :src="require('../assets/Logo.jpeg')"></v-img>
+            </v-card>
+          </v-row>
+          <v-divider></v-divider>
+        </v-col>
+      </v-container>
+      <template v-slot:extension>
+        <v-container fluid fill-height>
+          <v-row no-gutters>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-breadcrumbs :items="breads" large>
+                <template v-slot:item="props">
+                  <v-breadcrumbs-item
+                    :disabled="props.item.disabled"
+                    :to="props.item.to"
+                    @click="backDirect(props.item)"
+                  >
+                    {{ props.item.text }}
+                  </v-breadcrumbs-item>
+                </template>
+              </v-breadcrumbs>
+            </v-col>
+            <v-col
+              cols="12"
+              sm="6"
+            >
+              <v-tabs
+                background-color="transparent"
+                right
+                optional
+                grow
+                mobile-break-point
+              >
+                <v-tab v-for="(item,index) in items"
+                       :key="index"
+                       @click="redirct(item)">
+                  {{item.title}}
+                </v-tab>
+              </v-tabs>
+            </v-col>
+          </v-row>
+        </v-container>
+      </template>
+    </v-app-bar>
+    <v-app-bar
+      absolute="false"
+      prominent
+      color="#FFFFFF"
+      light
+      class="hidden-md-and-up"
+      dense
+      hide-on-scroll
+      scroll-threshold="50"
+      scroll-target="#scrolling-techniques-3"
+    >
+      <v-container fluid fill-height align-end style="padding: 0">
+        <v-col cols="12" sm="8" md="6" justify-center>
+          <v-row justify="center">
+            <v-card flat style="width: 215px" to="/">
+              <v-img max-height="60" contain
+                     :src="require('../assets/Logo.jpeg')"></v-img>
+            </v-card>
+          </v-row>
+          <v-divider></v-divider>
+        </v-col>
       </v-container>
       <template v-slot:extension>
         <v-container fluid fill-height>
           <v-tabs
             background-color="transparent"
-            centered
-            mobile-break-point
-            optional
-            class="hidden-sm-and-down"
-          >
-            <v-tab v-for="(item,index) in items"
-                   :key="index"
-                   @click="redirct(item.path)">
-              {{item.title}}
-            </v-tab>
-          </v-tabs>
-          <v-tabs
-            background-color="transparent"
             grow
             optional
             hide-slider
-            class="hidden-md-and-up"
           >
             <v-tab style="margin: 0" v-for="(item,index) in items"
                    :key="index"
@@ -119,8 +167,23 @@
       //   })
       // },
 
-      redirct (path) {
-        this.$router.push(path)
+      redirct (item) {
+        this.$router.push(item.path)
+        this.$store.commit('switchView', {
+          text: item.title,
+          disabled: true,
+          to: item.path
+        })
+      },
+
+      backDirect(item) {
+        this.$store.commit('spliceRests', item)
+      }
+    },
+
+    computed: {
+      breads () {
+        return this.$store.state.breads
       }
     }
   }

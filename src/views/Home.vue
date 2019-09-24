@@ -220,7 +220,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined large @click="redirct('/abuse')">
+                <v-btn rounded outlined large @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">
                   READ MORE
                 </v-btn>
               </v-row>
@@ -263,7 +263,7 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined @click="redirct('/abuse')">READ
+                <v-btn rounded outlined @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">READ
                   MORE
                 </v-btn>
               </v-row>
@@ -306,7 +306,7 @@
               wrap
             >
               <v-btn class="hidden-sm-and-down" dark rounded outlined large
-                     @click="redirct('/assessments/true')">FIND OUT NOW
+                     @click="redirct({text: 'Self-Assessment', disabled: true, to: '/assessments/true'})">FIND OUT NOW
               </v-btn>
               <v-btn class="hidden-md-and-up" dark rounded outlined
                      @click="redirct('/assessments/true')">FIND OUT NOW
@@ -336,8 +336,9 @@
     },
 
     methods: {
-      redirct (path) {
-        this.$router.push(path)
+      redirct (item) {
+        this.$router.push(item.to)
+        this.$store.commit('switchView', item)
       }
     }
   }

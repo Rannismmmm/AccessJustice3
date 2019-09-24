@@ -55,7 +55,7 @@
                     </v-row>
                     <v-row align="center" justify="center" class="ml-0 mr-0">
                         <v-btn width="120px" rounded outlined color="white"
-                               :to="card.path">
+                               @click="redirct(card)">
                         More
                         </v-btn>
                     </v-row>
@@ -235,6 +235,17 @@
         type: String,
         default: '80px'
       }
+    },
+
+    methods: {
+      redirct (card) {
+        this.$router.push(card.path)
+        this.$store.commit('addView', {
+          text: card.title,
+          disabled: false,
+          to: card.path
+        })
+      },
     }
   }
 </script>

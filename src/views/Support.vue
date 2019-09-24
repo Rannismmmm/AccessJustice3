@@ -43,6 +43,9 @@
           }
         ]
       }
+    },
+
+    methods: {
     }
   }
 </script>

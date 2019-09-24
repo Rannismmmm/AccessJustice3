@@ -261,6 +261,11 @@
 
       redirct (path) {
         this.$router.push(path)
+        this.$store.commit('addView', {
+          text: 'Results',
+          disabled: true,
+          to: ''
+        })
       },
 
 
