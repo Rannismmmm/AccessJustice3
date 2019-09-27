@@ -220,7 +220,8 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined large @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">
+                <v-btn rounded outlined large
+                       @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">
                   READ MORE
                 </v-btn>
               </v-row>
@@ -263,7 +264,9 @@
                 justify="center"
                 wrap
               >
-                <v-btn rounded outlined @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">READ
+                <v-btn rounded outlined
+                       @click="redirct({text: 'About Abuse', disabled: true, to: '/abuse'})">
+                  READ
                   MORE
                 </v-btn>
               </v-row>
@@ -295,7 +298,7 @@
               align="end"
               justify="center"
               wrap
-              class="pb-8 pl-12 pr-12 hidden-lg-and-up"
+              class="pb-8 pl-12 pr-12 hidden-md-and-up"
             >
               <h1 class="subtitle-1 font-weight-thick mb-4">ARE YOU IN AN
                 EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
@@ -306,15 +309,63 @@
               wrap
             >
               <v-btn class="hidden-sm-and-down" dark rounded outlined large
-                     @click="redirct({text: 'Self-Assessment', disabled: true, to: '/assessments/true'})">FIND OUT NOW
+                     @click="redirct({text: 'Self-Assessment', disabled: true, to: '/assessments/true'})">
+                FIND OUT NOW
               </v-btn>
               <v-btn class="hidden-md-and-up" dark rounded outlined
-                     @click="redirct('/assessments/true')">FIND OUT NOW
+                     @click="redirct({text: 'Self-Assessment', disabled: true, to: '/assessments/true'})">
+                FIND OUT NOW
               </v-btn>
             </v-row>
           </v-layout>
         </v-container>
       </v-img>
+    </v-row>
+    <v-row wrap class="pl-12 pr-12">
+      <v-container fluid>
+        <v-layout column>
+          <v-row
+            align="center"
+            justify="center"
+            wrap
+            class="pt-12 pb-12"
+          >
+            <h4 class="display-1 mb-4" style="color: #1976D2">
+              How It Works</h4>
+          </v-row>
+          <v-row
+            align="center"
+            justify="space-between"
+            wrap>
+            <v-flex xs6 sm4 md2 lg2 xl2 v-for="(card,i) in cards" :key="i">
+              <v-card class="mx-auto mb-6" flat height="320px">
+                <v-container fluid fill-height class="pa-0 ma-0">
+                  <v-layout column>
+                    <v-row xs12 justify="center" align="start">
+                      <v-img :src="card.icon" max-height="110px"
+                             contain></v-img>
+                    </v-row>
+                    <v-row xs12 justify="center" align="start">
+                      <span class="title"
+                            style="color: #1976D2">{{card.title}}</span>
+                    </v-row>
+                    <v-row xs12 justify="center" class="text-center">
+                      <span class="subtitle-1">{{card.content}}</span>
+                    </v-row>
+                    <v-row xs12 justify="center" align="end">
+                      <v-btn rounded color="primary"
+                             @click="redirct(card.item)">
+                        READ
+                        MORE
+                      </v-btn>
+                    </v-row>
+                  </v-layout>
+                </v-container>
+              </v-card>
+            </v-flex>
+          </v-row>
+        </v-layout>
+      </v-container>
     </v-row>
   </v-container>
 </template>
@@ -327,13 +378,67 @@
     components: {MainSlides},
     data () {
       return {
-        sheet: false
+        sheet: false,
+
+        cards: [
+          {
+            icon: require('../assets/home/question.png'),
+            title: 'About Abuse',
+            content: 'What is emotional abuse? Understand emotional abuse',
+            item: {
+              text: 'About Abuse',
+              disabled: false,
+              to: '/abuse'
+            }
+          },
+          {
+            icon: require('../assets/home/question.png'),
+            title: 'Self-Assessment',
+            content: 'Find out, are you in an emotionally abusive relationship?',
+            item: {
+              text: 'Self-Assessment',
+              disabled: false,
+              to: '/assessments/true'
+            }
+          },
+          {
+            icon: require('../assets/home/question.png'),
+            title: 'Find Help',
+            content: 'Check out our range of support services available for free.',
+            item: {
+              text: 'Find Help',
+              disabled: false,
+              to: '/support'
+            }
+          },
+          {
+            icon: require('../assets/home/question.png'),
+            title: 'Safety Plan',
+            content: 'Create a safety plan to prepare yourself for emergency situations.',
+            item: {
+              text: 'Safety Plan',
+              disabled: false,
+              to: '/'
+            }
+          },
+          {
+            icon: require('../assets/home/question.png'),
+            title: 'Care Shelters',
+            content: 'Need a place to stay? Search the nearest care shelters.',
+            item: {
+              text: 'Care Shelters',
+              disabled: false,
+              to: '/sheltermap'
+            }
+          }
+        ]
       }
     },
 
     mounted () {
       this.sheet = true
-    },
+    }
+    ,
 
     methods: {
       redirct (item) {

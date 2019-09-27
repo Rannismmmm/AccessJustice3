@@ -18,7 +18,7 @@ export default new Vuex.Store({
   state: {
     breads: [
       {
-        text: 'Justicely',
+        text: 'Home',
         disabled: true,
         to: '/'
       }
@@ -29,7 +29,7 @@ export default new Vuex.Store({
       if (redirectionItem.to == '/') {
         state.breads = [
           {
-            text: 'Justicely',
+            text: 'Home',
             disabled: true,
             to: '/'
           }
@@ -37,7 +37,7 @@ export default new Vuex.Store({
       } else {
         state.breads = [
           {
-            text: 'Justicely',
+            text: 'Home',
             disabled: false,
             to: '/'
           }
