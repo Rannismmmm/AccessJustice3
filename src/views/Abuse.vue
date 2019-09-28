@@ -1,54 +1,22 @@
 <template>
-  <v-container fluid>
-    <v-container fluid style="padding: 0px"
-                 class="hidden-sm-and-down">
-      <v-layout column>
-        <v-row
-          align="center"
-          justify="center"
-          wrap
-          style="padding-top: 200px; padding-bottom: 20px"
-          class="hidden-sm-and-down text--primary"
-        >
-          <h4 class="display-1 mb-4" style="color: #1976D2">UNDERSTAND
-            EMOTIONAL ABUSE</h4>
-        </v-row>
-      </v-layout>
-    </v-container>
-    <v-container fluid class="hidden-md-and-up">
-      <v-row
-        align="end"
-        justify="center"
-        wrap
-        style="padding-top: 200px;"
-        class="pl-3"
-      >
-        <h4 style="color: #1976D2" class="headline mb-4">UNDERSTAND EMOTIONAL ABUSE</h4>
-      </v-row>
-    </v-container>
-    <!--<v-row>-->
-    <!--<abuse-slides></abuse-slides>-->
-    <!--</v-row>-->
-    <v-row justify="center" class="pb-12">
-      <v-flex justify="center" v-for="(line,i) in lines" :key="i">
-        <abuse-line
-          :title="line.title"
-          :content="line.content"
-          :img="line.img"
-          :points="line.points"
-        ></abuse-line>
-      </v-flex>
-    </v-row>
+  <v-container fluid fill-height>
+    <v-layout column style="padding-left: 20vw; padding-right: 20vw" class="hidden-sm-and-down">
+      <abuse-content></abuse-content>
+    </v-layout>
+    <v-layout column style="padding-left: 8vw; padding-right: 8vw" class="hidden-md-and-up">
+      <abuse-content></abuse-content>
+    </v-layout>
   </v-container>
 </template>
 
 <script>
   import AbuseLine from '../components/AbuseLine'
   import AbuseSlides from '../components/AbuseSlides'
+  import AbuseContent from '../components/AbuseContent'
 
   export default {
     name: 'Abuse',
-    components: {AbuseSlides, AbuseLine},
+    components: {AbuseContent, AbuseSlides, AbuseLine},
 
     data () {
       return {
@@ -69,7 +37,7 @@
               'Gender Inequality',
               'Substance or alcohol abuse',
               'Unemployment',
-              'Mentally-ill partner',
+              'Mentally-ill partner'
             ],
             img: require('../assets/abuse/abuseSecond.png')
           },

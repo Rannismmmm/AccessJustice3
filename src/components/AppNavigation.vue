@@ -110,7 +110,7 @@
     >
       <v-container fluid fill-height>
         <v-layout column style="height: 100%">
-          <v-row>
+          <v-row align="start">
             <v-content>
               <v-container style="height: max-content; padding: 0px" fluid
                            light>
@@ -122,11 +122,13 @@
           </v-row>
           <v-row class="pt-6" align="end">
             <v-footer
-              padless
+              width="100vw"
+              class="pa-0"
             >
               <v-card
                 flat
                 tile
+                width="100%"
                 color="primary"
                 class="primary white--text"
               >

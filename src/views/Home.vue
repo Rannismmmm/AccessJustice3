@@ -106,35 +106,6 @@
           <v-img :src="require('../assets/home/homeRose.jpeg')"
                  style="height: 500px;"
                  class="white--text">
-            <!--<v-container fluid fill-height>-->
-            <!--<v-layout column>-->
-            <!--<v-row-->
-            <!--align="end"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="headline font-weight-thick mb-4">1 in 8 woman in-->
-            <!--Australia face Emotional Abuse</h1>-->
-            <!--</v-row>-->
-            <!--<v-row-->
-            <!--align="center"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="headline font-weight-thick mb-4">Woman between-->
-            <!--18-24 suffer the most from it</h1>-->
-            <!--</v-row>-->
-            <!--<v-row-->
-            <!--align="start"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="headline font-weight-thick mb-4">Melbourne ranks-->
-            <!--1st-->
-            <!--in Emotional Abuse in Australia</h1>-->
-            <!--</v-row>-->
-            <!--</v-layout>-->
-            <!--</v-container>-->
           </v-img>
         </v-card>
       </v-col>
@@ -143,35 +114,6 @@
           <v-img :src="require('../assets/home/homeRose.jpeg')"
                  style="height: 400px;"
                  class="white--text">
-            <!--<v-container fluid fill-height class="pa-12">-->
-            <!--<v-layout column>-->
-            <!--<v-row-->
-            <!--align="end"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="subtitle-1 font-weight-thick mb-4">1 in 8 woman in-->
-            <!--Australia face Emotional Abuse</h1>-->
-            <!--</v-row>-->
-            <!--<v-row-->
-            <!--align="center"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="subtitle-1 font-weight-thick mb-4">Woman between-->
-            <!--18-24 suffer the most from it</h1>-->
-            <!--</v-row>-->
-            <!--<v-row-->
-            <!--align="start"-->
-            <!--justify="center"-->
-            <!--wrap-->
-            <!--&gt;-->
-            <!--<h1 class="subtitle-1 font-weight-thick mb-4">Melbourne ranks-->
-            <!--1st-->
-            <!--in Emotional Abuse in Australia</h1>-->
-            <!--</v-row>-->
-            <!--</v-layout>-->
-            <!--</v-container>-->
           </v-img>
         </v-card>
       </v-row>
