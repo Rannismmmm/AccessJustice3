@@ -92,6 +92,7 @@
             grow
             optional
             hide-slider
+            center-active
           >
             <v-tab style="margin: 0" v-for="(item,index) in items"
                    :key="index"
@@ -117,13 +118,9 @@
                 <v-fade-transition mode="out-in">
                   <router-view></router-view>
                 </v-fade-transition>
-              </v-container>
-            </v-content>
-          </v-row>
-          <v-row class="pt-6" align="end">
-            <v-footer
+                <v-footer
               width="100vw"
-              class="pa-0"
+              class="pa-0 mt-3"
             >
               <v-card
                 flat
@@ -167,7 +164,7 @@
                 <v-card-text class="white--text">
                   <v-row wrap justify="space-between"
                          style="margin-left: 8vw; margin-right: 8vw">
-                    <v-card xs12 sm6 md4 lg3 xl3 flat class="white--text">
+                    <v-flex xs12 sm6 md4 lg4 xl4 flat class="white--text">
                       <v-container fluid fill-height class="pa-0 ma-0">
                         <v-layout column>
                           <router-link to="/support"
@@ -213,38 +210,35 @@
                           </router-link>
                         </v-layout>
                       </v-container>
-                    </v-card>
-                    <v-card xs12 sm6 md4 lg3 xl3 flat color="primary"
+                    </v-flex>
+                    <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary"
                             class="white--text">
                       <v-container fluid fill-height class="pa-0 ma-0">
                         <v-layout column justify="center">
                           <v-row wrap align="end">
                             <h1 class="title font-weight-medium">
-                              (c) 2019 Justicely | All Rights Reserved
+                              © 2019 Justicely | All Rights Reserved
                             </h1>
                           </v-row>
                         </v-layout>
                       </v-container>
-                    </v-card>
-                    <v-card xs12 sm6 md4 lg3 xl3 flat class="white--text">
+                    </v-flex>
+                    <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary">
                       <v-container fluid fill-height class="pa-0 ma-0">
                         <v-layout column>
-                          <router-link to="/support"
-                                       @click.native="redirct(items[3])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Find
-                              Help
-                            </h1>
-                          </router-link>
+                          <v-row align="end" justify="center">
+                            <v-img class="mr-2" max-width="80px" contain :src="require('../assets/footer/flag1.jpeg')"></v-img>
+                            <v-img class="ml-2" max-width="80px" contain :src="require('../assets/footer/flag2.jpeg')"></v-img>
+                          </v-row>
                         </v-layout>
                       </v-container>
-                    </v-card>
+                    </v-flex>
                   </v-row>
                 </v-card-text>
               </v-card>
             </v-footer>
+              </v-container>
+            </v-content>
           </v-row>
         </v-layout>
       </v-container>
