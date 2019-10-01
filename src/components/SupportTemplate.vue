@@ -1,5 +1,5 @@
 <template>
-  <span style="height: 100vh;">
+  <span style="width: 100vw">
     <v-container fluid
                  class="hidden-sm-and-down">
       <v-layout column>

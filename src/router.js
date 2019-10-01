@@ -152,6 +152,18 @@ export default new Router({
       name: 'asresultslow',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/AsResultsLow.vue')
+    },
+    {
+      path: '/safetyplan',
+      name: 'safetyplan',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/SafetyPlan.vue')
+    },
+    {
+      path: '/safetyform',
+      name: 'safetyform',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/SafetyForm.vue')
     }
   ]
 })

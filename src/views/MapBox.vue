@@ -203,7 +203,8 @@
         postcodes: [],
         noResult: false,
         onLoading: false,
-        location: 'Melbourne, VIC'
+        location: 'Melbourne, VIC',
+        res: []
       }
     },
 
@@ -235,7 +236,22 @@
               this.noResult = true
             } else {
               resp.data.results.forEach((item) => {
+                let phone = null
+                let web = null
+                let email = null
                 if (item.position) {
+                  if (item.href){
+                    axios.get(item.href)
+                      .then(resp => {
+                        // if (resp.contacts.phone.length > 0)
+                        //   phone = resp.contacts.phone[0].value
+                        // if (resp.contacts.email.length > 0)
+                        //   email = resp.contacts.email[0].value
+                        // if (resp.contacts.website.length > 0)
+                        //   web = resp.contacts.website[0].value
+                        this.res.push(resp)
+                      })
+                  }
                   this.shelterMarkers.push(
                     {
                       coords: this.formatCoords(item.position),

@@ -109,134 +109,154 @@
       height="100vh"
       light
     >
-      <v-container fluid fill-height>
+      <v-container fluid fill-height class="pa-0 ma-0">
         <v-layout column style="height: 100%">
-          <v-row align="start">
+          <v-row >
             <v-content>
-              <v-container style="height: max-content; padding: 0px" fluid
-                           light>
-                <v-fade-transition mode="out-in">
-                  <router-view></router-view>
-                </v-fade-transition>
-                <v-footer
-              width="100vw"
-              class="pa-0 mt-3"
-            >
-              <v-card
-                flat
-                tile
-                width="100%"
-                color="primary"
-                class="primary white--text"
-              >
-                <v-card-text
-                  class="pt-0 white--text">
-                  <v-container fluid>
-                    <v-layout column
-                              style="margin-left: 8vw; margin-right: 8vw">
-                      <v-row wrap justify="start">
-                        <h1 class="subtitle-1 font-weight-medium">
-                          AJust acknowledges the Traditional Owners of the land
-                          on
-                          which the webiste target audience resides, the
-                          Wurundjeri
-                          People. We pay respects to their Elders, past and
-                          present,
-                          and the Aboriginal Elders of other communities who
-                          may
-                          be
-                          visiting this webssite today.
-                        </h1>
-                      </v-row>
-                      <v-row wrap justify="start">
-                        <h1 class="subtitle-1 font-weight-medium">
-                          Justicely aims to identify and provide support to the
-                          young
-                          women of Melbourne facing emotional abuse by their
-                          partners.
-                        </h1>
-                      </v-row>
-                    </v-layout>
-                  </v-container>
-                </v-card-text>
-                <v-divider></v-divider>
-
-                <v-card-text class="white--text">
-                  <v-row wrap justify="space-between"
-                         style="margin-left: 8vw; margin-right: 8vw">
-                    <v-flex xs12 sm6 md4 lg4 xl4 flat class="white--text">
-                      <v-container fluid fill-height class="pa-0 ma-0">
-                        <v-layout column>
-                          <router-link to="/support"
-                                       @click.native="redirct(items[3])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Find
-                              Help
-                            </h1>
-                          </router-link>
-                          <router-link to="/legalsupport"
-                                       @click.native="redirct(footerItems[0])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Legal Support
-                            </h1>
-                          </router-link>
-                          <router-link to="/sheltermap"
-                                       @click.native="redirct(footerItems[1])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Care Shelters
-                            </h1>
-                          </router-link>
-                          <router-link to="/supportcounseling"
-                                       @click.native="redirct(footerItems[2])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Support & Counselling
-                            </h1>
-                          </router-link>
-                          <router-link to="/selfcare"
-                                       @click.native="redirct(footerItems[3])"
-                                       class="white--text"
-                                       style="background-color: #1976D2;">
-                            <h1 class="title font-weight-medium">
-                              Self-Care
-                            </h1>
-                          </router-link>
-                        </v-layout>
-                      </v-container>
-                    </v-flex>
-                    <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary"
-                            class="white--text">
-                      <v-container fluid fill-height class="pa-0 ma-0">
-                        <v-layout column justify="center">
-                          <v-row wrap align="end">
-                            <h1 class="title font-weight-medium">
-                              © 2019 Justicely | All Rights Reserved
-                            </h1>
-                          </v-row>
-                        </v-layout>
-                      </v-container>
-                    </v-flex>
-                    <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary">
-                      <v-container fluid fill-height class="pa-0 ma-0">
-                        <v-layout column>
-                          <v-row align="end" justify="center">
-                            <v-img class="mr-2" max-width="80px" contain :src="require('../assets/footer/flag1.jpeg')"></v-img>
-                            <v-img class="ml-2" max-width="80px" contain :src="require('../assets/footer/flag2.jpeg')"></v-img>
-                          </v-row>
-                        </v-layout>
-                      </v-container>
-                    </v-flex>
+              <v-container style="padding: 0px" fluid
+                           light fill-height>
+                <v-layout class="pa-0 ma-0" column>
+                  <v-row align="start">
+                    <v-fade-transition mode="out-in">
+                      <router-view></router-view>
+                    </v-fade-transition>
                   </v-row>
-                </v-card-text>
-              </v-card>
-            </v-footer>
+                  <v-row align="end">
+                    <v-footer
+                      width="100%"
+                      class="pa-0 mt-6"
+                    >
+                      <v-card
+                        flat
+                        tile
+                        width="100%"
+                        color="primary"
+                        class="primary white--text"
+                      >
+                        <v-card-text
+                          class="pt-0 white--text">
+                          <v-container fluid>
+                            <v-layout column
+                                      style="margin-left: 8vw; margin-right: 8vw">
+                              <v-row wrap justify="start">
+                                <h1
+                                  class="subtitle-1 font-weight-medium pb-4 pt-8">
+                                  AJust acknowledges the Traditional Owners of
+                                  the land
+                                  on
+                                  which the webiste target audience resides,
+                                  the
+                                  Wurundjeri
+                                  People. We pay respects to their Elders, past
+                                  and
+                                  present,
+                                  and the Aboriginal Elders of other
+                                  communities
+                                  who
+                                  may
+                                  be
+                                  visiting this webssite today.
+                                </h1>
+                              </v-row>
+                              <v-row wrap justify="start">
+                                <h1 class="subtitle-1 font-weight-medium">
+                                  Justicely aims to identify and provide
+                                  support
+                                  to the
+                                  young
+                                  women of Melbourne facing emotional abuse by
+                                  their
+                                  partners.
+                                </h1>
+                              </v-row>
+                            </v-layout>
+                          </v-container>
+                        </v-card-text>
+                        <v-divider></v-divider>
+
+                        <v-card-text class="white--text">
+                          <v-row wrap justify="space-between"
+                                 style="margin-left: 8vw; margin-right: 8vw">
+                            <v-flex xs12 sm6 md4 lg4 xl4 flat
+                                    class="white--text">
+                              <v-container fluid fill-height class="pa-0 ma-0">
+                                <v-layout column>
+                                  <router-link to="/support"
+                                               @click.native="redirct(items[3])"
+                                               class="white--text"
+                                               style="background-color: #1976D2;">
+                                    <h1 class="title font-weight-regular">
+                                      Find
+                                      Help
+                                    </h1>
+                                  </router-link>
+                                  <router-link to="/legalsupport"
+                                               @click.native="redirct(footerItems[0])"
+                                               class="white--text"
+                                               style="background-color: #1976D2;">
+                                    <h1 class="title font-weight-regular">
+                                      Legal Support
+                                    </h1>
+                                  </router-link>
+                                  <router-link to="/sheltermap"
+                                               @click.native="redirct(footerItems[1])"
+                                               class="white--text"
+                                               style="background-color: #1976D2;">
+                                    <h1 class="title font-weight-regular">
+                                      Care Shelters
+                                    </h1>
+                                  </router-link>
+                                  <router-link to="/supportcounseling"
+                                               @click.native="redirct(footerItems[2])"
+                                               class="white--text"
+                                               style="background-color: #1976D2;">
+                                    <h1 class="title font-weight-regular">
+                                      Support & Counselling
+                                    </h1>
+                                  </router-link>
+                                  <router-link to="/selfcare"
+                                               @click.native="redirct(footerItems[3])"
+                                               class="white--text"
+                                               style="background-color: #1976D2;">
+                                    <h1 class="title font-weight-regular">
+                                      Self-Care
+                                    </h1>
+                                  </router-link>
+                                </v-layout>
+                              </v-container>
+                            </v-flex>
+                            <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary"
+                                    class="white--text">
+                              <v-container fluid fill-height class="pa-0 ma-0">
+                                <v-layout column justify="center">
+                                  <v-row wrap align="end">
+                                    <h1 class="title font-weight-medium">
+                                      © 2019 Justicely | All Rights Reserved
+                                    </h1>
+                                  </v-row>
+                                </v-layout>
+                              </v-container>
+                            </v-flex>
+                            <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary">
+                              <v-container fluid fill-height class="pa-0 ma-0">
+                                <v-layout column>
+                                  <v-row align="end" justify="center">
+                                    <v-img class="mr-2" max-width="80px"
+                                           contain
+                                           :src="require('../assets/footer/flag1.jpeg')"></v-img>
+                                    <v-img class="ml-2" max-width="80px"
+                                           contain
+                                           :src="require('../assets/footer/flag2.jpeg')"></v-img>
+                                  </v-row>
+                                </v-layout>
+                              </v-container>
+                            </v-flex>
+                          </v-row>
+                        </v-card-text>
+                      </v-card>
+                    </v-footer>
+                  </v-row>
+                </v-layout>
               </v-container>
             </v-content>
           </v-row>
@@ -277,7 +297,7 @@
           },
           {
             title: 'Safety Plan',
-            path: '/'
+            path: '/safetyplan'
           }
         ],
         easing: 'easeInOutCubic',

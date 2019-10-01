@@ -1,11 +1,11 @@
 <template>
   <v-container fluid style="padding: 0px">
     <v-row wrap>
-      <v-parallax
+      <v-img
         :src="require('../assets/home/homeBack.jpeg')"
         align="center"
         justify="center"
-        style="width: 101vw; height: 80vh;"
+        style="width: 100%; height: 80vh;"
         class="hidden-sm-and-down"
       >
         <v-container fluid fill-height style="padding-top: 20vh">
@@ -45,8 +45,8 @@
             </v-row>
           </v-layout>
         </v-container>
-      </v-parallax>
-      <v-parallax
+      </v-img>
+      <v-img
         :src="require('../assets/home/homeBack.jpeg')"
         height="700"
         justify="center"
@@ -92,7 +92,7 @@
             </v-row>
           </v-layout>
         </v-container>
-      </v-parallax>
+      </v-img>
     </v-row>
     <!--<v-row wrap>-->
       <!--<v-col-->
@@ -324,7 +324,7 @@
 
         cards: [
           {
-            icon: require('../assets/home/question.png'),
+            icon: require('../assets/home/icons/question.jpeg'),
             title: 'About Abuse',
             content: 'What is emotional abuse? Understand emotional abuse',
             item: {
@@ -334,7 +334,7 @@
             }
           },
           {
-            icon: require('../assets/home/question.png'),
+            icon: require('../assets/home/icons/doc.jpeg'),
             title: 'Self-Assessment',
             content: 'Find out, are you in an emotionally abusive relationship?',
             item: {
@@ -344,7 +344,7 @@
             }
           },
           {
-            icon: require('../assets/home/question.png'),
+            icon: require('../assets/home/icons/hands.png'),
             title: 'Find Help',
             content: 'Check out our range of support services available for free.',
             item: {
@@ -354,7 +354,7 @@
             }
           },
           {
-            icon: require('../assets/home/question.png'),
+            icon: require('../assets/home/icons/table.jpeg'),
             title: 'Safety Plan',
             content: 'Create a safety plan to prepare yourself for emergency situations.',
             item: {
@@ -364,7 +364,7 @@
             }
           },
           {
-            icon: require('../assets/home/question.png'),
+            icon: require('../assets/home/icons/house.jpeg'),
             title: 'Care Shelters',
             content: 'Need a place to stay? Search the nearest care shelters.',
             item: {
