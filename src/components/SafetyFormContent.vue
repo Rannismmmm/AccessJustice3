@@ -239,7 +239,7 @@
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl2>
                           <v-checkbox v-model="otherDocs"
-                                      color="teal darken-1"
+                                      color="primary"
                                       label="Other Documents"></v-checkbox>
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl10>
@@ -254,7 +254,7 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl2>
-                          <v-checkbox color="teal darken-1"
+                          <v-checkbox color="primary"
                                       label="Children' Documents"
                                       v-model="childrenDocs"></v-checkbox>
                         </v-flex>
@@ -270,7 +270,7 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl2>
-                          <v-checkbox color="teal darken-1"
+                          <v-checkbox color="primary"
                                       label="Medications"
                                       v-model="medications"></v-checkbox>
                         </v-flex>
@@ -286,7 +286,7 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl2>
-                          <v-checkbox color="teal darken-1"
+                          <v-checkbox color="primary"
                                       label="Pets & Things"
                                       v-model="petsthings"></v-checkbox>
                         </v-flex>
