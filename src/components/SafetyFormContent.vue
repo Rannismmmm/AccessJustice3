@@ -67,254 +67,289 @@
           </v-card-text>
         </v-card>
       </v-row>
-      <v-row justify="center" wrap>
-        <v-card flat width="100%">
-          <v-card-title style="background-color: #1976D2" justify="start">
-            <h1 class="title mb-4 hidden-sm-and-down" style="color: white">
-              Contacts</h1>
-            <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: white">
-              Contacts</h1>
-          </v-card-title>
-          <v-card-text>
-            <v-container fluid class="pa-0">
-              <v-layout column>
-                <v-row justify="space-around" wrap class="pt-4 pb-2">
-                  <v-flex xs12 sm6 md6 lg6 xl6 row>
-                    <v-flex xs4 sm4 md3 lg3 xl2>
-                      <v-subheader>1. Name:</v-subheader>
-                    </v-flex>
-                    <v-flex xs8 sm8 md9 lg9 xl10>
-                      <v-text-field
-                        label="Name"
-                        clearable
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                  </v-flex>
-                  <v-flex xs12 sm6 md6 lg6 xl6 row>
-                    <v-flex xs4 sm4 md3 lg3 xl2>
-                      <v-subheader>Phone:</v-subheader>
-                    </v-flex>
-                    <v-flex xs8 sm8 md9 lg9 xl10>
-                      <v-text-field
-                        label="Phone"
-                        clearable
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl1>
-                    <v-subheader>Address:</v-subheader>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl11>
-                    <v-text-field
-                      label="Address"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl1>
-                    <v-subheader>Notes:</v-subheader>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl11>
-                    <v-text-field
-                      label="Notes"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-divider></v-divider>
-                <v-row justify="space-around" wrap class="pt-4 pb-2">
-                  <v-flex xs12 sm6 md6 lg6 xl6 row>
-                    <v-flex xs4 sm4 md3 lg3 xl2>
-                      <v-subheader>2. Name:</v-subheader>
-                    </v-flex>
-                    <v-flex xs8 sm8 md9 lg9 xl10>
-                      <v-text-field
-                        label="Name"
-                        clearable
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                  </v-flex>
-                  <v-flex xs12 sm6 md6 lg6 xl6 row>
-                    <v-flex xs4 sm4 md3 lg3 xl2>
-                      <v-subheader>Phone:</v-subheader>
-                    </v-flex>
-                    <v-flex xs8 sm8 md9 lg9 xl10>
-                      <v-text-field
-                        label="Phone"
-                        clearable
-                        outlined
-                      ></v-text-field>
-                    </v-flex>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl1>
-                    <v-subheader>Address:</v-subheader>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl11>
-                    <v-text-field
-                      label="Address"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl1>
-                    <v-subheader>Notes:</v-subheader>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl11>
-                    <v-text-field
-                      label="Notes"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card-text>
-        </v-card>
+      <v-row v-if="selected == 'fill'">
+        <v-container fluid class="pa-0 ma-0">
+          <v-layout column>
+            <v-row justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    Contacts</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    Contacts</h1>
+                </v-card-title>
+                <v-card-text>
+                  <v-container fluid class="pa-0">
+                    <v-layout column>
+                      <v-row justify="space-around" wrap class="pt-4 pb-2">
+                        <v-flex xs12 sm6 md6 lg6 xl6 row>
+                          <v-flex xs4 sm4 md3 lg3 xl2>
+                            <v-subheader>1. Name:</v-subheader>
+                          </v-flex>
+                          <v-flex xs8 sm8 md9 lg9 xl10>
+                            <v-text-field
+                              label="Name"
+                              clearable
+                              outlined
+                            ></v-text-field>
+                          </v-flex>
+                        </v-flex>
+                        <v-flex xs12 sm6 md6 lg6 xl6 row>
+                          <v-flex xs4 sm4 md3 lg3 xl2>
+                            <v-subheader>Phone:</v-subheader>
+                          </v-flex>
+                          <v-flex xs8 sm8 md9 lg9 xl10>
+                            <v-text-field
+                              label="Phone"
+                              clearable
+                              outlined
+                            ></v-text-field>
+                          </v-flex>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl1>
+                          <v-subheader>Address:</v-subheader>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl11>
+                          <v-text-field
+                            label="Address"
+                            clearable
+                            outlined
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl1>
+                          <v-subheader>Notes:</v-subheader>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl11>
+                          <v-text-field
+                            label="Notes"
+                            clearable
+                            outlined
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-divider></v-divider>
+                      <v-row justify="space-around" wrap class="pt-4 pb-2">
+                        <v-flex xs12 sm6 md6 lg6 xl6 row>
+                          <v-flex xs4 sm4 md3 lg3 xl2>
+                            <v-subheader>2. Name:</v-subheader>
+                          </v-flex>
+                          <v-flex xs8 sm8 md9 lg9 xl10>
+                            <v-text-field
+                              label="Name"
+                              clearable
+                              outlined
+                            ></v-text-field>
+                          </v-flex>
+                        </v-flex>
+                        <v-flex xs12 sm6 md6 lg6 xl6 row>
+                          <v-flex xs4 sm4 md3 lg3 xl2>
+                            <v-subheader>Phone:</v-subheader>
+                          </v-flex>
+                          <v-flex xs8 sm8 md9 lg9 xl10>
+                            <v-text-field
+                              label="Phone"
+                              clearable
+                              outlined
+                            ></v-text-field>
+                          </v-flex>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl1>
+                          <v-subheader>Address:</v-subheader>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl11>
+                          <v-text-field
+                            label="Address"
+                            clearable
+                            outlined
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl1>
+                          <v-subheader>Notes:</v-subheader>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl11>
+                          <v-text-field
+                            label="Notes"
+                            clearable
+                            outlined
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-row>
+            <v-row justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    Checklists</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    Checklists</h1>
+                </v-card-title>
+                <v-card-text>
+                  <v-container fluid class="pa-0">
+                    <v-layout column>
+                      <v-row justify="space-between" wrap class="pt-4 pb-2">
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="ID"
+                                      value="id"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="Passport"
+                                      value="passport"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="Birthday Certificate"
+                                      value="birthday"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="Bankcards"
+                                      value="bankcards"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="Driver License"
+                                      value="license"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs6 sm6 md4 lg4 xl4>
+                          <v-checkbox color="primary"
+                                      label="Cash"
+                                      value="cash"></v-checkbox>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl2>
+                          <v-checkbox v-model="otherDocs"
+                                      color="teal darken-1"
+                                      label="Other Documents"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl10>
+                          <v-text-field
+                            label="Other Docs"
+                            clearable
+                            outlined
+                            :filled="!otherDocs"
+                            :disabled="otherDocs !== true"
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl2>
+                          <v-checkbox color="teal darken-1"
+                                      label="Children' Documents"
+                                      v-model="childrenDocs"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl10>
+                          <v-text-field
+                            label="Children's Docs"
+                            clearable
+                            outlined
+                            :filled="!childrenDocs"
+                            :disabled="childrenDocs !== true"
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl2>
+                          <v-checkbox color="teal darken-1"
+                                      label="Medications"
+                                      v-model="medications"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl10>
+                          <v-text-field
+                            label="Medications"
+                            clearable
+                            outlined
+                            :filled="!medications"
+                            :disabled="medications !== true"
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                      <v-row justify="space-between">
+                        <v-flex xs4 sm4 md3 lg2 xl2>
+                          <v-checkbox color="teal darken-1"
+                                      label="Pets & Things"
+                                      v-model="petsthings"></v-checkbox>
+                        </v-flex>
+                        <v-flex xs8 sm8 md9 lg10 xl10>
+                          <v-text-field
+                            label="Pets and other things"
+                            clearable
+                            outlined
+                            :filled="!petsthings"
+                            :disabled="petsthings !== true"
+                          ></v-text-field>
+                        </v-flex>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-row>
+            <v-row justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    Notes</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    Notes</h1>
+                </v-card-title>
+                <v-card-text class="pt-8">
+                  <v-textarea
+                    outlined
+                    label="Other notes"
+                    clearable
+                    height="200px"
+                  ></v-textarea>
+                </v-card-text>
+              </v-card>
+            </v-row>
+            <v-row wrap justify="space-around">
+              <v-btn rounded outlined color="black" min-width="150px"
+                     @click="cancel">
+                Cancel
+              </v-btn>
+              <v-btn rounded outlined color="black" min-width="150px"
+                     @click="">
+                Finish
+              </v-btn>
+            </v-row>
+          </v-layout>
+        </v-container>
       </v-row>
-      <v-row justify="center" wrap>
-        <v-card flat width="100%">
-          <v-card-title style="background-color: #1976D2" justify="start">
-            <h1 class="title mb-4 hidden-sm-and-down" style="color: white">
-              Checklists</h1>
-            <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: white">
-              Checklists</h1>
-          </v-card-title>
-          <v-card-text>
-            <v-container fluid class="pa-0">
-              <v-layout column>
-                <v-row justify="space-between" wrap class="pt-4 pb-2">
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="ID"
-                                value="id"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="Passport"
-                                value="passport"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="Birthday Certificate"
-                                value="birthday"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="Bankcards"
-                                value="bankcards"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="Driver License"
-                                value="license"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs6 sm6 md4 lg4 xl4>
-                    <v-checkbox color="primary"
-                                label="Cash"
-                                value="cash"></v-checkbox>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl2>
-                    <v-checkbox color="teal darken-1"
-                                label="Other Documents"
-                                value="otherDocs"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl10>
-                    <v-text-field
-                      label="Other Docs"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl2>
-                    <v-checkbox color="teal darken-1"
-                                label="Children' Documents"
-                                value="childrenDocs"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl10>
-                    <v-text-field
-                      label="Children's Docs"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl2>
-                    <v-checkbox color="teal darken-1"
-                                label="Medications"
-                                value="medications"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl10>
-                    <v-text-field
-                      label="Medications"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-                <v-row justify="space-between">
-                  <v-flex xs4 sm4 md3 lg2 xl2>
-                    <v-checkbox color="teal darken-1"
-                                label="Pets & Things"
-                                value="petsthings"></v-checkbox>
-                  </v-flex>
-                  <v-flex xs8 sm8 md9 lg10 xl10>
-                    <v-text-field
-                      label="Pets and other things"
-                      clearable
-                      outlined
-                    ></v-text-field>
-                  </v-flex>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card-text>
-        </v-card>
+      <v-row v-if="selected == 'download'" justify="center" wrap>
+        <h1 class="title mb-4 hidden-sm-and-down" style="color: midnightblue">
+          Please find the file in the download list</h1>
+        <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: midnightblue">
+          Please find the file in the download list</h1>
       </v-row>
-      <v-row justify="center" wrap>
-        <v-card flat width="100%">
-          <v-card-title style="background-color: #1976D2" justify="start">
-            <h1 class="title mb-4 hidden-sm-and-down" style="color: white">
-              Notes</h1>
-            <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: white">
-              Notes</h1>
-          </v-card-title>
-          <v-card-text class="pt-8">
-            <v-textarea
-              outlined
-              label="Other notes"
-              clearable
-              height="200px"
-            ></v-textarea>
-          </v-card-text>
-        </v-card>
-      </v-row>
-      <v-row wrap justify="space-around">
-        <v-btn rounded outlined color="black" min-width="150px"
-               @click="cancel">
-          Cancel
-        </v-btn>
-        <v-btn rounded outlined color="black" min-width="150px"
-               @click="">
-          Finish
-        </v-btn>
+      <v-row v-else justify="center" wrap>
+        <h1 class="title mb-4 hidden-sm-and-down" style="color: midnightblue">
+          Please choose a way to fill out your safety plan</h1>
+        <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: midnightblue">
+          Please choose a way to fill out your safety plan</h1>
       </v-row>
     </v-layout>
   </v-container>
@@ -326,7 +361,12 @@
 
     data () {
       return {
-        selected: null
+        selected: null,
+        otherDocs: false,
+        childrenDocs: false,
+        medications: false,
+        petsthings: false
+
       }
     },
 
@@ -338,7 +378,7 @@
           disabled: false,
           to: '/safetyplan'
         })
-      },
+      }
     }
   }
 </script>

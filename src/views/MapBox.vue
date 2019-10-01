@@ -150,7 +150,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <h4>{{res}}</h4>
+      <!--<h4>{{res}}</h4>-->
     </v-layout>
   </v-container>
 </template>
