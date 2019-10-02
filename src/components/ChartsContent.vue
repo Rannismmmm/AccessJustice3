@@ -85,7 +85,10 @@
             } else {
               this.data.push({
                 suburb: item.suburb,
-                data: []
+                data: [{
+                  year: item.year,
+                  count: item.count
+                }]
               })
             }
           })
