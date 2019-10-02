@@ -20,31 +20,31 @@
         effectChartData: [
           {
             'year': 'Less than 12 \n months ago',
-            'income': 5.3,
+            // 'income': 5.3,
             'expenses': 4.9
           }, {
             'year': '1 to less than 2 \n years ago',
-            'income': 1.1,
+            // 'income': 1.1,
             'expenses': 2.9
           }, {
             'year': '2 to less than 3 \n years ago',
-            'income': 0.8,
+            // 'income': 0.8,
             'expenses': 2.8
           }, {
             'year': '3 to less than 5 \n years ago',
-            'income': 0.6,
+            // 'income': 0.6,
             'expenses': 3.7
           }, {
             'year': '5 to less than 10 \n years ago',
-            'income': 1.1,
+            // 'income': 1.1,
             'expenses': 10
           }, {
             'year': '10 to less than 20 \n years ago',
-            'income': 0.8,
+            // 'income': 0.8,
             'expenses': 12.6
           }, {
             'year': '20 years ago \n or more',
-            'income': 0.7,
+            // 'income': 0.7,
             'expenses': 14.6
           }
         ]

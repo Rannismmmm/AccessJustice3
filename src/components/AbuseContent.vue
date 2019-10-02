@@ -48,7 +48,8 @@
         class="text-center pt-12 pb-10">
         <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
           Understand Emotional Abuse</h4>
-        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">Understand Emotional Abuse</h4>
+        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">
+          Understand Emotional Abuse</h4>
       </v-row>
       <v-row
         justify="center"
@@ -62,17 +63,42 @@
           :points="section.points"
         ></abuse-paragraph>
       </v-row>
+      <v-row justify="space-between" class="pt-5 pb-5">
+        <h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">
+          Interested in the relevant data visualization or facts?
+        </h1>
+        <h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">
+          Interested in the relevant data visualization or facts?
+        </h1>
+        <v-btn rounded outlined color="black" min-width="231px"
+               @click="toCharts">
+          Find out more
+        </v-btn>
+      </v-row>
+      <v-row justify="space-between" class="pt-5">
+        <h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">
+          Are you in an emotionally abusive relationship?
+        </h1>
+        <h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">
+          Are you in an emotionally abusive relationship?
+        </h1>
+        <v-btn rounded outlined color="black" min-width="231px"
+               @click="toAssessment">
+          Check my relationship
+        </v-btn>
+      </v-row>
     </v-layout>
   </v-container>
 </template>
 
 <script>
   import AbuseParagraph from './AbuseParagraph'
+
   export default {
     name: 'AbuseContent',
     components: {AbuseParagraph},
     data () {
-      return  {
+      return {
         cycle: require('../assets/abuse/lifecycle.jpeg'),
         sections: [
           {
@@ -109,6 +135,26 @@
             ]
           }
         ]
+      }
+    },
+
+    methods: {
+      toAssessment () {
+        this.$router.push('/assessments/true')
+        this.$store.commit('switchView', {
+          text: 'Self-Assessment',
+          disabled: false,
+          to: '/assessments/true'
+        })
+      },
+
+      toCharts () {
+        this.$router.push('/visualization')
+        this.$store.commit('addView', {
+          text: 'Visualization',
+          disabled: false,
+          to: '/visualization'
+        })
       }
     }
   }

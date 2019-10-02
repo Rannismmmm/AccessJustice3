@@ -345,7 +345,7 @@
         <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: midnightblue">
           Please find the file in the download list</h1>
       </v-row>
-      <v-row v-else justify="center" wrap>
+      <v-row v-if="!selected" justify="center" wrap>
         <h1 class="title mb-4 hidden-sm-and-down" style="color: midnightblue">
           Please choose a way to fill out your safety plan</h1>
         <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: midnightblue">

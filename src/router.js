@@ -164,6 +164,12 @@ export default new Router({
       name: 'safetyform',
       component: () =>
         import(/* webpackChunkName: "about" */ './views/SafetyForm.vue')
+    },
+    {
+      path: '/visualization',
+      name: 'visualization',
+      component: () =>
+        import(/* webpackChunkName: "about" */ './views/Visualization.vue')
     }
   ]
 })

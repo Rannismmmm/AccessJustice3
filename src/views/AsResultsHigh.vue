@@ -14,122 +14,150 @@
         justify="center"
         style="padding-left: 8vw; padding-right: 8vw;"
       >
-        <v-list expand color="#1976D2" style="width: 80vw; padding: 0">
-          <v-list-group
-            :value="lg1"
-          >
-            <template v-slot:activator>
-              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
-                                     style="color: white">Legal Support</h1>
-              </v-list-item-title>
-            </template>
-            <v-container fluid style="padding: 0; background-color: white">
-              <v-layout column style="padding-top: 4vh">
-                <v-row
-                  align="end"
-                  wrap
-                  justify="space-around"
-                >
-                  <v-flex xs12 sm6 md4 lg4 xl3
-                          v-for="(item,i) in legalCards" :key="i">
-                    <v-card class="mx-auto mb-6" width="270px"
-                            height="350px">
-                      <v-sheet :color="item.color" height="100%"
-                               width="auto">
-                        <v-container fill-height fluid align-start
-                                     class="pa-9">
-                          <v-row no-gutters justify="center">
-                            <v-col cols="12">
-                              <v-container fluid>
-                                <v-layout column>
-                                  <v-row justify="center">
-                                    <h1
-                                      class="title font-weight-thick mb-2"
-                                      style="color: #1976D2">
-                                      {{item.title}}</h1>
-                                  </v-row>
-                                </v-layout>
+        <v-container fluid class="pa-0 ma-0">
+          <v-layout column>
+            <v-row justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    Legal support</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    Legal support</h1>
+                </v-card-title>
+                <v-card-text>
+                  <v-container fluid
+                               style="padding: 0; background-color: white">
+                    <v-layout column style="padding-top: 4vh">
+                      <v-row
+                        align="end"
+                        wrap
+                        justify="space-around"
+                      >
+                        <v-flex xs12 sm6 md4 lg4 xl3
+                                v-for="(item,i) in legalCards" :key="i">
+                          <v-card class="mx-auto mb-6" width="270px"
+                                  height="350px">
+                            <v-sheet :color="item.color" height="100%"
+                                     width="auto">
+                              <v-container fill-height fluid align-start
+                                           class="pa-9">
+                                <v-row no-gutters justify="center">
+                                  <v-col cols="12">
+                                    <v-container fluid>
+                                      <v-layout column>
+                                        <v-row justify="center">
+                                          <h1
+                                            class="title font-weight-thick mb-2"
+                                            style="color: #1976D2">
+                                            {{item.title}}</h1>
+                                        </v-row>
+                                      </v-layout>
+                                    </v-container>
+                                  </v-col>
+                                  <v-col cols="12">
+                                    <h1 class="body-2" style="color: black">
+                                      {{item.content}} <a
+                                      class="body-2 font-italic">{{item.tele}}</a>
+                                    </h1>
+                                  </v-col>
+                                </v-row>
                               </v-container>
-                            </v-col>
-                            <v-col cols="12">
-                              <h1 class="body-2" style="color: black">
-                                {{item.content}} <a class="body-2 font-italic">{{item.tele}}</a></h1>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-sheet>
-                    </v-card>
-                  </v-flex>
-                </v-row>
-                <v-row v-if="isHigh" wrap>
-                  <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
-                      style="color: #1976D2">Need a place to stay?</h1>
-                  <v-btn color="primary" rounded outlined small to="/sheltermap">Click here</v-btn>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-list-group>
-          <v-list-group
-            :value="lg2"
-          >
-            <template v-slot:activator>
-              <v-list-item-title><h1 class="subtitle-1 font-weight-bold mb-4"
-                                     style="color: white">Support &
-                Counseling</h1></v-list-item-title>
-            </template>
-            <v-container fluid style="padding: 0; background-color: white">
-              <v-layout column style="padding-top: 4vh">
-                <v-row
-                  align="end"
-                  wrap
-                  justify="space-around"
-                >
-                  <v-flex xs12 sm6 md4 lg4 xl3
-                          v-for="(item,i) in counselCards" :key="i">
-                    <v-card class="mx-auto mb-6" width="270px"
-                            height="460px">
-                      <v-sheet :color="item.color" height="100%"
-                               width="auto">
-                        <v-container fill-height fluid align-start
-                                     class="pa-9">
-                          <v-row no-gutters justify="center">
-                            <v-col cols="12">
-                              <v-container fluid>
-                                <v-layout column>
-                                  <v-row justify="center">
-                                    <h1
-                                      class="title font-weight-thick mb-2"
-                                      style="color: #1976D2">
-                                      {{item.title}}</h1>
-                                  </v-row>
-                                </v-layout>
-                              </v-container>
-                            </v-col>
-                            <v-col cols="12">
-                              <h1 class="body-2" style="color: black">
-                                {{item.content}}</h1>
-                            </v-col>
-                            <v-col cols="12">
-                              <h1 class="body-2 font-weight-bold"
-                                  style="color: black">Click <a
-                                class="font-italic" :href="item.path">{{item.linkWord}}</a>
-                                to get help</h1>
-                            </v-col>
-                          </v-row>
-                        </v-container>
-                      </v-sheet>
-                    </v-card>
-                  </v-flex>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-list-group>
-        </v-list>
-      </v-row>
-      <v-row wrap style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh">
-        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
-            style="color: #1976D2">Want to see more options?</h1>
-        <v-btn color="primary" rounded outlined small to="/support">Click here</v-btn>
+                            </v-sheet>
+                          </v-card>
+                        </v-flex>
+                      </v-row>
+                      <v-row v-if="isHigh" justify="center" wrap>
+                        <h1 class="title font-weight-bold mb-4 pl-6 pr-2"
+                            style="color: #1976D2">Need a place to stay?</h1>
+                        <v-btn color="primary" rounded
+                               to="/sheltermap">Click here
+                        </v-btn>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-row>
+            <v-row justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    See more options</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    See more options</h1>
+                </v-card-title>
+                <v-card-text>
+                  <v-container fluid class="pa-0 ma-0">
+                    <v-layout column>
+                      <v-row wrap
+                             style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh"
+                             justify="start">
+                        <h1 class="title font-weight-bold mb-4 pl-6 pr-2"
+                            style="color: black">Check out our range of support
+                          services available for free.</h1>
+                        <v-btn color="primary" rounded to="/support">Click
+                          here
+                        </v-btn>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                  <!--<v-container fluid style="padding: 0; background-color: white">-->
+                  <!--<v-layout column style="padding-top: 4vh">-->
+                  <!--<v-row-->
+                  <!--align="end"-->
+                  <!--wrap-->
+                  <!--justify="space-around"-->
+                  <!--&gt;-->
+                  <!--<v-flex xs12 sm6 md4 lg4 xl3-->
+                  <!--v-for="(item,i) in counselCards" :key="i">-->
+                  <!--<v-card class="mx-auto mb-6" width="270px"-->
+                  <!--height="460px">-->
+                  <!--<v-sheet :color="item.color" height="100%"-->
+                  <!--width="auto">-->
+                  <!--<v-container fill-height fluid align-start-->
+                  <!--class="pa-9">-->
+                  <!--<v-row no-gutters justify="center">-->
+                  <!--<v-col cols="12">-->
+                  <!--<v-container fluid>-->
+                  <!--<v-layout column>-->
+                  <!--<v-row justify="center">-->
+                  <!--<h1-->
+                  <!--class="title font-weight-thick mb-2"-->
+                  <!--style="color: #1976D2">-->
+                  <!--{{item.title}}</h1>-->
+                  <!--</v-row>-->
+                  <!--</v-layout>-->
+                  <!--</v-container>-->
+                  <!--</v-col>-->
+                  <!--<v-col cols="12">-->
+                  <!--<h1 class="body-2" style="color: black">-->
+                  <!--{{item.content}}</h1>-->
+                  <!--</v-col>-->
+                  <!--<v-col cols="12">-->
+                  <!--<h1 class="body-2 font-weight-bold"-->
+                  <!--style="color: black">Click <a-->
+                  <!--class="font-italic" :href="item.path">{{item.linkWord}}</a>-->
+                  <!--to get help</h1>-->
+                  <!--</v-col>-->
+                  <!--</v-row>-->
+                  <!--</v-container>-->
+                  <!--</v-sheet>-->
+                  <!--</v-card>-->
+                  <!--</v-flex>-->
+                  <!--</v-row>-->
+                  <!--</v-layout>-->
+                  <!--</v-container>-->
+                </v-card-text>
+              </v-card>
+            </v-row>
+          </v-layout>
+        </v-container>
       </v-row>
     </v-layout>
   </v-container>
@@ -147,10 +175,10 @@
         legalCards: [
           {
             title: 'VICTORIA LEGAL AID',
-            content: "Victoria Legal Aid provides services to help people who is suffering " +
-              "from social and economical disadvantage people. The service mainly targets people " +
-              "in the state of Victoria, Australia and it offers different kinds of information and " +
-              "advices and law. Call ",
+            content: 'Victoria Legal Aid provides services to help people who is suffering ' +
+              'from social and economical disadvantage people. The service mainly targets people ' +
+              'in the state of Victoria, Australia and it offers different kinds of information and ' +
+              'advices and law. Call ',
             color: 'grey lighten-2',
             tele: '1300 792 387'
           },
@@ -215,7 +243,7 @@
 
     mounted () {
       if (this.$route.params.level == 'high') {
-          this.isHigh = true
+        this.isHigh = true
       }
     }
   }
