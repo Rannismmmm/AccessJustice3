@@ -10,15 +10,34 @@
       </v-row>
       <v-row justify="end">
         <v-flex xs12 sm5 md4 lg3 xl2>
-          <v-overflow-btn
-            class="my-2"
-            :items="suburbs"
-            label="Suburb"
-            dense
-            flat
-            v-model="suburb"
-            @change="makeChart(data[suburbs.indexOf(suburb)])"
-          ></v-overflow-btn>
+          <!--<v-overflow-btn-->
+            <!--class="my-2"-->
+            <!--:items="suburbs"-->
+            <!--label="Suburb"-->
+            <!--dense-->
+            <!--flat-->
+            <!--v-model="suburb"-->
+            <!--@change="makeChart(data[suburbs.indexOf(suburb)])"-->
+          <!--&gt;</v-overflow-btn>-->
+          <v-autocomplete
+                :items="suburbs"
+                filled
+                full-width
+                clearable
+                color="primary"
+                label="Type and select suburb"
+                item-text="suburb"
+                item-value="suburb"
+              >
+                <template v-slot:item="i">
+                  <v-list-item-content
+                    @click="makeChart(data[suburbs.indexOf(i.item)])">
+                    <!--@keyup.enter.native=""-->
+                    <v-list-item-title
+                      v-text="i.item"></v-list-item-title>
+                  </v-list-item-content>
+                </template>
+              </v-autocomplete>
         </v-flex>
       </v-row>
       <v-row justify="center" class="pt-3">
@@ -63,7 +82,7 @@
 
         let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
         valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        valueAxis.title.text = 'Number of records'
+        valueAxis.title.text = 'Number of recorded family violence'
         valueAxis.title.fontWeight = 'bold'
         valueAxis.title.fill = am4core.color('#1976D2')
 
@@ -77,7 +96,8 @@
         let columnTemplate = series.columns.template
         columnTemplate.strokeWidth = 2
         columnTemplate.strokeOpacity = 1
-      }
+      },
+
     },
 
     beforeDestroy () {

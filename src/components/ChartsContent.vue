@@ -33,8 +33,8 @@
         key="2"
         value="tab-2"
       >
-        <v-card flat>
-          <v-card-text>{{ data }}</v-card-text>
+        <v-card width="60vw" flat>
+          <distress-chart></distress-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
@@ -42,7 +42,8 @@
         value="tab-3"
       >
         <v-card flat>
-          <v-card-text>{{ text }}</v-card-text>
+          <v-btn @click="makeDataByAge(18, 24)">change</v-btn>
+          <v-card-text>{{ data }}</v-card-text>
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -53,11 +54,12 @@
   import AmCharts2 from './amCharts2'
   import ViolenceChart from './ViolenceChart'
   import axios from 'axios'
+  import DistressChart from './DistressChart'
 
 
   export default {
     name: 'ChartsContent',
-    components: {ViolenceChart, AmCharts2},
+    components: {DistressChart, ViolenceChart, AmCharts2},
     data () {
       return {
         tab: null,
@@ -66,30 +68,78 @@
       }
     },
 
+    methods: {
+      makeDataByAge (ageStart, ageEnd) {
+        let subData = []
+        this.data.forEach(item => {
+          if (item.ageStart === ageStart && item.ageEnd === ageEnd) {
+            let objectLow = {level: ' Low distress level'}
+            item[' Low distress level'].forEach(record => {
+              objectLow[record.year] = record.percentage
+            })
+            subData.push(objectLow)
+
+            let objectModerate = {level: ' Moderate distress level'}
+            item[' Moderate distress level'].forEach(record => {
+              objectModerate[record.year] = record.percentage
+            })
+            subData.push(objectModerate)
+
+            let objectHigh = {level: ' High distress level'}
+            item[' High distress level'].forEach(record => {
+              objectHigh[record.year] = record.percentage
+            })
+            subData.push(objectHigh)
+
+            let objectVHigh = {level: ' Very high distress level'}
+            item[' Very high distress level'].forEach(record => {
+              objectVHigh[record.year] = record.percentage
+            })
+            subData.push(objectVHigh)
+          }
+        })
+        this.data = subData
+      }
+    },
+
     mounted () {
-      axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/violence/findAll')
+      axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/distress/findAll')
         .then(response => {
           response.data.forEach((item) => {
-            let suburbName = item.suburb
-            let suburbDetails = null
+            let ageStart = item.ageStart
+            let ageEnd = item.ageEnd
+            let ageDetails = null
             this.data.forEach(object => {
-              if (object.suburb == suburbName) {
-                suburbDetails = object
+              if (object.ageStart === ageStart && object.ageEnd === ageEnd) {
+                ageDetails = object
               }
             })
-            if (suburbDetails) {
-              suburbDetails.data.push({
-                year: item.year,
-                count: item.count
-              })
-            } else {
-              this.data.push({
-                suburb: item.suburb,
-                data: [{
+            if (ageDetails) {
+              let l = item.distress
+              if (ageDetails[l]) {
+                ageDetails[l].push({
                   year: item.year,
-                  count: item.count
-                }]
+                  percentage: item.percentage
+                })
+              } else {
+                ageDetails[l] = []
+                ageDetails[l].push({
+                  year: item.year,
+                  percentage: item.percentage
+                })
+              }
+            } else {
+              let l = item.distress
+              let obj = {
+                ageStart: item.ageStart,
+                ageEnd: item.ageEnd
+              }
+              obj[l] = []
+              obj[l].push({
+                year: item.year,
+                percentage: item.percentage
               })
+              this.data.push(obj)
             }
           })
         })

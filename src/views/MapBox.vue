@@ -88,6 +88,7 @@
                 :items="postcodes"
                 filled
                 full-width
+                clearable
                 background-color="white"
                 color="primary"
                 label="Type and select your postcode"
