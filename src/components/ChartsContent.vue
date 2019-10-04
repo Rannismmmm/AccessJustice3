@@ -26,7 +26,7 @@
         value="tab-1"
       >
         <v-card width="60vw" flat>
-          <violence-chart></violence-chart>
+          <violence-chart @goNext="goNext" ></violence-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
@@ -34,7 +34,7 @@
         value="tab-2"
       >
         <v-card width="60vw" flat>
-          <distress-chart></distress-chart>
+          <distress-chart @goBack="goBack" @goNext="goNext"></distress-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
@@ -69,36 +69,20 @@
     },
 
     methods: {
-      makeDataByAge (ageStart, ageEnd) {
-        let subData = []
-        this.data.forEach(item => {
-          if (item.ageStart === ageStart && item.ageEnd === ageEnd) {
-            let objectLow = {level: ' Low distress level'}
-            item[' Low distress level'].forEach(record => {
-              objectLow[record.year] = record.percentage
-            })
-            subData.push(objectLow)
+      goNext(){
+        if (this.tab == "tab-1"){
+          this.tab = "tab-2"
+        }else {
+          this.tab = "tab-3"
+        }
+      },
 
-            let objectModerate = {level: ' Moderate distress level'}
-            item[' Moderate distress level'].forEach(record => {
-              objectModerate[record.year] = record.percentage
-            })
-            subData.push(objectModerate)
-
-            let objectHigh = {level: ' High distress level'}
-            item[' High distress level'].forEach(record => {
-              objectHigh[record.year] = record.percentage
-            })
-            subData.push(objectHigh)
-
-            let objectVHigh = {level: ' Very high distress level'}
-            item[' Very high distress level'].forEach(record => {
-              objectVHigh[record.year] = record.percentage
-            })
-            subData.push(objectVHigh)
-          }
-        })
-        this.data = subData
+      goBack() {
+        if (this.tab == "tab-3"){
+          this.tab = "tab-2"
+        }else {
+          this.tab = "tab-1"
+        }
       }
     },
 

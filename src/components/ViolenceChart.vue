@@ -8,37 +8,36 @@
             {{suburb}}
           </span></p>
       </v-row>
-      <v-row justify="end">
-        <v-flex xs12 sm5 md4 lg3 xl2>
-          <!--<v-overflow-btn-->
-            <!--class="my-2"-->
-            <!--:items="suburbs"-->
-            <!--label="Suburb"-->
-            <!--dense-->
-            <!--flat-->
-            <!--v-model="suburb"-->
-            <!--@change="makeChart(data[suburbs.indexOf(suburb)])"-->
-          <!--&gt;</v-overflow-btn>-->
+      <v-row justify="space-between">
+        <v-btn icon @click=""
+               disabled>
+          <v-icon large>mdi-chevron-left</v-icon>
+        </v-btn>
+
+        <v-flex xs12 sm5 md3 lg3 xl3>
           <v-autocomplete
-                :items="suburbs"
-                filled
-                full-width
-                clearable
-                color="primary"
-                label="Type and select suburb"
-                item-text="suburb"
-                item-value="suburb"
-              >
-                <template v-slot:item="i">
-                  <v-list-item-content
-                    @click="makeChart(data[suburbs.indexOf(i.item)])">
-                    <!--@keyup.enter.native=""-->
-                    <v-list-item-title
-                      v-text="i.item"></v-list-item-title>
-                  </v-list-item-content>
-                </template>
-              </v-autocomplete>
+            :items="suburbs"
+            filled
+            full-width
+            clearable
+            color="primary"
+            label="Type and select suburb"
+            item-text="suburb"
+            item-value="suburb"
+          >
+            <template v-slot:item="i">
+              <v-list-item-content
+                @click="makeChart(data[suburbs.indexOf(i.item)])">
+                <!--@keyup.enter.native=""-->
+                <v-list-item-title
+                  v-text="i.item"></v-list-item-title>
+              </v-list-item-content>
+            </template>
+          </v-autocomplete>
         </v-flex>
+        <v-btn icon @click="goNext">
+          <v-icon large>mdi-chevron-right</v-icon>
+        </v-btn>
       </v-row>
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
@@ -59,44 +58,56 @@
     data () {
       return {
         suburbs: [],
-        suburb: '',
-        data: []
+        suburb: 'Melbourne',
+        data: [],
+        chart: null,
+        categoryAxis: null,
+        valueAxis: null,
+        series: null
       }
     },
 
     methods: {
+      goNext(){
+        this.$emit("goNext")
+      },
+
       makeChart (data) {
         this.suburb = data.suburb
-        am4core.useTheme(am4themes_animated)
-        let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
-        chart.data = data.data
+        this.chart.data = data.data
 
-        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-        categoryAxis.dataFields.category = 'year'
-        categoryAxis.title.text = 'Year'
-        categoryAxis.renderer.grid.template.location = 0
-        categoryAxis.renderer.minGridDistance = 30
-        categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        categoryAxis.title.fontWeight = 'bold'
-        categoryAxis.title.fill = am4core.color('#1976D2')
+        if (!this.categoryAxis) {
+          this.categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis())
+          this.categoryAxis.dataFields.category = 'year'
+          this.categoryAxis.title.text = 'Year'
+          this.categoryAxis.renderer.grid.template.location = 0
+          this.categoryAxis.renderer.minGridDistance = 30
+          this.categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+          this.categoryAxis.title.fontWeight = 'bold'
+          this.categoryAxis.title.fill = am4core.color('#1976D2')
+        }
 
-        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-        valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        valueAxis.title.text = 'Number of recorded family violence'
-        valueAxis.title.fontWeight = 'bold'
-        valueAxis.title.fill = am4core.color('#1976D2')
+        if (!this.valueAxis) {
+          this.valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis())
+          this.valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+          this.valueAxis.title.text = 'Number of recorded family violence'
+          this.valueAxis.title.fontWeight = 'bold'
+          this.valueAxis.title.fill = am4core.color('#1976D2')
+        }
 
-        let series = chart.series.push(new am4charts.ColumnSeries())
-        series.dataFields.valueY = 'count'
-        series.dataFields.categoryX = 'year'
-        series.name = 'Count'
-        series.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]'
-        series.columns.template.fillOpacity = .8
+        if (this.series)
+          this.chart.series.removeIndex(0)
+        this.series = this.chart.series.push(new am4charts.ColumnSeries())
+        this.series.dataFields.valueY = 'count'
+        this.series.dataFields.categoryX = 'year'
+        this.series.name = 'Count'
+        this.series.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]'
+        this.series.columns.template.fillOpacity = .8
 
-        let columnTemplate = series.columns.template
+        let columnTemplate = this.series.columns.template
         columnTemplate.strokeWidth = 2
         columnTemplate.strokeOpacity = 1
-      },
+      }
 
     },
 
@@ -107,6 +118,8 @@
     },
 
     mounted () {
+      am4core.useTheme(am4themes_animated)
+      this.chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
       axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/violence/findAll')
         .then(response => {
           response.data.forEach((item) => {

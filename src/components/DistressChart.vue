@@ -10,29 +10,84 @@
           <span class="title" style="color: #1976D2">
           {{selectedAge.ageEnd}}
           </span>
-          <!--<span class="title" style="color: #1976D2">-->
-          <!--{{suburb}}-->
-          <!--</span>-->
         </p>
       </v-row>
-      <v-row>
-        <!--<v-btn @click="removeSeries(0)">rm</v-btn>-->
+      <v-row align="center" justify="space-between">
+        <v-btn icon @click="goBack">
+          <v-icon large>mdi-chevron-left</v-icon>
+        </v-btn>
+        <v-flex align="center" xs12 sm12 md5 lg4 xl3>
+        <v-combobox
+          v-model="years"
+          :items="yearSelections"
+          chips
+          clearable
+          label="Select years"
+          multiple
+        >
+          <template v-slot:selection="{ attrs, item, selected }">
+            <v-chip
+              v-bind="attrs"
+              :input-value="selected"
+            >
+              <strong>{{ item }}</strong>&nbsp;
+            </v-chip>
+          </template>
+        </v-combobox>
+        </v-flex>
+        <v-flex align="center" xs7 sm5 md3 lg3 xl2>
         <v-overflow-btn
           class="my-2"
           :items="ages"
-          label="Suburb"
+          label="Age Group"
           dense
           flat
           v-model="selectedAge"
-          @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
         ></v-overflow-btn>
-        <!--<p class="title mb-4" style="color: black">-->
-          <!--{{selectedAge}}-->
-        <!--</p>-->
+        </v-flex>
+        <v-btn
+          align="center"
+          color="primary"
+          rounded
+          :disabled="years.length === 0"
+          @click="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))">
+          Update
+        </v-btn>
+        <v-btn icon @click="goNext">
+          <v-icon large>mdi-chevron-right</v-icon>
+        </v-btn>
       </v-row>
+      <!--<v-row>-->
+      <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->
+      <!--</v-row>-->
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
       </v-row>
+      <v-dialog
+        :value="noResult"
+        max-width="320"
+      >
+        <v-card>
+          <v-card-title class="headline">No shelters found here
+          </v-card-title>
+
+          <v-card-text>
+            Sorry, we can't any shelters here
+          </v-card-text>
+
+          <v-card-actions>
+            <div class="flex-grow-1"></div>
+
+            <v-btn
+              color="primary"
+              text
+              @click="noResult = false"
+            >
+              Close
+            </v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
     </v-layout>
   </v-container>
 </template>
@@ -54,72 +109,97 @@
         selectedAge: {
           ageStart: 18,
           ageEnd: 24
-        }
+        },
+        years: [],
+        yearSelections: [2007, 2014, 2017],
+        categoryAxis: null,
+        valueAxis: null,
+        series: [],
+
       }
     },
 
     methods: {
 
-      makeChart (data) {
+      goNext(){
+        this.$emit("goNext")
+      },
 
-        am4core.useTheme(am4themes_animated)
-        this.chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
+      goBack(){
+        this.$emit("goBack")
+      },
+
+      makeChart (data) {
         this.chart.data = data
 
-        let categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis())
-        categoryAxis.dataFields.category = 'level'
-        categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+        if (!this.categoryAxis) {
+          this.categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis())
+          this.categoryAxis.dataFields.category = 'level'
+          this.categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+        }
         // categoryAxis.title.text = 'Year'
         // categoryAxis.title.fontWeight = 'bold'
         // categoryAxis.title.fill = am4core.color('#1976D2')
 
 // Create value axis
-        let valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis())
-        valueAxis.renderer.minLabelPosition = 0.01
-        valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        valueAxis.title.text = 'Distress percentage (%)'
-        valueAxis.title.fill = am4core.color('#1976D2')
+        if (!this.valueAxis) {
+          this.valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis())
+          this.valueAxis.renderer.minLabelPosition = 0.01
+          this.valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+          this.valueAxis.title.text = 'Distress percentage (%)'
+          this.valueAxis.title.fill = am4core.color('#1976D2')
+        }
 
 // Create series
-        let series1 = this.chart.series.push(new am4charts.LineSeries())
-        series1.dataFields.valueY = '2007'
-        series1.dataFields.categoryX = 'level'
-        series1.name = '2007'
-        series1.strokeWidth = 3
-        series1.bullets.push(new am4charts.CircleBullet())
-        series1.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
-        series1.legendSettings.valueText = '{valueY}'
-        series1.visible = false
 
-        let series2 = this.chart.series.push(new am4charts.LineSeries())
-        series2.stroke = am4core.color('#039BE5')
-        series2.dataFields.valueY = '2014'
-        series2.dataFields.categoryX = 'level'
-        series2.name = '2014'
-        series2.strokeWidth = 3
-        let bullets2 = series2.bullets.push(new am4charts.CircleBullet())
-        bullets2.fill = am4core.color('#039BE5')
-        series2.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
-        series2.tooltip.getFillFromObject = false
-        series2.tooltip.background.fill = am4core.color('#039BE5')
-        series2.legendSettings.valueText = '{valueY}'
-        series2.visible = false
+        this.series.forEach((item) => {
+          this.chart.series.removeIndex(0)
+        })
 
-        let series3 = this.chart.series.push(new am4charts.LineSeries())
-        series3.dataFields.valueY = '2017'
-        series3.dataFields.categoryX = 'level'
-        series3.name = '2017'
-        series3.strokeWidth = 3
-        series3.bullets.push(new am4charts.CircleBullet())
-        series3.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
-        series3.legendSettings.valueText = '{valueY}'
-        series3.visible = false
+        this.series = []
 
-        this.chart.cursor = new am4charts.XYCursor()
-        this.chart.cursor.behavior = 'zoomY'
+        if (this.years.includes(2007)) {
+          let series1 = this.chart.series.push(new am4charts.LineSeries())
+          series1.dataFields.valueY = '2007'
+          series1.dataFields.categoryX = 'level'
+          series1.name = '2007'
+          series1.strokeWidth = 3
+          series1.bullets.push(new am4charts.CircleBullet())
+          series1.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
+          series1.legendSettings.valueText = '{valueY}'
+          series1.visible = false
+          this.series.push(2007)
+        }
 
-        this.chart.legend = new am4charts.Legend()
-        this.chart.legend.labels.template.fill = am4core.color('#1976D2')
+        if (this.years.includes(2014)) {
+          let series2 = this.chart.series.push(new am4charts.LineSeries())
+          series2.stroke = am4core.color('#039BE5')
+          series2.dataFields.valueY = '2014'
+          series2.dataFields.categoryX = 'level'
+          series2.name = '2014'
+          series2.strokeWidth = 3
+          let bullets2 = series2.bullets.push(new am4charts.CircleBullet())
+          bullets2.fill = am4core.color('#039BE5')
+          series2.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
+          series2.tooltip.getFillFromObject = false
+          series2.tooltip.background.fill = am4core.color('#039BE5')
+          series2.legendSettings.valueText = '{valueY}'
+          series2.visible = false
+          this.series.push(2014)
+        }
+
+        if (this.years.includes(2017)) {
+          let series3 = this.chart.series.push(new am4charts.LineSeries())
+          series3.dataFields.valueY = '2017'
+          series3.dataFields.categoryX = 'level'
+          series3.name = '2017'
+          series3.strokeWidth = 3
+          series3.bullets.push(new am4charts.CircleBullet())
+          series3.tooltipText = 'Distress percentage in {name} in {categoryX}: {valueY} %'
+          series3.legendSettings.valueText = '{valueY}'
+          series3.visible = false
+          this.series.push(2017)
+        }
       },
 
       makeDataByAge (ageStart, ageEnd) {
@@ -154,10 +234,6 @@
         return subData
       },
 
-      removeSeries (n) {
-        this.chart.series.removeIndex(n)
-      },
-
       addSeries (ageStart, ageEnd, year, color) {
         let series2 = this.chart.series.push(new am4charts.LineSeries())
         series2.stroke = am4core.color(color)
@@ -175,6 +251,12 @@
       }
     },
 
+    update () {
+      if (this.years.length === 0) {
+
+      }
+    },
+
     beforeDestroy () {
       if (this.chart) {
         this.chart.dispose()
@@ -182,6 +264,13 @@
     },
 
     mounted () {
+      am4core.useTheme(am4themes_animated)
+      this.chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
+      this.chart.cursor = new am4charts.XYCursor()
+      this.chart.cursor.behavior = 'zoomY'
+
+      this.chart.legend = new am4charts.Legend()
+      this.chart.legend.labels.template.fill = am4core.color('#1976D2')
       axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/distress/findAll')
         .then(response => {
           response.data.forEach((item) => {
@@ -228,6 +317,7 @@
               })
             }
           })
+          this.years = [2017]
           this.makeChart(this.makeDataByAge(18, 24))
         })
         .catch(error => {
