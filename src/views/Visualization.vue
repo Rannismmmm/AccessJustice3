@@ -17,7 +17,7 @@
     name: 'visualization',
     components: {ChartsContent},
     data () {
-
+      return {pr: "4"}
     }
   }
 </script>

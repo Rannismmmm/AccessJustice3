@@ -120,6 +120,10 @@
                 <v-card flat>
                   <div>{{shelter.name}}</div>
                   <div>{{shelter.address}}</div>
+                  <div v-if="shelter.phone">Phone: <a>{{shelter.phone}}</a></div>
+                  <div v-if="shelter.email">Email: <span >{{shelter.email}}</span></div>
+                  <div v-if="shelter.web">See details: <a
+                    class="font-italic" :href="shelter.web">{{shelter.web}}</a></div>
                 </v-card>
               </MglPopup>
             </MglMarker>
@@ -151,7 +155,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <!--<h4>{{res}}</h4>-->
+      <h4>{{res}}</h4>
     </v-layout>
   </v-container>
 </template>
@@ -237,31 +241,34 @@
               this.noResult = true
             } else {
               resp.data.results.forEach((item) => {
+                let obj = {}
                 let phone = null
                 let web = null
                 let email = null
                 if (item.position) {
-                  if (item.href){
+                  if (item.href) {
                     axios.get(item.href)
-                      .then(resp => {
-                        // if (resp.contacts.phone.length > 0)
-                        //   phone = resp.contacts.phone[0].value
-                        // if (resp.contacts.email.length > 0)
-                        //   email = resp.contacts.email[0].value
-                        // if (resp.contacts.website.length > 0)
-                        //   web = resp.contacts.website[0].value
-                        this.res.push(resp)
+                      .then(res => {
+                        if (res.data.contacts.phone) {
+                          phone = res.data.contacts.phone[0].value
+                          obj.phone = phone
+                        }
+                        if (res.data.contacts.website){
+                          web = res.data.contacts.website[0].value
+                          obj.web = web
+                        }
+                        if (res.data.contacts.email) {
+                          email = res.data.contacts.email[0].value
+                          obj.email = email
+                        }
                       })
                   }
-                  this.shelterMarkers.push(
-                    {
-                      coords: this.formatCoords(item.position),
-                      address: item.vicinity,
-                      name: item.title,
-                      color: '#80CBC4',
-                      showPop: false
-                    }
-                  )
+                  obj.coords = this.formatCoords(item.position)
+                  obj.address = (item.vicinity).slice(0, -4)
+                  obj.name = item.title
+                  obj.color = '#80CBC4'
+                  obj.showPop = false
+                  this.shelterMarkers.push(obj)
                 }
               })
             }
@@ -299,11 +306,12 @@
 
     },
 
-
+    // original: https://raw.githubusercontent.com/Elkfox/Australian-Postcode-Data/master/au_postcodes.json
+    // http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/postcode/findAll
     mounted () {
       this.onLoading = true
       this.mapbox = this.$refs.map
-      axios.get('https://raw.githubusercontent.com/Elkfox/Australian-Postcode-Data/master/au_postcodes.json')
+      axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/postcode/findAll')
         .then(resp => {
           resp.data.forEach(item => {
             this.postcodes.push({

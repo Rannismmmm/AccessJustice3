@@ -12,7 +12,7 @@
         <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">What
           is safety plan and Why do I need it?</h4>
       </v-row>
-      <v-row wrap justify="center" align="center"
+      <v-row wrap justify="space-around" align="center"
              style="margin-left: 8vw; margin-right: 8vw">
         <v-flex xs12 sm6 md5 lg5 xl4 flat justify="center">
           <v-card flat>
@@ -20,7 +20,7 @@
                    max-height="320px" contain></v-img>
           </v-card>
         </v-flex>
-        <v-flex xs12 sm6 md5 lg4 xl3 flat>
+        <v-flex xs12 sm6 md5 lg4 xl4 flat>
           <h1 class="title mb-4 hidden-sm-and-down">
             {{paragraph}}
           </h1>

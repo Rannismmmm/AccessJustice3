@@ -60,7 +60,6 @@
         suburbs: [],
         suburb: 'Melbourne',
         data: [],
-        chart: null,
         categoryAxis: null,
         valueAxis: null,
         series: null
@@ -73,53 +72,42 @@
       },
 
       makeChart (data) {
+        am4core.useTheme(am4themes_animated)
+        let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
         this.suburb = data.suburb
-        this.chart.data = data.data
+        chart.data = data.data
 
-        if (!this.categoryAxis) {
-          this.categoryAxis = this.chart.xAxes.push(new am4charts.CategoryAxis())
-          this.categoryAxis.dataFields.category = 'year'
-          this.categoryAxis.title.text = 'Year'
-          this.categoryAxis.renderer.grid.template.location = 0
-          this.categoryAxis.renderer.minGridDistance = 30
-          this.categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-          this.categoryAxis.title.fontWeight = 'bold'
-          this.categoryAxis.title.fill = am4core.color('#1976D2')
-        }
+        let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+        categoryAxis.dataFields.category = 'year'
+        categoryAxis.title.text = 'Year'
+        categoryAxis.renderer.grid.template.location = 0
+        categoryAxis.renderer.minGridDistance = 30
+        categoryAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+        categoryAxis.title.fontWeight = 'bold'
+        categoryAxis.title.fill = am4core.color('#1976D2')
 
-        if (!this.valueAxis) {
-          this.valueAxis = this.chart.yAxes.push(new am4charts.ValueAxis())
-          this.valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-          this.valueAxis.title.text = 'Number of recorded family violence'
-          this.valueAxis.title.fontWeight = 'bold'
-          this.valueAxis.title.fill = am4core.color('#1976D2')
-        }
+        let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+        valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
+        valueAxis.title.text = 'Number of recorded family violence'
+        valueAxis.min = 0;
+        valueAxis.title.fontWeight = 'bold'
+        valueAxis.title.fill = am4core.color('#1976D2')
 
-        if (this.series)
-          this.chart.series.removeIndex(0)
-        this.series = this.chart.series.push(new am4charts.ColumnSeries())
-        this.series.dataFields.valueY = 'count'
-        this.series.dataFields.categoryX = 'year'
-        this.series.name = 'Count'
-        this.series.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]'
-        this.series.columns.template.fillOpacity = .8
+        let series = chart.series.push(new am4charts.ColumnSeries())
+        series.dataFields.valueY = 'count'
+        series.dataFields.categoryX = 'year'
+        series.name = 'Count'
+        series.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]'
+        series.columns.template.fillOpacity = .8
 
         let columnTemplate = this.series.columns.template
-        columnTemplate.strokeWidth = 2
+        columnTemplate.strokeWidth = 1
         columnTemplate.strokeOpacity = 1
       }
 
     },
 
-    beforeDestroy () {
-      if (this.chart) {
-        this.chart.dispose()
-      }
-    },
-
     mounted () {
-      am4core.useTheme(am4themes_animated)
-      this.chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
       axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/violence/findAll')
         .then(response => {
           response.data.forEach((item) => {
@@ -151,13 +139,19 @@
         .catch(error => {
           this.suburb = error
         })
-    }
+    },
+
+    beforeDestroy () {
+      if (this.chart) {
+        this.chart.dispose()
+      }
+    },
   }
 </script>
 
 <style scoped>
   .hello {
     width: 100%;
-    height: 500px;
+    height: 50vh;
   }
 </style>

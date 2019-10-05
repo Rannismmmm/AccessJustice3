@@ -15,8 +15,7 @@
       </v-tab>
 
       <v-tab href="#tab-3">
-        Nearby
-        <v-icon>mdi-account-box</v-icon>
+        Age
       </v-tab>
     </v-tabs>
 
@@ -26,7 +25,7 @@
         value="tab-1"
       >
         <v-card width="60vw" flat>
-          <violence-chart @goNext="goNext" ></violence-chart>
+          <violence-chart @goNext="goNext"></violence-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
@@ -34,16 +33,16 @@
         value="tab-2"
       >
         <v-card width="60vw" flat>
-          <distress-chart @goBack="goBack" @goNext="goNext"></distress-chart>
+          <distress-chart @goBack="goBack"
+                          @goNext="goNext"></distress-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
         key="3"
         value="tab-3"
       >
-        <v-card flat>
-          <v-btn @click="makeDataByAge(18, 24)">change</v-btn>
-          <v-card-text>{{ data }}</v-card-text>
+        <v-card width="60vw" flat>
+          <young-abuse></young-abuse>
         </v-card>
       </v-tab-item>
     </v-tabs-items>
@@ -55,33 +54,41 @@
   import ViolenceChart from './ViolenceChart'
   import axios from 'axios'
   import DistressChart from './DistressChart'
+  import YoungAbuse from './YoungAbuse'
 
 
   export default {
     name: 'ChartsContent',
-    components: {DistressChart, ViolenceChart, AmCharts2},
+    components: {YoungAbuse, DistressChart, ViolenceChart, AmCharts2},
     data () {
       return {
         tab: null,
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        data: []
+        data: [],
+      }
+    },
+
+    props: {
+      pr: {
+        type: String,
+        default: "3"
       }
     },
 
     methods: {
-      goNext(){
-        if (this.tab == "tab-1"){
-          this.tab = "tab-2"
-        }else {
-          this.tab = "tab-3"
+      goNext () {
+        if (this.tab == 'tab-1') {
+          this.tab = 'tab-2'
+        } else {
+          this.tab = 'tab-3'
         }
       },
 
-      goBack() {
-        if (this.tab == "tab-3"){
-          this.tab = "tab-2"
-        }else {
-          this.tab = "tab-1"
+      goBack () {
+        if (this.tab == 'tab-3') {
+          this.tab = 'tab-2'
+        } else {
+          this.tab = 'tab-1'
         }
       }
     },
