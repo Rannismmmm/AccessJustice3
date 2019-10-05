@@ -388,7 +388,7 @@
       },
 
       downloadBlank () {
-        axios.get('http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/general/generatePDF/%20Shelly/123456789/10%20laundry%20place%20Point%20West%203092/Joe%20Blogs/987654321/1%20City%20road%20Melbourne%203000/1/1/1/1/1/1/1/1/1/1/Testing%20this/Testing%20this%201/Testing%20this%202/Testing%20this%203/Testing%20these%20notes')
+        axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/general/generatePDF/%20Shelly/123456789/10%20laundry%20place%20Point%20West%203092/Joe%20Blogs/987654321/1%20City%20road%20Melbourne%203000/1/1/1/1/1/1/1/1/1/1/Testing%20this/Testing%20this%201/Testing%20this%202/Testing%20this%203/Testing%20these%20notes')
           .then(resp => {
             window.open(resp.data)
           })
