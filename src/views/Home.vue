@@ -360,7 +360,7 @@
             item: {
               text: 'Safety Plan',
               disabled: false,
-              to: '/'
+              to: '/safetyplan'
             }
           },
           {

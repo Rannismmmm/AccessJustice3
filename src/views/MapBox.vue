@@ -58,12 +58,17 @@
                     <v-list-item-title v-text="item.name"></v-list-item-title>
                     <v-list-item-subtitle
                       v-text="item.address"></v-list-item-subtitle>
+                    <!--<v-divider-->
+                    <!--v-if="i + 1 < shelterMarkers.length"-->
+                    <!--:key="i"-->
+                    <!--&gt;</v-divider>-->
+                    <!--<v-list-item-subtitle v-if="item.phone" v-text="`Phone: ${item.phone}`">-->
+                    <!--</v-list-item-subtitle>-->
+                    <!--<v-list-item-subtitle v-if="item.email" v-text="`Email: ${item.email}`"></v-list-item-subtitle>-->
+                    <!--<v-list-item-subtitle v-if="item.web" v-text="`See details: ${item.web}`">-->
+                    <!--</v-list-item-subtitle>-->
                   </v-list-item-content>
                 </v-list-item>
-                <v-divider
-                  v-if="index + 1 < shelterMarkers.length"
-                  :key="index"
-                ></v-divider>
               </v-list-item-group>
             </v-list>
           </v-card>
@@ -120,10 +125,13 @@
                 <v-card flat>
                   <div>{{shelter.name}}</div>
                   <div>{{shelter.address}}</div>
-                  <div v-if="shelter.phone">Phone: <a>{{shelter.phone}}</a></div>
-                  <div v-if="shelter.email">Email: <span >{{shelter.email}}</span></div>
+                  <div v-if="shelter.phone">Phone: <a>{{shelter.phone}}</a>
+                  </div>
+                  <div v-if="shelter.email">Email:
+                    <span>{{shelter.email}}</span></div>
                   <div v-if="shelter.web">See details: <a
-                    class="font-italic" :href="shelter.web">{{shelter.web}}</a></div>
+                    class="font-italic" :href="shelter.web">{{shelter.web}}</a>
+                  </div>
                 </v-card>
               </MglPopup>
             </MglMarker>
@@ -253,7 +261,7 @@
                           phone = res.data.contacts.phone[0].value
                           obj.phone = phone
                         }
-                        if (res.data.contacts.website){
+                        if (res.data.contacts.website) {
                           web = res.data.contacts.website[0].value
                           obj.web = web
                         }

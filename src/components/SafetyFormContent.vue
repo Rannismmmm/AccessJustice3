@@ -25,7 +25,6 @@
               <v-layout column>
                 <v-row justify="space-around" wrap class="hidden-sm-and-down">
                   <v-checkbox color="black" v-model="selected"
-                              @click="downloadBlank"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
                   <v-checkbox color="primary" v-model="selected"
@@ -395,6 +394,13 @@
           .catch(error => {
             alert(error)
           })
+      }
+    },
+
+    watch: {
+      selected (val) {
+        if (this.selected == "download")
+          this.downloadBlank
       }
     }
   }
