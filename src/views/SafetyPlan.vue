@@ -90,10 +90,28 @@
         })
       },
 
-      generatePDF () {
+      generatePDF (contant1) {
         let pdfName = 'test1'
-        let doc = new jsPDF()
-        doc.text('This is the first line', 10, 10)
+        var doc = new jsPDF()
+
+        // Title
+        if(contant1) {
+          let contant1Str = 'EMERGENCY CONTACT(S)' + contant1
+          doc.setFontSize(13)
+          doc.text(17, 17, contant1Str)
+        }
+
+        // Filled red square
+        doc.setDrawColor(0)
+        doc.setFillColor(19, 8, 180)
+        doc.rect(17, 20, 180, 4, 'FD')
+
+        // First contact
+        doc.setFontSize(13)
+        doc.text(20, 34, 'Emergency Contact Name: ')
+
+
+        // download the file
         doc.save(pdfName + '.pdf')
       }
     }

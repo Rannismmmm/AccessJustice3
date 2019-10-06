@@ -15,12 +15,12 @@
       return {
         title: 'Self-Care',
         cards: [
-          // {
-          //   title: 'Events',
-          //   comment: 'Find the nearby events here',
-          //   color: 'green darken-1',
-          //   path: '/events'
-          // },
+          {
+            title: 'Events',
+            comment: 'Find the nearby events here',
+            color: 'green darken-1',
+            path: '/events'
+          },
           {
             title: 'Articles',
             comment: 'Some articles you might be interested',

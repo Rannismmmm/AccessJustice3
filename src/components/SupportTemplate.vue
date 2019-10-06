@@ -19,7 +19,7 @@
           wrap
           style="padding-left: 5vw; padding-right: 5vw"
         >
-          <h1 class="body-2 mb-4">{{paragraph}}
+          <h1 class="body-1 mb-4">{{paragraph}}
             <v-btn v-if="paragraphBtn" text small color="primary">
               {{paragraphBtn}}
             </v-btn>
@@ -28,6 +28,7 @@
       </v-layout>
     </v-container>
     <v-container fluid class="hidden-md-and-up">
+      <v-layout column>
       <v-row
         align="center"
         justify="center"
@@ -36,6 +37,20 @@
       >
         <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
       </v-row>
+        <v-row
+          v-if="paragraph"
+          align="start"
+          justify="center"
+          wrap
+          style="padding-left: 2vw; padding-right: 2vw"
+        >
+          <h1 class="body-2 mb-4">{{paragraph}}
+            <v-btn v-if="paragraphBtn" text small color="primary">
+              {{paragraphBtn}}
+            </v-btn>
+          </h1>
+        </v-row>
+        </v-layout>
     </v-container>
     <v-row v-if="activeCards" justify="center" wrap
            class="hidden-sm-and-down"
@@ -121,13 +136,14 @@
                       <v-layout column>
                         <v-row justify="center">
                         <h1 class="title font-weight-thick mb-2"
-                        style="color: #1976D2">{{item.title}}</h1>
+                            style="color: #1976D2">{{item.title}}</h1>
                         </v-row>
                       </v-layout>
                     </v-container>
                   </v-col>
                   <v-col cols="12">
-                    <h1 class="body-2">{{item.content}} <a v-if="item.tele" class="body-2 font-italic">{{item.tele}}</a></h1>
+                    <h1 class="body-2">{{item.content}} <a v-if="item.tele"
+                                                           class="body-2 font-italic">{{item.tele}}</a></h1>
                   </v-col>
                   <v-col v-if="item.path" cols="12">
                     <h1 class="body-2 font-weight-bold">Click <a
@@ -147,7 +163,8 @@
                             <v-img max-width="100px"
                                    :src="require('../assets/icons/ios.jpeg')"></v-img>
                           </v-card>
-                          <v-card v-if="item.android" hover :href="item.android">
+                          <v-card v-if="item.android" hover
+                                  :href="item.android">
                             <v-img max-width="100px"
                                    :src="require('../assets/icons/android.jpeg')"></v-img>
                           </v-card>
@@ -245,7 +262,7 @@
           disabled: false,
           to: card.path
         })
-      },
+      }
     }
   }
 </script>
