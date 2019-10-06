@@ -18,6 +18,7 @@
           <v-autocomplete
             :items="suburbs"
             filled
+            :loading="loading"
             full-width
             clearable
             color="primary"
@@ -38,6 +39,12 @@
         <v-btn icon @click="goNext">
           <v-icon large>mdi-chevron-right</v-icon>
         </v-btn>
+      </v-row>
+      <v-row v-if="loading" justify="center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
       </v-row>
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
@@ -62,7 +69,8 @@
         data: [],
         categoryAxis: null,
         valueAxis: null,
-        series: null
+        series: null,
+        loading: false
       }
     },
 
@@ -100,14 +108,17 @@
         series.columns.template.tooltipText = '{categoryX}: [bold]{valueY}[/]'
         series.columns.template.fillOpacity = .8
 
-        let columnTemplate = this.series.columns.template
+        let columnTemplate = series.columns.template
         columnTemplate.strokeWidth = 1
         columnTemplate.strokeOpacity = 1
+
+        this.loading = false
       }
 
     },
 
     mounted () {
+      this.loading = true
       axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/violence/findAll')
         .then(response => {
           response.data.forEach((item) => {

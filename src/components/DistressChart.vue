@@ -18,9 +18,11 @@
         </v-btn>
         <v-flex align="center" xs12 sm12 md5 lg4 xl3>
           <v-combobox
+            class="mt-0"
             v-model="years"
             :items="yearSelections"
             chips
+            :disabled="loading"
             clearable
             label="Select years"
             multiple
@@ -37,23 +39,16 @@
         </v-flex>
         <v-flex align="center" xs7 sm5 md3 lg3 xl2>
           <v-overflow-btn
-            class="my-2"
+            class="mb-0"
             :items="ages"
             label="Age Group"
+            :disabled="loading"
             dense
             flat
             v-model="selectedAge"
             @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
         </v-flex>
-        <!--<v-btn-->
-          <!--align="center"-->
-          <!--color="primary"-->
-          <!--rounded-->
-          <!--:disabled="years.length === 0"-->
-          <!--@click="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))">-->
-          <!--Update-->
-        <!--</v-btn>-->
         <v-btn icon @click="goNext">
           <v-icon large>mdi-chevron-right</v-icon>
         </v-btn>
@@ -61,6 +56,12 @@
       <!--<v-row>-->
       <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->
       <!--</v-row>-->
+      <v-row v-if="loading" justify="center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
+      </v-row>
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
       </v-row>
@@ -89,8 +90,8 @@
         yearSelections: [2007, 2014, 2017],
         categoryAxis: null,
         valueAxis: null,
-        series: []
-
+        series: [],
+        loading: false
       }
     },
 
@@ -185,6 +186,8 @@
           series3.legendSettings.valueText = '{valueY}'
           series3.visible = false
         }
+
+        this.loading = false
       },
 
       makeDataByAge (ageStart, ageEnd) {
@@ -254,6 +257,7 @@
 
 
     mounted () {
+      this.loading = true
       axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/distress/findAll')
         .then(response => {
           response.data.forEach((item) => {

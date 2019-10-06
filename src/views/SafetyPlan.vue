@@ -47,9 +47,9 @@
               </v-btn>
             </v-row>
             <v-row wrap justify="center">
-              <v-btn color="primary" rounded @click="generatePDF">
-                Generate PDF
-              </v-btn>
+              <!--<v-btn color="primary" rounded @click="generatePDF">-->
+                <!--Generate PDF-->
+              <!--</v-btn>-->
             </v-row>
           </v-layout>
         </v-container>

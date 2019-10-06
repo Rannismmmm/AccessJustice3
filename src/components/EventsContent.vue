@@ -33,7 +33,8 @@
             <v-layout column>
               <v-row wrap align="center" justify="center">
                 <h1 class="title mb-4 hidden-sm-and-down">Find events in </h1>
-                <h1 class="subtitle-1 mb-4 hidden-md-and-up">Find events in </h1>
+                <h1 class="subtitle-1 mb-4 hidden-md-and-up">Find events
+                  in </h1>
               </v-row>
             </v-layout>
           </v-container>
@@ -56,6 +57,12 @@
           </v-container>
         </v-flex>
       </v-row>
+      <v-row v-if="loading" justify="center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
+      </v-row>
       <v-row v-if="data.length !== 0" wrap>
         <event-card
           v-for="(card, i) in data"
@@ -67,16 +74,17 @@
           :date="card.date"
           :start="card.start"
           :end="card.end"
+          :address="card.address"
         ></event-card>
       </v-row>
-      <v-row v-else wrap justify="center">
+      <v-row v-if="data.length === 0 && !loading" wrap justify="center">
         <h1 class="headline mb-4 hidden-sm-and-down">Sorry, we can't find any
           events during this period</h1>
         <h1 class="subtitle-1 mb-4 hidden-md-and-up">Sorry, we can't find any
           events during this period</h1>
       </v-row>
       <!--<v-row wrap>-->
-      <!--<span>{{data}}</span>-->
+      <!--<span>{{ad}}</span>-->
       <!--</v-row>-->
     </v-layout>
   </v-container>
@@ -114,32 +122,48 @@
             text: 'Today',
             value: 'today'
           }],
-        selectedPeriod: null
+        selectedPeriod: null,
+        loading: false,
+        ad: []
 
       }
     },
 
     methods: {
       fetchEventData () {
+        this.loading = true
         this.data = []
         axios.get('https://www.eventbriteapi.com/v3/events/search/?q=abuse+women&location.address=Melbourne&' +
           'location.within=20km&location.latitude=-37.814&location.longitude=144.96332&start_date.keyword=' + this.selectedPeriod +
           '&token=AALBGSQBEDEA24BUV7QP')
           .then(response => {
             response.data.events.forEach(item => {
-              let obj = {
-                name: item.name.text,
-                url: item.url,
-                date: item.start.local.slice(0, item.start.local.indexOf('T')),
-                start: item.start.local.slice((item.start.local.indexOf('T') + 1), -3),
-                end: item.end.local.slice((item.end.local.indexOf('T') + 1), -3),
-                is_free: item.is_free,
-                summary: item.summary
+              if (item.venue_id) {
+                let obj = {
+                  name: item.name.text,
+                  url: item.url,
+                  date: item.start.local.slice(0, item.start.local.indexOf('T')),
+                  start: item.start.local.slice((item.start.local.indexOf('T') + 1), -3),
+                  end: item.end.local.slice((item.end.local.indexOf('T') + 1), -3),
+                  is_free: item.is_free,
+                  summary: item.summary
+                }
+                let addressUrl = 'https://www.eventbriteapi.com/v3/venues/' + item.venue_id + '/?token=AALBGSQBEDEA24BUV7QP'
+                axios.get(addressUrl)
+                  .then(resp => {
+                    obj.address = resp.data.address.localized_address_display
+                    if (item.logo)
+                      obj.img = item.logo.original.url
+                    this.data.push(obj)
+                    this.loading = false
+                    // this.ad.push(resp.data.address.localized_address_display)
+                  })
+                  .catch(error => {
+                    this.data = error
+                  })
               }
-              if (item.logo)
-                obj.img = item.logo.original.url
-              this.data.push(obj)
             })
+            this.loading = false
           })
           .catch(error => {
             this.data = error

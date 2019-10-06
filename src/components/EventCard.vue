@@ -28,9 +28,23 @@
           <v-divider class="mx-4"></v-divider>
 
           <v-card-text>
-            <p class="subtitle-2 text--primary">Open on {{date}} during <span
-              style="color: #1976D2">{{start}}</span> and <span
-              style="color: #1976D2">{{end}}</span></p>
+            <v-container fluid fill-height class="pa-0 ma-0">
+              <v-layout column style="padding-left: 1vw">
+                <v-row justify="start">
+                  <v-icon>event</v-icon>
+                  <p class="subtitle-2 text--primary mb-0 ml-3">{{date}} <span
+                    style="color: #1976D2">{{start}}</span> ~ <span
+                    style="color: #1976D2">{{end}}</span></p>
+                </v-row>
+                <v-row justify="start" class="pt-2" wrap>
+                  <p class="subtitle-2 text--primary mb-0">
+                    <v-icon>mdi-map-marker</v-icon>
+                    <span class="wrap ml-3"
+                          style="color: #1976D2">{{address}}</span>
+                  </p>
+                </v-row>
+              </v-layout>
+            </v-container>
           </v-card-text>
         </v-row>
         <v-row align="end" class="pl-3">
@@ -81,6 +95,10 @@
       img: {
         type: String,
         default: require('../assets/events/eventBackup.jpg')
+      },
+      address: {
+        type: String,
+        default: 'No address available'
       }
     },
 
