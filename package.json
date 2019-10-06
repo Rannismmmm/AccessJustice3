@@ -15,6 +15,7 @@
     "chart.js": "^2.8.0",
     "core-js": "^2.6.5",
     "iview": "^3.4.2",
+    "jspdf": "^1.5.3",
     "leaflet": "^1.5.1",
     "leaflet.icon.glyph": "^0.2.1",
     "mapbox-gl": "^1.2.1",

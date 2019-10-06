@@ -41,8 +41,14 @@
               </h1>
             </v-row>
             <v-row wrap justify="center">
-              <v-btn color="primary" rounded @click="redirct(safetyForm)">Create my plan
+              <v-btn color="primary" rounded @click="redirct(safetyForm)">
+                Create my plan
                 now!
+              </v-btn>
+            </v-row>
+            <v-row wrap justify="center">
+              <v-btn color="primary" rounded @click="generatePDF">
+                Generate PDF
               </v-btn>
             </v-row>
           </v-layout>
@@ -53,6 +59,8 @@
 </template>
 
 <script>
+  import jsPDF from 'jspdf'
+
   export default {
     name: 'SafetyPlan',
 
@@ -80,6 +88,13 @@
           disabled: false,
           to: item.path
         })
+      },
+
+      generatePDF () {
+        let pdfName = 'test1'
+        let doc = new jsPDF()
+        doc.text('This is the first line', 10, 10)
+        doc.save(pdfName + '.pdf')
       }
     }
   }
