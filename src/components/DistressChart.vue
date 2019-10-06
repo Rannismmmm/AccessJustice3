@@ -43,16 +43,17 @@
             dense
             flat
             v-model="selectedAge"
+            @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
         </v-flex>
-        <v-btn
-          align="center"
-          color="primary"
-          rounded
-          :disabled="years.length === 0"
-          @click="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))">
-          Update
-        </v-btn>
+        <!--<v-btn-->
+          <!--align="center"-->
+          <!--color="primary"-->
+          <!--rounded-->
+          <!--:disabled="years.length === 0"-->
+          <!--@click="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))">-->
+          <!--Update-->
+        <!--</v-btn>-->
         <v-btn icon @click="goNext">
           <v-icon large>mdi-chevron-right</v-icon>
         </v-btn>
@@ -63,31 +64,6 @@
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
       </v-row>
-      <v-dialog
-        :value="noResult"
-        max-width="320"
-      >
-        <v-card>
-          <v-card-title class="headline">No shelters found here
-          </v-card-title>
-
-          <v-card-text>
-            Sorry, we can't any shelters here
-          </v-card-text>
-
-          <v-card-actions>
-            <div class="flex-grow-1"></div>
-
-            <v-btn
-              color="primary"
-              text
-              @click="chart.dispose()"
-            >
-              Close
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
     </v-layout>
   </v-container>
 </template>
@@ -257,6 +233,22 @@
         series2.tooltip.background.fill = am4core.color(color)
         series2.legendSettings.valueText = '{valueY}'
         series2.visible = false
+      },
+
+      updateWithNochanges(original) {
+        if (JSON.stringify(this.years)==JSON.stringify(original))
+          this.makeChart(this.makeDataByAge(this.selectedAge.ageStart, this.selectedAge.ageEnd))
+      }
+
+    },
+
+    watch: {
+      years(val) {
+        let original = []
+        this.years.forEach(item => {
+          original.push(item)
+        })
+        setTimeout(() => {this.updateWithNochanges(original)}, 1200)
       }
     },
 
@@ -309,7 +301,6 @@
             }
           })
           this.years = [2017]
-          this.makeChart(this.makeDataByAge(18, 24))
         })
         .catch(error => {
           this.data = error

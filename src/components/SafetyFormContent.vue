@@ -6,7 +6,6 @@
         justify="center"
         wrap
         class="text-center pb-5">
-                  {{m}}
         <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
           My Safety Plan</h4>
         <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">My
@@ -25,6 +24,7 @@
               <v-layout column>
                 <v-row justify="space-around" wrap class="hidden-sm-and-down">
                   <v-checkbox color="black" v-model="selected"
+                              @click="downloadBlank"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
                   <v-checkbox color="primary" v-model="selected"
@@ -370,8 +370,7 @@
         otherDocs: false,
         childrenDocs: false,
         medications: false,
-        petsthings: false,
-        m: null
+        petsthings: false
 
       }
     },
@@ -387,20 +386,13 @@
       },
 
       downloadBlank () {
-        axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/general/generatePDF/%20Shelly/123456789/10%20laundry%20place%20Point%20West%203092/Joe%20Blogs/987654321/1%20City%20road%20Melbourne%203000/1/1/1/1/1/1/1/1/1/1/Testing%20this/Testing%20this%201/Testing%20this%202/Testing%20this%203/Testing%20these%20notes')
+        axios.get('http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/general/generatePDF/%20Shelly/123456789/10%20laundry%20place%20Point%20West%203092/Joe%20Blogs/987654321/1%20City%20road%20Melbourne%203000/1/1/1/1/1/1/1/1/1/1/Testing%20this/Testing%20this%201/Testing%20this%202/Testing%20this%203/Testing%20these%20notes')
           .then(resp => {
             window.open(resp.data)
           })
           .catch(error => {
             alert(error)
           })
-      }
-    },
-
-    watch: {
-      selected (val) {
-        if (this.selected == "download")
-          this.downloadBlank
       }
     }
   }
