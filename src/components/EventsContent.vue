@@ -137,32 +137,35 @@
           'location.within=20km&location.latitude=-37.814&location.longitude=144.96332&start_date.keyword=' + this.selectedPeriod +
           '&token=AALBGSQBEDEA24BUV7QP')
           .then(response => {
-            response.data.events.forEach(item => {
-              if (item.venue_id) {
-                let obj = {
-                  name: item.name.text,
-                  url: item.url,
-                  date: item.start.local.slice(0, item.start.local.indexOf('T')),
-                  start: item.start.local.slice((item.start.local.indexOf('T') + 1), -3),
-                  end: item.end.local.slice((item.end.local.indexOf('T') + 1), -3),
-                  is_free: item.is_free,
-                  summary: item.summary
+            if (response.data.events.length > 0) {
+              response.data.events.forEach(item => {
+                if (item.venue_id) {
+                  let obj = {
+                    name: item.name.text,
+                    url: item.url,
+                    date: item.start.local.slice(0, item.start.local.indexOf('T')),
+                    start: item.start.local.slice((item.start.local.indexOf('T') + 1), -3),
+                    end: item.end.local.slice((item.end.local.indexOf('T') + 1), -3),
+                    is_free: item.is_free,
+                    summary: item.summary
+                  }
+                  let addressUrl = 'https://www.eventbriteapi.com/v3/venues/' + item.venue_id + '/?token=AALBGSQBEDEA24BUV7QP'
+                  axios.get(addressUrl)
+                    .then(resp => {
+                      obj.address = resp.data.address.localized_address_display
+                      if (item.logo)
+                        obj.img = item.logo.original.url
+                      this.data.push(obj)
+                      this.loading = false
+                    })
+                    .catch(error => {
+                      this.data = error
+                    })
                 }
-                let addressUrl = 'https://www.eventbriteapi.com/v3/venues/' + item.venue_id + '/?token=AALBGSQBEDEA24BUV7QP'
-                axios.get(addressUrl)
-                  .then(resp => {
-                    obj.address = resp.data.address.localized_address_display
-                    if (item.logo)
-                      obj.img = item.logo.original.url
-                    this.data.push(obj)
-                    // this.ad.push(resp.data.address.localized_address_display)
-                  })
-                  .catch(error => {
-                    this.data = error
-                  })
-              }
-            })
-            this.loading = false
+              })
+            } else {
+              this.loading = false
+            }
           })
           .catch(error => {
             this.data = error
