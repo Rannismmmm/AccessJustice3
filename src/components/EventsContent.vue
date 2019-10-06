@@ -155,7 +155,6 @@
                     if (item.logo)
                       obj.img = item.logo.original.url
                     this.data.push(obj)
-                    this.loading = false
                     // this.ad.push(resp.data.address.localized_address_display)
                   })
                   .catch(error => {

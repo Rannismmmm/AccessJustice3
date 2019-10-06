@@ -374,6 +374,19 @@
             style="color: midnightblue">
           Please choose a way to fill out your safety plan</h1>
       </v-row>
+      <v-snackbar
+        v-model="snackbar"
+        timeout="3000"
+      >
+        {{ text }}
+        <v-btn
+          color="blue"
+          text
+          @click="snackbar = false"
+        >
+          Close
+        </v-btn>
+      </v-snackbar>
     </v-layout>
   </v-container>
 </template>
@@ -410,7 +423,9 @@
         cDocs: null,
         mDocs: null,
         pDocs: null,
-        notes: null
+        notes: null,
+        text: null,
+        snackbar: false
       }
     },
 
@@ -434,34 +449,36 @@
           })
       },
 
-      reset(){
+      reset () {
         this.selected = null,
-        this.otherDocs = false,
-        this.childrenDocs = false,
-        this.medications = false,
-        this.petsthings = false,
-        this.name1 = null,
-        this.number1 = null,
-        this.address1 = null,
-        this.name2 = null,
-        this.number2 = null,
-        this.address2 =  null,
-        this.notes1 = null,
-        this.notes2 = null,
-        this.id = false,
-        this.passport = false,
-        this.bankCards = false,
-        this.birth = false,
-        this.cash = false,
-        this.license = false,
-        this.oDocs = null,
-        this.cDocs = null,
-        this.mDocs = null,
-        this.pDocs = null,
-        this.notes = null
+          this.otherDocs = false,
+          this.childrenDocs = false,
+          this.medications = false,
+          this.petsthings = false,
+          this.name1 = null,
+          this.number1 = null,
+          this.address1 = null,
+          this.name2 = null,
+          this.number2 = null,
+          this.address2 = null,
+          this.notes1 = null,
+          this.notes2 = null,
+          this.id = false,
+          this.passport = false,
+          this.bankCards = false,
+          this.birth = false,
+          this.cash = false,
+          this.license = false,
+          this.oDocs = null,
+          this.cDocs = null,
+          this.mDocs = null,
+          this.pDocs = null,
+          this.notes = null
       },
 
       downloadGeneric () {
+        this.text = "Your generic form has been downloaded"
+        this.snackbar = true
         this.reset()
         this.generatePDF()
       },
@@ -682,8 +699,11 @@
         // download the file
         //doc.save(pdfName + 'pdf')
 
-        if (this.selected == "fill")
+        if (this.selected == 'fill') {
           this.reset()
+          this.text = "Your filled form has been downloaded"
+          this.snackbar = true
+        }
       }
     }
   }
