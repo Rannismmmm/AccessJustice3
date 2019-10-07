@@ -103,24 +103,27 @@
         data: [],
         periods: [
           {
+            text: 'Today',
+            value: 'today'
+          },
+          {
+            text: 'Tomorrow',
+            value: 'tomorrow'
+          },
+          {
             text: 'This week',
             value: 'next_week'
           }, {
             text: 'This weekend',
             value: 'this_weekend'
-          }, {
-            text: 'Next month',
-            value: 'next_month'
-          }, {
+          },
+          {
             text: 'This month',
             value: 'this_month'
           },
           {
-            text: 'Tomorrow',
-            value: 'tomorrow'
-          }, {
-            text: 'Today',
-            value: 'today'
+            text: 'Next month',
+            value: 'next_month'
           }],
         selectedPeriod: null,
         loading: false,

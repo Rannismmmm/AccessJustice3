@@ -270,34 +270,34 @@
             align="center"
             justify="center"
             wrap
-            class="pt-12 pb-12"
+            class="pt-12 pb-5"
           >
-            <h4 class="display-1 mb-4" style="color: #1976D2">
+            <h4 class="display-2 mb-4" style="color: #1976D2">
               How It Works</h4>
           </v-row>
           <v-row
             align="center"
             justify="space-between"
+            class="pl-10 pr-10"
             wrap>
-            <v-flex xs6 sm4 md2 lg2 xl2 v-for="(card,i) in cards" :key="i">
-              <v-card class="mx-auto mb-6" flat height="320px">
-                <v-container fluid fill-height class="pa-0 ma-0">
-                  <v-layout column>
+            <v-flex xs12 sm4 md2 lg2 xl2 v-for="(card,i) in cards" :key="i">
+              <v-card class="mx-auto mb-6" flat height="320" width="220" :to="card.item.to" @click="redirct(card.item)">
+                <v-container fluid fill-height class="ma-0 pa-4">
+                  <v-layout column class="pl-3 pr-3">
                     <v-row xs12 justify="center" align="start">
                       <v-img :src="card.icon" max-height="110px"
                              contain></v-img>
                     </v-row>
-                    <v-row xs12 justify="center" align="start">
+                    <v-row xs12 justify="center" align="start" class="pb-4">
                       <span class="title"
                             style="color: #1976D2">{{card.title}}</span>
                     </v-row>
                     <v-row xs12 justify="center" class="text-center">
                       <span class="subtitle-1">{{card.content}}</span>
                     </v-row>
-                    <v-row xs12 justify="center" align="end">
-                      <v-btn rounded color="primary"
+                    <v-row xs12 class="pb-2 pt-5" justify="center" align="end">
+                      <v-btn rounded color="primary" width="115"
                              @click="redirct(card.item)">
-                        READ
                         MORE
                       </v-btn>
                     </v-row>
