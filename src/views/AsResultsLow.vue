@@ -120,7 +120,7 @@
                         wrap
                         justify="space-around"
                       >
-                        <v-flex xs12 sm6 md4 lg4 xl3
+                        <v-flex xs12 sm6 md4 lg4 xl4
                                 v-for="(item,i) in appsCards" :key="i">
                           <v-card class="mx-auto mb-6" width="270px"
                                   height="460px">
@@ -158,24 +158,18 @@
                                       <h1 class="body-2" style="color: black">
                                         {{item.content}}</h1>
                                     </v-col>
-                                    <v-col cols="12">
-                                      <h1 class="body-2 font-weight-bold"
-                                          style="color: black">Click <a
-                                        class="font-italic" :href="item.path">{{item.linkWord}}</a>
-                                        to get help</h1>
-                                    </v-col>
                                   </v-row>
                                   <v-row cols="12" align="end">
                                     <v-container fluid>
                                       <v-layout column>
                                         <v-row justify="space-around">
                                           <v-card v-if="item.ios" hover
-                                                  :href="item.ios">
+                                                  @click="openNewTab(item.ios)">
                                             <v-img max-width="100px"
                                                    :src="require('../assets/icons/ios.jpeg')"></v-img>
                                           </v-card>
                                           <v-card v-if="item.android" hover
-                                                  :href="item.android">
+                                                  @click="openNewTab(item.android)">
                                             <v-img max-width="100px"
                                                    :src="require('../assets/icons/android.jpeg')"></v-img>
                                           </v-card>
@@ -214,7 +208,7 @@
                         wrap
                         justify="space-around"
                       >
-                        <v-flex xs12 sm6 md4 lg4 xl3
+                        <v-flex xs12 sm6 md4 lg4 xl4
                                 v-for="(item,i) in articleCards" :key="i">
                           <v-card class="mx-auto mb-6" width="270px"
                                   height="600px">
@@ -250,7 +244,7 @@
                                         want to
                                         <a
                                           class="font-italic"
-                                          :href="item.redirect">Read
+                                          @click="openNewTab(item.redirect)">Read
                                           More</a> from {{item.org}}</h1>
                                     </v-col>
                                   </v-row>
@@ -503,6 +497,10 @@
           .catch(error => {
             this.data = error
           })
+      },
+
+      openNewTab(url) {
+        window.open(url)
       }
     },
 

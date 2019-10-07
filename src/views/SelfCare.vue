@@ -2,6 +2,7 @@
   <support-template
     :main-title="title"
     :active-cards="cards"
+    :no-space-title="noSpace"
   ></support-template>
 </template>
 
@@ -32,8 +33,9 @@
             comment: 'Some apps you might be interested',
             color: 'deep-orange darken-4',
             path: '/apps'
-          },
-        ]
+          }
+        ],
+        noSpace: true
       }
     },
 

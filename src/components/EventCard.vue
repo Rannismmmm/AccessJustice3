@@ -3,7 +3,7 @@
     <v-card
       class="mx-auto my-12 hidden-sm-and-down"
       width="35vw"
-      height="620"
+      height="80vh"
     >
       <v-container fluid fill-height class="pa-0 ma-0">
         <v-layout column>
@@ -11,7 +11,7 @@
             <v-img
               :src="img"
               max-width="35vw"
-              height="230"
+              height="35vh"
               position="left"
             ></v-img>
           </v-row>

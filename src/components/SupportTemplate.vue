@@ -4,11 +4,20 @@
                  class="hidden-sm-and-down">
       <v-layout column>
         <v-row
-          v-if="mainTitle"
+          v-if="mainTitle && !noSpaceTitle"
           align="center"
           justify="center"
           wrap
           style="padding-top: 200px; padding-bottom: 20px"
+        >
+          <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
+        </v-row>
+        <v-row
+          v-if="noSpaceTitle"
+          align="center"
+          justify="center"
+          wrap
+          style="padding-bottom: 20px"
         >
           <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
@@ -148,23 +157,23 @@
                   <v-col v-if="item.path" cols="12">
                     <h1 class="body-2 font-weight-bold">Click <a
                       class="font-italic"
-                      :href="item.path">{{item.linkWord}}</a> to get help</h1>
+                      @click="openNewTab(item.path)">{{item.linkWord}}</a> to get help</h1>
                   </v-col>
                   <v-col class="pa-1" v-if="item.redirect" cols="12">
                     <h1 class="body-2 font-weight-bold">I want to <a
-                      class="font-italic" :href="item.redirect">Read More</a> from {{item.org}}</h1>
+                      class="font-italic" @click="openNewTab(item.redirect)">Read More</a> from {{item.org}}</h1>
                   </v-col>
                 </v-row>
                 <v-row align="end" v-if="item.ios || item.android">
                     <v-container fluid>
                       <v-layout column>
                         <v-row justify="space-around">
-                          <v-card v-if="item.ios" hover :href="item.ios">
+                          <v-card v-if="item.ios" hover @click="openNewTab(item.ios)">
                             <v-img max-width="100px"
                                    :src="require('../assets/icons/ios.jpeg')"></v-img>
                           </v-card>
                           <v-card v-if="item.android" hover
-                                  :href="item.android">
+                                  @click="openNewTab(item.android)">
                             <v-img max-width="100px"
                                    :src="require('../assets/icons/android.jpeg')"></v-img>
                           </v-card>
@@ -251,6 +260,11 @@
       iconWidth: {
         type: String,
         default: '80px'
+      },
+
+      noSpaceTitle: {
+        type: Boolean,
+        default: false
       }
     },
 
@@ -262,6 +276,10 @@
           disabled: false,
           to: card.path
         })
+      },
+
+      openNewTab(url) {
+        window.open(url)
       }
     }
   }

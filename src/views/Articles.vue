@@ -18,7 +18,7 @@
       return {
         mainTitle: 'Articles',
         paragraph: 'These are the articles available for you.',
-        cardHeight: '545px',
+        cardHeight: '580px',
         iconWidth: '240px',
         cards: [
           {

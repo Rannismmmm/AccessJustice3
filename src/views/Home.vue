@@ -281,7 +281,7 @@
             class="pl-10 pr-10"
             wrap>
             <v-flex xs12 sm4 md2 lg2 xl2 v-for="(card,i) in cards" :key="i">
-              <v-card class="mx-auto mb-6" flat height="320" width="220" :to="card.item.to" @click="redirct(card.item)">
+              <v-card class="mx-auto mb-6" flat height="320" width="220" :to="card.item.to" @click.native="redirct(card.item)">
                 <v-container fluid fill-height class="ma-0 pa-4">
                   <v-layout column class="pl-3 pr-3">
                     <v-row xs12 justify="center" align="start">

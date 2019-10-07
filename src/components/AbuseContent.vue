@@ -115,6 +115,16 @@
             title: 'Causes',
             paragraph: 'Emotional abuse can affect a person physically and mentally. It may cause:',
             points: [
+              'Gender Inequality',
+              'Substance abuse or alcohol',
+              'Unemployment',
+              'Mentally-ill partner'
+            ]
+          },
+          {
+            title: 'Impact',
+            paragraph: 'Emotional abuse is mainly due to:',
+            points: [
               'Depression',
               'Anxiety',
               'Fear',
@@ -122,16 +132,6 @@
               'Insomnia',
               'Loneliness',
               'Substance Abuse'
-            ]
-          },
-          {
-            title: 'Impact',
-            paragraph: 'Emotional abuse is mainly due to:',
-            points: [
-              'Gender Inequality',
-              'Substance abuse or alcohol',
-              'Unemployment',
-              'Mentally-ill partner'
             ]
           }
         ]

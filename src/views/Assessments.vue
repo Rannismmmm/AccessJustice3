@@ -103,7 +103,7 @@
                                           </v-card>
                                         </v-row>
                                         <v-row wrap>
-                                          <v-radio-group row
+                                          <v-radio-group column
                                                          v-model="answers[i]"
                                                          @change="nextQues">
                                             <v-radio label="Yes"

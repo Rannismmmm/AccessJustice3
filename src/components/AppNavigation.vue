@@ -540,6 +540,10 @@
             path: '/abuse'
           },
           {
+            title: 'Statistics',
+            path: '/visualization'
+          },
+          {
             title: 'Self-Assessment',
             path: '/assessments/false'
           },
@@ -550,7 +554,8 @@
           {
             title: 'Safety Plan',
             path: '/safetyplan'
-          }
+          },
+
         ],
         easing: 'easeInOutCubic',
         easings: Object.keys(easings),

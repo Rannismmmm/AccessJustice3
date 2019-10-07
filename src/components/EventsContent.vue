@@ -39,7 +39,7 @@
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex justify="start" xs5 sm4 md3 lg3 xl1>
+        <v-flex justify="start" xs5 sm4 md3 lg3 xl2>
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <v-row wrap align="center" justify="start">

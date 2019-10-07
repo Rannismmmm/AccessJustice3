@@ -84,6 +84,7 @@
         let chart = am4core.create(this.$refs.chartdiv, am4charts.XYChart)
         this.suburb = data.suburb
         chart.data = data.data
+        chart.numberFormatter.numberFormat = "####";
 
         let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
         categoryAxis.dataFields.category = 'year'
