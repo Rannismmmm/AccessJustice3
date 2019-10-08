@@ -12,7 +12,7 @@
               :src="img"
               max-width="35vw"
               height="35vh"
-              position="left"
+              position="center"
             ></v-img>
           </v-row>
           <v-row wrap style="padding-left: 1vw; padding-right: 1vw">

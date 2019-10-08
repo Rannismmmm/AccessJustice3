@@ -25,12 +25,12 @@
     data () {
       return {
         title: 'OUR SUPPORT SERVICES',
-        cardWidth: '250px',
+        cardWidth: '270px',
         cards: [
           {
             title: 'Legal Support',
             comment: 'Find the legal support here',
-            color: 'grey',
+            color: 'blue-grey darken-1',
             path: '/legalsupport'
           },
           {

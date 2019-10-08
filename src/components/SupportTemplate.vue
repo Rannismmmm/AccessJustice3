@@ -65,7 +65,8 @@
            class="hidden-sm-and-down"
            style="margin-left: 8vw; margin-right: 8vw">
       <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i">
-        <v-card class="mx-auto mb-6" height="350px" :width="cardWidth">
+        <v-card class="mx-auto mb-6" height="350px" :width="cardWidth" hover
+                @click="redirct(card)">
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <!--<v-img src="http://source.unsplash.com/6S27S6pZ6o0"-->
@@ -75,7 +76,7 @@
                   <v-layout column>
                     <v-row xs12 align="center" justify="center">
                         <span
-                          class="headline white--text">{{card.title}}</span>
+                          class="display-1 white--text text-center">{{card.title}}</span>
                     </v-row>
                     <v-row align="center" justify="center" class="ml-0 mr-0">
                         <v-btn width="120px" rounded outlined color="white"
@@ -94,6 +95,7 @@
     <v-row v-if="activeCards" justify="space-around" wrap
            class="hidden-md-and-up">
       <v-flex xs12 sm6 md4 lg3 xl3 v-for="(card,i) in activeCards" :key="i"
+              hover @click="redirct(card)"
               class="pt-3">
         <v-card class="mx-auto" height="350px" width="280px">
           <v-container fluid fill-height class="pa-0 ma-0">
@@ -151,8 +153,7 @@
                     </v-container>
                   </v-col>
                   <v-col cols="12">
-                    <h1 class="body-2">{{item.content}} <a v-if="item.tele"
-                                                           class="body-2 font-italic">{{item.tele}}</a></h1>
+                    <h1 class="body-2">{{item.content}}</h1>
                   </v-col>
                   <v-col v-if="item.path" cols="12">
                     <h1 class="body-2 font-weight-bold">Click <a
@@ -168,7 +169,8 @@
                     <v-container fluid>
                       <v-layout column>
                         <v-row justify="space-around">
-                          <v-card v-if="item.ios" hover @click="openNewTab(item.ios)">
+                          <v-card v-if="item.ios" hover
+                                  @click="openNewTab(item.ios)">
                             <v-img max-width="100px"
                                    :src="require('../assets/icons/ios.jpeg')"></v-img>
                           </v-card>
@@ -180,6 +182,11 @@
                         </v-row>
                       </v-layout>
                     </v-container>
+                  </v-row>
+                  <v-row align="end" v-if="item.tele" class="pl-3">
+                    <p style="color: black">
+                    Call <span class="font-italic font-weight-bold"
+                                style="color: #1976D2">{{item.tele}}</span></p>
                   </v-row>
                 </v-layout>
               </v-container>
@@ -271,14 +278,14 @@
     methods: {
       redirct (card) {
         this.$router.push(card.path)
-        this.$store.commit('addView', {
+        this.$store.commit('findHelpAddView', {
           text: card.title,
           disabled: false,
           to: card.path
         })
       },
 
-      openNewTab(url) {
+      openNewTab (url) {
         window.open(url)
       }
     }

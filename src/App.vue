@@ -1,5 +1,6 @@
 <template>
   <v-app>
+
     <app-navigation v-if="verified"></app-navigation>
     <v-dialog :value="show" persistent max-width="600px">
       <v-card>

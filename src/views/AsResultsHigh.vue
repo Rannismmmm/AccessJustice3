@@ -59,9 +59,16 @@
                                   </v-col>
                                   <v-col cols="12">
                                     <h1 class="body-2" style="color: black">
-                                      {{item.content}} <a
-                                      class="body-2 font-italic">{{item.tele}}</a>
+                                      {{item.content}}
                                     </h1>
+                                  </v-col>
+                                  <v-col cols="12"
+                                         class="pl-3">
+                                    <p style="color: black">
+                                      Call <span
+                                      class="font-italic font-weight-bold"
+                                      style="color: #1976D2">{{item.tele}}</span>
+                                    </p>
                                   </v-col>
                                 </v-row>
                               </v-container>
@@ -107,52 +114,6 @@
                       </v-row>
                     </v-layout>
                   </v-container>
-                  <!--<v-container fluid style="padding: 0; background-color: white">-->
-                  <!--<v-layout column style="padding-top: 4vh">-->
-                  <!--<v-row-->
-                  <!--align="end"-->
-                  <!--wrap-->
-                  <!--justify="space-around"-->
-                  <!--&gt;-->
-                  <!--<v-flex xs12 sm6 md4 lg4 xl3-->
-                  <!--v-for="(item,i) in counselCards" :key="i">-->
-                  <!--<v-card class="mx-auto mb-6" width="270px"-->
-                  <!--height="460px">-->
-                  <!--<v-sheet :color="item.color" height="100%"-->
-                  <!--width="auto">-->
-                  <!--<v-container fill-height fluid align-start-->
-                  <!--class="pa-9">-->
-                  <!--<v-row no-gutters justify="center">-->
-                  <!--<v-col cols="12">-->
-                  <!--<v-container fluid>-->
-                  <!--<v-layout column>-->
-                  <!--<v-row justify="center">-->
-                  <!--<h1-->
-                  <!--class="title font-weight-thick mb-2"-->
-                  <!--style="color: #1976D2">-->
-                  <!--{{item.title}}</h1>-->
-                  <!--</v-row>-->
-                  <!--</v-layout>-->
-                  <!--</v-container>-->
-                  <!--</v-col>-->
-                  <!--<v-col cols="12">-->
-                  <!--<h1 class="body-2" style="color: black">-->
-                  <!--{{item.content}}</h1>-->
-                  <!--</v-col>-->
-                  <!--<v-col cols="12">-->
-                  <!--<h1 class="body-2 font-weight-bold"-->
-                  <!--style="color: black">Click <a-->
-                  <!--class="font-italic" :href="item.path">{{item.linkWord}}</a>-->
-                  <!--to get help</h1>-->
-                  <!--</v-col>-->
-                  <!--</v-row>-->
-                  <!--</v-container>-->
-                  <!--</v-sheet>-->
-                  <!--</v-card>-->
-                  <!--</v-flex>-->
-                  <!--</v-row>-->
-                  <!--</v-layout>-->
-                  <!--</v-container>-->
                 </v-card-text>
               </v-card>
             </v-row>
@@ -178,25 +139,25 @@
             content: 'Victoria Legal Aid provides services to help people who is suffering ' +
               'from social and economical disadvantage people. The service mainly targets people ' +
               'in the state of Victoria, Australia and it offers different kinds of information and ' +
-              'advices and law. Call ',
+              'advices and law.',
             color: 'grey lighten-2',
             tele: '1300 792 387'
           },
           {
-            title: 'RELATIONSHIPS AUSTRALIA',
-            content: 'Relationships Australia provides relationship support services for individuals, ' +
-              'families and communities in Australia which include family violence prevention, family ' +
-              'dispute resolution, counselling services and ... If you need more help, please Call',
+            title: 'LIFELINE',
+            content: 'Lifeline provides crisis support to anyone across Australia experiencing any sort ' +
+              'of personal crisis. It\'s free and working 24-hour which inludes call service, face-to-face, ' +
+              'and online assistance.',
             color: 'grey lighten-2',
-            tele: '1300 364 277'
+            tele: '13 11 14'
           }
           ,
           {
             title: '1800RESPECT',
             content: '1800RESPECT provides support services about sexual assault, domestic or family violence ' +
-              'which include information, referral, and counselling. If you need more help, please Call ',
+              'which include information, referral, and counselling. If you need more help, please contact 1800RESPECT.',
             color: 'grey lighten-2',
-            tele: '1800737732'
+            tele: '1800 737 732'
           }
         ],
         counselCards: [

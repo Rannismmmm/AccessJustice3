@@ -1,6 +1,6 @@
 <template>
   <v-container fluid>
-    <v-layout column style="padding-left: 20vw; padding-right: 20vw; padding-top: 220px" class="hidden-sm-and-down">
+    <v-layout column style="padding-left: 18vw; padding-right: 18vw; padding-top: 220px" class="hidden-sm-and-down">
       <safety-form-content></safety-form-content>
     </v-layout>
     <v-layout column style="padding-left: 10vw; padding-right: 10vw; padding-top: 220px" class="hidden-md-and-up">

@@ -87,15 +87,16 @@
                                                  :key="i" :step="i + 1">
                                 <v-card
                                   class="mb-12"
-                                  color="grey lighten-1"
+                                  color="blue-grey lighten-5"
                                   height="200px"
                                 >
                                   <template>
-                                    <v-container fluid fill-height>
+                                    <v-container fluid fill-height
+                                                 class="pt-0">
                                       <v-layout column>
                                         <v-row wrap>
                                           <v-card width="100vw">
-                                            <h3 class="hidden-sm-and-down">
+                                            <h3 class="title hidden-sm-and-down">
                                               {{item}}</h3>
                                             <h3
                                               class="body-1 hidden-md-and-up">
@@ -106,11 +107,23 @@
                                           <v-radio-group column
                                                          v-model="answers[i]"
                                                          @change="nextQues">
-                                            <v-radio label="Yes"
-                                                     value="1"></v-radio>
+                                            <v-radio value="1">
+                                              <template v-slot:label>
+                                                <div><strong
+                                                  class="success--black"
+                                                  style="color: black">Yes</strong>
+                                                </div>
+                                              </template>
+                                            </v-radio>
                                             <v-spacer></v-spacer>
-                                            <v-radio label="No"
-                                                     value="0"></v-radio>
+                                            <v-radio value="0">
+                                              <template v-slot:label>
+                                              <div><strong
+                                                class="success--black"
+                                                style="color: black">No</strong>
+                                              </div>
+                                              </template>
+                                            </v-radio>
                                           </v-radio-group>
                                         </v-row>
                                       </v-layout>
@@ -118,12 +131,19 @@
                                   </template>
                                   <v-row
                                     style="width: auto; padding: 0px; margin: 0px"
-                                    justify="space-between">
+                                    justify="space-between"
+                                    align="end">
                                     <v-btn icon @click="goPrevious"
                                            :disabled="i === 0">
                                       <v-icon large>mdi-chevron-left</v-icon>
                                     </v-btn>
-
+                                    <p class="ma-0 hidden-sm-and-down">Source:
+                                      ABS Personal Safety Survey,
+                                      2016</p>
+                                    <p class="mb-2 hidden-md-and-up"
+                                       style="font-size: 10px">Source: ABS
+                                      Personal Safety Survey,
+                                      2016</p>
                                     <v-btn icon @click="goNext"
                                            :disabled="i === (questions.length - 1)">
                                       <v-icon large>mdi-chevron-right</v-icon>
@@ -135,7 +155,8 @@
                           </v-stepper>
                           <v-card-actions>
                             <v-row justify="center">
-                              <v-btn width="100px" @click="closeQuiz">Cancel</v-btn>
+                              <v-btn width="100px" @click="closeQuiz">Cancel
+                              </v-btn>
                               <v-btn width="100px" :loading="btnLoading"
                                      :disabled="subDisable" color="primary"
                                      @click="pushAnswers">
@@ -187,7 +208,8 @@
         questionVisible: false,
         onLoading: false,
         title: 'Assessment',
-        btnLoading: false
+        btnLoading: false,
+        resultPath: null
       }
     },
 
@@ -245,10 +267,13 @@
         axios.get(subUrl)
           .then(response => {
             if (response.data === 1) {
+              this.resultPath = '/asresultshigh/high'
               this.redirct('/asresultshigh/high')
             } else if (response.data === 2) {
+              this.resultPath = '/asresultshigh/medium'
               this.redirct('/asresultshigh/medium')
             } else if (response.data == 'low' || response.data === 3) {
+              this.resultPath = '/asresultslow'
               this.redirct('/asresultslow')
             }
             this.btnLoading = false
@@ -263,8 +288,8 @@
         this.$router.push(path)
         this.$store.commit('addView', {
           text: 'Results',
-          disabled: true,
-          to: ''
+          disabled: false,
+          to: this.resultPath
         })
       },
 
@@ -301,7 +326,13 @@
       answers (val) {
         if (!this.answers.includes(-1))
           this.subDisable = false
-      }
+      },
+
+      // questions(val) {
+      //   if (this.questions > 5) {
+      //     this.questions
+      //   }
+      // }
     }
     ,
 

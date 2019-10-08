@@ -13,11 +13,21 @@
       </v-row>
       <v-row justify="center" wrap>
         <v-card flat width="100%">
-          <v-card-title style="background-color: #1976D2" justify="start">
-            <h1 class="title mb-4 hidden-sm-and-down" style="color: white">
-              How to save my Safety Plan</h1>
-            <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: white">
-              How to save my Safety Plan</h1>
+          <v-card-title
+            style="background-color: #1976D2; height: 50px; padding: 0"
+            justify="start">
+            <v-container fluid fill-height>
+              <v-layout column>
+                <v-row wrap justify="start" align="center" class="pl-4">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    How to save my Safety Plan</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    How to save my Safety Plan</h1>
+                </v-row>
+              </v-layout>
+            </v-container>
           </v-card-title>
           <v-card-text>
             <v-container fluid class="pa-0">
@@ -27,7 +37,7 @@
                               @click="downloadGeneric"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
-                  <v-checkbox color="primary" v-model="selected"
+                  <v-checkbox color="black" v-model="selected"
                               label="Create customised plan and download"
                               value="fill"></v-checkbox>
                 </v-row>
@@ -35,7 +45,7 @@
                   <v-checkbox color="black" v-model="selected"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
-                  <v-checkbox color="primary" v-model="selected"
+                  <v-checkbox color="black" v-model="selected"
                               label="Create customised plan and download"
                               value="fill"></v-checkbox>
                 </v-row>
@@ -69,18 +79,25 @@
         </v-card>
       </v-row>
       <v-row v-if="selected == 'fill'">
-        <v-container fluid class="pa-0 ma-0">
+        <v-container fluid class="ma-0">
           <v-layout column>
             <v-row justify="center" wrap>
               <v-card flat width="100%">
-                <v-card-title style="background-color: #1976D2"
-                              justify="start">
-                  <h1 class="title mb-4 hidden-sm-and-down"
-                      style="color: white">
-                    Contacts</h1>
-                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
-                      style="color: white">
-                    Contacts</h1>
+                <v-card-title
+                  style="background-color: #1976D2; height: 50px; padding: 0"
+                  justify="start">
+                  <v-container fluid fill-height>
+                    <v-layout column>
+                      <v-row wrap justify="start" align="center" class="pl-4">
+                        <h1 class="title mb-4 hidden-sm-and-down"
+                            style="color: white">
+                          Contacts</h1>
+                        <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                            style="color: white">
+                          Contacts</h1>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
                 </v-card-title>
                 <v-card-text>
                   <v-container fluid class="pa-0">
@@ -88,11 +105,11 @@
                       <v-row justify="space-around" wrap class="pt-4 pb-2">
                         <v-flex xs12 sm6 md6 lg6 xl6 row>
                           <v-flex xs4 sm4 md3 lg3 xl2>
-                            <v-subheader>1. Name:</v-subheader>
+                            <v-subheader style="color: black">1. Name:
+                            </v-subheader>
                           </v-flex>
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
-                              label="Name"
                               clearable
                               outlined
                               v-model="name1"
@@ -101,11 +118,11 @@
                         </v-flex>
                         <v-flex xs12 sm6 md6 lg6 xl6 row>
                           <v-flex xs4 sm4 md3 lg3 xl2>
-                            <v-subheader>Phone:</v-subheader>
+                            <v-subheader style="color: black">Phone:
+                            </v-subheader>
                           </v-flex>
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
-                              label="Phone"
                               clearable
                               outlined
                               v-model="number1"
@@ -115,11 +132,11 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl1>
-                          <v-subheader>Address:</v-subheader>
+                          <v-subheader style="color: black">Address:
+                          </v-subheader>
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl11>
                           <v-text-field
-                            label="Address"
                             clearable
                             outlined
                             v-model="address1"
@@ -128,11 +145,11 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl1>
-                          <v-subheader>Notes:</v-subheader>
+                          <v-subheader style="color: black">Notes:
+                          </v-subheader>
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl11>
                           <v-text-field
-                            label="Notes"
                             clearable
                             outlined
                             v-model="notes1"
@@ -143,11 +160,11 @@
                       <v-row justify="space-around" wrap class="pt-4 pb-2">
                         <v-flex xs12 sm6 md6 lg6 xl6 row>
                           <v-flex xs4 sm4 md3 lg3 xl2>
-                            <v-subheader>2. Name:</v-subheader>
+                            <v-subheader style="color: black">2. Name:
+                            </v-subheader>
                           </v-flex>
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
-                              label="Name"
                               clearable
                               outlined
                               v-model="name2"
@@ -156,11 +173,11 @@
                         </v-flex>
                         <v-flex xs12 sm6 md6 lg6 xl6 row>
                           <v-flex xs4 sm4 md3 lg3 xl2>
-                            <v-subheader>Phone:</v-subheader>
+                            <v-subheader style="color: black">Phone:
+                            </v-subheader>
                           </v-flex>
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
-                              label="Phone"
                               clearable
                               outlined
                               v-model="number2"
@@ -170,11 +187,11 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl1>
-                          <v-subheader>Address:</v-subheader>
+                          <v-subheader style="color: black">Address:
+                          </v-subheader>
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl11>
                           <v-text-field
-                            label="Address"
                             clearable
                             outlined
                             v-model="address2"
@@ -183,11 +200,12 @@
                       </v-row>
                       <v-row justify="space-between">
                         <v-flex xs4 sm4 md3 lg2 xl1>
-                          <v-subheader>Notes:</v-subheader>
+                          <v-subheader style="color: black"
+                          >Notes:
+                          </v-subheader>
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl11>
                           <v-text-field
-                            label="Notes"
                             clearable
                             outlined
                             v-model="notes2"
@@ -201,14 +219,21 @@
             </v-row>
             <v-row justify="center" wrap>
               <v-card flat width="100%">
-                <v-card-title style="background-color: #1976D2"
-                              justify="start">
-                  <h1 class="title mb-4 hidden-sm-and-down"
-                      style="color: white">
-                    Checklists</h1>
-                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
-                      style="color: white">
-                    Checklists</h1>
+                <v-card-title
+                  style="background-color: #1976D2; height: 50px; padding: 0"
+                  justify="start">
+                  <v-container fluid fill-height>
+                    <v-layout column>
+                      <v-row wrap justify="start" align="center" class="pl-4">
+                        <h1 class="title mb-4 hidden-sm-and-down"
+                            style="color: white">
+                          Checklists</h1>
+                        <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                            style="color: white">
+                          Checklists</h1>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
                 </v-card-title>
                 <v-card-text>
                   <v-container fluid class="pa-0">
@@ -260,7 +285,6 @@
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl10>
                           <v-text-field
-                            label="Other Docs"
                             clearable
                             outlined
                             :filled="!otherDocs"
@@ -277,7 +301,6 @@
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl10>
                           <v-text-field
-                            label="Children's Docs"
                             clearable
                             outlined
                             :filled="!childrenDocs"
@@ -294,7 +317,6 @@
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl10>
                           <v-text-field
-                            label="Medications"
                             clearable
                             outlined
                             :filled="!medications"
@@ -311,7 +333,6 @@
                         </v-flex>
                         <v-flex xs8 sm8 md9 lg10 xl10>
                           <v-text-field
-                            label="Pets and other things"
                             clearable
                             outlined
                             :filled="!petsthings"
@@ -327,19 +348,25 @@
             </v-row>
             <v-row justify="center" wrap>
               <v-card flat width="100%">
-                <v-card-title style="background-color: #1976D2"
-                              justify="start">
-                  <h1 class="title mb-4 hidden-sm-and-down"
-                      style="color: white">
-                    Notes</h1>
-                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
-                      style="color: white">
-                    Notes</h1>
+                <v-card-title
+                  style="background-color: #1976D2; height: 50px; padding: 0"
+                  justify="start">
+                  <v-container fluid fill-height>
+                    <v-layout column>
+                      <v-row wrap justify="start" align="center" class="pl-4">
+                        <h1 class="title mb-4 hidden-sm-and-down"
+                            style="color: white">
+                          Notes</h1>
+                        <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                            style="color: white">
+                          Notes</h1>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
                 </v-card-title>
                 <v-card-text class="pt-8">
                   <v-textarea
                     outlined
-                    label="Other notes"
                     clearable
                     height="200px"
                     v-model="notes"
@@ -348,11 +375,11 @@
               </v-card>
             </v-row>
             <v-row wrap justify="space-around">
-              <v-btn rounded outlined color="black" min-width="150px"
+              <v-btn rounded color="primary" min-width="150px"
                      @click="cancel">
                 Cancel
               </v-btn>
-              <v-btn rounded outlined color="black" min-width="150px"
+              <v-btn rounded color="primary" min-width="150px"
                      @click="generatePDF">
                 Finish
               </v-btn>
@@ -477,7 +504,7 @@
       },
 
       downloadGeneric () {
-        this.text = "Your generic form has been downloaded"
+        this.text = 'Your generic form has been downloaded'
         this.snackbar = true
         this.reset()
         this.generatePDF()
@@ -701,7 +728,7 @@
 
         if (this.selected == 'fill') {
           this.reset()
-          this.text = "Your filled form has been downloaded"
+          this.text = 'Your filled form has been downloaded'
           this.snackbar = true
         }
       }

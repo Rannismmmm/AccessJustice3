@@ -35,10 +35,11 @@
                         wrap
                         style="padding-left: 2vw; padding-right: 2vw"
                       >
-                        <v-flex align="center" xs4 sm4 md3 lg3 xl2>
+                        <v-flex align="end" xs4 sm4 md3 lg3 xl2>
                           <v-container fluid fill-height class="pa-0 ma-0">
                             <v-layout column>
-                              <v-row wrap align="center" justify="center">
+                              <v-row wrap align="center" justify="end"
+                                     class="pr-12 mb-4">
                                 <h1 class="title mb-4 hidden-sm-and-down">Find
                                   events in </h1>
                                 <h1 class="subtitle-1 mb-4 hidden-md-and-up">
@@ -48,16 +49,14 @@
                             </v-layout>
                           </v-container>
                         </v-flex>
-                        <v-flex justify="start" xs5 sm4 md3 lg3 xl1>
+                        <v-flex justify="start" xs5 sm4 md3 lg3 xl2>
                           <v-container fluid fill-height class="pa-0 ma-0">
                             <v-layout column>
-                              <v-row wrap align="center" justify="start">
+                              <v-row wrap align="end" justify="start">
                                 <v-overflow-btn
                                   class="my-2"
                                   :items="periods"
-                                  label="Age Group"
-                                  dense
-                                  flat
+                                  solo
                                   v-model="selectedPeriod"
                                   @change="fetchEventData"
                                 ></v-overflow-btn>
@@ -432,24 +431,27 @@
         data: [],
         periods: [
           {
-            text: 'This week',
-            value: 'next_week'
-          }, {
-            text: 'This weekend',
-            value: 'this_weekend'
-          }, {
-            text: 'Next month',
-            value: 'next_month'
-          }, {
-            text: 'This month',
-            value: 'this_month'
+            text: 'Today',
+            value: 'today'
           },
           {
             text: 'Tomorrow',
             value: 'tomorrow'
           }, {
-            text: 'Today',
-            value: 'today'
+            text: 'This weekend',
+            value: 'this_weekend'
+          },
+          {
+            text: 'Next week',
+            value: 'next_week'
+          },
+          {
+            text: 'This month',
+            value: 'this_month'
+          },
+          {
+            text: 'Next month',
+            value: 'next_month'
           }],
         selectedPeriod: null,
         loading: false
@@ -460,8 +462,8 @@
       fetchEventData () {
         this.loading = true
         this.data = []
-        axios.get('https://www.eventbriteapi.com/v3/events/search/?q=abuse+women&location.address=Melbourne&' +
-          'location.within=20km&location.latitude=-37.814&location.longitude=144.96332&start_date.keyword=' + this.selectedPeriod +
+        axios.get('https://www.eventbriteapi.com/v3/events/search/?q=women%20abuse,health+women&location.address=Melbourne&' +
+          'location.within=100km&location.latitude=-37.814&location.longitude=144.96332&start_date.keyword=' + this.selectedPeriod +
           '&token=AALBGSQBEDEA24BUV7QP')
           .then(response => {
             if (response.data.events.length > 0) {
@@ -482,7 +484,11 @@
                       obj.address = resp.data.address.localized_address_display
                       if (item.logo)
                         obj.img = item.logo.original.url
-                      this.data.push(obj)
+                      if (obj.is_free === true) {
+                        this.data.push(obj)
+                        // this.nameCollection.push(obj.name)
+                        // this.nameCollection.push(this.isExisting(nameCollection, obj.name))
+                      }
                       this.loading = false
                     })
                     .catch(error => {
@@ -499,13 +505,13 @@
           })
       },
 
-      openNewTab(url) {
+      openNewTab (url) {
         window.open(url)
       }
     },
 
     mounted () {
-      this.selectedPeriod = 'this_month'
+      this.selectedPeriod = 'next_week'
       this.fetchEventData()
     }
   }

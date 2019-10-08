@@ -14,7 +14,7 @@
 
     data() {
       return {
-        title: 'Self-Care',
+        title: 'SELF-CARE & RESOURCES',
         cards: [
           {
             title: 'Events',

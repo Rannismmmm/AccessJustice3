@@ -51,6 +51,22 @@ export default new Vuex.Store({
       state.breads.splice((index + 1), (state.breads.length - index - 1))
     },
 
+    findHelpAddView: (state, redirectionItem) => {
+      state.breads = [
+        {
+          text: 'Home',
+          disabled: false,
+          to: '/'
+        },
+        {
+          text: 'Find Help',
+          disabled: false,
+          to: '/support'
+        }
+      ]
+      state.breads.push(redirectionItem)
+    },
+
     addView: (state, redirectionItem) => {
       let lastItem = state.breads.pop()
       state.breads.push({

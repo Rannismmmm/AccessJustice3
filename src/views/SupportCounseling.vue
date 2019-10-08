@@ -31,14 +31,13 @@
             path: 'https://psychcentral.com/'
           },
           {
-            title: 'KIDS HELPLINE',
-            content: 'Kids Helpline is Australia’s only free, private and confidential 24/7 phone and online counselling ' +
-              'service for young people aged 5 to 25. Since 1991, Australia’s kids and young people have been turning to ' +
-              'our professional, specialised counsellors. It’s about practical help and emotional support at the critical ' +
-              'moment they need someone to listen.',
+            title: 'RELATIONSHIPS AUSTRALIA',
+            content: 'Relationships Australia provides relationship support services for individuals, ' +
+              'families and communities in Australia which include family violence prevention, family ' +
+              'dispute resolution, counselling services and ... If you need more help, please Call',
             color: 'grey lighten-2',
             linkWord: 'Here',
-            path: 'https://www.kidshelp.com.au/young-adults'
+            path: 'https://www.relationships.org.au/'
           }
           ,
           {
