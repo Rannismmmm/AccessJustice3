@@ -129,9 +129,9 @@
                   </div>
                   <div v-if="shelter.email">Email:
                     <span>{{shelter.email}}</span></div>
-                  <div v-if="shelter.web">See details: <a
-                    class="font-italic" :href="shelter.web">{{shelter.web}}</a>
-                  </div>
+                  <!--<div v-if="shelter.web">See details: <a-->
+                    <!--class="font-italic" :href="shelter.web">{{shelter.web}}</a>-->
+                  <!--</div>-->
                 </v-card>
               </MglPopup>
             </MglMarker>
@@ -163,7 +163,7 @@
           </v-card-actions>
         </v-card>
       </v-dialog>
-      <h4>{{res}}</h4>
+      <!--<h4>{{res}}</h4>-->
     </v-layout>
   </v-container>
 </template>
@@ -251,7 +251,7 @@
               resp.data.results.forEach((item) => {
                 let obj = {}
                 let phone = null
-                let web = null
+                // let web = null
                 let email = null
                 if (item.position) {
                   if (item.href) {
@@ -261,10 +261,10 @@
                           phone = res.data.contacts.phone[0].value
                           obj.phone = phone
                         }
-                        if (res.data.contacts.website) {
-                          web = res.data.contacts.website[0].value
-                          obj.web = web
-                        }
+                        // if (res.data.contacts.website) {
+                        //   web = res.data.contacts.website[0].value
+                        //   obj.web = web
+                        // }
                         if (res.data.contacts.email) {
                           email = res.data.contacts.email[0].value
                           obj.email = email

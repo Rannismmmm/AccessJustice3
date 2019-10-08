@@ -7,6 +7,28 @@
       <v-row class="hidden-md-and-up" justify="center" style=" padding-left: 2vw; padding-right: 2vw">
          <events-content></events-content>
       </v-row>
+      <v-row justify="space-between" style="padding-left: 4vw; padding-right: 4vw">
+          <v-card flat @click="navigateToView(pageBefore)">
+            <v-container fluid>
+              <v-layout column>
+                <v-row>
+                  <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
+                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
+                </v-row>
+              </v-layout>
+            </v-container>
+          </v-card>
+          <v-card flat @click="navigateToView(pageAfter)">
+            <v-container fluid>
+              <v-layout column>
+                <v-row>
+                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
+                  <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
+                </v-row>
+              </v-layout>
+            </v-container>
+          </v-card>
+      </v-row>
     </v-layout>
   </v-container>
 </template>
@@ -15,7 +37,35 @@
   import EventsContent from '../components/EventsContent'
   export default {
     name: 'Events',
-    components: {EventsContent}
+    components: {EventsContent},
+
+    data() {
+      return {
+        pageBefore: {
+          title: 'Support & Counselling',
+          path: '/supportcounseling'
+        },
+        pageAfter: {
+          title: 'Articles',
+          path: '/articles'
+        }
+      }
+    },
+
+    methods: {
+      navigateToView(item) {
+        this.$router.push(item.path)
+        this.$store.commit('switchView', { redirectionItem: {
+          text: item.title,
+          disabled: false,
+          to: item.path
+        }, otherBaseView: {
+          text: 'Find Help',
+          disabled: false,
+          to: '/support'
+        }})
+      }
+    }
   }
 </script>
 

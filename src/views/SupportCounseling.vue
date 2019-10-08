@@ -4,6 +4,8 @@
     :paragraph="paragraph"
     :positive-cards="cards"
     :card-width="cardWidth"
+    :page-before="{title: 'Care Shelters', path: '/sheltermap'}"
+    :page-after="{title: 'Events', path: '/events'}"
   ></support-template>
 </template>
 

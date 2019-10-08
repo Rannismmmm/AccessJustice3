@@ -16,7 +16,7 @@
       >
         <v-container fluid class="pa-0 ma-0">
           <v-layout column>
-            <v-row justify="center" wrap>
+            <v-row v-if="isHigh" justify="center" wrap>
               <v-card flat width="100%">
                 <v-card-title style="background-color: #1976D2"
                               justify="start">
@@ -42,35 +42,29 @@
                                   height="350px">
                             <v-sheet :color="item.color" height="100%"
                                      width="auto">
-                              <v-container fill-height fluid align-start
+                              <v-container fill-height fluid
                                            class="pa-9">
-                                <v-row no-gutters justify="center">
-                                  <v-col cols="12">
-                                    <v-container fluid>
-                                      <v-layout column>
-                                        <v-row justify="center">
-                                          <h1
-                                            class="title font-weight-thick mb-2"
-                                            style="color: #1976D2">
-                                            {{item.title}}</h1>
-                                        </v-row>
-                                      </v-layout>
-                                    </v-container>
-                                  </v-col>
-                                  <v-col cols="12">
+                                <v-layout column>
+                                  <v-row justify="center">
+                                    <h1
+                                      class="title font-weight-thick mb-2"
+                                      style="color: #1976D2">
+                                      {{item.title}}</h1>
+                                  </v-row>
+                                  <v-row cols="12">
                                     <h1 class="body-2" style="color: black">
                                       {{item.content}}
                                     </h1>
-                                  </v-col>
-                                  <v-col cols="12"
-                                         class="pl-3">
-                                    <p style="color: black">
+                                  </v-row>
+                                  <v-row justify="start" align="end">
+                                    <p style="color: black"
+                                       class="font-weight-bold">
                                       Call <span
                                       class="font-italic font-weight-bold"
                                       style="color: #1976D2">{{item.tele}}</span>
                                     </p>
-                                  </v-col>
-                                </v-row>
+                                  </v-row>
+                                </v-layout>
                               </v-container>
                             </v-sheet>
                           </v-card>
@@ -82,6 +76,62 @@
                         <v-btn color="primary" rounded
                                to="/sheltermap">Click here
                         </v-btn>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+            </v-row>
+            <v-row v-if="!isHigh" justify="center" wrap>
+              <v-card flat width="100%">
+                <v-card-title style="background-color: #1976D2"
+                              justify="start">
+                  <h1 class="title mb-4 hidden-sm-and-down"
+                      style="color: white">
+                    Support & Counseling</h1>
+                  <h1 class="subtitle-1 mb-4 hidden-md-and-up"
+                      style="color: white">
+                    Support & Counseling</h1>
+                </v-card-title>
+                <v-card-text>
+                  <v-container fluid>
+                    <v-layout column>
+                      <v-row wrap>
+                        <v-flex xs12 sm6 md4 lg4 xl3
+                                v-for="(item,i) in counselCards" :key="i">
+                          <v-card class="mx-auto mb-6" width="350px"
+                                  height="350px">
+                            <v-sheet :color="item.color" height="100%"
+                                     width="auto">
+                              <v-container fill-height fluid
+                                           class="pa-9 pb-0">
+                                <v-layout column>
+                                  <v-row justify="center">
+                                    <h1
+                                      class="title font-weight-thick mb-2"
+                                      style="color: #1976D2">
+                                      {{item.title}}</h1>
+                                  </v-row>
+                                  <v-row wrap align="start">
+                                    <h1 class="body-2" style="color: black">
+                                      {{item.content}}
+                                    </h1>
+                                  </v-row>
+                                  <v-row justify="start" align="end">
+                                    <p style="color: black"
+                                       class="font-weight-bold">
+                                      Click <a
+                                      class="font-italic font-weight-bold"
+                                      @click="openNewTab(item.path)"
+                                      to="">Here</a>
+                                      to get help
+                                    </p>
+                                  </v-row>
+                                </v-layout>
+                              </v-container>
+                            </v-sheet>
+                          </v-card>
+                        </v-flex>
                       </v-row>
                     </v-layout>
                   </v-container>
@@ -172,14 +222,13 @@
             path: 'https://psychcentral.com/'
           },
           {
-            title: 'KIDS HELPLINE',
-            content: 'Kids Helpline is Australia’s only free, private and confidential 24/7 phone and online counselling ' +
-              'service for young people aged 5 to 25. Since 1991, Australia’s kids and young people have been turning to ' +
-              'our professional, specialised counsellors. It’s about practical help and emotional support at the critical ' +
-              'moment they need someone to listen.',
+            title: 'RELATIONSHIPS AUSTRALIA',
+            content: 'Relationships Australia provides relationship support services for individuals, ' +
+              'families and communities in Australia which include family violence prevention, family ' +
+              'dispute resolution, counselling services and ... If you need more help, please Call',
             color: 'grey lighten-2',
             linkWord: 'Here',
-            path: 'https://www.kidshelp.com.au/young-adults'
+            path: 'https://www.relationships.org.au/'
           }
           ,
           {
@@ -197,6 +246,12 @@
         isHigh: false,
         lg1: true,
         lg2: false
+      }
+    },
+
+    methods: {
+      openNewTab (url) {
+        window.open(url)
       }
     },
 

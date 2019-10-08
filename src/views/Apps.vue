@@ -5,6 +5,7 @@
     :card-height="cardHeight"
     :positive-cards="cards"
     :icon-width="iconWidth"
+    :page-before="{title: 'Articles', path: '/articles'}"
   ></support-template>
 </template>
 

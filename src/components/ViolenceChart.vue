@@ -9,10 +9,10 @@
           </span></p>
       </v-row>
       <v-row justify="space-between">
-        <v-btn icon @click=""
-               disabled>
-          <v-icon large>mdi-chevron-left</v-icon>
-        </v-btn>
+        <!--<v-btn icon @click=""-->
+               <!--disabled>-->
+          <!--<v-icon large>mdi-chevron-left</v-icon>-->
+        <!--</v-btn>-->
 
         <v-flex xs12 sm5 md3 lg3 xl3>
           <v-autocomplete
@@ -36,9 +36,9 @@
             </template>
           </v-autocomplete>
         </v-flex>
-        <v-btn icon @click="goNext">
-          <v-icon large>mdi-chevron-right</v-icon>
-        </v-btn>
+        <!--<v-btn icon @click="goNext">-->
+          <!--<v-icon large>mdi-chevron-right</v-icon>-->
+        <!--</v-btn>-->
       </v-row>
       <v-row v-if="loading" justify="center">
         <v-progress-circular

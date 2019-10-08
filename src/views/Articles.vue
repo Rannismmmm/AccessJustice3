@@ -5,6 +5,8 @@
     :positive-cards="cards"
     :card-height="cardHeight"
     :icon-width="iconWidth"
+    :page-before="{title: 'Events', path: '/events'}"
+    :page-after="{title: 'Apps', path: '/apps'}"
   ></support-template>
 </template>
 

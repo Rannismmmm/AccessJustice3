@@ -186,7 +186,7 @@
                   <v-row align="end" v-if="item.tele" class="pl-3">
                     <p style="color: black">
                     Call <span class="font-italic font-weight-bold"
-                                style="color: #1976D2">{{item.tele}}</span></p>
+                               style="color: #1976D2">{{item.tele}}</span></p>
                   </v-row>
                 </v-layout>
               </v-container>
@@ -195,6 +195,32 @@
         </v-flex>
         </v-row>
       </v-col>
+    </v-container>
+    <v-container fluid style="padding-left: 4vw; padding-right: 4vw">
+      <v-layout column>
+        <v-row justify="space-between">
+          <v-card flat @click="navigateToView(pageBefore)">
+            <v-container fluid v-if="pageBefore">
+              <v-layout column>
+                <v-row>
+                  <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
+                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
+                </v-row>
+              </v-layout>
+            </v-container>
+          </v-card>
+          <v-card flat @click="navigateToView(pageAfter)">
+            <v-container fluid v-if="pageAfter">
+              <v-layout column>
+                <v-row>
+                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
+                  <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
+                </v-row>
+              </v-layout>
+            </v-container>
+          </v-card>
+        </v-row>
+      </v-layout>
     </v-container>
   </span>
 </template>
@@ -272,7 +298,17 @@
       noSpaceTitle: {
         type: Boolean,
         default: false
-      }
+      },
+
+      pageBefore: {
+        type: Object,
+        default: () => {}
+      },
+
+      pageAfter: {
+        type: Object,
+        default: () => {}
+      },
     },
 
     methods: {
@@ -287,6 +323,20 @@
 
       openNewTab (url) {
         window.open(url)
+      },
+
+      navigateToView(item) {
+        this.$router.push(item.path)
+        this.$store.commit('switchView', {
+          redirectionItem: {
+          text: item.title,
+          disabled: false,
+          to: item.path
+        }, otherBaseView: {
+          text: 'Find Help',
+          disabled: false,
+          to: '/support'
+        }})
       }
     }
   }

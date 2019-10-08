@@ -385,7 +385,7 @@
     methods: {
       redirct (item) {
         this.$router.push(item.to)
-        this.$store.commit('switchView', item)
+        this.$store.commit('switchView', {redirectionItem: item})
       }
     }
   }

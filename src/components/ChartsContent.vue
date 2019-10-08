@@ -5,41 +5,45 @@
       grow
     >
       <v-tabs-slider></v-tabs-slider>
-
-      <v-tab href="#tab-1">
-        Violence
-      </v-tab>
-
-      <v-tab href="#tab-2">
+      <v-btn class="mt-3 pr-4" icon @click="goBack" :disabled="tab == '1'">
+        <v-icon large>mdi-chevron-left</v-icon>
+      </v-btn>
+      <v-tab href="#1">
         Distress
       </v-tab>
 
-      <v-tab href="#tab-3">
+      <v-tab href="#2">
+        Violence
+      </v-tab>
+
+      <v-tab href="#3">
         Age
       </v-tab>
+      <v-btn class="mt-3 pl-4" icon @click="goNext" :disabled="tab == '3'">
+        <v-icon large>mdi-chevron-right</v-icon>
+      </v-btn>
     </v-tabs>
 
     <v-tabs-items v-model="tab">
       <v-tab-item
         key="1"
-        value="tab-1"
+        value="1"
       >
         <v-card width="60vw" flat>
-          <violence-chart @goNext="goNext"></violence-chart>
+          <distress-chart></distress-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
         key="2"
-        value="tab-2"
+        value="2"
       >
         <v-card width="60vw" flat>
-          <distress-chart @goBack="goBack"
-                          @goNext="goNext"></distress-chart>
+          <violence-chart></violence-chart>
         </v-card>
       </v-tab-item>
       <v-tab-item
         key="3"
-        value="tab-3"
+        value="3"
       >
         <v-card width="60vw" flat>
           <young-abuse></young-abuse>
@@ -64,31 +68,31 @@
       return {
         tab: null,
         text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        data: [],
+        data: []
       }
     },
 
     props: {
       pr: {
         type: String,
-        default: "3"
+        default: '3'
       }
     },
 
     methods: {
       goNext () {
-        if (this.tab == 'tab-1') {
-          this.tab = 'tab-2'
+        if (this.tab == '1') {
+          this.tab = '2'
         } else {
-          this.tab = 'tab-3'
+          this.tab = '3'
         }
       },
 
       goBack () {
-        if (this.tab == 'tab-3') {
-          this.tab = 'tab-2'
+        if (this.tab == '3') {
+          this.tab = '2'
         } else {
-          this.tab = 'tab-1'
+          this.tab = '1'
         }
       }
     },

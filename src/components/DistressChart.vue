@@ -13,9 +13,6 @@
         </p>
       </v-row>
       <v-row align="center" justify="space-between">
-        <v-btn icon @click="goBack">
-          <v-icon large>mdi-chevron-left</v-icon>
-        </v-btn>
         <v-flex align="center" xs12 sm12 md5 lg4 xl3>
           <v-combobox
             class="mt-0"
@@ -49,9 +46,6 @@
             @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
         </v-flex>
-        <v-btn icon @click="goNext">
-          <v-icon large>mdi-chevron-right</v-icon>
-        </v-btn>
       </v-row>
       <!--<v-row>-->
       <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->

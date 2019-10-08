@@ -25,7 +25,7 @@ export default new Vuex.Store({
     ]
   },
   mutations: {
-    switchView: (state, redirectionItem) => {
+    switchView: (state, {redirectionItem, otherBaseView}) => {
       if (redirectionItem.to == '/') {
         state.breads = [
           {
@@ -34,13 +34,23 @@ export default new Vuex.Store({
             to: '/'
           }
         ]
+      } else if (otherBaseView) {
+        state.breads = [
+          {
+            text: 'Home',
+            disabled: false,
+            to: '/'
+          },
+        ]
+        state.breads.push(otherBaseView)
+        state.breads.push(redirectionItem)
       } else {
         state.breads = [
           {
             text: 'Home',
             disabled: false,
             to: '/'
-          }
+          },
         ]
         state.breads.push(redirectionItem)
       }

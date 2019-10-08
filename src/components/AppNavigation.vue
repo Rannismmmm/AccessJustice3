@@ -51,9 +51,11 @@
                 optional
                 grow
                 mobile-break-point
+                v-model="tab"
               >
                 <v-tab v-for="(item,index) in items"
                        :key="index"
+                       :href="item.to"
                        @click="redirct(item)">
                   {{item.title}}
                 </v-tab>
@@ -93,9 +95,11 @@
             optional
             hide-slider
             center-active
+            v-model="tab"
           >
             <v-tab style="margin: 0" v-for="(item,index) in items"
                    :key="index"
+                   :href="item.to"
                    :to="item.path">
               {{item.title}}
             </v-tab>
@@ -529,6 +533,7 @@
       return {
         appTitle: 'Justice League',
         drawer: false,
+        tab: null,
         location: 'home',
         items: [
           {
@@ -615,11 +620,12 @@
 
       redirct (item) {
         this.$router.push(item.path)
-        this.$store.commit('switchView', {
+        this.tab = item.path
+        this.$store.commit('switchView', {redirectionItem: {
           text: item.title,
           disabled: false,
           to: item.path
-        })
+        }})
       },
 
       backDirect (item) {
@@ -630,7 +636,19 @@
     computed: {
       breads () {
         return this.$store.state.breads
-      }
+      },
+
+      // tab () {
+      //   let cumbs = []
+      //   this.$store.state.breads.forEach(item => {
+      //     cumbs.push(item.to)
+      //   })
+      //   let lastItem = cumbs[cumbs.length - 1]
+      //   if (lastItem == '/')
+      //     return this.items[0]
+      //   if (lastItem == '/abuse')
+      //     return this.items[1]
+      // }
     }
   }
 </script>

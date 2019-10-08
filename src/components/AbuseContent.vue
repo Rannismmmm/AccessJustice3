@@ -63,28 +63,40 @@
           :points="section.points"
         ></abuse-paragraph>
       </v-row>
-      <v-row justify="space-between" class="pt-5 pb-5">
+      <v-row justify="center" class="pt-5 pb-5">
+        <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
+          <!--Interested in the relevant data visualization or facts?-->
+        <!--</h1>-->
+        <!--<h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">-->
+          <!--Interested in the relevant data visualization or facts?-->
+        <!--</h1>-->
         <h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">
-          Interested in the relevant data visualization or facts?
+          Are you in an emotionally abusive relationship?
         </h1>
         <h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">
-          Interested in the relevant data visualization or facts?
+          Are you in an emotionally abusive relationship?
         </h1>
-        <v-btn rounded outlined color="black" min-width="231px"
-               @click="toCharts">
+      </v-row>
+      <v-row justify="center">
+        <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
+          <!--Are you in an emotionally abusive relationship?-->
+        <!--</h1>-->
+        <!--<h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">-->
+          <!--Are you in an emotionally abusive relationship?-->
+        <!--</h1>-->
+        <!--<v-btn rounded outlined color="black" min-width="231px"-->
+               <!--@click="toAssessment">-->
+          <!--Check my relationship-->
+        <!--</v-btn>-->
+        <v-btn rounded color="primary" min-width="231px"
+               @click="toAssessment">
           Find out more
         </v-btn>
       </v-row>
-      <v-row justify="space-between" class="pt-5">
-        <h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">
-          Are you in an emotionally abusive relationship?
-        </h1>
-        <h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">
-          Are you in an emotionally abusive relationship?
-        </h1>
-        <v-btn rounded outlined color="black" min-width="231px"
-               @click="toAssessment">
-          Check my relationship
+      <v-row justify="start">
+        <v-btn rounded color="primary" min-width="231px"
+               @click="toCharts">
+          Start
         </v-btn>
       </v-row>
     </v-layout>
@@ -141,17 +153,17 @@
     methods: {
       toAssessment () {
         this.$router.push('/assessments/true')
-        this.$store.commit('switchView', {
+        this.$store.commit('switchView', {redirectionItem: {
           text: 'Self-Assessment',
           disabled: false,
           to: '/assessments/true'
-        })
+        }})
       },
 
       toCharts () {
         this.$router.push('/visualization')
         this.$store.commit('addView', {
-          text: 'Visualization',
+          text: 'Statistics',
           disabled: false,
           to: '/visualization'
         })
