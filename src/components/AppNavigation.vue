@@ -12,7 +12,7 @@
       scroll-target="#scrolling-techniques-3"
     >
       <v-container fluid fill-height align-end style="padding: 0">
-        <v-col cols="12" sm="8" md="5" justify-start>
+        <v-col cols="12" sm="8" md="4" justify-start>
           <v-row justify="start">
             <v-card flat style="width: 215px" @click="redirct(items[0])">
               <v-img max-height="60" contain
@@ -27,7 +27,7 @@
           <v-row no-gutters>
             <v-col
               cols="12"
-              sm="5"
+              sm="4"
             >
               <v-breadcrumbs :items="breads" large>
                 <template v-slot:item="props">
@@ -43,14 +43,13 @@
             </v-col>
             <v-col
               cols="12"
-              sm="7"
+              sm="8"
             >
               <v-tabs
                 background-color="transparent"
+                grow
                 right
                 optional
-                grow
-                mobile-break-point
                 v-model="tab"
               >
                 <v-tab v-for="(item,index) in items"

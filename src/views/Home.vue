@@ -277,11 +277,11 @@
           </v-row>
           <v-row
             align="center"
-            justify="space-between"
+            justify="space-around"
             class="pl-10 pr-10"
             wrap>
-            <v-flex xs12 sm4 md2 lg2 xl2 v-for="(card,i) in cards" :key="i">
-              <v-card class="mx-auto mb-6" flat height="320" width="220" :to="card.item.to" @click.native="redirct(card.item)">
+            <v-flex xs12 sm6 md4 lg2 xl2 v-for="(card,i) in cards" :key="i">
+              <v-card class="mx-auto mb-6" flat height="320" width="100%" :to="card.item.to" @click.native="redirct(card.item)">
                 <v-container fluid fill-height class="ma-0 pa-4">
                   <v-layout column class="pl-3 pr-3">
                     <v-row xs12 justify="center" align="start">
@@ -289,7 +289,7 @@
                              contain></v-img>
                     </v-row>
                     <v-row xs12 justify="center" align="start" class="pb-4">
-                      <span class="title"
+                      <span class="title text-center"
                             style="color: #1976D2">{{card.title}}</span>
                     </v-row>
                     <v-row xs12 justify="center" class="text-center">

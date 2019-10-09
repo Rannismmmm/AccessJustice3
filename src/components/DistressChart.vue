@@ -20,7 +20,6 @@
             :items="yearSelections"
             chips
             :disabled="loading"
-            clearable
             label="Select years"
             multiple
           >
