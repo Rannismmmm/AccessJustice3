@@ -12,13 +12,17 @@
           </span>
         </p>
       </v-row>
-      <v-row align="center" justify="space-between">
+      <v-row align="center" justify="center">
+        <p class="title mr-4 mb-8" style="color: black">
+          Year
+        </p>
         <v-flex align="center" xs12 sm12 md5 lg4 xl3>
           <v-combobox
             class="mt-0"
             v-model="years"
             :items="yearSelections"
             chips
+            solo
             :disabled="loading"
             label="Select years"
             multiple
@@ -33,14 +37,16 @@
             </template>
           </v-combobox>
         </v-flex>
-        <v-flex align="center" xs7 sm5 md3 lg3 xl2>
+        <p class="title pl-8 mr-4 mb-8" style="color: black">
+          Age group
+        </p>
+        <v-flex align="center" xs10 sm7 md3 lg3 xl2>
           <v-overflow-btn
             class="mb-0"
             :items="ages"
             label="Age Group"
             :disabled="loading"
-            dense
-            flat
+            solo
             v-model="selectedAge"
             @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
@@ -231,20 +237,22 @@
         series2.visible = false
       },
 
-      updateWithNochanges(original) {
-        if (JSON.stringify(this.years)==JSON.stringify(original))
+      updateWithNochanges (original) {
+        if (JSON.stringify(this.years) == JSON.stringify(original))
           this.makeChart(this.makeDataByAge(this.selectedAge.ageStart, this.selectedAge.ageEnd))
       }
 
     },
 
     watch: {
-      years(val) {
+      years (val) {
         let original = []
         this.years.forEach(item => {
           original.push(item)
         })
-        setTimeout(() => {this.updateWithNochanges(original)}, 1200)
+        setTimeout(() => {
+          this.updateWithNochanges(original)
+        }, 1200)
       }
     },
 

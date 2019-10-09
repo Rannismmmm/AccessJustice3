@@ -18,9 +18,9 @@
         wrap
         style="padding-left: 2vw; padding-right: 2vw"
       >
-        <h1 class="body-1 mb-4 hidden-sm-and-down">These are the events
+        <h1 class="body-1 mb-4 hidden-sm-and-down">Following are the events
           available in Melbourne.</h1>
-        <h1 class="body-2 mb-4 hidden-md-and-up">These are the events available
+        <h1 class="body-2 mb-4 hidden-md-and-up">Following are the events available
           in Melbourne.</h1>
       </v-row>
       <v-row
@@ -32,9 +32,8 @@
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <v-row wrap align="center" justify="end" class="pr-12 mb-4">
-                <h1 class="title mb-4 hidden-sm-and-down">Find events in </h1>
-                <h1 class="subtitle-1 mb-4 hidden-md-and-up">Find events
-                  in </h1>
+                <h1 class="title mb-4 hidden-sm-and-down">Find events  </h1>
+                <h1 class="subtitle-1 mb-4 hidden-md-and-up">Find events </h1>
               </v-row>
             </v-layout>
           </v-container>

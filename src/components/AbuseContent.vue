@@ -21,14 +21,14 @@
         <h1 class="body-1 mb-4 font-weight-medium hidden-sm-and-down">
           Emotional abuse can happen without physical violence. Although it
           does not hurt you physically, it can do harm to your mental health
-          and have a more serious impact. Depression, fear, and anxiety often
+          and have serious impact. Depression, fear, and anxiety often
           come with emotional abuse. There are some common behaviors you can
           check as the sign of an emotionally abusive relationship.
         </h1>
         <h1 class="body-2 mb-4 font-weight-medium hidden-md-and-up">
           Emotional abuse can happen without physical violence. Although it
           does not hurt you physically, it can do harm to your mental health
-          and have a more serious impact. Depression, fear, and anxiety often
+          and have serious impact. Depression, fear, and anxiety often
           come with emotional abuse. There are some common behaviors you can
           check as the sign of an emotionally abusive relationship.
         </h1>
@@ -70,12 +70,10 @@
         <!--<h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">-->
           <!--Interested in the relevant data visualization or facts?-->
         <!--</h1>-->
-        <h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">
-          Are you in an emotionally abusive relationship?
-        </h1>
-        <h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">
-          Are you in an emotionally abusive relationship?
-        </h1>
+        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
+          Are you in an emotionally abusive relationship?</h4>
+        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">
+          Are you in an emotionally abusive relationship?</h4>
       </v-row>
       <v-row justify="center">
         <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
@@ -88,17 +86,17 @@
                <!--@click="toAssessment">-->
           <!--Check my relationship-->
         <!--</v-btn>-->
-        <v-btn rounded color="primary" min-width="231px"
+        <v-btn rounded color="primary"
                @click="toAssessment">
           Find out more
         </v-btn>
       </v-row>
-      <v-row justify="start">
-        <v-btn rounded color="primary" min-width="231px"
-               @click="toCharts">
-          Start
-        </v-btn>
-      </v-row>
+      <!--<v-row justify="start">-->
+        <!--<v-btn rounded color="primary" min-width="231px"-->
+               <!--@click="toCharts">-->
+          <!--Start-->
+        <!--</v-btn>-->
+      <!--</v-row>-->
     </v-layout>
   </v-container>
 </template>

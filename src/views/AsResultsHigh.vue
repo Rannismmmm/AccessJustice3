@@ -5,7 +5,7 @@
         align="end"
         justify="center"
         wrap
-        style="padding-top: 250px; padding-bottom: 20px">
+        style="padding-top: 200px; padding-bottom: 20px">
         <h4 class="display-1 mb-4" style="color: #1976D2">These are our
           recommendations for you.</h4>
       </v-row>
@@ -70,8 +70,8 @@
                           </v-card>
                         </v-flex>
                       </v-row>
-                      <v-row v-if="isHigh" justify="center" wrap>
-                        <h1 class="title font-weight-bold mb-4 pl-6 pr-2"
+                      <v-row v-if="isHigh" justify="center" wrap class="pt-4">
+                        <h1 class="headline font-weight-bold mb-4 pl-6 pr-2"
                             style="color: #1976D2">Need a place to stay?</h1>
                         <v-btn color="primary" rounded
                                to="/sheltermap">Click here
@@ -118,14 +118,9 @@
                                     </h1>
                                   </v-row>
                                   <v-row justify="start" align="end">
-                                    <p style="color: black"
-                                       class="font-weight-bold">
-                                      Click <a
-                                      class="font-italic font-weight-bold"
+                                    <a class="title pb-4"
                                       @click="openNewTab(item.path)"
-                                      to="">Here</a>
-                                      to get help
-                                    </p>
+                                      to="">Visit website</a>
                                   </v-row>
                                 </v-layout>
                               </v-container>
@@ -152,8 +147,7 @@
                 <v-card-text>
                   <v-container fluid class="pa-0 ma-0">
                     <v-layout column>
-                      <v-row wrap
-                             style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh"
+                      <v-row wrap class="pt-7 pl-12"
                              justify="start">
                         <h1 class="title font-weight-bold mb-4 pl-6 pr-2"
                             style="color: black">Check out our range of support

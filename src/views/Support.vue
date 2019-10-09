@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
-      <v-row>
+      <v-row align="end">
         <support-template
           :mainTitle="title"
           :active-cards="cards"
@@ -34,7 +34,7 @@
             path: '/legalsupport'
           },
           {
-            title: 'Care Shelters',
+            title: 'Shelters & Organizations',
             comment: 'Find the nearby shelters here',
             color: 'indigo darken-4',
             path: '/sheltermap'

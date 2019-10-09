@@ -25,7 +25,7 @@
                 <v-container fluid class="mt-0 mb-0 pt-0 pb-0">
                   <v-layout column>
                     <v-row class="pt-0 mt-0 pl-4">
-                      <h4 class="subtitle-1">Shelters nearby:</h4>
+                      <h4 class="subtitle-1">Shelters & Organizations nearby:</h4>
                     </v-row>
                     <v-row class="pt-0 mt-0 pl-4">
                       <h4 class="subtitle-2 font-weight-bold"

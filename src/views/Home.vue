@@ -29,7 +29,7 @@
                   <h4 class="headline mb-4" style="color: white">The aim of
                     Justicely is to improve
                     the
-                    life of emotional</h4>
+                    life of emotionally</h4>
                 </v-row>
                 <v-row justify="center">
                   <h4 class="headline mb-4" style="color: white">abused women
@@ -75,10 +75,10 @@
                   <h4 class="subtitle-1 mb-4" style="color: white">The aim of
                     Justicely is to improve
                     the
-                    life of</h4>
+                    life of </h4>
                 </v-row>
                 <v-row justify="center">
-                  <h4 class="subtitle-1 mb-4" style="color: white">emotional
+                  <h4 class="subtitle-1 mb-4" style="color: white">emotionally
                     abused women in
                     Melbourne
                     because</h4>
@@ -346,7 +346,7 @@
           {
             icon: require('../assets/home/icons/hands.png'),
             title: 'Find Help',
-            content: 'Check out our range of support services available for free.',
+            content: 'Check out our range of available support services.',
             item: {
               text: 'Find Help',
               disabled: false,

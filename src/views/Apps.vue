@@ -18,7 +18,7 @@
     data(){
       return {
         mainTitle: 'Apps',
-        paragraph: 'These are the apps available for you.',
+        paragraph: 'Following are the apps available for you.',
         cardHeight: "420px",
         iconWidth: '89px',
         cards: [

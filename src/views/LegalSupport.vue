@@ -17,16 +17,15 @@
     data () {
       return {
         title: 'Legal Support',
-        paragraph: 'There are some Legal Support Services are available in  Melbourne. \n' +
+        paragraph: 'Following are the Legal Support Services are available in  Melbourne. \n' +
           '\n' +
-          'Call 000 for emergent support if you need help immediately.',
+          'Please call 000 for emergency support.',
         cards: [
           {
             title: 'VICTORIA LEGAL AID',
-            content: "Victoria Legal Aid provides services to help people who is suffering " +
-              "from social and economical disadvantage people. The service mainly targets people " +
-              "in the state of Victoria, Australia and it offers different kinds of information and " +
-              "advices and law.",
+            content: "Victoria Legal Aid provides services to help people who are suffering " +
+              "from social and economical disadvantage. This service provides various types of " +
+              "legal support to the people of Victoria",
             color: 'grey lighten-2',
             tele: '1300 792 387'
           },
@@ -41,8 +40,8 @@
           ,
           {
             title: '1800RESPECT',
-            content: '1800RESPECT provides support services about sexual assault, domestic or family violence ' +
-              'which include information, referral, and counselling. If you need more help, please contact 1800RESPECT.',
+            content: '1800RESPECT provides support services on sexual assault, domestic or family violence. ' +
+              'It offers information, legal advice and counselling services.',
             color: 'grey lighten-2',
             tele: '1800 737 732'
           }

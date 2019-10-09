@@ -7,7 +7,7 @@
         wrap
         style="padding-top: 200px; padding-bottom: 20px"
       >
-        <h4 class="display-1 mb-4" style="color: #1976D2">Shelter Services</h4>
+        <h4 class="display-1 mb-4" style="color: #1976D2">Shelters & Organizations</h4>
       </v-row>
       <v-row
         align="start"

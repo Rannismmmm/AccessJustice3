@@ -56,7 +56,7 @@
                        :key="index"
                        :href="item.to"
                        @click="redirct(item)">
-                  {{item.title}}
+                  <div style="color: black">{{item.title}}</div>
                 </v-tab>
               </v-tabs>
             </v-col>
@@ -146,11 +146,11 @@
                                 <v-row wrap justify="start">
                                   <h1
                                     class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust acknowledges the Traditional Owners
+                                    AJust team acknowledges the Traditional Owners
                                     of
                                     the land
                                     on
-                                    which the webiste target audience resides,
+                                    which the i target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -162,14 +162,14 @@
                                     who
                                     may
                                     be
-                                    visiting this webssite today.
+                                    visiting this website today.
                                   </h1>
                                 </v-row>
                                 <v-row wrap justify="start" align="end">
                                   <h1 class="subtitle-1 font-weight-medium">
                                     Justicely aims to identify and provide
                                     support
-                                    to the
+                                    to
                                     young
                                     women of Melbourne facing emotional abuse
                                     by
@@ -342,11 +342,11 @@
                                 <v-row wrap justify="start">
                                   <h1
                                     class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust acknowledges the Traditional Owners
+                                    AJust team acknowledges the Traditional Owners
                                     of
                                     the land
                                     on
-                                    which the webiste target audience resides,
+                                    which the webisite target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -358,14 +358,14 @@
                                     who
                                     may
                                     be
-                                    visiting this webssite today.
+                                    visiting this website today.
                                   </h1>
                                 </v-row>
                                 <v-row wrap justify="start" align="end">
                                   <h1 class="subtitle-1 font-weight-medium">
                                     Justicely aims to identify and provide
                                     support
-                                    to the
+                                    to
                                     young
                                     women of Melbourne facing emotional abuse
                                     by

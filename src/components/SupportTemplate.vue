@@ -155,16 +155,14 @@
                   <v-col cols="12">
                     <h1 class="body-2">{{item.content}}</h1>
                   </v-col>
-                  <v-col v-if="item.path" cols="12">
-                    <h1 class="body-2 font-weight-bold">Click <a
-                      class="font-italic"
-                      @click="openNewTab(item.path)">{{item.linkWord}}</a> to get help</h1>
-                  </v-col>
                   <v-col class="pa-1" v-if="item.redirect" cols="12">
-                    <h1 class="body-2 font-weight-bold">I want to <a
-                      class="font-italic" @click="openNewTab(item.redirect)">Read More</a> from {{item.org}}</h1>
+                    <a class="font-weight-bold" @click="openNewTab(item.redirect)">Click here to read more</a>
                   </v-col>
                 </v-row>
+                  <v-row justify="start" align="end" v-if="item.linkWord">
+                    <a class="title pl-3"
+                       @click="openNewTab(item.path)">{{item.linkWord}}</a>
+                  </v-row>
                 <v-row align="end" v-if="item.ios || item.android">
                     <v-container fluid>
                       <v-layout column>
@@ -204,7 +202,8 @@
               <v-layout column>
                 <v-row>
                   <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageBefore.title}}</span>
                 </v-row>
               </v-layout>
             </v-container>
@@ -213,7 +212,8 @@
             <v-container fluid v-if="pageAfter">
               <v-layout column>
                 <v-row>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageAfter.title}}</span>
                   <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
                 </v-row>
               </v-layout>
@@ -302,13 +302,15 @@
 
       pageBefore: {
         type: Object,
-        default: () => {}
+        default: () => {
+        }
       },
 
       pageAfter: {
         type: Object,
-        default: () => {}
-      },
+        default: () => {
+        }
+      }
     },
 
     methods: {
@@ -325,18 +327,19 @@
         window.open(url)
       },
 
-      navigateToView(item) {
+      navigateToView (item) {
         this.$router.push(item.path)
         this.$store.commit('switchView', {
           redirectionItem: {
-          text: item.title,
-          disabled: false,
-          to: item.path
-        }, otherBaseView: {
-          text: 'Find Help',
-          disabled: false,
-          to: '/support'
-        }})
+            text: item.title,
+            disabled: false,
+            to: item.path
+          }, otherBaseView: {
+            text: 'Find Help',
+            disabled: false,
+            to: '/support'
+          }
+        })
       }
     }
   }
