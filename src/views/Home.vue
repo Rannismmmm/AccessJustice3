@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid style="padding: 0px">
+  <v-container fluid style="padding: 0px" v-if="appear">
     <v-row wrap>
       <v-img
         :src="require('../assets/home/homeBack.jpeg')"
@@ -379,14 +379,16 @@
               to: '/sheltermap'
             }
           }
-        ]
+        ],
+        appear: false
       }
     },
 
     mounted () {
-      this.sheet = true
-    }
-    ,
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
+    },
 
     methods: {
       redirct (item) {

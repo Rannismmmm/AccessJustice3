@@ -1,5 +1,5 @@
 <template>
-  <span style="width: 100vw">
+  <span style="width: 100vw" v-if="appear">
     <v-container fluid
                  class="hidden-sm-and-down">
       <v-layout column>
@@ -51,9 +51,9 @@
           align="start"
           justify="center"
           wrap
-          style="padding-left: 2vw; padding-right: 2vw"
+          style="padding-left: 4vw; padding-right: 4vw"
         >
-          <h1 class="body-2 mb-4">{{paragraph}}
+          <h1 class="body-2 mb-4 text-center">{{paragraph}}
             <v-btn v-if="paragraphBtn" text small color="primary">
               {{paragraphBtn}}
             </v-btn>
@@ -252,6 +252,7 @@
         //     color: 'grey lighten-2'
         //   }
         // ]
+        appear: false
       }
     },
 
@@ -347,6 +348,12 @@
           }
         })
       }
+    },
+
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
     }
   }
 </script>

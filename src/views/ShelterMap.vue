@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="appear">
     <v-layout column>
       <v-row
         align="center"
@@ -74,7 +74,8 @@
         pageAfter: {
           title: 'Support & Counselling',
           path: '/supportcounseling'
-        }
+        },
+        appear: false
       }
     },
 
@@ -95,7 +96,10 @@
       }
     },
 
-    created () {
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
     }
   }
 </script>

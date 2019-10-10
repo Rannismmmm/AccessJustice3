@@ -1,7 +1,8 @@
 <template>
-  <v-container fluid fill-height>
+  <v-container fluid fill-height v-if="appear">
     <v-layout column>
       <v-row
+        id="headerd"
         align="center"
         justify="center"
         wrap
@@ -65,10 +66,10 @@
       </v-row>
       <v-row justify="center" class="pt-5 pb-5">
         <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
-          <!--Interested in the relevant data visualization or facts?-->
+        <!--Interested in the relevant data visualization or facts?-->
         <!--</h1>-->
         <!--<h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">-->
-          <!--Interested in the relevant data visualization or facts?-->
+        <!--Interested in the relevant data visualization or facts?-->
         <!--</h1>-->
         <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
           Are you in an emotionally abusive relationship?</h4>
@@ -77,14 +78,14 @@
       </v-row>
       <v-row justify="center">
         <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
-          <!--Are you in an emotionally abusive relationship?-->
+        <!--Are you in an emotionally abusive relationship?-->
         <!--</h1>-->
         <!--<h1 class="body-1 mb-4 hidden-md-and-up" style="color: #1976D2">-->
-          <!--Are you in an emotionally abusive relationship?-->
+        <!--Are you in an emotionally abusive relationship?-->
         <!--</h1>-->
         <!--<v-btn rounded outlined color="black" min-width="231px"-->
-               <!--@click="toAssessment">-->
-          <!--Check my relationship-->
+        <!--@click="toAssessment">-->
+        <!--Check my relationship-->
         <!--</v-btn>-->
         <v-btn rounded color="primary"
                @click="toAssessment">
@@ -92,10 +93,10 @@
         </v-btn>
       </v-row>
       <!--<v-row justify="start">-->
-        <!--<v-btn rounded color="primary" min-width="231px"-->
-               <!--@click="toCharts">-->
-          <!--Start-->
-        <!--</v-btn>-->
+      <!--<v-btn rounded color="primary" min-width="231px"-->
+      <!--@click="toCharts">-->
+      <!--Start-->
+      <!--</v-btn>-->
       <!--</v-row>-->
     </v-layout>
   </v-container>
@@ -144,18 +145,21 @@
               'Substance Abuse'
             ]
           }
-        ]
+        ],
+        appear: false,
       }
     },
 
     methods: {
       toAssessment () {
         this.$router.push('/assessments/true')
-        this.$store.commit('switchView', {redirectionItem: {
-          text: 'Self-Assessment',
-          disabled: false,
-          to: '/assessments/true'
-        }})
+        this.$store.commit('switchView', {
+          redirectionItem: {
+            text: 'Self-Assessment',
+            disabled: false,
+            to: '/assessments/true'
+          }
+        })
       },
 
       toCharts () {
@@ -166,6 +170,12 @@
           to: '/visualization'
         })
       }
+    },
+
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
     }
   }
 </script>

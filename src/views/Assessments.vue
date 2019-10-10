@@ -328,13 +328,8 @@
           this.subDisable = false
       },
 
-      // questions(val) {
-      //   if (this.questions > 5) {
-      //     this.questions
-      //   }
-      // }
-    }
-    ,
+
+    },
 
     mounted () {
       if (this.$route.params.questionVisible == 'true') {

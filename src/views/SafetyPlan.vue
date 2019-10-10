@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="appear">
     <v-layout column>
       <v-row
         align="center"
@@ -90,7 +90,9 @@
         safetyForm: {
           title: 'Safety Form',
           path: '/safetyform'
-        }
+        },
+
+        appear: false
       }
     },
 
@@ -128,6 +130,12 @@
         // download the file
         doc.save(pdfName + '.pdf')
       }
+    },
+
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
     }
   }
 </script>

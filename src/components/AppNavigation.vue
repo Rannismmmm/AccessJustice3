@@ -346,7 +346,7 @@
                                     of
                                     the land
                                     on
-                                    which the target audience resides,
+                                    which the webisite target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,

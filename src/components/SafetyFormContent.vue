@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="appear">
     <v-layout column>
       <v-row
         align="center"
@@ -34,7 +34,7 @@
               <v-layout column>
                 <v-row justify="space-around" wrap class="hidden-sm-and-down">
                   <v-checkbox color="black" v-model="selected"
-                              @click="downloadGeneric"
+                              @change="downloadGeneric"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
                   <v-checkbox color="black" v-model="selected"
@@ -43,6 +43,7 @@
                 </v-row>
                 <v-row justify="start" wrap class="hidden-md-and-up">
                   <v-checkbox color="black" v-model="selected"
+                              @change="downloadGeneric"
                               label="Download generic safety plan"
                               value="download"></v-checkbox>
                   <v-checkbox color="black" v-model="selected"
@@ -452,7 +453,8 @@
         pDocs: null,
         notes: null,
         text: null,
-        snackbar: false
+        snackbar: false,
+        appear: false
       }
     },
 
@@ -504,10 +506,12 @@
       },
 
       downloadGeneric () {
-        this.text = 'Your generic form has been downloaded'
-        this.snackbar = true
-        this.reset()
-        this.generatePDF()
+        if (this.selected == 'download') {
+          this.text = 'Your generic form has been downloaded'
+          this.snackbar = true
+          this.reset()
+          this.generatePDF()
+        }
       },
 
       generatePDF () {
@@ -566,7 +570,7 @@
 
         // Documents Title
         doc.setFontSize(16)
-        doc.text(17, 120, 'EMERGENCY DOCUMENTS(S)')
+        doc.text(17, 120, 'EMERGENCY DOCUMENT(S)')
         doc.setDrawColor(0)
         doc.setFillColor(19, 8, 180)
         doc.rect(17, 123, 180, 4, 'FD')
@@ -938,6 +942,12 @@
       //     this.snackbar = true
       //   }
       // }
+    },
+
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+      }, 20)
     }
   }
 </script>
