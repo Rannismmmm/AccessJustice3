@@ -6,6 +6,7 @@
     :positive-cards="cards"
     :icon-width="iconWidth"
     :page-before="{title: 'Articles', path: '/articles'}"
+    :icon-contain="contain"
   ></support-template>
 </template>
 
@@ -21,6 +22,7 @@
         paragraph: 'Following are the apps available for you.',
         cardHeight: "420px",
         iconWidth: '89px',
+        contain: true,
         cards: [
           {
             icon: require('../assets/icons/CALM HARM.jpg'),

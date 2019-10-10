@@ -236,14 +236,10 @@
                                       <h1 class="body-2" style="color: black">
                                         {{item.content}}</h1>
                                     </v-col>
-                                    <v-col class="pa-1" v-if="item.redirect"
+                                    <v-col v-if="item.redirect"
                                            cols="12">
-                                      <h1 class="body-2 font-weight-bold">I
-                                        want to
-                                        <a
-                                          class="font-italic"
-                                          @click="openNewTab(item.redirect)">Read
-                                          More</a> from {{item.org}}</h1>
+                                        <a class="title font-weight-bold"
+                                          @click="openNewTab(item.redirect)">Visit website</a>
                                     </v-col>
                                   </v-row>
                                 </v-layout>

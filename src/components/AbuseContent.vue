@@ -5,7 +5,7 @@
         align="center"
         justify="center"
         wrap
-        style="padding-top: 200px; padding-bottom: 20px"
+        style="padding-top: 190px; padding-bottom: 20px"
         class="text-center">
         <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
           WHAT IS EMOTIONAL

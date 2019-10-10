@@ -2,7 +2,7 @@
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
       <v-row justify="center" class="pt-5 pb-3" wrap>
-        <p class="title mb-4" style="color: black">
+        <p class="title mb-4 hidden-sm-and-down" style="color: black">
           Psychological stress of woman between
           <span class="title" style="color: #1976D2">
           {{selectedAge.ageStart}}
@@ -11,9 +11,30 @@
           {{selectedAge.ageEnd}}
           </span>
         </p>
+        <p class="subtitle-1 mb-4 hidden-md-and-up pl-3 pr-3" style="color: black">
+          Psychological stress of woman between
+          <span class="subtitle-1" style="color: #1976D2">
+          {{selectedAge.ageStart}}
+          </span> and
+          <span class="subtitle-1" style="color: #1976D2">
+          {{selectedAge.ageEnd}}
+          </span>
+        </p>
       </v-row>
-      <v-row align="center" justify="center">
-        <p class="title mr-4 mb-8" style="color: black">
+      <!--<v-row>-->
+      <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->
+      <!--</v-row>-->
+      <v-row v-if="loading" justify="center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
+      </v-row>
+      <v-row justify="center" class="pt-3">
+        <div class="hello" ref="chartdiv"></div>
+      </v-row>
+      <v-row justify="center">
+        <p class="title mr-4 mt-2" style="color: black">
           Year
         </p>
         <v-flex align="center" xs12 sm12 md5 lg4 xl3>
@@ -37,7 +58,7 @@
             </template>
           </v-combobox>
         </v-flex>
-        <p class="title pl-8 mr-4 mb-8" style="color: black">
+        <p class="title pl-8 mr-4 mt-2" style="color: black">
           Age group
         </p>
         <v-flex align="center" xs10 sm7 md3 lg3 xl2>
@@ -51,18 +72,6 @@
             @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
         </v-flex>
-      </v-row>
-      <!--<v-row>-->
-      <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->
-      <!--</v-row>-->
-      <v-row v-if="loading" justify="center">
-        <v-progress-circular
-          indeterminate
-          color="primary"
-        ></v-progress-circular>
-      </v-row>
-      <v-row justify="center" class="pt-3">
-        <div class="hello" ref="chartdiv"></div>
       </v-row>
     </v-layout>
   </v-container>
@@ -133,7 +142,8 @@
         valueAxis.min = 0
         valueAxis.renderer.minLabelPosition = 0.01
         valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        valueAxis.title.text = '% of affected woman'
+        valueAxis.title.text = 'Percentage of affected women'
+        valueAxis.title.fontWeight = 'bold'
         valueAxis.title.fill = am4core.color('#1976D2')
 
 // Create series

@@ -146,11 +146,11 @@
                                 <v-row wrap justify="start">
                                   <h1
                                     class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust team acknowledges the Traditional Owners
+                                    AJust Team acknowledges the Traditional Owners
                                     of
                                     the land
                                     on
-                                    which the i target audience resides,
+                                    which the target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -209,7 +209,7 @@
                                            @click.native="redirct(footerItems[1])"
                                            class="white--text">
                                 <h1 class="title font-weight-regular">
-                                  Care Shelters
+                                  Shelters & Organizations
                                 </h1>
                               </router-link>
                               </v-flex>
@@ -342,11 +342,11 @@
                                 <v-row wrap justify="start">
                                   <h1
                                     class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust team acknowledges the Traditional Owners
+                                    AJust Team acknowledges the Traditional Owners
                                     of
                                     the land
                                     on
-                                    which the webisite target audience resides,
+                                    which the target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -405,7 +405,7 @@
                                            @click.native="redirct(footerItems[1])"
                                            class="white--text">
                                 <h1 class="title font-weight-regular">
-                                  Care Shelters
+                                  Shelters & Organizations
                                 </h1>
                               </router-link>
                               </v-flex>
@@ -570,7 +570,7 @@
             path: '/legalsupport'
           },
           {
-            title: 'Care Shelters',
+            title: 'Shelters & Organizations',
             path: '/sheltermap'
           },
           {

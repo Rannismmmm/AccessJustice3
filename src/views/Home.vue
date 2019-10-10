@@ -281,18 +281,24 @@
             class="pl-10 pr-10"
             wrap>
             <v-flex xs12 sm6 md4 lg2 xl2 v-for="(card,i) in cards" :key="i">
-              <v-card class="mx-auto mb-6" flat height="320" width="100%" :to="card.item.to" @click.native="redirct(card.item)">
+              <v-card class="mx-auto mb-6" flat height="370" width="100%" :to="card.item.to" @click.native="redirct(card.item)">
                 <v-container fluid fill-height class="ma-0 pa-4">
                   <v-layout column class="pl-3 pr-3">
                     <v-row xs12 justify="center" align="start">
                       <v-img :src="card.icon" max-height="110px"
                              contain></v-img>
                     </v-row>
-                    <v-row xs12 justify="center" align="start" class="pb-4">
-                      <span class="title text-center"
+                    <v-row xs12 justify="center" align="start" style="height: 80px">
+                      <v-container fluid fill-height class="ma-0 pa-0">
+                        <v-layout column>
+                          <v-row align="center" justify="center">
+                            <span class="title text-center"
                             style="color: #1976D2">{{card.title}}</span>
+                          </v-row>
+                        </v-layout>
+                      </v-container>
                     </v-row>
-                    <v-row xs12 justify="center" class="text-center">
+                    <v-row xs12 justify="center" align="end" class="text-center">
                       <span class="subtitle-1">{{card.content}}</span>
                     </v-row>
                     <v-row xs12 class="pb-2 pt-5" justify="center" align="end">
@@ -326,7 +332,7 @@
           {
             icon: require('../assets/home/icons/question.jpeg'),
             title: 'About Abuse',
-            content: 'What is emotional abuse? Understand emotional abuse',
+            content: 'What is emotional abuse? Understand emotional abuse.',
             item: {
               text: 'About Abuse',
               disabled: false,
@@ -365,10 +371,10 @@
           },
           {
             icon: require('../assets/home/icons/house.jpeg'),
-            title: 'Care Shelters',
-            content: 'Need a place to stay? Search the nearest care shelters.',
+            title: 'Shelters & Organizations',
+            content: 'Search the nearest shelters and organizations.',
             item: {
-              text: 'Care Shelters',
+              text: 'Shelters & Organizations',
               disabled: false,
               to: '/sheltermap'
             }

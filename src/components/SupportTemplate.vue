@@ -129,6 +129,7 @@
           v-if="positiveCards"
           align="end"
           wrap
+          style="margin-left: 8vw; margin-right: 8vw"
           justify="space-around"
         >
         <v-flex xs12 sm6 md4 lg4 xl3 v-for="(item,i) in positiveCards"
@@ -138,7 +139,7 @@
               <v-container fill-height fluid class="pl-5 pr-5">
                 <v-layout column>
                   <v-row v-if="item.icon" cols="12">
-                          <v-img :style="`height: ${iconWidth}`" contain
+                          <v-img :style="`height: ${iconWidth}`" :contain="iconContain"
                                  :src="item.icon"></v-img>
                   </v-row>
                 <v-row no-gutters justify="center">
@@ -156,7 +157,7 @@
                     <h1 class="body-2">{{item.content}}</h1>
                   </v-col>
                   <v-col class="pa-1" v-if="item.redirect" cols="12">
-                    <a class="font-weight-bold" @click="openNewTab(item.redirect)">Click here to read more</a>
+                    <a class="font-weight-bold" @click="openNewTab(item.redirect)">Visit website</a>
                   </v-col>
                 </v-row>
                   <v-row justify="start" align="end" v-if="item.linkWord">
@@ -194,14 +195,14 @@
         </v-row>
       </v-col>
     </v-container>
-    <v-container fluid style="padding-left: 4vw; padding-right: 4vw">
+    <v-container fluid style="padding-left: 10vw; padding-right: 10vw">
       <v-layout column>
         <v-row justify="space-between">
           <v-card flat @click="navigateToView(pageBefore)">
             <v-container fluid v-if="pageBefore">
               <v-layout column>
                 <v-row>
-                  <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
+                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
                   <span class="headline font-weight-bold"
                         style="color: #1976D2">{{pageBefore.title}}</span>
                 </v-row>
@@ -214,7 +215,7 @@
                 <v-row>
                   <span class="headline font-weight-bold"
                         style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
+                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
                 </v-row>
               </v-layout>
             </v-container>
@@ -310,6 +311,11 @@
         type: Object,
         default: () => {
         }
+      },
+
+      iconContain: {
+        type: Boolean,
+        default: false
       }
     },
 

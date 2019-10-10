@@ -51,7 +51,7 @@
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-      valueAxis.title.text = 'percentage of affected woman'
+      valueAxis.title.text = 'Percentage of affected women'
       valueAxis.title.fontWeight = 'bold'
       valueAxis.min = 0;
       valueAxis.title.fill = am4core.color('#1976D2')

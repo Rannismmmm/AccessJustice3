@@ -8,6 +8,15 @@
             {{suburb}}
           </span></p>
       </v-row>
+      <v-row v-if="loading" justify="center">
+        <v-progress-circular
+          indeterminate
+          color="primary"
+        ></v-progress-circular>
+      </v-row>
+      <v-row justify="center" class="pt-3">
+        <div class="hello" ref="chartdiv"></div>
+      </v-row>
       <v-row justify="center">
         <!--<v-btn icon @click=""-->
                <!--disabled>-->
@@ -42,15 +51,6 @@
         <!--<v-btn icon @click="goNext">-->
           <!--<v-icon large>mdi-chevron-right</v-icon>-->
         <!--</v-btn>-->
-      </v-row>
-      <v-row v-if="loading" justify="center">
-        <v-progress-circular
-          indeterminate
-          color="primary"
-        ></v-progress-circular>
-      </v-row>
-      <v-row justify="center" class="pt-3">
-        <div class="hello" ref="chartdiv"></div>
       </v-row>
     </v-layout>
   </v-container>

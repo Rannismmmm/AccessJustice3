@@ -6,7 +6,9 @@
         justify="center"
         wrap
         style="padding-top: 200px; padding-bottom: 20px">
-        <h4 class="display-1 mb-4" style="color: #1976D2">These are our
+        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">These are our
+          recommendations for you.</h4>
+        <h4 class="title mb-4 hidden-md-and-up pl-4 pr-4 text-center" style="color: #1976D2">These are our
           recommendations for you.</h4>
       </v-row>
       <v-row
