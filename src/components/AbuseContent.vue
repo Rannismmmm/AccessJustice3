@@ -7,11 +7,19 @@
         justify="center"
         wrap
         style="padding-top: 190px; padding-bottom: 20px"
-        class="text-center">
-        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
+        class="text-center hidden-sm-and-down">
+        <h4 class="display-1 mb-4" style="color: #1976D2">
           WHAT IS EMOTIONAL
           ABUSE?</h4>
-        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">WHAT
+      </v-row>
+      <v-row
+        id="headerd"
+        align="center"
+        justify="center"
+        wrap
+        style="padding-top: 100px; padding-bottom: 20px"
+        class="text-center hidden-md-and-up">
+        <h4 class="headline mb-4" style="color: #1976D2">WHAT
           IS EMOTIONAL
           ABUSE?</h4>
       </v-row>
@@ -64,7 +72,7 @@
           :points="section.points"
         ></abuse-paragraph>
       </v-row>
-      <v-row justify="center" class="pt-5 pb-5">
+      <v-row justify="center" class="pt-5 pb-5 text-center">
         <!--<h1 class="title mb-4 hidden-sm-and-down" style="color: #1976D2">-->
         <!--Interested in the relevant data visualization or facts?-->
         <!--</h1>-->

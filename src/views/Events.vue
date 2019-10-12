@@ -1,35 +1,18 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
-    <v-layout column style="padding-top: 220px;">
-      <v-row class="hidden-sm-and-down" justify="center" style=" padding-left: 10vw; padding-right: 10vw">
+    <v-layout column>
+      <v-row class="hidden-sm-and-down" justify="center" style=" padding-left: 10vw; padding-right: 10vw; padding-top: 220px">
         <events-content></events-content>
       </v-row>
-      <v-row class="hidden-md-and-up" justify="center" style=" padding-left: 2vw; padding-right: 2vw">
+      <v-row class="hidden-md-and-up" justify="center" style=" padding-left: 2vw; padding-right: 2vw; padding-top: 100px">
          <events-content></events-content>
       </v-row>
-      <v-row justify="space-between" style="padding-left: 10vw; padding-right: 10vw">
-          <v-card flat @click="navigateToView(pageBefore)">
-            <v-container fluid>
-              <v-layout column>
-                <v-row>
-                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
-                  <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageBefore.title}}</span>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card>
-          <v-card flat @click="navigateToView(pageAfter)">
-            <v-container fluid>
-              <v-layout column>
-                <v-row>
-                  <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card>
+      <v-row>
+        <footer-navigation
+          :page-after="pageAfter"
+          :page-before="pageBefore"
+          :base-page="{text: 'Find Help', disabled: false,to: '/support'}"
+          ></footer-navigation>
       </v-row>
     </v-layout>
   </v-container>
@@ -37,9 +20,10 @@
 
 <script>
   import EventsContent from '../components/EventsContent'
+  import FooterNavigation from '../components/FooterNavigation'
   export default {
     name: 'Events',
-    components: {EventsContent},
+    components: {FooterNavigation, EventsContent},
 
     data() {
       return {
@@ -54,20 +38,6 @@
       }
     },
 
-    methods: {
-      navigateToView(item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', { redirectionItem: {
-          text: item.title,
-          disabled: false,
-          to: item.path
-        }, otherBaseView: {
-          text: 'Find Help',
-          disabled: false,
-          to: '/support'
-        }})
-      }
-    }
   }
 </script>
 

@@ -14,7 +14,7 @@
         style="padding-left: 8vw; padding-right: 8vw"
       >
         <v-col cols="12"
-               sm="3" class="pr-4">
+               sm="3" class="pr-4 hidden-sm-and-down">
           <v-card
             class="mx-auto"
             width="100%"
@@ -25,17 +25,18 @@
                 <v-container fluid class="mt-0 mb-0 pt-0 pb-0">
                   <v-layout column>
                     <v-row class="pt-0 mt-0 pl-4">
-                      <h4 class="subtitle-1">Shelters & Organizations nearby:</h4>
+                      <h4 class="subtitle-1">Shelters & Organizations</h4>
                     </v-row>
                     <v-row class="pt-0 mt-0 pl-4">
-                      <h4 class="subtitle-2 font-weight-bold"
-                          style="color: #1976D2">{{location}}</h4>
+                      <p class="subtitle-1"
+                         style="color: black">nearby <span class="subtitle-1 font-weight-bold"
+                         style="color: #1976D2">{{location}}</span></p>
                     </v-row>
                   </v-layout>
                 </v-container>
               </v-card>
             </v-card-title>
-            <v-list style="max-height: 597px" class="overflow-y-auto">
+            <v-list style="max-height: 576px" class="overflow-y-auto">
               <v-list-item v-if="onLoading">
                 <v-container fluid>
                   <v-layout column>

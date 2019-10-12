@@ -1,14 +1,34 @@
 <template>
-  <span style="width: 100vw" v-if="appear">
-    <v-container fluid
-                 class="hidden-sm-and-down">
+  <v-container fluid class="pa-0 ma-0">
+    <v-container fluid>
       <v-layout column>
         <v-row
           v-if="mainTitle && !noSpaceTitle"
           align="center"
           justify="center"
           wrap
+          class="hidden-sm-and-down"
           style="padding-top: 200px; padding-bottom: 20px"
+        >
+          <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
+        </v-row>
+        <v-row
+          v-if="mainTitle && !noSpaceTitle"
+          align="center"
+          justify="center"
+          wrap
+          class="hidden-md-and-up"
+          style="padding-top: 100px; padding-bottom: 20px"
+        >
+          <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
+        </v-row>
+        <v-row
+          v-if="noSpaceTitle"
+          align="center"
+          justify="center"
+          wrap
+          class="hidden-sm-and-down"
+          style="padding-bottom: 20px"
         >
           <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
@@ -17,15 +37,17 @@
           align="center"
           justify="center"
           wrap
+          class="hidden-md-and-up"
           style="padding-bottom: 20px"
         >
-          <h4 class="display-1 mb-4" style="color: #1976D2">{{mainTitle}}</h4>
+          <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
         </v-row>
         <v-row
           v-if="paragraph"
           align="start"
           justify="center"
           wrap
+          class="hidden-sm-and-down text-center"
           style="padding-left: 5vw; padding-right: 5vw"
         >
           <h1 class="body-1 mb-4">{{paragraph}}
@@ -34,32 +56,21 @@
             </v-btn>
           </h1>
         </v-row>
-      </v-layout>
-    </v-container>
-    <v-container fluid class="hidden-md-and-up">
-      <v-layout column>
-      <v-row
-        align="center"
-        justify="center"
-        wrap
-        style="padding-top: 200px; padding-bottom: 10px"
-      >
-        <h4 class="headline mb-4" style="color: #1976D2">{{mainTitle}}</h4>
-      </v-row>
         <v-row
           v-if="paragraph"
           align="start"
           justify="center"
           wrap
-          style="padding-left: 4vw; padding-right: 4vw"
+          class="hidden-md-and-up text-center"
+          style="padding-left: 9vw; padding-right: 9vw"
         >
-          <h1 class="body-2 mb-4 text-center">{{paragraph}}
+          <h1 class="body-2 mb-4">{{paragraph}}
             <v-btn v-if="paragraphBtn" text small color="primary">
               {{paragraphBtn}}
             </v-btn>
           </h1>
         </v-row>
-        </v-layout>
+      </v-layout>
     </v-container>
     <v-row v-if="activeCards" justify="center" wrap
            class="hidden-sm-and-down"
@@ -196,39 +207,23 @@
     </v-container>
     <v-container v-if="pageBefore || pageAfter" fluid style="padding-left: 10vw; padding-right: 10vw">
       <v-layout column>
-        <v-row justify="space-between">
-          <v-card flat @click="navigateToView(pageBefore)">
-            <v-container fluid v-if="pageBefore">
-              <v-layout column>
-                <v-row>
-                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
-                  <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageBefore.title}}</span>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card>
-          <v-card flat @click="navigateToView(pageAfter)">
-            <v-container fluid v-if="pageAfter">
-              <v-layout column>
-                <v-row>
-                  <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
-                </v-row>
-              </v-layout>
-            </v-container>
-          </v-card>
+        <v-row>
+          <footer-navigation
+            :page-before="pageBefore"
+            :page-after="pageAfter"
+            :base-page="{text: 'Find Help', disabled: false,to: '/support'}"
+            ></footer-navigation>
         </v-row>
       </v-layout>
     </v-container>
-  </span>
+  </v-container>
 </template>
 
 <script>
+  import FooterNavigation from './FooterNavigation'
   export default {
     name: 'SupportTemplate',
-
+    components: {FooterNavigation},
     data () {
       return {
         // items: [
@@ -333,24 +328,6 @@
         window.open(url)
       },
 
-      navigateToView (item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', {
-          redirectionItem: {
-            text: item.title,
-            disabled: false,
-            to: item.path
-          }, otherBaseView: {
-            text: 'Find Help',
-            disabled: false,
-            to: '/support'
-          }
-        })
-      },
-
-      popup (url) {
-        window.open(url, "new window", "height=200,width=200")
-      }
     },
 
     mounted () {

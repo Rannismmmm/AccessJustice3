@@ -49,21 +49,6 @@
         ]
       }
     },
-
-    methods: {
-      navigateToView(item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', {
-          text: item.title,
-          disabled: false,
-          to: item.path
-        }, {
-          text: 'Find Help',
-          disabled: true,
-          to: '/support'
-        })
-      }
-    }
   }
 
 

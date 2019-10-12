@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
-      <v-row justify="center" class="pt-5" wrap>
+      <v-row justify="center" class="pt-5 text-center" wrap>
         <p class="title hidden-sm-and-down" style="color: black">
           Psychological stress of woman between
           <span class="title" style="color: #1976D2">
@@ -24,10 +24,13 @@
         </p>
       </v-row>
       <v-row justify="center">
-        <p class="title mr-4 mt-2" style="color: black">
+        <p class="title mr-4 mt-2 hidden-sm-and-down" style="color: black">
           Year
         </p>
-        <v-flex align="center" xs12 sm12 md5 lg4 xl3>
+        <p class="subtitle-1 mr-4 mt-2 hidden-md-and-up" style="color: black">
+          Year
+        </p>
+        <v-flex align="center" xs9 sm7 md5 lg4 xl3>
           <v-combobox
             class="mt-0"
             v-model="years"
@@ -48,10 +51,13 @@
             </template>
           </v-combobox>
         </v-flex>
-        <p class="title pl-8 mr-4 mt-2" style="color: black">
+        <p class="title pl-8 mr-4 mt-2 hidden-sm-and-down" style="color: black">
           Age group
         </p>
-        <v-flex align="center" xs10 sm7 md3 lg3 xl2>
+        <p class="subtitle-1 mr-4 mt-2 hidden-md-and-up" style="color: black">
+          Age group
+        </p>
+        <v-flex align="center" xs7 sm5 md3 lg3 xl2>
           <v-overflow-btn
             class="mb-0"
             :items="ages"
@@ -63,9 +69,6 @@
           ></v-overflow-btn>
         </v-flex>
       </v-row>
-      <!--<v-row>-->
-      <!--years: {{years}}, series: {{series}}, age: {{selectedAge}}-->
-      <!--</v-row>-->
       <v-row v-if="loading" justify="center">
         <v-progress-circular
           indeterminate

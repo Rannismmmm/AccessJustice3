@@ -1,36 +1,19 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
-    <v-layout column style="padding-top: 190px;">
+    <v-layout column>
       <v-row class="hidden-sm-and-down" justify="center"
-             style="padding-left: 20vw; padding-right: 20vw">
+             style="padding-left: 20vw; padding-right: 20vw; padding-top: 190px">
         <charts-content></charts-content>
       </v-row>
       <v-row class="hidden-md-and-up" justify="center"
-             style=" padding-left: 2vw; padding-right: 2vw">
+             style=" padding-left: 2vw; padding-right: 2vw; padding-top: 100px">
         <charts-content></charts-content>
       </v-row>
-      <v-row justify="space-between"
-             style="padding-left: 10vw; padding-right: 10vw">
-        <v-card flat @click="navigateToView(pageBefore)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
-        <v-card flat @click="navigateToView(pageAfter)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
-                <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
+      <v-row>
+        <footer-navigation
+          :page-before="pageBefore"
+          :page-after="pageAfter"
+          ></footer-navigation>
       </v-row>
     </v-layout>
   </v-container>
@@ -38,10 +21,11 @@
 
 <script>
   import ChartsContent from '../components/ChartsContent'
+  import FooterNavigation from '../components/FooterNavigation'
 
   export default {
     name: 'visualization',
-    components: {ChartsContent},
+    components: {FooterNavigation, ChartsContent},
     data () {
       return {
         pr: '4',
@@ -53,19 +37,6 @@
           title: 'Self-Assessment',
           path: '/assessments/false'
         }
-      }
-    },
-
-    methods: {
-      navigateToView (item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', {
-          redirectionItem: {
-            text: item.title,
-            disabled: false,
-            to: item.path
-          }
-        })
       }
     }
   }

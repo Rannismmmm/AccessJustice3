@@ -6,10 +6,17 @@
         justify="center"
         wrap
         style="padding-top: 190px; margin-left: 8vw; margin-right: 8vw"
-        class="text-center pb-10">
-        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">
+        class="text-center pb-10 hidden-sm-and-down">
+        <h4 class="display-1 mb-4" style="color: #1976D2">
           What is safety plan and Why do I need it?</h4>
-        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">What
+      </v-row>
+      <v-row
+        align="center"
+        justify="center"
+        wrap
+        style="padding-top: 100px; margin-left: 9vw; margin-right: 9vw"
+        class="text-center pb-10 hidden-md-and-up">
+        <h4 class="headline mb-4" style="color: #1976D2">What
           is safety plan and Why do I need it?</h4>
       </v-row>
       <v-row wrap justify="center" align="center"
@@ -20,21 +27,29 @@
             <v-layout column>
               <v-row>
                 <v-img :src="require('../assets/safetyplan/anihilator.jpeg')"
-                 max-height="270" contain></v-img>
+                       max-height="270" contain></v-img>
               </v-row>
             </v-layout>
           </v-contaner>
         </v-card>
         <!--</v-flex>-->
         <!--<v-flex xs12 sm6 md5 lg4 xl4 flat>-->
-        <v-card flat class="pl-12" width="430" height="295">
+        <v-card flat class="pl-12 hidden-sm-and-down" width="430" height="295">
           <v-container fluid class="ma-0 pa-0">
             <v-layout column>
               <v-row wrap>
-                <h1 class="title mb-4 hidden-sm-and-down">
+                <h1 class="title mb-4">
                   {{paragraph}}
                 </h1>
-                <h1 class="body-1 mb-4 hidden-md-and-up">
+              </v-row>
+            </v-layout>
+          </v-container>
+        </v-card>
+        <v-card flat class="hidden-md-and-up" width="430">
+          <v-container fluid class="ma-0 pa-0">
+            <v-layout column>
+              <v-row wrap>
+                <h1 class="body-1 mb-4">
                   {{paragraph}}
                 </h1>
               </v-row>
@@ -43,7 +58,8 @@
         </v-card>
         <!--</v-flex>-->
       </v-row>
-      <v-row wrap style="margin-left: 8vw; margin-right: 8vw; padding-top: 3.5vh">
+      <v-row wrap
+             style="margin-left: 8vw; margin-right: 8vw; padding-top: 3.5vh">
         <v-container fluid justify="center">
           <v-layout column>
             <!--<v-row wrap justify="center">-->
@@ -68,30 +84,11 @@
           </v-layout>
         </v-container>
       </v-row>
-      <v-row justify="space-between"
-             style="padding-left: 10vw; padding-right: 10vw">
-        <v-card flat @click="navigateToView(pageBefore)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <v-icon color="primary" class="pr-3">mdi-arrow-left-thick
-                </v-icon>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
-        <v-card flat @click="navigateToView(pageAfter)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
-                <v-icon color="primary" class="pl-3">mdi-arrow-right-thick
-                </v-icon>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
+      <v-row>
+        <footer-navigation
+          :page-before="pageBefore"
+          :page-after="pageAfter"
+          ></footer-navigation>
       </v-row>
     </v-layout>
   </v-container>
@@ -99,18 +96,19 @@
 
 <script>
   import jsPDF from 'jspdf'
+  import FooterNavigation from '../components/FooterNavigation'
 
   export default {
     name: 'SafetyPlan',
-
+    components: {FooterNavigation},
     data () {
       return {
         paragraph: 'Staying safe is the priority if you are facing domestic violence or in an ' +
           'emotionally abusive relationship. The safety plan is a process to look at your situation ' +
           'and check what you need to help you and your other family members(children or pets) to ' +
-          'stay safe.'+
-        'It is about taking control of your own life and safety, and you will have a ' +
-        'plan to escape if the violent incident happens.',
+          'stay safe.' +
+          'It is about taking control of your own life and safety, and you will have a ' +
+          'plan to escape if the violent incident happens.',
 
         safetyForm: {
           title: 'Safety Form',
@@ -180,7 +178,7 @@
     mounted () {
       setTimeout(() => {
         this.appear = true
-        }, 20)
+      }, 20)
     }
   }
 </script>

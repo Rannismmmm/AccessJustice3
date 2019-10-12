@@ -359,14 +359,13 @@
                 >
                   <v-img :src="require('../assets/home/homeBack.jpeg')"
                          gradient="to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)"
-                         height="670">
+                         height="520">
                     <v-container fluid fill-height class="ma-0 pa-0">
                       <v-layout column>
                         <v-row wrap>
                             <v-container fluid>
-                              <v-layout column
-                                        style="margin-left: 8vw; margin-right: 8vw">
-                                <v-row wrap>
+                              <v-layout column>
+                                <v-row wrap style="margin-left: 9vw; margin-right: 9vw">
                                   <h1
                                     class="subtitle-2 font-weight-medium pb-2 pt-4">
                                     AJust Team acknowledges the Traditional
@@ -389,7 +388,7 @@
                                     visiting this website today.
                                   </h1>
                                 </v-row>
-                                <v-row wrap justify="start" align="end">
+                                <v-row wrap style="margin-left: 9vw; margin-right: 9vw">
                                   <h1 class="subtitle-2 font-weight-medium">
                                     Justicely aims to identify and provide
                                     support

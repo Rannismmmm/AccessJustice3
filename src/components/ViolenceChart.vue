@@ -1,10 +1,15 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
-      <v-row justify="center" class="pt-5 pb-3" wrap>
-        <p class="title mb-4" style="color: black">Number of reported family
+      <v-row justify="center" class="pt-5 pb-3 text-center" wrap>
+        <p class="title mb-4 hidden-sm-and-down" style="color: black">Number of reported family
           incidents from 2013 - 2017 in
           <span class="title" style="color: #1976D2">
+            {{suburb}}
+          </span></p>
+        <p class="subtitle-1 mb-4 hidden-md-and-up" style="color: black">Number of reported family
+          incidents from 2013 - 2017 in
+          <span class="subtitle-1" style="color: #1976D2">
             {{suburb}}
           </span></p>
       </v-row>
@@ -13,10 +18,13 @@
                <!--disabled>-->
           <!--<v-icon large>mdi-chevron-left</v-icon>-->
         <!--</v-btn>-->
-        <p class="title mr-4 mt-3" style="color: black">
+        <p class="title mr-4 mt-3 hidden-sm-and-down" style="color: black">
           Select a council
         </p>
-        <v-flex xs12 sm5 md3 lg3 xl3>
+        <p class="subtitle-1 mr-4 mt-3 hidden-md-and-up" style="color: black">
+          Select a council
+        </p>
+        <v-flex xs7 sm5 md3 lg3 xl3>
           <v-autocomplete
             :items="suburbs"
             :loading="loading"

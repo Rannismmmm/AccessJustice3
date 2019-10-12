@@ -105,7 +105,7 @@
           >
             <h4 class="display-2 mb-4 hidden-sm-and-down" style="color: #1976D2">
               How It Works</h4>
-            <h4 class="title mb-4 hidden-md-and-up" style="color: #1976D2">
+            <h4 class="display-1 mb-4 hidden-md-and-up" style="color: #1976D2">
               How It Works</h4>
           </v-row>
           <v-row
@@ -113,7 +113,7 @@
             justify="space-around"
             class="pl-10 pr-10"
             wrap>
-            <v-flex xs12 sm6 md4 lg2 xl2 v-for="(card,i) in cards" :key="i">
+            <v-flex xs6 sm6 md4 lg2 xl2 v-for="(card,i) in cards" :key="i">
               <v-card class="mx-auto mb-6" flat height="370" width="100%" :to="card.item.to" @click.native="redirct(card.item)">
                 <v-container fluid fill-height class="ma-0 pa-4">
                   <v-layout column class="pl-3 pr-3">
@@ -125,14 +125,17 @@
                       <v-container fluid fill-height class="ma-0 pa-0">
                         <v-layout column>
                           <v-row align="center" justify="center">
-                            <span class="title text-center"
+                            <span class="title text-center hidden-sm-and-down"
+                            style="color: #1976D2">{{card.title}}</span>
+                            <span class="subtitle-1 text-center hidden-md-and-up"
                             style="color: #1976D2">{{card.title}}</span>
                           </v-row>
                         </v-layout>
                       </v-container>
                     </v-row>
                     <v-row xs12 justify="center" align="end" class="text-center">
-                      <span class="subtitle-1">{{card.content}}</span>
+                      <span class="subtitle-1 hidden-sm-and-down">{{card.content}}</span>
+                      <span class="subtitle-2 hidden-md-and-up">{{card.content}}</span>
                     </v-row>
                     <v-row xs12 class="pb-2 pt-5" justify="center" align="end">
                       <v-btn rounded color="primary" width="115"

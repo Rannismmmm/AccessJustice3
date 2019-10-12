@@ -49,17 +49,35 @@
         key="2"
         value="2"
       >
-        <v-card width="60vw" flat>
-          <violence-chart></violence-chart>
-        </v-card>
+        <v-container fluid class="ma-0 pa-0">
+          <v-layout column>
+            <v-row justify="center">
+              <v-card class="hidden-sm-and-down" width="60vw" flat>
+                <violence-chart></violence-chart>
+              </v-card>
+              <v-card class="hidden-md-and-up" width="90vw" flat>
+                <violence-chart></violence-chart>
+              </v-card>
+            </v-row>
+          </v-layout>
+        </v-container>
       </v-tab-item>
       <v-tab-item
         key="3"
         value="3"
       >
-        <v-card width="60vw" flat>
-          <young-abuse></young-abuse>
-        </v-card>
+        <v-container fluid class="ma-0 pa-0">
+          <v-layout column>
+            <v-row justify="center">
+              <v-card class="hidden-sm-and-down" width="60vw" flat>
+                <young-abuse></young-abuse>
+              </v-card>
+              <v-card class="hidden-md-and-up" width="90vw" flat>
+                <young-abuse></young-abuse>
+              </v-card>
+            </v-row>
+          </v-layout>
+        </v-container>
       </v-tab-item>
     </v-tabs-items>
   </v-card>

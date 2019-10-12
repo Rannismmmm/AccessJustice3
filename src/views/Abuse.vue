@@ -9,30 +9,11 @@
              class="hidden-md-and-up">
         <abuse-content></abuse-content>
       </v-row>
-      <v-row justify="space-between"
-             style="padding-left: 10vw; padding-right: 10vw">
-        <v-card flat @click="navigateToView(pageBefore)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <v-icon color="primary" class="pr-3">mdi-arrow-left-thick
-                </v-icon>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
-        <v-card flat @click="navigateToView(pageAfter)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
-                <v-icon color="primary" class="pl-3">mdi-arrow-right-thick
-                </v-icon>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
+      <v-row>
+        <footer-navigation
+          :page-before="pageBefore"
+          :page-after="pageAfter"
+          ></footer-navigation>
       </v-row>
     </v-layout>
   </v-container>
@@ -42,10 +23,11 @@
   import AbuseLine from '../components/AbuseLine'
   import AbuseSlides from '../components/AbuseSlides'
   import AbuseContent from '../components/AbuseContent'
+  import FooterNavigation from '../components/FooterNavigation'
 
   export default {
     name: 'Abuse',
-    components: {AbuseContent, AbuseSlides, AbuseLine},
+    components: {FooterNavigation, AbuseContent, AbuseSlides, AbuseLine},
 
     data () {
       return {
@@ -100,18 +82,6 @@
       }
     },
 
-    methods: {
-      navigateToView (item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', {
-          redirectionItem: {
-            text: item.title,
-            disabled: false,
-            to: item.path
-          }
-        })
-      }
-    }
 
   }
 </script>

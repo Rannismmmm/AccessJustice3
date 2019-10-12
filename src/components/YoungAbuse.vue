@@ -1,8 +1,11 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
-      <v-row justify="center" class="pt-5 pb-3" wrap>
-        <p class="title mb-4" style="color: black">Percentage of woman
+      <v-row justify="center" class="pt-5 pb-3 text-center" wrap>
+        <p class="title mb-4 hidden-sm-and-down" style="color: black">Percentage of woman
+          experience abused from very young age
+        </p>
+        <p class="subtitle-1 mb-4 hidden-md-and-up" style="color: black">Percentage of woman
           experience abused from very young age
         </p>
       </v-row>

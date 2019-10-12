@@ -5,16 +5,37 @@
         align="center"
         justify="center"
         wrap
+        class="hidden-sm-and-down"
         style="padding-top: 200px; padding-bottom: 20px"
       >
-        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">Shelters & Organizations</h4>
-        <h4 class="headline mb-4 hidden-md-and-up" style="color: #1976D2">Shelters & Organizations</h4>
+        <h4 class="display-1 mb-4" style="color: #1976D2">Shelters & Organizations</h4>
+      </v-row>
+      <v-row
+        align="center"
+        justify="center"
+        wrap
+        class="hidden-md-and-up"
+        style="padding-top: 100px; padding-bottom: 20px"
+      >
+        <h4 class="headline mb-4" style="color: #1976D2">Shelters & Organizations</h4>
+      </v-row>
+      <v-row
+        align="start"
+        justify="center"
+        class="hidden-sm-and-down text-center"
+        wrap
+        style="padding-left: 5vw; padding-right: 5vw"
+      >
+        <h1 class="body-2 mb-4">Enter the post code to find a home shelter or supoorted organization near
+          you.
+        </h1>
       </v-row>
       <v-row
         align="start"
         justify="center"
         wrap
-        style="padding-left: 5vw; padding-right: 5vw"
+        class="hidden-md-and-up text-center"
+        style="padding-left: 9vw; padding-right: 9vw"
       >
         <h1 class="body-2 mb-4">Enter the post code to find a home shelter or supoorted organization near
           you.
@@ -27,30 +48,12 @@
           </v-row>
         </v-col>
       </v-row>
-      <v-row justify="space-between"
-             style="padding-left: 10vw; padding-right: 10vw">
-        <v-card flat @click="navigateToView(pageBefore)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
-                  <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageBefore.title}}</span>
-                </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
-        <v-card flat @click="navigateToView(pageAfter)">
-          <v-container fluid>
-            <v-layout column>
-              <v-row>
-                <span class="headline font-weight-bold"
-                        style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
-              </v-row>
-            </v-layout>
-          </v-container>
-        </v-card>
+      <v-row>
+        <footer-navigation
+          :page-before="pageBefore"
+          :page-after="pageAfter"
+          :base-page="{text: 'Find Help', disabled: false,to: '/support'}"
+          ></footer-navigation>
       </v-row>
     </v-layout>
   </v-container>
@@ -58,9 +61,11 @@
 
 <script>
   import MapBox from './MapBox'
+  import FooterNavigation from '../components/FooterNavigation'
 
   export default {
     components: {
+      FooterNavigation,
       MapBox
     },
     name: 'ShelterMap',
@@ -76,23 +81,6 @@
           path: '/supportcounseling'
         },
         appear: false
-      }
-    },
-
-    methods: {
-      navigateToView (item) {
-        this.$router.push(item.path)
-        this.$store.commit('switchView', {
-          redirectionItem: {
-            text: item.title,
-            disabled: false,
-            to: item.path
-          }, otherBaseView: {
-            text: 'Find Help',
-            disabled: false,
-            to: '/support'
-          }
-        })
       }
     },
 
