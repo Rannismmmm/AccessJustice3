@@ -1,7 +1,7 @@
 <template>
   <v-card class="overflow-hidden pa-ma-0" style="height: 100vh; width: 100vw">
     <v-app-bar
-      absolute="false"
+      absolute
       prominent
       color="#FFFFFF"
       light
@@ -56,7 +56,7 @@
                        :key="index"
                        :href="item.to"
                        @click="redirct(item)">
-                  {{item.title}}
+                  <div style="color: black">{{item.title}}</div>
                 </v-tab>
               </v-tabs>
             </v-col>
@@ -64,48 +64,82 @@
         </v-container>
       </template>
     </v-app-bar>
+    <!--<v-system-bar color="deep-purple darken-3"></v-system-bar>-->
+
     <v-app-bar
-      absolute="false"
-      prominent
-      color="#FFFFFF"
+      absolute
       light
-      class="hidden-md-and-up"
+      color="white"
       dense
-      hide-on-scroll
-      scroll-threshold="50"
-      scroll-target="#scrolling-techniques-3"
+      class="hidden-md-and-up"
     >
-      <v-container fluid fill-height align-end style="padding: 0">
-        <v-col cols="12" sm="8" md="6" justify-center>
-          <v-row justify="center">
-            <v-card flat style="width: 215px" to="/">
-              <v-img max-height="60" contain
-                     :src="require('../assets/Logo.jpeg')"></v-img>
-            </v-card>
-          </v-row>
-          <v-divider></v-divider>
-        </v-col>
-      </v-container>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+
+      <v-toolbar-title>Justicely</v-toolbar-title>
       <template v-slot:extension>
         <v-container fluid fill-height>
-          <v-tabs
-            background-color="transparent"
-            grow
-            optional
-            hide-slider
-            center-active
-            v-model="tab"
-          >
-            <v-tab style="margin: 0" v-for="(item,index) in items"
-                   :key="index"
-                   :href="item.to"
-                   :to="item.path">
-              {{item.title}}
-            </v-tab>
-          </v-tabs>
+          <v-row no-gutters>
+            <v-breadcrumbs :items="breads" class="pa-0">
+              <template v-slot:item="props">
+                <v-breadcrumbs-item
+                  :disabled="props.item.disabled"
+                  :to="props.item.to"
+                  @click="backDirect(props.item)"
+                >
+                  {{ props.item.text }}
+                </v-breadcrumbs-item>
+              </template>
+            </v-breadcrumbs>
+          </v-row>
         </v-container>
       </template>
     </v-app-bar>
+
+    <v-navigation-drawer
+      class="hidden-md-and-up"
+      v-model="drawer"
+      app
+      absolute
+      temporary
+    >
+      <v-container fluid fill-height>
+        <v-layout column>
+          <v-row justify="start" align="start">
+            <v-list
+              width="100%"
+              nav
+              dense
+            >
+              <v-list-item
+                v-for="(item, i) in items"
+                :key="i"
+                link
+                @click.native="redirct(item)"
+              >
+                <v-list-icon>
+                  <v-icon>{{item.icon}}</v-icon>
+                </v-list-icon>
+                <v-list-item-content>
+                  <v-list-item-title class="pl-3">{{ item.title }}</v-list-item-title>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list>
+          </v-row>
+          <v-row justify="center" align="end">
+            <v-card flat style="width: 100%" @click="redirct(items[0])">
+              <v-container fluid fill-height class="pa-0 ma-0">
+                <v-layout column>
+                  <v-row justify="center" align="center" class="pb-10">
+                    <v-img max-width="200" contain
+                           :src="require('../assets/Logo.jpeg')"></v-img>
+                  </v-row>
+                </v-layout>
+              </v-container>
+            </v-card>
+          </v-row>
+        </v-layout>
+      </v-container>
+    </v-navigation-drawer>
     <v-sheet
       id="scrolling-techniques-3"
       class="overflow-y-auto"
@@ -146,11 +180,12 @@
                                 <v-row wrap justify="start">
                                   <h1
                                     class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust acknowledges the Traditional Owners
+                                    AJust Team acknowledges the Traditional
+                                    Owners
                                     of
                                     the land
                                     on
-                                    which the webiste target audience resides,
+                                    which the target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -162,14 +197,14 @@
                                     who
                                     may
                                     be
-                                    visiting this webssite today.
+                                    visiting this website today.
                                   </h1>
                                 </v-row>
                                 <v-row wrap justify="start" align="end">
                                   <h1 class="subtitle-1 font-weight-medium">
                                     Justicely aims to identify and provide
                                     support
-                                    to the
+                                    to
                                     young
                                     women of Melbourne facing emotional abuse
                                     by
@@ -205,77 +240,70 @@
                                 </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/sheltermap"
-                                           @click.native="redirct(footerItems[1])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Care Shelters
-                                </h1>
-                              </router-link>
+                                <router-link to="/sheltermap"
+                                             @click.native="redirct(footerItems[1])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Shelters & Organizations
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/supportcounseling"
-                                           @click.native="redirct(footerItems[2])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Support & Counselling
-                                </h1>
-                              </router-link>
+                                <router-link to="/supportcounseling"
+                                             @click.native="redirct(footerItems[2])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Support & Counselling
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/safetyplan"
-                                           @click.native="redirct(footerItems[4])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Safety plan
-                                </h1>
-                              </router-link>
+                                <router-link to="/safetyplan"
+                                             @click.native="redirct(footerItems[4])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Safety plan
+                                  </h1>
+                                </router-link>
                               </v-flex>
                             </v-row>
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/events"
-                                           @click.native="redirct(footerItems[6])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Events
-                                </h1>
-                              </router-link>
+                                <router-link to="/events"
+                                             @click.native="redirct(footerItems[6])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Events
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/articles"
-                                           @click.native="redirct(footerItems[7])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Articles
-                                </h1>
-                              </router-link>
+                                <router-link to="/articles"
+                                             @click.native="redirct(footerItems[7])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Articles
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/apps"
-                                           @click.native="redirct(footerItems[8])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Apps
-                                </h1>
-                              </router-link>
+                                <router-link to="/apps"
+                                             @click.native="redirct(footerItems[8])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Apps
+                                  </h1>
+                                </router-link>
                               </v-flex>
-                              <!--<router-link to="/selfcare"-->
-                              <!--@click.native="redirct(footerItems[3])"-->
-                              <!--class="white&#45;&#45;text">-->
-                              <!--<h1 class="title font-weight-regular">-->
-                              <!--Self-Care-->
-                              <!--</h1>-->
-                              <!--</router-link>-->
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/visualization"
-                                           @click.native="redirct(footerItems[5])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Statistics
-                                </h1>
-                              </router-link>
+                                <router-link to="/visualization"
+                                             @click.native="redirct(footerItems[5])"
+                                             class="white--text">
+                                  <h1 class="title font-weight-regular">
+                                    Statistics
+                                  </h1>
+                                </router-link>
                               </v-flex>
                             </v-row>
                             <v-row wrap justify="space-between"
@@ -286,7 +314,8 @@
                                              class="pa-0 ma-0">
                                   <v-layout column justify="center">
                                     <v-row wrap align="end">
-                                      <h1 class="subtitle-1 font-weight-medium">
+                                      <h1
+                                        class="subtitle-1 font-weight-medium">
                                         © 2019 Justicely | All Rights Reserved
                                       </h1>
                                     </v-row>
@@ -317,7 +346,7 @@
                   </v-img>
                 </v-card>
               </v-footer>
-               <v-footer
+              <v-footer
                 width="100%"
                 class="pa-0 mt-6 hidden-md-and-up"
               >
@@ -330,23 +359,22 @@
                 >
                   <v-img :src="require('../assets/home/homeBack.jpeg')"
                          gradient="to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)"
-                         height="90vh">
+                         height="670">
                     <v-container fluid fill-height class="ma-0 pa-0">
                       <v-layout column>
-                        <v-row>
-                          <v-card-text
-                            class="pt-0 white--text pb-0">
+                        <v-row wrap>
                             <v-container fluid>
                               <v-layout column
                                         style="margin-left: 8vw; margin-right: 8vw">
-                                <v-row wrap justify="start">
+                                <v-row wrap>
                                   <h1
-                                    class="subtitle-1 font-weight-medium pb-2 pt-4">
-                                    AJust acknowledges the Traditional Owners
+                                    class="subtitle-2 font-weight-medium pb-2 pt-4">
+                                    AJust Team acknowledges the Traditional
+                                    Owners
                                     of
                                     the land
                                     on
-                                    which the webiste target audience resides,
+                                    which the webisite target audience resides,
                                     the
                                     Wurundjeri
                                     People. We pay respects to their Elders,
@@ -358,14 +386,14 @@
                                     who
                                     may
                                     be
-                                    visiting this webssite today.
+                                    visiting this website today.
                                   </h1>
                                 </v-row>
                                 <v-row wrap justify="start" align="end">
-                                  <h1 class="subtitle-1 font-weight-medium">
+                                  <h1 class="subtitle-2 font-weight-medium">
                                     Justicely aims to identify and provide
                                     support
-                                    to the
+                                    to
                                     young
                                     women of Melbourne facing emotional abuse
                                     by
@@ -375,87 +403,77 @@
                                 </v-row>
                               </v-layout>
                             </v-container>
-                          </v-card-text>
                           <v-divider></v-divider>
 
                           <v-card-text class="white--text pt-0 pb-0">
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw">
-                              <!--<router-link to="/support"-->
-                              <!--@click.native="redirct(items[3])"-->
-                              <!--class="white&#45;&#45;text"-->
-                              <!--style="background-color: #1976D2;">-->
-                              <!--<h1 class="title font-weight-regular">-->
-                              <!--Find-->
-                              <!--Help-->
-                              <!--</h1>-->
-                              <!--</router-link>-->
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
                                 <router-link to="/legalsupport"
                                              @click.native="redirct(footerItems[0])"
                                              class="white--text">
                                   <!--style="background-color: #1976D2;"-->
-                                  <h1 class="title font-weight-regular">
+                                  <h1 class="subtitle-1 font-weight-regular">
                                     Legal Support
                                   </h1>
                                 </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/sheltermap"
-                                           @click.native="redirct(footerItems[1])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Care Shelters
-                                </h1>
-                              </router-link>
+                                <router-link to="/sheltermap"
+                                             @click.native="redirct(footerItems[1])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Shelters & Organizations
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/supportcounseling"
-                                           @click.native="redirct(footerItems[2])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Support & Counselling
-                                </h1>
-                              </router-link>
+                                <router-link to="/supportcounseling"
+                                             @click.native="redirct(footerItems[2])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Support & Counselling
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/safetyplan"
-                                           @click.native="redirct(footerItems[4])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Safety plan
-                                </h1>
-                              </router-link>
+                                <router-link to="/safetyplan"
+                                             @click.native="redirct(footerItems[4])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Safety plan
+                                  </h1>
+                                </router-link>
                               </v-flex>
                             </v-row>
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/events"
-                                           @click.native="redirct(footerItems[6])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Events
-                                </h1>
-                              </router-link>
+                                <router-link to="/events"
+                                             @click.native="redirct(footerItems[6])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Events
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/articles"
-                                           @click.native="redirct(footerItems[7])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Articles
-                                </h1>
-                              </router-link>
+                                <router-link to="/articles"
+                                             @click.native="redirct(footerItems[7])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Articles
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/apps"
-                                           @click.native="redirct(footerItems[8])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Apps
-                                </h1>
-                              </router-link>
+                                <router-link to="/apps"
+                                             @click.native="redirct(footerItems[8])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Apps
+                                  </h1>
+                                </router-link>
                               </v-flex>
                               <!--<router-link to="/selfcare"-->
                               <!--@click.native="redirct(footerItems[3])"-->
@@ -465,13 +483,13 @@
                               <!--</h1>-->
                               <!--</router-link>-->
                               <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                              <router-link to="/visualization"
-                                           @click.native="redirct(footerItems[5])"
-                                           class="white--text">
-                                <h1 class="title font-weight-regular">
-                                  Statistics
-                                </h1>
-                              </router-link>
+                                <router-link to="/visualization"
+                                             @click.native="redirct(footerItems[5])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Statistics
+                                  </h1>
+                                </router-link>
                               </v-flex>
                             </v-row>
                             <v-row wrap justify="space-between"
@@ -482,7 +500,8 @@
                                              class="pa-0 ma-0">
                                   <v-layout column justify="center">
                                     <v-row wrap align="end">
-                                      <h1 class="subtitle-1 font-weight-medium">
+                                      <h1
+                                        class="subtitle-1 font-weight-medium">
                                         © 2019 Justicely | All Rights Reserved
                                       </h1>
                                     </v-row>
@@ -537,28 +556,34 @@
         items: [
           {
             title: 'Home',
-            path: '/'
+            path: '/',
+            icon: 'mdi-home'
           },
           {
             title: 'About Abuse',
-            path: '/abuse'
+            path: '/abuse',
+            icon:'mdi-information'
           },
           {
             title: 'Statistics',
-            path: '/visualization'
+            path: '/visualization',
+            icon: 'mdi-chart-line'
           },
           {
             title: 'Self-Assessment',
-            path: '/assessments/false'
+            path: '/assessments/false',
+            icon: 'mdi-script'
           },
           {
             title: 'Find Help',
-            path: '/support'
+            path: '/support',
+            icon: 'mdi-cellphone-link'
           },
           {
             title: 'Safety Plan',
-            path: '/safetyplan'
-          },
+            path: '/safetyplan',
+            icon: 'mdi-file-document'
+          }
 
         ],
         easing: 'easeInOutCubic',
@@ -570,7 +595,7 @@
             path: '/legalsupport'
           },
           {
-            title: 'Care Shelters',
+            title: 'Shelters & Organizations',
             path: '/sheltermap'
           },
           {
@@ -620,11 +645,13 @@
       redirct (item) {
         this.$router.push(item.path)
         this.tab = item.path
-        this.$store.commit('switchView', {redirectionItem: {
-          text: item.title,
-          disabled: false,
-          to: item.path
-        }})
+        this.$store.commit('switchView', {
+          redirectionItem: {
+            text: item.title,
+            disabled: false,
+            to: item.path
+          }
+        })
       },
 
       backDirect (item) {
@@ -635,7 +662,7 @@
     computed: {
       breads () {
         return this.$store.state.breads
-      },
+      }
 
       // tab () {
       //   let cumbs = []

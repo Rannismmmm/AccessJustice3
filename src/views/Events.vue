@@ -7,13 +7,14 @@
       <v-row class="hidden-md-and-up" justify="center" style=" padding-left: 2vw; padding-right: 2vw">
          <events-content></events-content>
       </v-row>
-      <v-row justify="space-between" style="padding-left: 4vw; padding-right: 4vw">
+      <v-row justify="space-between" style="padding-left: 10vw; padding-right: 10vw">
           <v-card flat @click="navigateToView(pageBefore)">
             <v-container fluid>
               <v-layout column>
                 <v-row>
-                  <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
+                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageBefore.title}}</span>
                 </v-row>
               </v-layout>
             </v-container>
@@ -22,8 +23,9 @@
             <v-container fluid>
               <v-layout column>
                 <v-row>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageAfter.title}}</span>
+                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
                 </v-row>
               </v-layout>
             </v-container>

@@ -1,8 +1,8 @@
 <template>
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
-      <v-row justify="center" class="pt-5 pb-3" wrap>
-        <p class="title mb-4" style="color: black">
+      <v-row justify="center" class="pt-5" wrap>
+        <p class="title hidden-sm-and-down" style="color: black">
           Psychological stress of woman between
           <span class="title" style="color: #1976D2">
           {{selectedAge.ageStart}}
@@ -10,15 +10,30 @@
           <span class="title" style="color: #1976D2">
           {{selectedAge.ageEnd}}
           </span>
+          years old
+        </p>
+        <p class="subtitle-1 hidden-md-and-up pl-3 pr-3"
+           style="color: black">
+          Psychological stress of woman between
+          <span class="subtitle-1" style="color: #1976D2">
+          {{selectedAge.ageStart}}
+          </span> and
+          <span class="subtitle-1" style="color: #1976D2">
+          {{selectedAge.ageEnd}}
+          </span>
         </p>
       </v-row>
-      <v-row align="center" justify="space-between">
+      <v-row justify="center">
+        <p class="title mr-4 mt-2" style="color: black">
+          Year
+        </p>
         <v-flex align="center" xs12 sm12 md5 lg4 xl3>
           <v-combobox
             class="mt-0"
             v-model="years"
             :items="yearSelections"
             chips
+            solo
             :disabled="loading"
             label="Select years"
             multiple
@@ -33,14 +48,16 @@
             </template>
           </v-combobox>
         </v-flex>
-        <v-flex align="center" xs7 sm5 md3 lg3 xl2>
+        <p class="title pl-8 mr-4 mt-2" style="color: black">
+          Age group
+        </p>
+        <v-flex align="center" xs10 sm7 md3 lg3 xl2>
           <v-overflow-btn
             class="mb-0"
             :items="ages"
             label="Age Group"
             :disabled="loading"
-            dense
-            flat
+            solo
             v-model="selectedAge"
             @change="makeChart(makeDataByAge(selectedAge.ageStart, selectedAge.ageEnd))"
           ></v-overflow-btn>
@@ -57,6 +74,12 @@
       </v-row>
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
+      </v-row>
+      <v-row justify="center">
+        <p class="ma-0 hidden-sm-and-down">
+          Source: ABS National Health Survey, 2018</p>
+        <p class="mb-2 hidden-md-and-up"
+           style="font-size: 10px">Source: ABS National Health Survey, 2018</p>
       </v-row>
     </v-layout>
   </v-container>
@@ -127,7 +150,8 @@
         valueAxis.min = 0
         valueAxis.renderer.minLabelPosition = 0.01
         valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-        valueAxis.title.text = '% of affected woman'
+        valueAxis.title.text = 'Percentage of affected women'
+        valueAxis.title.fontWeight = 'bold'
         valueAxis.title.fill = am4core.color('#1976D2')
 
 // Create series
@@ -231,20 +255,22 @@
         series2.visible = false
       },
 
-      updateWithNochanges(original) {
-        if (JSON.stringify(this.years)==JSON.stringify(original))
+      updateWithNochanges (original) {
+        if (JSON.stringify(this.years) == JSON.stringify(original))
           this.makeChart(this.makeDataByAge(this.selectedAge.ageStart, this.selectedAge.ageEnd))
       }
 
     },
 
     watch: {
-      years(val) {
+      years (val) {
         let original = []
         this.years.forEach(item => {
           original.push(item)
         })
-        setTimeout(() => {this.updateWithNochanges(original)}, 1200)
+        setTimeout(() => {
+          this.updateWithNochanges(original)
+        }, 1200)
       }
     },
 

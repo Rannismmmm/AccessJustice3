@@ -9,6 +9,12 @@
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
       </v-row>
+      <v-row justify="center">
+        <p class="ma-0 hidden-sm-and-down">
+          Source: ABS Personal Safety Survey, 2016</p>
+        <p class="mb-2 hidden-md-and-up"
+           style="font-size: 10px">Source: ABS Personal Safety Survey, 2016</p>
+      </v-row>
     </v-layout>
   </v-container>
 </template>
@@ -39,6 +45,7 @@
         'year': 2012
       }, {'id': 3, 'percentage': 23.0, 'year': 2016}]
       chart.data = this.data
+      chart.numberFormatter.numberFormat = "####";
 
       let categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
       categoryAxis.dataFields.category = 'year'
@@ -51,7 +58,7 @@
 
       let valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.renderer.labels.template.fill = am4core.color('#1976D2')
-      valueAxis.title.text = 'percentage of affected woman'
+      valueAxis.title.text = 'Percentage of affected women'
       valueAxis.title.fontWeight = 'bold'
       valueAxis.min = 0;
       valueAxis.title.fill = am4core.color('#1976D2')

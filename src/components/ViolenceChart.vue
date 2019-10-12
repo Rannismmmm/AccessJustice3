@@ -2,29 +2,32 @@
   <v-container fluid class="pa-0 ma-0">
     <v-layout column>
       <v-row justify="center" class="pt-5 pb-3" wrap>
-        <p class="title mb-4" style="color: black">Number of recorded family
-          violence from 2013 ~ 2017 in
+        <p class="title mb-4" style="color: black">Number of reported family
+          incidents from 2013 - 2017 in
           <span class="title" style="color: #1976D2">
             {{suburb}}
           </span></p>
       </v-row>
-      <v-row justify="space-between">
+      <v-row justify="center">
         <!--<v-btn icon @click=""-->
                <!--disabled>-->
           <!--<v-icon large>mdi-chevron-left</v-icon>-->
         <!--</v-btn>-->
-
+        <p class="title mr-4 mt-3" style="color: black">
+          Select a council
+        </p>
         <v-flex xs12 sm5 md3 lg3 xl3>
           <v-autocomplete
             :items="suburbs"
-            filled
             :loading="loading"
             full-width
             clearable
+            solo
             color="primary"
             label="Type and select suburb"
             item-text="suburb"
             item-value="suburb"
+            v-model="suburb"
           >
             <template v-slot:item="i">
               <v-list-item-content
@@ -48,6 +51,12 @@
       </v-row>
       <v-row justify="center" class="pt-3">
         <div class="hello" ref="chartdiv"></div>
+      </v-row>
+      <v-row justify="center">
+        <p class="ma-0 hidden-sm-and-down">
+          Source: Family Violence Database, LEAP 2019</p>
+        <p class="mb-2 hidden-md-and-up"
+           style="font-size: 10px">Source: Family Violence Database, LEAP 2019</p>
       </v-row>
     </v-layout>
   </v-container>

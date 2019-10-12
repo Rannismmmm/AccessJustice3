@@ -1,180 +1,221 @@
 <template>
-  <v-container fluid style="padding: 0px">
+  <v-container fluid style="padding-top: 150px">
     <v-layout column>
-      <v-row justify="center" align="center" style="padding-top: 13vh;">
-        <v-img
-          :src="require('../assets/assessments/ass.jpeg')"
-          max-width="65vw"
-          class="white--text">
-          <v-container fluid fill-height>
-            <v-layout column>
-              <v-row
-                align="end"
-                justify="center"
-                wrap
-                class="pb-8 hidden-sm-and-down"
-              >
-                <v-container fluid>
-                  <v-layout column>
-                    <v-row justify="center">
-                      <h1 class="display-1 font-weight-thick mb-4">ARE YOU IN
-                        AN
-                        EMOTIONALLY ABUSIVE </h1>
-                    </v-row>
-                    <v-row justify="center">
-                      <h1 class="display-1 font-weight-thick mb-4">
-                        RELATIONSHIP?</h1>
-                    </v-row>
-                  </v-layout>
-                </v-container>
-              </v-row>
-              <v-row
-                align="end"
-                justify="center"
-                wrap
-                class="pb-8 hidden-md-and-up"
-              >
-                <h1 class="subtitle-1 font-weight-thick mb-4">ARE YOU IN AN
-                  EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
-              </v-row>
-              <v-row align="start" justify="center">
-                <v-container fluid>
-                  <v-layout column>
-                    <v-row justify="center">
-                      <v-dialog v-model="questionVisible" scrollable
-                                max-width="1000">
-                        <template v-slot:activator="{ on }">
-                          <v-btn color="white" dark rounded outlined x-large
-                                 @click="openQuizs">FIND OUT NOW
-                          </v-btn>
-                        </template>
-                        <v-card>
-                          <v-card-title><span
-                            class="headline">Self Assessment</span>
-                          </v-card-title>
-                          <v-divider></v-divider>
-                          <v-card v-if="onLoading" height="200px">
-                            <v-container fluid fill-height>
-                              <v-layout column>
-                                <v-row justify="center" align="center">
-                                  <v-progress-circular
-                                    indeterminate
-                                    color="primary"
-                                  ></v-progress-circular>
-                                </v-row>
-                              </v-layout>
-                            </v-container>
-                          </v-card>
-                          <v-stepper v-else non-linear v-model="current">
-                            <v-stepper-header>
-                              <template v-for="(item, i) in questions">
-                                <v-stepper-step :key="i"
-                                                :complete="isComplete(i)"
-                                                :step="i + 1">
-                                  {{i + 1}}
-                                </v-stepper-step>
-
-                                <v-divider
-                                  v-if="i !== (questions.length - 1)"
-                                  :key="i"
-                                ></v-divider>
-                              </template>
-
-                            </v-stepper-header>
-
-                            <v-stepper-items>
-                              <v-stepper-content v-for="(item, i) in questions"
-                                                 :key="i" :step="i + 1">
-                                <v-card
-                                  class="mb-12"
-                                  color="blue-grey lighten-5"
-                                  height="200px"
-                                >
-                                  <template>
-                                    <v-container fluid fill-height
-                                                 class="pt-0">
-                                      <v-layout column>
-                                        <v-row wrap>
-                                          <v-card width="100vw">
-                                            <h3 class="title hidden-sm-and-down">
-                                              {{item}}</h3>
-                                            <h3
-                                              class="body-1 hidden-md-and-up">
-                                              {{item}}</h3>
-                                          </v-card>
-                                        </v-row>
-                                        <v-row wrap>
-                                          <v-radio-group column
-                                                         v-model="answers[i]"
-                                                         @change="nextQues">
-                                            <v-radio value="1">
-                                              <template v-slot:label>
-                                                <div><strong
-                                                  class="success--black"
-                                                  style="color: black">Yes</strong>
-                                                </div>
-                                              </template>
-                                            </v-radio>
-                                            <v-spacer></v-spacer>
-                                            <v-radio value="0">
-                                              <template v-slot:label>
-                                              <div><strong
-                                                class="success--black"
-                                                style="color: black">No</strong>
-                                              </div>
-                                              </template>
-                                            </v-radio>
-                                          </v-radio-group>
-                                        </v-row>
-                                      </v-layout>
-                                    </v-container>
-                                  </template>
-                                  <v-row
-                                    style="width: auto; padding: 0px; margin: 0px"
-                                    justify="space-between"
-                                    align="end">
-                                    <v-btn icon @click="goPrevious"
-                                           :disabled="i === 0">
-                                      <v-icon large>mdi-chevron-left</v-icon>
-                                    </v-btn>
-                                    <p class="ma-0 hidden-sm-and-down">Source:
-                                      ABS Personal Safety Survey,
-                                      2016</p>
-                                    <p class="mb-2 hidden-md-and-up"
-                                       style="font-size: 10px">Source: ABS
-                                      Personal Safety Survey,
-                                      2016</p>
-                                    <v-btn icon @click="goNext"
-                                           :disabled="i === (questions.length - 1)">
-                                      <v-icon large>mdi-chevron-right</v-icon>
-                                    </v-btn>
+      <v-row justify="center" align="center">
+        <v-card flat min-width="370" max-width="62vw">
+          <v-img
+            :src="require('../assets/assessments/ass.jpeg')"
+            min-width="370" max-width="62vw"
+            class="white--text">
+            <v-container fluid fill-height>
+              <v-layout column>
+                <v-row
+                  align="end"
+                  justify="center"
+                  wrap
+                  class="pb-8 hidden-sm-and-down"
+                >
+                  <v-container fluid>
+                    <v-layout column>
+                      <v-row justify="center" class="text-center">
+                        <h1
+                          class="display-1 font-weight-thick mb-4 text-center">
+                          ARE YOU IN
+                          AN
+                          EMOTIONALLY ABUSIVE</h1>
+                      </v-row>
+                        <v-row justify="center" class="text-center">
+                          <h1
+                            class="display-1 font-weight-thick mb-4 text-center">
+                            RELATIONSHIP?
+                          </h1>
+                        </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-row>
+                <v-row
+                  align="end"
+                  justify="center"
+                  wrap
+                  class="pb-8 hidden-md-and-up"
+                >
+                  <h1 class="subtitle-1 font-weight-thick mb-4 text-center">ARE
+                    YOU IN AN
+                    EMOTIONALLY ABUSIVE RELATIONSHIP?</h1>
+                </v-row>
+                <v-row align="start" justify="center">
+                  <v-container fluid>
+                    <v-layout column>
+                      <v-row justify="center">
+                        <v-dialog v-model="questionVisible" scrollable
+                                  max-width="1000">
+                          <template v-slot:activator="{ on }">
+                            <v-btn class="hidden-sm-and-down" color="white"
+                                   dark rounded outlined x-large
+                                   @click="openQuizs">FIND OUT NOW
+                            </v-btn>
+                            <v-btn class="hidden-md-and-up" color="white" dark
+                                   rounded outlined small
+                                   @click="openQuizs">FIND OUT NOW
+                            </v-btn>
+                          </template>
+                          <v-card>
+                            <v-card-title><span
+                              class="headline">Self Assessment{{hasRequestedQuestions}}</span>
+                            </v-card-title>
+                            <v-divider></v-divider>
+                            <v-card v-if="onLoading" height="200px">
+                              <v-container fluid fill-height>
+                                <v-layout column>
+                                  <v-row justify="center" align="center">
+                                    <v-progress-circular
+                                      indeterminate
+                                      color="primary"
+                                    ></v-progress-circular>
                                   </v-row>
-                                </v-card>
-                              </v-stepper-content>
-                            </v-stepper-items>
-                          </v-stepper>
-                          <v-card-actions>
-                            <v-row justify="center">
-                              <v-btn width="100px" @click="closeQuiz">Cancel
-                              </v-btn>
-                              <v-btn width="100px" :loading="btnLoading"
-                                     :disabled="subDisable" color="primary"
-                                     @click="pushAnswers">
-                                Submit
-                              </v-btn>
-                              <!--<v-btn color="primary" to="/asresultshigh">-->
-                              <!--Submit-->
-                            </v-row>
-                          </v-card-actions>
-                        </v-card>
-                      </v-dialog>
-                    </v-row>
-                  </v-layout>
-                </v-container>
+                                </v-layout>
+                              </v-container>
+                            </v-card>
+                            <v-stepper v-else non-linear v-model="current">
+                              <v-stepper-header>
+                                <template v-for="(item, i) in questions">
+                                  <v-stepper-step :key="i"
+                                                  :complete="isComplete(i)"
+                                                  :step="i + 1">
+                                    {{i + 1}}
+                                  </v-stepper-step>
+
+                                  <v-divider
+                                    v-if="i !== (questions.length - 1)"
+                                    :key="i"
+                                  ></v-divider>
+                                </template>
+
+                              </v-stepper-header>
+
+                              <v-stepper-items>
+                                <v-stepper-content
+                                  v-for="(item, i) in questions"
+                                  :key="i" :step="i + 1">
+                                  <v-card
+                                    class="mb-12"
+                                    color="blue-grey lighten-5"
+                                    height="200px"
+                                  >
+                                    <template>
+                                      <v-container fluid fill-height
+                                                   class="pt-0">
+                                        <v-layout column>
+                                          <v-row wrap>
+                                            <v-card width="100vw">
+                                              <h3
+                                                class="title hidden-sm-and-down">
+                                                {{item}}</h3>
+                                              <h3
+                                                class="body-1 hidden-md-and-up">
+                                                {{item}}</h3>
+                                            </v-card>
+                                          </v-row>
+                                          <v-row wrap>
+                                            <v-radio-group column
+                                                           v-model="answers[i]"
+                                                           @change="nextQues">
+                                              <v-radio value="1">
+                                                <template v-slot:label>
+                                                  <div><strong
+                                                    class="success--black"
+                                                    style="color: black">Yes</strong>
+                                                  </div>
+                                                </template>
+                                              </v-radio>
+                                              <v-spacer></v-spacer>
+                                              <v-radio value="0">
+                                                <template v-slot:label>
+                                                  <div><strong
+                                                    class="success--black"
+                                                    style="color: black">No</strong>
+                                                  </div>
+                                                </template>
+                                              </v-radio>
+                                            </v-radio-group>
+                                          </v-row>
+                                        </v-layout>
+                                      </v-container>
+                                    </template>
+                                    <v-row
+                                      style="width: auto; padding: 0px; margin: 0px"
+                                      justify="space-between"
+                                      align="end">
+                                      <v-btn icon @click="goPrevious"
+                                             :disabled="i === 0">
+                                        <v-icon large>mdi-chevron-left</v-icon>
+                                      </v-btn>
+                                      <p class="ma-0 hidden-sm-and-down">
+                                        Source:
+                                        ABS Personal Safety Survey,
+                                        2016</p>
+                                      <p class="mb-2 hidden-md-and-up"
+                                         style="font-size: 10px">Source: ABS
+                                        Personal Safety Survey,
+                                        2016</p>
+                                      <v-btn icon @click="goNext"
+                                             :disabled="i === (questions.length - 1)">
+                                        <v-icon large>mdi-chevron-right
+                                        </v-icon>
+                                      </v-btn>
+                                    </v-row>
+                                  </v-card>
+                                </v-stepper-content>
+                              </v-stepper-items>
+                            </v-stepper>
+                            <v-card-actions>
+                              <v-row justify="center">
+                                <v-btn width="100px" @click="closeQuiz">Cancel
+                                </v-btn>
+                                <v-btn width="100px" :loading="btnLoading"
+                                       :disabled="subDisable" color="primary"
+                                       @click="pushAnswers">
+                                  Submit
+                                </v-btn>
+                                <!--<v-btn color="primary" to="/asresultshigh">-->
+                                <!--Submit-->
+                              </v-row>
+                            </v-card-actions>
+                          </v-card>
+                        </v-dialog>
+                      </v-row>
+                    </v-layout>
+                  </v-container>
+                </v-row>
+              </v-layout>
+            </v-container>
+          </v-img>
+        </v-card>
+      </v-row>
+      <v-row justify="space-between"
+             style="padding-left: 10vw; padding-right: 10vw">
+        <v-card flat @click="navigateToView(pageBefore)">
+          <v-container fluid>
+            <v-layout column>
+              <v-row>
+                <v-icon color="primary" class="pr-3">mdi-arrow-left-thick
+                </v-icon>
+                <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
               </v-row>
             </v-layout>
           </v-container>
-        </v-img>
+        </v-card>
+        <v-card flat @click="navigateToView(pageAfter)">
+          <v-container fluid>
+            <v-layout column>
+              <v-row>
+                <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
+                <v-icon color="primary" class="pl-3">mdi-arrow-right-thick
+                </v-icon>
+              </v-row>
+            </v-layout>
+          </v-container>
+        </v-card>
       </v-row>
     </v-layout>
   </v-container>
@@ -209,7 +250,15 @@
         onLoading: false,
         title: 'Assessment',
         btnLoading: false,
-        resultPath: null
+        resultPath: null,
+        pageBefore: {
+          title: 'Statistics',
+          path: '/visualization'
+        },
+        pageAfter: {
+          title: 'Find Help',
+          path: '/support'
+        }
       }
     },
 
@@ -293,24 +342,39 @@
         })
       },
 
+      navigateToView (item) {
+        this.$router.push(item.path)
+        this.$store.commit('switchView', {
+          redirectionItem: {
+            text: item.title,
+            disabled: false,
+            to: item.path
+          }
+        })
+      },
 
       requestQuestion () {
         this.subDisable = true
         this.current = 1
         this.onLoading = true
-        axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAll')
-          .then(response => {
-            response.data.forEach((item) => {
-              this.questions.push(item.question)
+        if (this.questions.length === 0) {
+          axios.get('https://cors-anywhere.herokuapp.com/http://justicelyapi-env.kx6wv7pwgw.ap-south-1.elasticbeanstalk.com/webresources/assessment/findAll')
+            .then(response => {
+              response.data.forEach((item) => {
+                this.questions.push(item.question)
+              })
+              if (this.questions.length > 5)
+                this.questions.splice(5, (this.questions.length - 5))
+              else
+                this.fillEmptyAnswers()
+              this.onLoading = false
             })
-            this.fillEmptyAnswers()
-            this.onLoading = false
-          })
-          .catch(error => {
-            this.onLoading = false
-            this.title = error
-            //do whatever with response
-          })
+            .catch(error => {
+              this.onLoading = false
+              this.title = error
+              //do whatever with response
+            })
+        }
       },
 
       openQuizs () {
@@ -326,21 +390,17 @@
       answers (val) {
         if (!this.answers.includes(-1))
           this.subDisable = false
-      },
+      }
 
-      // questions(val) {
-      //   if (this.questions > 5) {
-      //     this.questions
-      //   }
-      // }
-    }
-    ,
+
+    },
 
     mounted () {
       if (this.$route.params.questionVisible == 'true') {
         this.openQuizs()
       }
       this.fillEmptyAnswers()
+      // this.requestQuestion()
     }
   }
 </script>

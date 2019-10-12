@@ -40,11 +40,10 @@
                             <v-layout column>
                               <v-row wrap align="center" justify="end"
                                      class="pr-12 mb-4">
-                                <h1 class="title mb-4 hidden-sm-and-down">Find
-                                  events in </h1>
-                                <h1 class="subtitle-1 mb-4 hidden-md-and-up">
-                                  Find events
-                                  in </h1>
+                                <h1 class="title mb-4 hidden-sm-and-down" style="color: black">Find
+                                  events  </h1>
+                                <h1 class="subtitle-1 mb-4 hidden-md-and-up" style="color: black">
+                                  Find events </h1>
                               </v-row>
                             </v-layout>
                           </v-container>
@@ -237,14 +236,10 @@
                                       <h1 class="body-2" style="color: black">
                                         {{item.content}}</h1>
                                     </v-col>
-                                    <v-col class="pa-1" v-if="item.redirect"
+                                    <v-col v-if="item.redirect"
                                            cols="12">
-                                      <h1 class="body-2 font-weight-bold">I
-                                        want to
-                                        <a
-                                          class="font-italic"
-                                          @click="openNewTab(item.redirect)">Read
-                                          More</a> from {{item.org}}</h1>
+                                        <a class="title font-weight-bold"
+                                          @click="openNewTab(item.redirect)">Visit website</a>
                                     </v-col>
                                   </v-row>
                                 </v-layout>
@@ -268,7 +263,7 @@
                             <v-container fluid class="pa-0 ma-0">
                               <v-layout column>
                                 <v-row wrap
-                                       style="padding-left: 9vw; padding-right: 9vw; padding-top: 2vh"
+                                       class="pt-7 pl-12"
                                        justify="start">
                                   <h1
                                     class="title font-weight-bold mb-4 pl-6 pr-2"

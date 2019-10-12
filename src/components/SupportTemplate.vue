@@ -1,5 +1,5 @@
 <template>
-  <span style="width: 100vw">
+  <span style="width: 100vw" v-if="appear">
     <v-container fluid
                  class="hidden-sm-and-down">
       <v-layout column>
@@ -51,9 +51,9 @@
           align="start"
           justify="center"
           wrap
-          style="padding-left: 2vw; padding-right: 2vw"
+          style="padding-left: 4vw; padding-right: 4vw"
         >
-          <h1 class="body-2 mb-4">{{paragraph}}
+          <h1 class="body-2 mb-4 text-center">{{paragraph}}
             <v-btn v-if="paragraphBtn" text small color="primary">
               {{paragraphBtn}}
             </v-btn>
@@ -123,12 +123,12 @@
         </v-card>
       </v-flex>
     </v-row>
-    <v-container fluid>
+    <v-container fluid v-if="positiveCards" class="pa-0 ma-0">
       <v-col cols="12">
         <v-row
-          v-if="positiveCards"
           align="end"
           wrap
+          style="margin-left: 8vw; margin-right: 8vw"
           justify="space-around"
         >
         <v-flex xs12 sm6 md4 lg4 xl3 v-for="(item,i) in positiveCards"
@@ -138,7 +138,7 @@
               <v-container fill-height fluid class="pl-5 pr-5">
                 <v-layout column>
                   <v-row v-if="item.icon" cols="12">
-                          <v-img :style="`height: ${iconWidth}`" contain
+                          <v-img :style="`height: ${iconWidth}`" :contain="iconContain"
                                  :src="item.icon"></v-img>
                   </v-row>
                 <v-row no-gutters justify="center">
@@ -155,16 +155,14 @@
                   <v-col cols="12">
                     <h1 class="body-2">{{item.content}}</h1>
                   </v-col>
-                  <v-col v-if="item.path" cols="12">
-                    <h1 class="body-2 font-weight-bold">Click <a
-                      class="font-italic"
-                      @click="openNewTab(item.path)">{{item.linkWord}}</a> to get help</h1>
-                  </v-col>
                   <v-col class="pa-1" v-if="item.redirect" cols="12">
-                    <h1 class="body-2 font-weight-bold">I want to <a
-                      class="font-italic" @click="openNewTab(item.redirect)">Read More</a> from {{item.org}}</h1>
+                    <a class="font-weight-bold" @click="openNewTab(item.redirect)">Visit website</a>
                   </v-col>
                 </v-row>
+                  <v-row justify="start" align="end" v-if="item.linkWord">
+                    <a class="title pl-3"
+                       @click="openNewTab(item.path)">{{item.linkWord}}</a>
+                  </v-row>
                 <v-row align="end" v-if="item.ios || item.android">
                     <v-container fluid>
                       <v-layout column>
@@ -196,15 +194,16 @@
         </v-row>
       </v-col>
     </v-container>
-    <v-container fluid style="padding-left: 4vw; padding-right: 4vw">
+    <v-container v-if="pageBefore || pageAfter" fluid style="padding-left: 10vw; padding-right: 10vw">
       <v-layout column>
         <v-row justify="space-between">
           <v-card flat @click="navigateToView(pageBefore)">
             <v-container fluid v-if="pageBefore">
               <v-layout column>
                 <v-row>
-                  <v-icon color="primary">mdi-arrow-left-bold-circle</v-icon>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageBefore.title}}</span>
+                  <v-icon color="primary" class="pr-3">mdi-arrow-left-thick</v-icon>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageBefore.title}}</span>
                 </v-row>
               </v-layout>
             </v-container>
@@ -213,8 +212,9 @@
             <v-container fluid v-if="pageAfter">
               <v-layout column>
                 <v-row>
-                  <span class="headline font-weight-bold" style="color: #1976D2">{{pageAfter.title}}</span>
-                  <v-icon color="primary">mdi-arrow-right-bold-circle</v-icon>
+                  <span class="headline font-weight-bold"
+                        style="color: #1976D2">{{pageAfter.title}}</span>
+                  <v-icon color="primary" class="pl-3">mdi-arrow-right-thick</v-icon>
                 </v-row>
               </v-layout>
             </v-container>
@@ -251,6 +251,7 @@
         //     color: 'grey lighten-2'
         //   }
         // ]
+        appear: false
       }
     },
 
@@ -302,13 +303,20 @@
 
       pageBefore: {
         type: Object,
-        default: () => {}
+        default: () => {
+        }
       },
 
       pageAfter: {
         type: Object,
-        default: () => {}
+        default: () => {
+        }
       },
+
+      iconContain: {
+        type: Boolean,
+        default: false
+      }
     },
 
     methods: {
@@ -325,19 +333,30 @@
         window.open(url)
       },
 
-      navigateToView(item) {
+      navigateToView (item) {
         this.$router.push(item.path)
         this.$store.commit('switchView', {
           redirectionItem: {
-          text: item.title,
-          disabled: false,
-          to: item.path
-        }, otherBaseView: {
-          text: 'Find Help',
-          disabled: false,
-          to: '/support'
-        }})
+            text: item.title,
+            disabled: false,
+            to: item.path
+          }, otherBaseView: {
+            text: 'Find Help',
+            disabled: false,
+            to: '/support'
+          }
+        })
+      },
+
+      popup (url) {
+        window.open(url, "new window", "height=200,width=200")
       }
+    },
+
+    mounted () {
+      setTimeout(() => {
+        this.appear = true
+        }, 20)
     }
   }
 </script>

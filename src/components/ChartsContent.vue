@@ -9,15 +9,18 @@
         <v-icon large>mdi-chevron-left</v-icon>
       </v-btn>
       <v-tab href="#1">
-        Distress
+        <span class="title font-weight-regular hidden-sm-and-down">Distress</span>
+        <span class="subtitle-2 font-weight-regular hidden-md-and-up">Distress</span>
       </v-tab>
 
       <v-tab href="#2">
-        Violence
+        <span class="title font-weight-regular hidden-sm-and-down">Violence</span>
+        <span class="subtitle-2 font-weight-regular hidden-md-and-up">Violence</span>
       </v-tab>
 
       <v-tab href="#3">
-        Age
+        <span class="title font-weight-regular hidden-sm-and-down">Abuse</span>
+        <span class="subtitle-2 font-weight-regular hidden-md-and-up">Abuse</span>
       </v-tab>
       <v-btn class="mt-3 pl-4" icon @click="goNext" :disabled="tab == '3'">
         <v-icon large>mdi-chevron-right</v-icon>
@@ -29,9 +32,18 @@
         key="1"
         value="1"
       >
-        <v-card width="60vw" flat>
-          <distress-chart></distress-chart>
-        </v-card>
+        <v-container fluid class="ma-0 pa-0">
+          <v-layout column>
+            <v-row justify="center">
+              <v-card class="hidden-sm-and-down" width="60vw" flat>
+                <distress-chart></distress-chart>
+              </v-card>
+              <v-card class="hidden-md-and-up" width="90vw" flat>
+                <distress-chart></distress-chart>
+              </v-card>
+            </v-row>
+          </v-layout>
+        </v-container>
       </v-tab-item>
       <v-tab-item
         key="2"
