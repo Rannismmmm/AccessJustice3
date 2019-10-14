@@ -5,8 +5,18 @@
         align="end"
         justify="center"
         wrap
+        class="hidden-sm-and-down text-center"
         style="padding-top: 250px; padding-bottom: 20px">
         <h4 class="display-1 mb-4" style="color: #1976D2">These are our
+          recommendations for you.</h4>
+      </v-row>
+      <v-row
+        align="end"
+        justify="center"
+        wrap
+        class="hidden-md-and-up text-center pl-3 pr-3"
+        style="padding-top: 100px">
+        <h4 class="headline mb-4" style="color: #1976D2">These are our
           recommendations for you.</h4>
       </v-row>
       <v-row
@@ -35,7 +45,7 @@
                         wrap
                         style="padding-left: 2vw; padding-right: 2vw"
                       >
-                        <v-flex align="end" xs4 sm4 md3 lg3 xl2>
+                        <v-flex align="end" xs5 sm4 md3 lg3 xl2>
                           <v-container fluid fill-height class="pa-0 ma-0">
                             <v-layout column>
                               <v-row wrap align="center" justify="end"
@@ -48,7 +58,7 @@
                             </v-layout>
                           </v-container>
                         </v-flex>
-                        <v-flex justify="start" xs5 sm4 md3 lg3 xl2>
+                        <v-flex justify="start" xs7 sm6 md3 lg3 xl2>
                           <v-container fluid fill-height class="pa-0 ma-0">
                             <v-layout column>
                               <v-row wrap align="end" justify="start">
@@ -263,14 +273,27 @@
                             <v-container fluid class="pa-0 ma-0">
                               <v-layout column>
                                 <v-row wrap
-                                       class="pt-7 pl-12"
+                                       class="pt-7 pl-12 hidden-sm-and-down"
                                        justify="start">
                                   <h1
                                     class="title font-weight-bold mb-4 pl-6 pr-2"
                                     style="color: black">Check out our range of
                                     support
                                     services available for free.</h1>
-                                  <v-btn color="primary" rounded to="/support">
+                                  <v-btn color="primary" rounded @click="redirct({title: 'Find Help', path: '/support'})">
+                                    Click
+                                    here
+                                  </v-btn>
+                                </v-row>
+                                <v-row wrap
+                                       class="ma-4 hidden-md-and-up text-center"
+                                       justify="center">
+                                  <h1
+                                    class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+                                    style="color: black">Check out our range of
+                                    support
+                                    services available for free.</h1>
+                                  <v-btn small color="primary" rounded @click="redirct({title: 'Find Help', path: '/support'})">
                                     Click
                                     here
                                   </v-btn>
@@ -454,6 +477,16 @@
     },
 
     methods: {
+
+      redirct (card) {
+        this.$router.push(card.path)
+        this.$store.commit('switchView', { redirectionItem: {
+          text: card.title,
+          disabled: false,
+          to: card.path
+        }})
+      },
+
       fetchEventData () {
         this.loading = true
         this.data = []

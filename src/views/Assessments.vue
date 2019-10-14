@@ -213,13 +213,7 @@
     data () {
       return {
         buttonUnable: true,
-        questions: [
-          // {title: '1', ques: 'Question1'},
-          // {title: '2', ques: 'Question2'},
-          // {title: '3', ques: 'Question3'},
-          // {title: '4', ques: 'Question4'},
-          // {title: '5', ques: 'Question5'}
-        ],
+        questions: [],
         firstEmpty: 0,
         current: 1,
         answers: [],

@@ -62,18 +62,17 @@
       </v-container>
     </v-card>
     <v-card
-      class="mx-auto my-12 hidden-md-and-up"
-      width="92vw"
-      height="670"
+      class="mx-auto ma-5 hidden-md-and-up"
+      width="331"
     >
       <v-container fluid fill-height class="pa-0 ma-0">
         <v-layout column>
           <v-row justify="center">
             <v-img
               :src="img"
-              max-width="92vw"
-              height="230"
-              position="left"
+              max-width="331"
+              contain
+              position="center"
             ></v-img>
           </v-row>
           <v-row wrap style="padding-left: 1vw; padding-right: 1vw">

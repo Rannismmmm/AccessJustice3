@@ -37,7 +37,7 @@
         <v-card flat class="pl-12 hidden-sm-and-down" width="430" height="295">
           <v-container fluid class="ma-0 pa-0">
             <v-layout column>
-              <v-row wrap>
+              <v-row wrap class="text-justify">
                 <h1 class="title mb-4">
                   {{paragraph}}
                 </h1>
@@ -45,7 +45,7 @@
             </v-layout>
           </v-container>
         </v-card>
-        <v-card flat class="hidden-md-and-up" width="430">
+        <v-card flat class="hidden-md-and-up text-justify" width="430">
           <v-container fluid class="ma-0 pa-0">
             <v-layout column>
               <v-row wrap>

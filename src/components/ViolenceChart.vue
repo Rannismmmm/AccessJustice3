@@ -32,7 +32,7 @@
             clearable
             solo
             color="primary"
-            label="Type and select suburb"
+            label="Type and select council"
             item-text="suburb"
             item-value="suburb"
             v-model="suburb"

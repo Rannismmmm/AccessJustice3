@@ -4,11 +4,10 @@
       <v-row
         align="end"
         justify="center"
-        wrap
-        style="padding-top: 200px; padding-bottom: 20px">
-        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2">These are our
+        wrap>
+        <h4 class="display-1 mb-4 hidden-sm-and-down" style="color: #1976D2; padding-top: 200px; padding-bottom: 20px">These are our
           recommendations for you.</h4>
-        <h4 class="title mb-4 hidden-md-and-up pl-4 pr-4 text-center" style="color: #1976D2">These are our
+        <h4 class="title mb-4 hidden-md-and-up pl-4 pr-4 text-center" style="color: #1976D2; padding-top: 100px; padding-bottom: 10px">These are our
           recommendations for you.</h4>
       </v-row>
       <v-row
@@ -72,11 +71,18 @@
                           </v-card>
                         </v-flex>
                       </v-row>
-                      <v-row v-if="isHigh" justify="center" wrap class="pt-4">
+                      <v-row v-if="isHigh" justify="center" wrap class="pt-4 hidden-sm-and-down">
                         <h1 class="headline font-weight-bold mb-4 pl-6 pr-2"
                             style="color: #1976D2">Need a place to stay?</h1>
                         <v-btn color="primary" rounded
-                               to="/sheltermap">Click here
+                               @click="redirct({title: 'Shelters & Organizations', path: '/sheltermap'})">Click here
+                        </v-btn>
+                      </v-row>
+                      <v-row v-if="isHigh" justify="center" wrap class="pt-4 hidden-md-and-up text-center">
+                        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+                            style="color: #1976D2">Need a place to stay?</h1>
+                        <v-btn color="primary" rounded small
+                               @click="redirct({title: 'Shelters & Organizations', path: '/sheltermap'})">Click here
                         </v-btn>
                       </v-row>
                     </v-layout>
@@ -130,11 +136,18 @@
                           </v-card>
                         </v-flex>
                       </v-row>
-                      <v-row justify="center" wrap class="pt-4">
+                      <v-row justify="center" wrap class="pt-4 hidden-sm-and-down">
                         <h1 class="headline font-weight-bold mb-4 pl-6 pr-2"
                             style="color: #1976D2">Need a safety plan?</h1>
                         <v-btn color="primary" rounded
-                               to="/safetyplan">Click here
+                               @click="redirct({title: 'Safety Plan', path: '/safetyplan'})">Click here
+                        </v-btn>
+                      </v-row>
+                      <v-row justify="center" wrap class="pt-4 hidden-md-and-up text-center">
+                        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+                            style="color: #1976D2">Need a safety plan?</h1>
+                        <v-btn color="primary" rounded small
+                               @click="redirct({title: 'Safety Plan', path: '/safetyplan'})">Click here
                         </v-btn>
                       </v-row>
                     </v-layout>
@@ -156,12 +169,21 @@
                 <v-card-text>
                   <v-container fluid class="pa-0 ma-0">
                     <v-layout column>
-                      <v-row wrap class="pt-7 pl-12"
+                      <v-row wrap class="pt-7 pl-12 hidden-sm-and-down"
                              justify="start">
                         <h1 class="title font-weight-bold mb-4 pl-6 pr-2"
                             style="color: black">Check out our range of support
                           services available for free.</h1>
-                        <v-btn color="primary" rounded to="/support">Click
+                        <v-btn color="primary" rounded @click="redirct({title: 'Find Help', path: '/support'})">Click
+                          here
+                        </v-btn>
+                      </v-row>
+                      <v-row wrap class="pt-4 hidden-md-and-up text-center"
+                             justify="center">
+                        <h1 class="subtitle-1 font-weight-bold mb-4 pl-6 pr-2"
+                            style="color: black">Check out our range of support
+                          services available for free.</h1>
+                        <v-btn color="primary" rounded small @click="redirct({title: 'Find Help', path: '/support'})">Click
                           here
                         </v-btn>
                       </v-row>
@@ -255,7 +277,16 @@
     methods: {
       openNewTab (url) {
         window.open(url)
-      }
+      },
+
+      redirct (card) {
+        this.$router.push(card.path)
+        this.$store.commit('switchView', { redirectionItem: {
+          text: card.title,
+          disabled: false,
+          to: card.path
+        }})
+      },
     },
 
     watch: {},

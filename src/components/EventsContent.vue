@@ -28,17 +28,17 @@
         wrap
         style="padding-left: 2vw; padding-right: 2vw"
       >
-        <v-flex align="end" xs4 sm4 md3 lg3 xl2>
+        <v-flex align="end" xs3 sm4 md3 lg3 xl2>
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
-              <v-row wrap align="center" justify="end" class="pr-12 mb-4">
-                <h1 class="title mb-4 hidden-sm-and-down">Find events  </h1>
-                <h1 class="subtitle-1 mb-4 hidden-md-and-up">Find events </h1>
+              <v-row wrap align="center" justify="end" class="mb-4">
+                <h1 class="title mb-4 hidden-sm-and-down pr-12">Find events  </h1>
+                <h1 class="subtitle-2 mb-4 hidden-md-and-up pr-12">Find events </h1>
               </v-row>
             </v-layout>
           </v-container>
         </v-flex>
-        <v-flex justify="start" xs5 sm4 md3 lg3 xl2>
+        <v-flex justify="start" xs6 sm4 md3 lg3 xl2>
           <v-container fluid fill-height class="pa-0 ma-0">
             <v-layout column>
               <v-row wrap align="end" justify="start">

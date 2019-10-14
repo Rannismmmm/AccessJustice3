@@ -49,8 +49,7 @@
                 background-color="transparent"
                 grow
                 right
-                optional
-                v-model="tab"
+                v-model="currentPage"
               >
                 <v-tab v-for="(item,index) in items"
                        :key="index"
@@ -168,13 +167,13 @@
                 >
                   <v-img :src="require('../assets/home/homeBack.jpeg')"
                          gradient="to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)"
-                         height="300px">
+                         height="280px">
                     <v-container fluid fill-height class="ma-0 pa-0">
                       <v-layout column>
                         <v-row>
                           <v-card-text
                             class="pt-0 white--text pb-0">
-                            <v-container fluid>
+                            <v-container fluid class="pb-0">
                               <v-layout column
                                         style="margin-left: 8vw; margin-right: 8vw">
                                 <v-row wrap justify="start">
@@ -267,45 +266,45 @@
                                 </router-link>
                               </v-flex>
                             </v-row>
-                            <v-row wrap justify="space-between"
-                                   style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/events"
-                                             @click.native="redirct(footerItems[6])"
-                                             class="white--text">
-                                  <h1 class="title font-weight-regular">
-                                    Events
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/articles"
-                                             @click.native="redirct(footerItems[7])"
-                                             class="white--text">
-                                  <h1 class="title font-weight-regular">
-                                    Articles
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/apps"
-                                             @click.native="redirct(footerItems[8])"
-                                             class="white--text">
-                                  <h1 class="title font-weight-regular">
-                                    Apps
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/visualization"
-                                             @click.native="redirct(footerItems[5])"
-                                             class="white--text">
-                                  <h1 class="title font-weight-regular">
-                                    Statistics
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                            </v-row>
+                            <!--<v-row wrap justify="space-between"-->
+                                   <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/events"-->
+                                             <!--@click.native="redirct(footerItems[6])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="title font-weight-regular">-->
+                                    <!--Events-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/articles"-->
+                                             <!--@click.native="redirct(footerItems[7])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="title font-weight-regular">-->
+                                    <!--Articles-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/apps"-->
+                                             <!--@click.native="redirct(footerItems[8])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="title font-weight-regular">-->
+                                    <!--Apps-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/visualization"-->
+                                             <!--@click.native="redirct(footerItems[5])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="title font-weight-regular">-->
+                                    <!--Statistics-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                            <!--</v-row>-->
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 1vh">
                               <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary"
@@ -359,11 +358,11 @@
                 >
                   <v-img :src="require('../assets/home/homeBack.jpeg')"
                          gradient="to top, rgba(0, 0, 0, .7), rgba(0, 0, 0, .7)"
-                         height="520">
+                         height="460">
                     <v-container fluid fill-height class="ma-0 pa-0">
                       <v-layout column>
                         <v-row wrap>
-                            <v-container fluid>
+                            <v-container fluid class="pb-0">
                               <v-layout column>
                                 <v-row wrap style="margin-left: 9vw; margin-right: 9vw">
                                   <h1
@@ -407,7 +406,16 @@
                           <v-card-text class="white--text pt-0 pb-0">
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw">
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
+                              <v-flex xs7 sm3 md3 lg3 xl3 justify="start">
+                                <router-link to="/sheltermap"
+                                             @click.native="redirct(footerItems[1])"
+                                             class="white--text">
+                                  <h1 class="subtitle-1 font-weight-regular">
+                                    Shelters & Organizations
+                                  </h1>
+                                </router-link>
+                              </v-flex>
+                              <v-flex xs5 sm3 md3 lg3 xl3 justify="start">
                                 <router-link to="/legalsupport"
                                              @click.native="redirct(footerItems[0])"
                                              class="white--text">
@@ -417,16 +425,7 @@
                                   </h1>
                                 </router-link>
                               </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/sheltermap"
-                                             @click.native="redirct(footerItems[1])"
-                                             class="white--text">
-                                  <h1 class="subtitle-1 font-weight-regular">
-                                    Shelters & Organizations
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
+                              <v-flex xs7 sm3 md3 lg3 xl3 justify="start">
                                 <router-link to="/supportcounseling"
                                              @click.native="redirct(footerItems[2])"
                                              class="white--text">
@@ -435,7 +434,7 @@
                                   </h1>
                                 </router-link>
                               </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
+                              <v-flex xs5 sm3 md3 lg3 xl3 justify="start">
                                 <router-link to="/safetyplan"
                                              @click.native="redirct(footerItems[4])"
                                              class="white--text">
@@ -445,52 +444,52 @@
                                 </router-link>
                               </v-flex>
                             </v-row>
-                            <v-row wrap justify="space-between"
-                                   style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/events"
-                                             @click.native="redirct(footerItems[6])"
-                                             class="white--text">
-                                  <h1 class="subtitle-1 font-weight-regular">
-                                    Events
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/articles"
-                                             @click.native="redirct(footerItems[7])"
-                                             class="white--text">
-                                  <h1 class="subtitle-1 font-weight-regular">
-                                    Articles
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/apps"
-                                             @click.native="redirct(footerItems[8])"
-                                             class="white--text">
-                                  <h1 class="subtitle-1 font-weight-regular">
-                                    Apps
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                              <!--<router-link to="/selfcare"-->
-                              <!--@click.native="redirct(footerItems[3])"-->
-                              <!--class="white&#45;&#45;text">-->
-                              <!--<h1 class="title font-weight-regular">-->
-                              <!--Self-Care-->
-                              <!--</h1>-->
-                              <!--</router-link>-->
-                              <v-flex xs6 sm3 md3 lg3 xl3 justify="start">
-                                <router-link to="/visualization"
-                                             @click.native="redirct(footerItems[5])"
-                                             class="white--text">
-                                  <h1 class="subtitle-1 font-weight-regular">
-                                    Statistics
-                                  </h1>
-                                </router-link>
-                              </v-flex>
-                            </v-row>
+                            <!--<v-row wrap justify="space-between"-->
+                                   <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/events"-->
+                                             <!--@click.native="redirct(footerItems[6])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
+                                    <!--Events-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/articles"-->
+                                             <!--@click.native="redirct(footerItems[7])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
+                                    <!--Articles-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/apps"-->
+                                             <!--@click.native="redirct(footerItems[8])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
+                                    <!--Apps-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                              <!--&lt;!&ndash;<router-link to="/selfcare"&ndash;&gt;-->
+                              <!--&lt;!&ndash;@click.native="redirct(footerItems[3])"&ndash;&gt;-->
+                              <!--&lt;!&ndash;class="white&#45;&#45;text">&ndash;&gt;-->
+                              <!--&lt;!&ndash;<h1 class="title font-weight-regular">&ndash;&gt;-->
+                              <!--&lt;!&ndash;Self-Care&ndash;&gt;-->
+                              <!--&lt;!&ndash;</h1>&ndash;&gt;-->
+                              <!--&lt;!&ndash;</router-link>&ndash;&gt;-->
+                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                                <!--<router-link to="/visualization"-->
+                                             <!--@click.native="redirct(footerItems[5])"-->
+                                             <!--class="white&#45;&#45;text">-->
+                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
+                                    <!--Statistics-->
+                                  <!--</h1>-->
+                                <!--</router-link>-->
+                              <!--</v-flex>-->
+                            <!--</v-row>-->
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 1vh">
                               <v-flex xs12 sm6 md4 lg4 xl4 flat color="primary"
@@ -513,10 +512,10 @@
                                              class="pa-0 ma-0">
                                   <v-layout column>
                                     <v-row align="end" justify="end">
-                                      <v-img class="mr-2" max-width="80px"
+                                      <v-img class="mr-2" max-width="60"
                                              contain
                                              :src="require('../assets/footer/flag1.jpeg')"></v-img>
-                                      <v-img class="ml-2" max-width="80px"
+                                      <v-img class="ml-2" max-width="60"
                                              contain
                                              :src="require('../assets/footer/flag2.jpeg')"></v-img>
                                     </v-row>
@@ -661,6 +660,23 @@
     computed: {
       breads () {
         return this.$store.state.breads
+      },
+
+      currentPage () {
+        let current = this.$route.name.toString()
+        if(current == 'home')
+          return 0
+        else if (current == 'abuse')
+          return 1
+        else if (current == 'visualization')
+          return 2
+        else if (['assessments', 'asresultslow', 'asresultshigh'].includes(current))
+          return 3
+        else if (['support', 'legalsupport', 'supportcounseling', 'sheltermap',
+        'events', 'articles','apps'].includes(current))
+          return 4
+        else if (current == 'safetyplan' || current == 'safetyform')
+          return 5
       }
 
       // tab () {

@@ -126,7 +126,7 @@
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
                               clearable
-                              :rules="[numberRules.numberOnly]"
+                              :rules="[numberOnly]"
                               outlined
                               v-model="number1"
                             ></v-text-field>
@@ -184,7 +184,7 @@
                             <v-text-field
                               clearable
                               outlined
-                              :rules="[numberRules.numberOnly]"
+                              :rules="[numberOnly]"
                               v-model="number2"
                             ></v-text-field>
                           </v-flex>
@@ -464,42 +464,44 @@
           const pattern = /^([a-zA-Z]*\s*)+$/
           return pattern.test(value) || 'Name contains illegal characters'
         },
-        numberRules: {
-          numberOnly: value => {
-            const pattern = /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
-            return pattern.test(value) || 'Invalid phone number.'
-          },
-          noMoreThan10: value => value.length <= 11 || 'Max 1 digits'
+        numberOnly: value => {
+          const pattern = /^[+]?(\d*\s*)*$/
+            // /^([+]?[0-9]*\s+[0-9]*)+$/
+          return pattern.test(value) || 'Invalid phone number.'
         }
       }
     },
 
     computed: {
-      btnDisabled: function() {
-        return (this.otherDocs === false &&
-          this.childrenDocs === false &&
-          this.medications === false &&
-          this.petsthings === false &&
-          this.name1 == null &&
-          this.number1 == null &&
-          this.address1 == null &&
-          this.name2 == null &&
-          this.number2 == null &&
-          this.address2 == null &&
-          this.notes1 == null &&
-          this.notes2 == null &&
-          this.id === false &&
-          this.passport === false &&
-          this.bankCards === false &&
-          this.birth === false &&
-          this.cash === false &&
-          this.license === false &&
-          this.oDocs == null &&
-          this.cDocs == null &&
-          this.mDocs == null &&
-          this.pDocs == null &&
-          this.notes == null &&
-          this.text == null
+      btnDisabled: function () {
+        return ((this.otherDocs === false &&
+            this.childrenDocs === false &&
+            this.medications === false &&
+            this.petsthings === false &&
+            this.name1 == null &&
+            this.number1 == null &&
+            this.address1 == null &&
+            this.name2 == null &&
+            this.number2 == null &&
+            this.address2 == null &&
+            this.notes1 == null &&
+            this.notes2 == null &&
+            this.id != 'id' &&
+            this.passport != 'passport' &&
+            this.bankCards != 'bankcards' &&
+            this.birth != 'birth' &&
+            this.cash != 'cash' &&
+            this.license != 'license' &&
+            this.oDocs == null &&
+            this.cDocs == null &&
+            this.mDocs == null &&
+            this.pDocs == null &&
+            this.notes == null &&
+            this.text == null) ||
+          !(/^([a-zA-Z]*\s*)+$/.test(this.name1)) ||
+          !(/^([a-zA-Z]*\s*)+$/.test(this.name2))
+          // !(/^[+]?([0-9]*\s*)*$/.test(this.number1)) ||
+          // !(/^[+]?([0-9]*\s*)*$/.test(this.number2))
         )
       }
     },
