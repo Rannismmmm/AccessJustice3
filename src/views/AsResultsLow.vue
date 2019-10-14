@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="appear">
     <v-layout column>
       <v-row
         align="end"
@@ -472,7 +472,8 @@
             value: 'next_month'
           }],
         selectedPeriod: null,
-        loading: false
+        loading: false,
+        appear: false
       }
     },
 
@@ -539,7 +540,10 @@
     },
 
     mounted () {
-      this.selectedPeriod = 'next_week'
+      setTimeout(() => {
+        this.appear = true
+      }, 20)
+      this.selectedPeriod = 'this_weekend'
       this.fetchEventData()
     }
   }

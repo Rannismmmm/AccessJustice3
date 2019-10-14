@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid>
+  <v-container fluid v-if="appear">
     <v-layout column>
       <v-row
         align="end"
@@ -270,7 +270,8 @@
         ],
         isHigh: false,
         lg1: true,
-        lg2: false
+        lg2: false,
+        appear: false,
       }
     },
 
@@ -292,6 +293,9 @@
     watch: {},
 
     mounted () {
+      setTimeout(() => {
+        this.appear = true
+      }, 20)
       if (this.$route.params.level == 'high') {
         this.isHigh = true
       }
