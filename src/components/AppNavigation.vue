@@ -1,5 +1,5 @@
 <template>
-  <v-card class="overflow-hidden pa-ma-0" style="height: 100vh; width: 100vw">
+  <v-card class="overflow-hidden pa-ma-0" style="height: 100vh">
     <v-app-bar
       absolute
       prominent
@@ -74,7 +74,13 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
-      <v-toolbar-title>Justicely</v-toolbar-title>
+      <v-toolbar-title class="pa-0">
+        <!--Justicely-->
+        <v-card flat width="130" @click="redirct(items[0])">
+          <v-img max-height="35" contain
+                 :src="require('../assets/Logo.jpeg')"></v-img>
+        </v-card>
+      </v-toolbar-title>
       <template v-slot:extension>
         <v-container fluid fill-height>
           <v-row no-gutters>
@@ -119,7 +125,8 @@
                   <v-icon>{{item.icon}}</v-icon>
                 </v-list-icon>
                 <v-list-item-content>
-                  <v-list-item-title class="pl-3">{{ item.title }}</v-list-item-title>
+                  <v-list-item-title class="pl-3">{{ item.title }}
+                  </v-list-item-title>
                 </v-list-item-content>
               </v-list-item>
             </v-list>
@@ -130,7 +137,7 @@
                 <v-layout column>
                   <v-row justify="center" align="center" class="pb-10">
                     <v-img max-width="200" contain
-                           :src="require('../assets/Logo.jpeg')"></v-img>
+                           :src="require('../assets/teamlogo.png')"></v-img>
                   </v-row>
                 </v-layout>
               </v-container>
@@ -267,43 +274,43 @@
                               </v-flex>
                             </v-row>
                             <!--<v-row wrap justify="space-between"-->
-                                   <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/events"-->
-                                             <!--@click.native="redirct(footerItems[6])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="title font-weight-regular">-->
-                                    <!--Events-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/articles"-->
-                                             <!--@click.native="redirct(footerItems[7])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="title font-weight-regular">-->
-                                    <!--Articles-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/apps"-->
-                                             <!--@click.native="redirct(footerItems[8])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="title font-weight-regular">-->
-                                    <!--Apps-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/visualization"-->
-                                             <!--@click.native="redirct(footerItems[5])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="title font-weight-regular">-->
-                                    <!--Statistics-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
+                            <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/events"-->
+                            <!--@click.native="redirct(footerItems[6])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="title font-weight-regular">-->
+                            <!--Events-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/articles"-->
+                            <!--@click.native="redirct(footerItems[7])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="title font-weight-regular">-->
+                            <!--Articles-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/apps"-->
+                            <!--@click.native="redirct(footerItems[8])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="title font-weight-regular">-->
+                            <!--Apps-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/visualization"-->
+                            <!--@click.native="redirct(footerItems[5])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="title font-weight-regular">-->
+                            <!--Statistics-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
                             <!--</v-row>-->
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 1vh">
@@ -362,45 +369,47 @@
                     <v-container fluid fill-height class="ma-0 pa-0">
                       <v-layout column>
                         <v-row wrap>
-                            <v-container fluid class="pb-0">
-                              <v-layout column>
-                                <v-row wrap style="margin-left: 9vw; margin-right: 9vw">
-                                  <h1
-                                    class="subtitle-2 font-weight-medium pb-2 pt-4">
-                                    AJust Team acknowledges the Traditional
-                                    Owners
-                                    of
-                                    the land
-                                    on
-                                    which the webisite target audience resides,
-                                    the
-                                    Wurundjeri
-                                    People. We pay respects to their Elders,
-                                    past
-                                    and
-                                    present,
-                                    and the Aboriginal Elders of other
-                                    communities
-                                    who
-                                    may
-                                    be
-                                    visiting this website today.
-                                  </h1>
-                                </v-row>
-                                <v-row wrap style="margin-left: 9vw; margin-right: 9vw">
-                                  <h1 class="subtitle-2 font-weight-medium">
-                                    Justicely aims to identify and provide
-                                    support
-                                    to
-                                    young
-                                    women of Melbourne facing emotional abuse
-                                    by
-                                    their
-                                    partners.
-                                  </h1>
-                                </v-row>
-                              </v-layout>
-                            </v-container>
+                          <v-container fluid class="pb-0">
+                            <v-layout column>
+                              <v-row wrap
+                                     style="margin-left: 9vw; margin-right: 9vw">
+                                <h1
+                                  class="subtitle-2 font-weight-medium pb-2 pt-4">
+                                  AJust Team acknowledges the Traditional
+                                  Owners
+                                  of
+                                  the land
+                                  on
+                                  which the webisite target audience resides,
+                                  the
+                                  Wurundjeri
+                                  People. We pay respects to their Elders,
+                                  past
+                                  and
+                                  present,
+                                  and the Aboriginal Elders of other
+                                  communities
+                                  who
+                                  may
+                                  be
+                                  visiting this website today.
+                                </h1>
+                              </v-row>
+                              <v-row wrap
+                                     style="margin-left: 9vw; margin-right: 9vw">
+                                <h1 class="subtitle-2 font-weight-medium">
+                                  Justicely aims to identify and provide
+                                  support
+                                  to
+                                  young
+                                  women of Melbourne facing emotional abuse
+                                  by
+                                  their
+                                  partners.
+                                </h1>
+                              </v-row>
+                            </v-layout>
+                          </v-container>
                           <v-divider></v-divider>
 
                           <v-card-text class="white--text pt-0 pb-0">
@@ -445,50 +454,50 @@
                               </v-flex>
                             </v-row>
                             <!--<v-row wrap justify="space-between"-->
-                                   <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/events"-->
-                                             <!--@click.native="redirct(footerItems[6])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
-                                    <!--Events-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/articles"-->
-                                             <!--@click.native="redirct(footerItems[7])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
-                                    <!--Articles-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/apps"-->
-                                             <!--@click.native="redirct(footerItems[8])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
-                                    <!--Apps-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
-                              <!--&lt;!&ndash;<router-link to="/selfcare"&ndash;&gt;-->
-                              <!--&lt;!&ndash;@click.native="redirct(footerItems[3])"&ndash;&gt;-->
-                              <!--&lt;!&ndash;class="white&#45;&#45;text">&ndash;&gt;-->
-                              <!--&lt;!&ndash;<h1 class="title font-weight-regular">&ndash;&gt;-->
-                              <!--&lt;!&ndash;Self-Care&ndash;&gt;-->
-                              <!--&lt;!&ndash;</h1>&ndash;&gt;-->
-                              <!--&lt;!&ndash;</router-link>&ndash;&gt;-->
-                              <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
-                                <!--<router-link to="/visualization"-->
-                                             <!--@click.native="redirct(footerItems[5])"-->
-                                             <!--class="white&#45;&#45;text">-->
-                                  <!--<h1 class="subtitle-1 font-weight-regular">-->
-                                    <!--Statistics-->
-                                  <!--</h1>-->
-                                <!--</router-link>-->
-                              <!--</v-flex>-->
+                            <!--style="margin-left: 8vw; margin-right: 8vw; margin-top: 4px">-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/events"-->
+                            <!--@click.native="redirct(footerItems[6])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="subtitle-1 font-weight-regular">-->
+                            <!--Events-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/articles"-->
+                            <!--@click.native="redirct(footerItems[7])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="subtitle-1 font-weight-regular">-->
+                            <!--Articles-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/apps"-->
+                            <!--@click.native="redirct(footerItems[8])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="subtitle-1 font-weight-regular">-->
+                            <!--Apps-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
+                            <!--&lt;!&ndash;<router-link to="/selfcare"&ndash;&gt;-->
+                            <!--&lt;!&ndash;@click.native="redirct(footerItems[3])"&ndash;&gt;-->
+                            <!--&lt;!&ndash;class="white&#45;&#45;text">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<h1 class="title font-weight-regular">&ndash;&gt;-->
+                            <!--&lt;!&ndash;Self-Care&ndash;&gt;-->
+                            <!--&lt;!&ndash;</h1>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</router-link>&ndash;&gt;-->
+                            <!--<v-flex xs6 sm3 md3 lg3 xl3 justify="start">-->
+                            <!--<router-link to="/visualization"-->
+                            <!--@click.native="redirct(footerItems[5])"-->
+                            <!--class="white&#45;&#45;text">-->
+                            <!--<h1 class="subtitle-1 font-weight-regular">-->
+                            <!--Statistics-->
+                            <!--</h1>-->
+                            <!--</router-link>-->
+                            <!--</v-flex>-->
                             <!--</v-row>-->
                             <v-row wrap justify="space-between"
                                    style="margin-left: 8vw; margin-right: 8vw; margin-top: 1vh">
@@ -560,7 +569,7 @@
           {
             title: 'About Abuse',
             path: '/abuse',
-            icon:'mdi-information'
+            icon: 'mdi-information'
           },
           {
             title: 'Statistics',
@@ -664,7 +673,7 @@
 
       currentPage () {
         let current = this.$route.name.toString()
-        if(current == 'home')
+        if (current == 'home')
           return 0
         else if (current == 'abuse')
           return 1
@@ -673,7 +682,7 @@
         else if (['assessments', 'asresultslow', 'asresultshigh'].includes(current))
           return 3
         else if (['support', 'legalsupport', 'supportcounseling', 'sheltermap',
-        'events', 'articles','apps'].includes(current))
+          'events', 'articles', 'apps'].includes(current))
           return 4
         else if (current == 'safetyplan' || current == 'safetyform')
           return 5

@@ -76,8 +76,8 @@
           path: '/'
         },
         pageAfter: {
-          title: 'Self-Assessment',
-          path: '/assessments/false'
+          title: 'Statistics',
+          path: '/visualization'
         }
       }
     },

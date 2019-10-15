@@ -126,7 +126,7 @@
                           <v-flex xs8 sm8 md9 lg9 xl10>
                             <v-text-field
                               clearable
-                              :rules="[numberOnly]"
+                              :rules="[numberRules.numberOnly, numberRules.counter]"
                               outlined
                               v-model="number1"
                             ></v-text-field>
@@ -184,7 +184,7 @@
                             <v-text-field
                               clearable
                               outlined
-                              :rules="[numberOnly]"
+                              :rules="[numberRules.numberOnly, numberRules.counter]"
                               v-model="number2"
                             ></v-text-field>
                           </v-flex>
@@ -464,39 +464,43 @@
           const pattern = /^([a-zA-Z]*\s*)+$/
           return pattern.test(value) || 'Name contains illegal characters'
         },
-        numberOnly: value => {
-          const pattern = /^[+]?(\d*\s*)*$/
+        numberRules: {
+          numberOnly: value => {
+            const pattern = /^[+]?(\d*\s*)*$/
             // /^([+]?[0-9]*\s+[0-9]*)+$/
-          return pattern.test(value) || 'Invalid phone number.'
+            return pattern.test(value) || 'Invalid phone number.'
+          },
+          counter: value => value.length <= 16 || 'Max 15 numbers',
         }
+
       }
     },
 
     computed: {
       btnDisabled: function () {
         return (this.otherDocs === false &&
-            this.childrenDocs === false &&
-            this.medications === false &&
-            this.petsthings === false &&
-            (this.name1 == null || this.name1.replace(/\s/g, '').length === 0)&&
-          (this.number1 == null || this.number1.replace(/\s/g, '').length === 0)&&
-          (this.address1 == null || this.address1.replace(/\s/g, '').length === 0)&&
-          (this.name2 == null || this.name2.replace(/\s/g, '').length === 0)&&
-          (this.number2 == null || this.number2.replace(/\s/g, '').length === 0)&&
-          (this.address2 == null || this.address2.replace(/\s/g, '').length === 0)&&
-          (this.notes1 == null || this.notes1.replace(/\s/g, '').length === 0)&&
-          (this.notes2 == null || this.notes2.replace(/\s/g, '').length === 0)&&
-            this.id != 'id' &&
-            this.passport != 'passport' &&
-            this.bankCards != 'bankcards' &&
-            this.birth != 'birth' &&
-            this.cash != 'cash' &&
-            this.license != 'license' &&
-            this.oDocs == null &&
-            this.cDocs == null &&
-            this.mDocs == null &&
-            this.pDocs == null &&
-            this.notes == null  ||
+          this.childrenDocs === false &&
+          this.medications === false &&
+          this.petsthings === false &&
+          (this.name1 == null || this.name1.replace(/\s/g, '').length === 0) &&
+          (this.number1 == null || this.number1.replace(/\s/g, '').length === 0) &&
+          (this.address1 == null || this.address1.replace(/\s/g, '').length === 0) &&
+          (this.name2 == null || this.name2.replace(/\s/g, '').length === 0) &&
+          (this.number2 == null || this.number2.replace(/\s/g, '').length === 0) &&
+          (this.address2 == null || this.address2.replace(/\s/g, '').length === 0) &&
+          (this.notes1 == null || this.notes1.replace(/\s/g, '').length === 0) &&
+          (this.notes2 == null || this.notes2.replace(/\s/g, '').length === 0) &&
+          this.id != 'id' &&
+          this.passport != 'passport' &&
+          this.bankCards != 'bankcards' &&
+          this.birth != 'birth' &&
+          this.cash != 'cash' &&
+          this.license != 'license' &&
+          this.oDocs == null &&
+          this.cDocs == null &&
+          this.mDocs == null &&
+          this.pDocs == null &&
+          this.notes == null ||
           !(/^([a-zA-Z]*\s*)+$/.test(this.name1)) ||
           !(/^([a-zA-Z]*\s*)+$/.test(this.name2))
           // !(/^[+]?([0-9]*\s*)*$/.test(this.number1)) ||
