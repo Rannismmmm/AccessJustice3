@@ -1,3 +1,11 @@
+<!--Template page for the find gelp page, author: kenny-->
+<!--The activeCards part is for the clickable and colorful cards (now are just the cards in the -->
+<!--main page of find help)-->
+<!--The noSpaceTitle is for in case any the child vue page is imported and used by other page, there is no gap abot-->
+<!--the main title is the for the first blue title, it already supports both phones and computers-->
+<!--The positiveCards stand for the non-clickable cards like legal support or apps, it's default color is grey-->
+<!--But their color are editable by passing each color to the cards props-->
+
 <template>
   <v-container fluid class="pa-0 ma-0" v-if="appear">
     <v-container fluid>
